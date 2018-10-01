@@ -54,6 +54,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
+        onclick="alert('COUCOU')" 
        id="g830"
        transform="matrix(1.7272727,0,0,1.6931818,-39.170735,-33.420914)">
       <ellipse
