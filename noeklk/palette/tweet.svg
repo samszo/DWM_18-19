@@ -473,16 +473,16 @@ P+C/2f8AFf7P+K/2Hx8Jw7n/2Q==" transform="matrix(1.1886 0 0 1.1886 243.233 107.00
 <rect x="323.2" y="161" class="st0" width="81" height="90" onclick="alert('Heureux')"/>
 <rect x="404.2" y="162" class="st0" width="81" height="88" onclick="alert('Idiot')"/>
 <rect x="404.3" y="251" class="st0" width="79.9" height="90" onclick="alert('Triste')"/>
-<rect x="406.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="325.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="244.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="482.5" y="341" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="404.2" y="342" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="321.7" y="341" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
-<rect x="242.7" y="342" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="406.2" y="435" class="st0" width="81" height="88" onclick="alert('Mal au crâne/Blessé')"/>
+<rect x="325.2" y="435" class="st0" width="81" height="88" onclick="alert('Malade')"/>
+<rect x="244.2" y="435" class="st0" width="81" height="88" onclick="alert('Endormis')"/>
+<rect x="482.5" y="341" class="st0" width="81" height="88" onclick="alert('Confus')"/>
+<rect x="404.2" y="342" class="st0" width="81" height="88" onclick="alert('Enervé')"/>
+<rect x="321.7" y="341" class="st0" width="81" height="88" onclick="alert('Affamé')"/>
+<rect x="242.7" y="342" class="st0" width="81" height="88" onclick="alert('Surpris')"/>
 <rect x="242.7" y="249" class="st0" width="81" height="88" onclick="alert('Nerveux')"/>
 <rect x="323.2" y="251" class="st0" width="81" height="90.8" onclick="alert('Dérangé')"/>
 <rect x="484.2" y="251" class="st0" width="81" height="90" onclick="alert('Timide')"/>
 <rect x="484" y="159.3" class="st0" width="81" height="91.8" onclick="alert('Relaxé')"/>
-<rect x="486.2" y="433" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="486.2" y="433" class="st0" width="81" height="88" onclick="alert('En chaleur')"/>
 </svg>
