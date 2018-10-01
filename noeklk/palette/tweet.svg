@@ -469,20 +469,20 @@ Z/xX+z/iv9iSUtRbktwxduO0Fb3mMii2orrOIFaNydz76n/Ff7KtNlo5dwI4eH+z/iv9lCulMjY0
 upFSqpc3RdW5KHtExWspyWH4ItcvADJekKkt0IoAvAE/4r/YHF3ZftP+K/2f8V/s/wCC/wBn/Jf7
 P+C/2f8AFf7P+K/2Hx8Jw7n/2Q==" transform="matrix(1.1886 0 0 1.1886 243.233 107.0003)">
 </image>
-<rect x="243.2" y="162" class="st0" width="81" height="88"/>
-<rect x="323.2" y="161" class="st0" width="81" height="90"/>
-<rect x="404.2" y="162" class="st0" width="81" height="88"/>
-<rect x="404.3" y="251" class="st0" width="79.9" height="90"/>
-<rect x="406.2" y="435" class="st0" width="81" height="88"/>
-<rect x="325.2" y="435" class="st0" width="81" height="88"/>
-<rect x="244.2" y="435" class="st0" width="81" height="88"/>
-<rect x="482.5" y="341" class="st0" width="81" height="88"/>
-<rect x="404.2" y="342" class="st0" width="81" height="88"/>
-<rect x="321.7" y="341" class="st0" width="81" height="88"/>
-<rect x="242.7" y="342" class="st0" width="81" height="88"/>
-<rect x="242.7" y="249" class="st0" width="81" height="88"/>
-<rect x="323.2" y="251" class="st0" width="81" height="90.8"/>
-<rect x="484.2" y="251" class="st0" width="81" height="90"/>
-<rect x="484" y="159.3" class="st0" width="81" height="91.8"/>
-<rect x="486.2" y="433" class="st0" width="81" height="88"/>
+<rect x="243.2" y="162" class="st0" width="81" height="88" onclick="alert('Calme')"/>
+<rect x="323.2" y="161" class="st0" width="81" height="90" onclick="alert('Heureux')"/>
+<rect x="404.2" y="162" class="st0" width="81" height="88" onclick="alert('Idiot')"/>
+<rect x="404.3" y="251" class="st0" width="79.9" height="90" onclick="alert('Triste')"/>
+<rect x="406.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="325.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="244.2" y="435" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="482.5" y="341" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="404.2" y="342" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="321.7" y="341" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="242.7" y="342" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
+<rect x="242.7" y="249" class="st0" width="81" height="88" onclick="alert('Nerveux')"/>
+<rect x="323.2" y="251" class="st0" width="81" height="90.8" onclick="alert('Dérangé')"/>
+<rect x="484.2" y="251" class="st0" width="81" height="90" onclick="alert('Timide')"/>
+<rect x="484" y="159.3" class="st0" width="81" height="91.8" onclick="alert('Relaxé')"/>
+<rect x="486.2" y="433" class="st0" width="81" height="88" onclick="alert('Heureux')"/>
 </svg>
