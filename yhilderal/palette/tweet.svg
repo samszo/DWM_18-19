@@ -118,7 +118,6 @@
          points="111.88095,116.9576 111.88095,239.54762 30.994048,173.72265 30.994048,139.7619 " />
     </g>
     <text
-      onclick="alert('youkaidi')"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="80.130951"
@@ -143,6 +142,7 @@
          id="flowPara3741"></flowPara>
          </flowRoot>    
          <text
+         onclick="alert('yohan')"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:19.75555611px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="36.285713"
