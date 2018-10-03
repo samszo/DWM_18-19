@@ -122,35 +122,35 @@
        x="106.58929"
        y="126.91071"
        id="text941"
-       onclick="alert('Pas mal ce congres')"><tspan
+       onclick="alert('INDIFFERENT')"><tspan
          sodipodi:role="line"
          id="tspan939"
          x="106.58929"
          y="126.91071"
-         style="stroke-width:0.26458332">PAS MAL</tspan></text>
+         style="stroke-width:0.26458332">NORMAL</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="105.07738"
        y="71.726181"
        id="text945"
-	   onclick="alert('Super ce congres!!!')"><tspan
+	   onclick="alert('HEUREUX')"><tspan
          sodipodi:role="line"
          id="tspan943"
          x="105.07738"
          y="71.726181"
-         style="stroke-width:0.26458332">SUPER!</tspan></text>
+         style="stroke-width:0.26458332">HEUREUX</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="105.07738"
        y="169.99998"
        id="text1500"
-	   onclick="alert('Bof ce congres...')"><tspan
+	   onclick="alert('Triste')"><tspan
          sodipodi:role="line"
          id="tspan1498"
          x="105.07738"
          y="169.99998"
-         style="stroke-width:0.26458332">BOF...</tspan></text>
+         style="stroke-width:0.26458332">TRISTE</tspan></text>
   </g>
 </svg>
