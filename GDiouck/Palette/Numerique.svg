@@ -15,7 +15,7 @@
    width="800"
    height="600"
    viewBox="0 0 800 600"
-   onclick="alert"('DIGITAL TOOLS')
+   onclick="alert"('DIGITAL TOOLS')"
    sodipodi:docname="DIGITAL TOOLS.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
      id="metadata8"><rdf:RDF><cc:Work
