@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8425"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="tweets.svg">
+  <defs
+     id="defs8419">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient9258">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop9254" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop9256" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 148.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="210 : 148.5 : 1"
+       inkscape:persp3d-origin="105 : 99 : 1"
+       id="perspective8433" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9258"
+       id="radialGradient9260"
+       cx="101.89746"
+       cy="81.124458"
+       fx="101.89746"
+       fy="81.124458"
+       r="42.019569"
+       gradientTransform="matrix(1,0,0,0.93749997,0,5.0702814)"
+       gradientUnits="userSpaceOnUse" />
+    <meshgradient
+       inkscape:collect="always"
+       id="meshgradient9262"
+       gradientUnits="userSpaceOnUse"
+       x="112.9276"
+       y="126.82074">
+      <meshrow
+         id="meshrow9264">
+        <meshpatch
+           id="meshpatch9266">
+          <stop
+             path="c 30.4642,0  60.9284,0  91.3926,0"
+             style="stop-color:#ffffff;stop-opacity:1"
+             id="stop9268" />
+          <stop
+             path="c 0,26.2622  0,52.5245  0,78.7867"
+             style="stop-color:#000000;stop-opacity:1"
+             id="stop9270" />
+          <stop
+             path="c -30.4642,0  -60.9284,0  -91.3926,0"
+             style="stop-color:#ffffff;stop-opacity:1"
+             id="stop9272" />
+          <stop
+             path="c 0,-26.2622  0,-52.5245  0,-78.7867"
+             style="stop-color:#000000;stop-opacity:1"
+             id="stop9274" />
+        </meshpatch>
+      </meshrow>
+    </meshgradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.50373353"
+     inkscape:cx="77.408806"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata8422">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+    onclick="alert('Cercle')"
+       id="path8427"
+       cx="101.89746"
+       cy="81.124458"
+       rx="42.019569"
+       ry="39.393345"
+       style="stroke-width:0.23033385;fill:#2b0000;opacity:0.72600001;stroke:url(#radialGradient9260)" />
+    <path
+    onclick="alert('Etoile')"
+       sodipodi:type="star"
+       id="path8429"
+       sodipodi:sides="5"
+       sodipodi:cx="53.049708"
+       sodipodi:cy="168.84031"
+       sodipodi:r1="47.496178"
+       sodipodi:r2="23.748087"
+       sodipodi:arg1="0.90296374"
+       sodipodi:arg2="1.5312823"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 82.463411,206.13269 53.987848,192.56987 26.671889,208.33839 30.771467,177.06537 7.3336181,155.95909 38.34286,150.19413 l 12.830571,-28.81292 15.065188,27.71007 31.367578,3.29892 -21.698444,22.89073 z"
+       inkscape:transform-center-x="0.57980217"
+       inkscape:transform-center-y="-3.9805181"
+       style="stroke-width:0.26458332" />
+    <rect
+    onclick="alert('Carre')"
+       id="rect8431"
+       width="91.392563"
+       height="78.786697"
+       x="112.9276"
+       y="126.82074"
+       style="stroke-width:0.26458332;stroke:url(#meshgradient9262);fill:#ff0000;fill-opacity:1" />
+  </g>
+</svg>
