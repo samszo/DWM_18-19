@@ -2054,7 +2054,7 @@
      inkscape:groupmode="layer"
      inkscape:label="DIGITAL TOOLS"
      transform="matrix(1.3333333,0,0,-1.3333333,0,600)"><g
-       id="g34"><g
+       id="g34" onclick="alert('Digital tools)'"><g
          id="g36"><g
            id="g42"><g
              id="g44"><path
