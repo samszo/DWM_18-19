@@ -15,7 +15,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg845"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="tweet.svg">
   <defs
      id="defs839">
@@ -60,17 +60,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="400"
+     inkscape:cx="-38.571429"
      inkscape:cy="517.25992"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     showguides="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     showguides="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="928"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="167.71542,211.26462"
+       orientation="0,1"
+       id="guide25"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="61.988095,312.96429"
+       orientation="1,0"
+       id="guide27"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="145.14285,235.1012"
+       orientation="1,0"
+       id="guide29"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <metadata
      id="metadata842">
     <rdf:RDF>
@@ -79,7 +96,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -89,9 +106,10 @@
      id="layer1">
     <path
        style="fill:url(#linearGradient870);fill-opacity:0.77941165;stroke-width:0.21517268"
-       d="M 105.4107,34.654438 73.871533,60.194913 42.333406,85.735389 V 176.04772 H 167.71542 V 85.735389 h 0.77205 L 136.94882,60.194913 Z"
+       d="m 105.4107,34.654438 -31.539167,25.540475 -31.538127,25.540476 19.65476,-8e-6 c 0,31.938159 -7.4e-5,63.826099 -7.1e-5,91.824239 l 83.154755,0 -0.106,-91.824239 22.67857,8e-6 h 0.77205 L 136.94882,60.194913 Z"
        id="rect847"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot893"
@@ -119,37 +137,37 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="106.58929"
+       x="104.91693"
        y="126.91071"
        id="text941"
        onclick="alert('INDIFFERENT')"><tspan
          sodipodi:role="line"
          id="tspan939"
-         x="106.58929"
+         x="104.91693"
          y="126.91071"
          style="stroke-width:0.26458332">NORMAL</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="105.07738"
+       x="105.05904"
        y="71.726181"
        id="text945"
-	   onclick="alert('HEUREUX')"><tspan
+       onclick="alert('HEUREUX')"><tspan
          sodipodi:role="line"
          id="tspan943"
-         x="105.07738"
+         x="105.05904"
          y="71.726181"
          style="stroke-width:0.26458332">HEUREUX</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="105.07738"
+       x="105.76959"
        y="169.99998"
        id="text1500"
-	   onclick="alert('Triste')"><tspan
+       onclick="alert('Triste')"><tspan
          sodipodi:role="line"
          id="tspan1498"
-         x="105.07738"
+         x="105.76959"
          y="169.99998"
          style="stroke-width:0.26458332">TRISTE</tspan></text>
   </g>
