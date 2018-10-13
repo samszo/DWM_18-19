@@ -2245,6 +2245,7 @@
                style="fill:url(#linearGradient1092);stroke:none"
                id="path1094"
                inkscape:connector-curvature="0" /></g></g></g></g><g
+               onclick="alert('clavier')"
        id="g1096"><g
          id="g1098"><g
            id="g1104"><g
