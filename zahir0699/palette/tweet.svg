@@ -13,11 +13,11 @@
    height="297mm"
    viewBox="0 0 210 297"
    version="1.1"
-   id="svg3795"
+   id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="tweet.svg">
+   sodipodi:docname="dessin.svg">
   <defs
-     id="defs3789" />
+     id="defs2" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-101.42857"
+     inkscape:cx="400"
      inkscape:cy="560"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -37,7 +37,7 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata3792">
+     id="metadata5">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -53,213 +53,45 @@
      inkscape:groupmode="layer"
      id="layer1">
     <ellipse
-       style="fill:#000080;stroke-width:0.24254365"
-       onclick="alert('9:30-10:00	Opening
-Co-chairs
-I. Saleh (Laboratoire Paragraphe), G. Azemard (Laboratoire Paragraphe, IDEFI CreaTIC)
-10:00 - 11:00	Keynote address :
-Mark Bernstein (Eastgate, USA) 
-Exercises in Links: Hypertext Style 
-Moderator: Everardo Reyes
-11:00 - 11:15	Coffee break
-11:15 - 12:45	IOT session 01.
-Session chair: Samuel Szoniecky
-Smart Objects Ecosystem for Post-Stroke Upper Limbs’ Motor Functions Monitoring 
-M. Bobin (Université Paris XI, France)
-
-The Tangible Sounds : a sound system for Interactive Tabletops
-L. Cossou (Université Paris-Sud, France)
-
-The augmented documents: towards a multiplicity of supports and an extension of the life of the print
-N. Elmqaddem (Ecole des Sciences de l’Information, Marroco)
-
-WS. Session 01.
-Session chair: Orélie Desfriches
-Tool criticism: From digital methods to digital methodology 
-M. Wieringa (University of Utrecht, Netherlands)
-
-Development of a web site
-M. Lortie (UQAM, Canada)
-
-WebVR based Interactive Visualization of Open Health Data
-H. Hadjar (CERIST, Algiers, Algeria)
-
-12:45 - 14:15	Lunch break
-14:15 - 15:45	CIBAHN. Session 01.
-Session chair: Jean-Marc Salmon
-Valorisation of a pedagogical digital archive: The example of an ebook enriched from an ontology
-J.-M. Meunier (Université Paris 8, France)
-
-Putting the cultural data of digital libraries in narrative: virtual exhibition and research-creation
-A. Laborderie (BNF, France)
-
-Open Access to Digital Information at the University for Applied Sciences and Arts Western Switzerland
-G. Joullie Dardier (Haute Ecole Specialisee de Suisse Occidentale, Switzwerland)
-
-WS. Session 02.
-Session chair: Sarah Labelle
-Une analyse de Twitter pour mieux comprendre les acteurs de la communication des nouvelles drogues et leur discussion
-M. Tanti (Aix Marseille Univ, France)
-
-What is the identity of Digital Humanities in interdisciplinary practices ?
-O. Desfriches Doria (Université Lyon 3, France)
-
-Information Behavior within a Digital Environment: The Case of Telecom Network Unit Managers
-D. Lekic (Université Paris 8, France)
-
-15:45 - 16:45	Keynote :
-Vincent Puig (IRI Centre Pompidou, Paris, France) 
-How to articulate the computable and the incalculable: the Digital studies approach
-Moderator: Everardo Reyes
-16:45 - 17:00	Coffee break
-17:00 - 18:00	Keynote :
-Jean-Philippe Moreux Chef de projet numérique à la BnF et expert scientifique Gallica, Le projet Corpus : préfiguration de services pour la recherche en Humanités numériques à la Bibliothèque nationale de France')"
-       id="path3797"
-       cx="70.303574"
-       cy="63.032738"
-       rx="69.547615"
-       ry="64.633934" />
-    <ellipse
-       style="fill:#0000ff;stroke-width:0.26458332"
-       onclick="alert('9:30-10:00	InWors posters session
-Session chair: Gérald Kembellec
-Multimodal Transport, Smart parking, Multi-Agents systems, Multi-objective Optimization
-Mohamed El Moufid (Research Foundation for Development and Innovation in Science and Engineering, Morocco)
-
-A Multi-Agent Recommender System Using social networks
-Fatma Siala (University of Manouba, Tunisia)
-
-DTUC book series presentation 
-ISTE  Open Science
-10:00 - 11:00	Keynote address:
-Alessandro Panconesi (Sapienza, Roma, Italy) 
-Together We Buy, Alone I Quit 
-Moderator: Fatma Siala
-11:00 - 11:15	Coffee break
-11:15 - 12:45	InWors. Session 01.
-Session chair: Raphaël Fournier-S’niehotta
-Recommending Scientific Papers The Role of Citation Contexts
-M. Bertin (Université Claude Bernard Lyon 1, France)
-
-Predicting personal academic and career roads: first steps toward multi-uses recommender systems
-A. Nadjem (Université d’Avignon, France)
-
-Short Review of Sentiment-Based Recommender Systems
-V. Barrière (Telecom ParisTech, France)
-
-WS. Session 03.
-Session chair : Maranke Wieringa
-Crossplatform References on Social Media
-A. Segault (Université de Franche-Comté, France)
-
-Systematic Analysis of Web Browser Caches
-H. Viet Nguyen (TH Köln, Germany)
-
-Datagame: Crowdsourcing, Metrics Traces
-J. Alvarez (Université de Valenciennes, France)
-
-12:45 - 14:15	Lunch break
-14:15 - 15:45	CIBAHN. Session 02.
-Session chair: Jean-Philippe Moreux
-The experience of building visual archives of the Tunisian uprising
-J.-M. Salmon (Institut Mines-Télécom Business School, France)
-
-Archives in the era of big data: the challenges of archiving digital data
-F. Ben Amor (University of Manouba, Tunisia)
-
-BeQuali: a digital archive platform in social sciences
-S. Cadorel  E. Juillard (Sciences Po Paris, France)
-
-IOT session 02.
-Session chair: Hakim Hachour
-Sensor-based smart hot-desking for improvement of office well-being
-K. Berelson (University of Bristol, UK)
-
-Emergence based access control : New approach to secure the Internet of things 
-A. Abou Elkalam (Ecole Nationale des Sciences Appliquées, Morocco)
-
-Privacy Representation in the Internet of Things Using Pretopological Theory
-A. Toumia (Université Paris 8, France)
-
-
-15:45 - 16:45	Keynote:
-Médialab, Sciences Po, Paris, France 
-Hyperlink is not dead!
-Moderator: Everardo Reyes
-TBA	Gala Diner')"
-       id="path3799"
-       cx="137.58336"
-       cy="140.13986"
-       rx="74.083336"
-       ry="71.4375" />
-    <ellipse
-       style="fill:#800080;stroke-width:0.24527915"
-       onclick="alert('10:00 - 11:00	Keynote adress :
-Pr. Elhadj Benkhalifa (Staffordshire University, UK) 
-Enablers and Inhibitors for the IoT as an Ecosystem for Sustainable Growth 
-11:00 - 11:15	Coffee break
-11:15 - 12:45	IOT session 03.
-Session chair: Mehdi Ammi
-Design des objets connectés : pour une conception orientée médiation
-B. Arruabarrena (CNAM, France)
-
-LIDO un langage de modélisation pour le développement de solutions pour l’internet des objets
-T. Ben Hassine (ENSI, Tunisia)
-
-Blockchain et intelligence collective pour le design des connaissances de l’Internet des Objets
-S. Szoniecky (Université Paris 8, France)
-
-InWors. Session 02.
-Session chair: Gérald Kembellec
-Online Reviews as a Genre P. Almiron-Chamadoira (University of the Basque Country UPV/EHU, Spain)
-
-Online Reviews: Objective Evaluation or Subjective Evaluation in Digital Social Media
-Z. Feng (University of Lille, France) ; L. Favier (University of Lille, France)
-
-12:45 - 14:15	Lunch break
-14:30 - 18:00	Reception at the Innovation Center. Tour Montparnasse
-Authors and speakers: please join us for drinks and snacks at this landmark Parisian place. Enjoy the view of the city while exploring innovative projects and making new connections. Ask your guests for details.
-16:00 - 16:30	Closing DTUC')"
-       id="path3801"
+       style="fill:#2b1100;stroke-width:0.26458332"
+       id="path10"
        cx="69.925591"
-       cy="225.94046"
-       rx="69.925598"
-       ry="71.059525" />
+       cy="56.607143"
+       rx="44.223213"
+       ry="42.333332" />
+    <path
+       style="fill:#ff0000;stroke-width:2.85714293"
+       
+       d="m 222.82394,367.22994 c -43.34068,-10.508 -88.80448,-46.16733 -107.57335,-84.37469 -30.246714,-61.57251 -18.33903,-130.1648 31.09986,-179.14574 64.94787,-64.346248 171.2344,-64.110111 235.96598,0.52425 62.86143,62.76702 63.08654,157.73773 0.52014,219.4412 -21.60728,21.30927 -54.21581,39.2211 -81.69149,44.87304 -20.32279,4.18054 -58.27627,3.54183 -78.32114,-1.31806 z"
+       id="path14"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)" />
+    <ellipse
+       style="fill:#ffff00;stroke-width:0.26458332"
+       id="path16"
+       cx="140.22917"
+       cy="99.318451"
+       rx="45.735119"
+       ry="44.979168"
+        />
+    <ellipse
+       style="fill:#d45500;stroke-width:0.26458332"
+       id="path18"
+       cx="111.50297"
+       cy="190.41071"
+       rx="57.074402"
+       ry="55.940475" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:13.3646059px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#e3dedb;fill-opacity:1;stroke:none;stroke-width:0.33411515"
-       x="16.228449"
-       y="49.81052"
-       id="text3805"
-       transform="scale(0.79189265,1.2627974)"><tspan
+       style="font-style:normal;font-weight:normal;font-size:8.35762024px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.20894051"
+       x="35.626389"
+       y="49.716953"
+       id="text22"
+       transform="scale(0.85310993,1.1721819)"><tspan
          sodipodi:role="line"
-         id="tspan3803"
-         x="16.228449"
-         y="49.81052"
-         style="fill:#e3dedb;stroke-width:0.33411515">Wednesday, October 3</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:13.3646059px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.33411515"
-       x="112.64454"
-       y="113.26563"
-       id="text3817"
-       transform="scale(0.79189263,1.2627975)"><tspan
-         sodipodi:role="line"
-         id="tspan3815"
-         x="112.64454"
-         y="113.26563"
-         style="stroke-width:0.33411515">Thursday, October 4</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:14.82973862px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37074348"
-       x="18.64772"
-       y="187.01663"
-       id="text3821"
-       transform="scale(0.80377317,1.2441321)"><tspan
-         sodipodi:role="line"
-         id="tspan3819"
-         x="18.64772"
-         y="187.01663"
-         style="stroke-width:0.37074348">Friday, October 5</tspan></text>
+         id="tspan20"
+         x="35.626389"
+         y="49.716953"
+         style="stroke-width:0.20894051">Wednesday, October 3</tspan></text>
   </g>
 </svg>
