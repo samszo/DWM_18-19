@@ -1,1 +1,19 @@
-coucou
+<div onclick="addVite(1,2)" >coucou</div>
+<div onmousemove="addVite(i,j)" >encore</div>
+<div id="resultat"></div>
+<script>
+
+    var r = document.getElementById("resultat");
+    var i = 0, j = 1;
+
+    function addVite(ch1, ch2) {
+
+        i = ch1 + ch2;
+        
+        var res = "le résultat de l'addition est : "+i+" = "+ch1+" + "+ch2;
+        //console.log(res);
+        r.innerHTML = res;
+
+    }
+
+</script>
