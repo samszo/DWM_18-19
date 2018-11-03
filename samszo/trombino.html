@@ -42,7 +42,7 @@
   <h1 class="display-3">Design Web Mobile</h1>
   <p class="lead">trombinoscope</p>
   <hr class="my-4">
-  <p>Promotion 2017 - 2018</p>
+  <p>Promotion 2018 - 2019</p>
 </div>
 
 	<div class="container">
@@ -57,7 +57,7 @@ var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, 
 
 //récupération des photos du groupe flickr
 //merci beaucoup à https://etienner.fr/flickr-json
-var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157686701939221&extras=original_format&format=json&jsoncallback=?"; 
+var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
 $.getJSON(urlFlickr,
 function(data){
 	dataPhoto = data;
@@ -73,7 +73,7 @@ function(data){
     Fin de la boucle*/
 
 	//récupération des données du formulaire google
-	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4vIu2pcoPH6Vng35aQzwRAxQV9ogt8B9fyp-3cr1aVEdEh5rAhDfj_sB7OYoeLRZGalhq1trkCLRd/pub?gid=2097717787&single=true&output=csv';
+	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
     //var url = "data/LPDesignWebMobile_17-18.csv";        
 	d3.csv(url, function(data) {
 		dataForm = data;
@@ -127,17 +127,20 @@ function(data){
 		</div>
 
 		*/
-		var cards = d3.select('#etuCards').selectAll(".col-sm-3 mb-4").data(dataForm).enter()
-			.append('div').attr('class','col-sm-3 mb-4')
+		var cards = d3.select('#etuCards').selectAll(".col-sm-4 mb-12").data(dataForm).enter()
+			.append('div').attr('class','col-sm-4 mb-12').style('margin-bottom','10px')
 			.append("div").attr('class','card');
 	  	cards.append("img")
 	  			.attr('id',function(d) {return 'imgCard'+d['num photo']})
 	  			.attr('class','card-img-top')
 	  			.attr('src',function(d) { 
-		    			var item = dataPhoto.photoset.photo[d['num photo']];
-			        var src = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_q.jpg';
-		    			return src; 
-			    		});
+                    if(d['num photo']==-1)src = 'http://www.samszo.univ-paris8.fr/ChaoticumPapillonae/CreaPapiDynaAnim.php?anim=0&larg=348&haut=261&id=svgPapiLogo#'+d['num photo']
+		    		else{
+                        var item = dataPhoto.photoset.photo[d['num photo']];
+                        var src = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_z.jpg';
+                    }	
+                    return src; 
+                    });
 	  	//ajoute l'overlay sur l'image pour le tooltip du diagramme
 	  	cards.append("div")
 	  			.attr('id',function(d) {return 'imgOver'+d['num photo']})
@@ -155,9 +158,9 @@ function(data){
 		    		});
 		//construction du layout pour les graphiques
 		var html = '<div class="container"><div class="row">';
-		html += '<div id="etudNum__Col1" class="col-sm"></div>';
-		html += '<div id="etudNum__Col2" class="col-sm"></div>';
-		html += '<div id="etudNum__Col3" class="col-sm"></div>';
+		html += '<div id="etudNum__Col1" class="col-sm" style="padding-right:0px;padding-left:0px;"></div>';
+		html += '<div id="etudNum__Col2" class="col-sm" style="padding-right:0px;padding-left:0px;"></div>';
+		html += '<div id="etudNum__Col3" class="col-sm" style="padding-right:0px;padding-left:0px;"></div>';
 		html += '</div></div>';
 		cardBody.append('div').attr('class','card-text').attr('id',function(d, i) { return 'etudNum_'+i; })
 			.html(function(d, i) { return html.replace(/__/gi, "_"+i+"_");});	  			
@@ -165,15 +168,16 @@ function(data){
 			.append('small').attr('class','text-muted')
 			.text(function(d, i) {
 					//charge le graph des réponses
-					drawGraphReponse("#etudNum_"+i+"_Col1", 'Besoins', d.reponses.besoins);
-					drawGraphReponse("#etudNum_"+i+"_Col2", 'Compétences', d.reponses.competences);
-					drawGraphReponse("#etudNum_"+i+"_Col3", 'Outils', d.reponses.outils);
+                    var size = 100;
+					drawGraphReponse("#etudNum_"+i+"_Col1", 'Besoins', d.reponses.besoins, size);
+					drawGraphReponse("#etudNum_"+i+"_Col2", 'Compétences', d.reponses.competences, size);
+					drawGraphReponse("#etudNum_"+i+"_Col3", 'Outils', d.reponses.outils, size);
 		    			return d['Votre mail'].toLowerCase(); 
 				    		});		
 	});
 });
 
-function drawGraphReponse(idE, titre, data){
+function drawGraphReponse(idE, titre, data, size){
 	/*à voir si dimple marche mieux
     var svg = dimple.newSvg("#"+idE, 200, 200);
     var myChart = new dimple.chart(svg, data);
@@ -193,8 +197,8 @@ function drawGraphReponse(idE, titre, data){
     */
     //
 	var donut = donutChart()
-	    .width(160)
-	    .height(160)
+	    .width(size)
+	    .height(size)
 	    .cornerRadius(3) // sets how rounded the corners are on each slice
 	    .padAngle(0.015) // effectively dictates the gap between slices
 	    .variable('importance')
@@ -209,7 +213,7 @@ function drawGraphReponse(idE, titre, data){
 function donutChart() {
     var width,
         height,
-        margin = {top: 10, right: 10, bottom: 10, left: 10},
+        margin = {top: 0, right: 0, bottom: 10, left: 0},
         colour = d3.scaleOrdinal(d3.schemeCategory20c), // colour scheme
         variable, // value in data that will dictate proportions on chart
         category, // compare data by
@@ -248,18 +252,12 @@ function donutChart() {
 
             // ===========================================================================================
             // append the svg object to the selection
+            var wSvg = width + margin.left + margin.right, hSvg = height + margin.top + margin.bottom; 
             var svg = selection.append('svg')
-                .attr('width', width + margin.left + margin.right)
-                .attr('height', height + margin.top + margin.bottom)
+                .attr('width', wSvg)
+                .attr('height', hSvg)
               .append('g')
-                .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
-            // ===========================================================================================
-
-            	//ajoute le titre
-            	svg.append('text')
-                .html(title)            
-                .attr('text-anchor', 'middle');
-            	
+                .attr('transform', 'translate(' + wSvg / 2 + ',' + hSvg / 2 + ')');            	
             // ===========================================================================================
             // g elements to keep elements within svg modular
             svg.append('g').attr('class', 'slices');
@@ -319,6 +317,15 @@ function donutChart() {
                 });
             */
             // ===========================================================================================
+
+            // ===========================================================================================
+
+            	//ajoute le titre
+            	svg.append('text')
+                .html(title)            
+                .attr('text-anchor', 'middle')
+                .attr('y', hSvg/2);            	
+
 
             // ===========================================================================================
             // add tooltip to mouse events on slices and labels
