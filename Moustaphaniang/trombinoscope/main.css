@@ -1,0 +1,79 @@
+.title{
+    height: 50px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 25px;
+    text-align: center;
+    padding-top: 6px;
+    font-size: 160%;
+    font-weight: bold;
+    color: black;
+
+}
+.teammembers {
+    height: 520px;
+    margin: 25px;
+    width: 330px;
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 1px 5px 1px lightgrey;
+    
+}
+
+.idle{
+    height: 80px;
+    background-color: white;
+
+    width: 100%;
+    float: left;
+
+}
+
+.teamcontent {
+    height: 340px;
+    border-top: 5px solid red;
+    width: 100%;
+    float: left;
+}
+
+.teamname{
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+    color: black;
+    font-size: 120%;
+    
+}
+
+.teampart{
+    text-align: center;
+    color: #b8bbb8;
+    width: 100%;
+    float: left;
+    font-size: 110%;
+}
+
+.teamdesc{
+    text-align: center;
+    margin: 5px;
+    width: 100%;
+    float: left;
+    font-size: 100%;
+}
+
+.teaming{
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-left: 70px;
+    margin-top: -100px;
+     
+
+    
+}
