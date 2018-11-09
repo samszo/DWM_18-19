@@ -1,5 +1,5 @@
 ///
-/// Identity by HTML5 UP
+/// Phantom by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -8,6 +8,7 @@
 
 	form {
 		margin: 0 0 _size(element-margin) 0;
+		overflow-x: hidden;
 
 		> :last-child {
 			margin-bottom: 0;
@@ -69,9 +70,9 @@
 	}
 
 	label {
-		color: _palette(fg-bold);
 		display: block;
 		font-size: 0.9em;
+		font-weight: _font(weight-bold);
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
 	}
 
@@ -82,12 +83,14 @@
 	select,
 	textarea {
 		@include vendor('appearance', 'none');
-		border-radius: _size(border-radius);
-		border: solid 1px _palette(border);
+		background-color: transparent;
+		border: none;
+		border-radius: 0;
+		border-bottom: solid _size(border-width) _palette(border);
 		color: inherit;
 		display: block;
 		outline: 0;
-		padding: 0 1em;
+		padding: 0;
 		text-decoration: none;
 		width: 100%;
 
@@ -96,7 +99,8 @@
 		}
 
 		&:focus {
-			border-color: _palette(highlight);
+			border-bottom-color: _palette(accent1);
+			box-shadow: inset 0 -1px 0 0 _palette(accent1);
 		}
 	}
 
@@ -133,7 +137,8 @@
 	}
 
 	textarea {
-		padding: 0.75em 1em;
+		padding: 0;
+		min-height: (_size(element-height) * 1.25);
 	}
 
 	input[type="checkbox"],
@@ -158,9 +163,8 @@
 			position: relative;
 
 			&:before {
-				background: _palette(border-bg);
 				border-radius: _size(border-radius);
-				border: solid 1px _palette(border);
+				border: solid _size(border-width) _palette(border);
 				content: '';
 				display: inline-block;
 				height: (_size(element-height) * 0.6);
@@ -168,21 +172,24 @@
 				line-height: (_size(element-height) * 0.575);
 				position: absolute;
 				text-align: center;
-				top: 0.15em;
+				top: 0;
 				width: (_size(element-height) * 0.6);
 			}
 		}
 
 		&:checked + label {
 			&:before {
-				color: _palette(highlight);
+				background: _palette(fg);
+				border-color: _palette(fg);
+				color: _palette(bg);
 				content: '\f00c';
 			}
 		}
 
 		&:focus + label {
 			&:before {
-				border-color: _palette(highlight);
+				border-color: _palette(accent1);
+				box-shadow: 0 0 0 _size(border-width) _palette(accent1);
 			}
 		}
 	}
@@ -201,24 +208,4 @@
 				border-radius: 100%;
 			}
 		}
-	}
-
-	::-webkit-input-placeholder {
-		color: _palette(fg-light) !important;
-		opacity: 1.0;
-	}
-
-	:-moz-placeholder {
-		color: _palette(fg-light) !important;
-		opacity: 1.0;
-	}
-
-	::-moz-placeholder {
-		color: _palette(fg-light) !important;
-		opacity: 1.0;
-	}
-
-	:-ms-input-placeholder {
-		color: _palette(fg-light) !important;
-		opacity: 1.0;
 	}
