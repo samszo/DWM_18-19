@@ -1,0 +1,94 @@
+@@ -0,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Trombinoscope</title>
+  </head>
+  <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Trombinoscope</h1>
+                <p class="lead">DWM 18-19</p>
+            </div>
+        </div>      
+        <div class="container" id="lstPhoto" >
+            <div class="row">
+                <div class="col-sm-2 lg-12">
+                    <div class="alert alert-dark" role="alert">
+                        Etudiant
+                    </div>
+                </div>                            
+                <div class="col-sm-5 lg-12">
+                    <div class="alert alert-success" role="alert">
+                        Compétence
+                    </div>
+                </div>
+                <div class="col-sm-5 lg-12 ">
+                    <div class="alert alert-danger" role="alert">
+                            Besoins
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+var dataPhoto,dataForm;
+//récupération des photos du groupe flickr
+//merci beaucoup à https://etienner.fr/flickr-json
+var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
+$.getJSON(urlFlickr,traitePhoto);
+
+function traitePhoto(data){
+
+        dataPhoto = data;
+        // Debut de la boucle        
+        dataPhoto.photoset.photo.forEach(function(item,i){
+            // Sockage de l'url dans une variable
+            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+            console.log(photo);
+            var code = '<div id="rowEtu'+i+'" class="row">'
+            code +='<div id="colTof'+i+'"  class="col-sm-2 lg-12"><img class="img-fluid" src="'+photo+'" /></div>'
+            code +='<div id="colComp'+i+'" class="col-sm-5 lg-12"></div>';
+            code +='<div id="colBes'+i+'" class="col-sm-5 lg-12"></div>';
+            code +='</div>';
+            $('#lstPhoto').append(code);
+            // Affichage des images dans la balise ul#images avec le l'url dans la balise li
+            //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+        });
+        //Fin de la boucle
+        traiteForm();
+}
+
+function traiteForm(){
+
+	//récupération des données du formulaire google
+	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+    //var url = "data/LPDesignWebMobile_17-18.csv";        
+	d3.csv(url, function(data) {
+		dataForm = data;
+        dataForm.forEach(function(d, i){		
+            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+        })
+        
+    });
+}
+
+</script>
+</body>
+
+</html>

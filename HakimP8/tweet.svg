@@ -14,8 +14,8 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="dessin.svg">
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="tweet.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -31,11 +31,14 @@
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-others="false"
+     inkscape:snap-midpoints="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="783"
+     inkscape:window-x="11"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -51,49 +54,42 @@
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     onclick="alert('yyyyyyyyy')"
      id="layer1">
     <rect
-       style="fill:#2b1100;stroke-width:0.26458332"
-       id="rect10"
-       width="58.208332"
-       height="45.357143"
-       x="83.154762"
-       y="41.488094" />
-    <ellipse
+       id="rect3699"
+       width="113.39286"
+       height="86.934525"
+       x="36.285713"
+       y="29.392857"
+       style="stroke-width:0.26458332;fill:#ff2a2a" />
+    <rect
        style="fill:#00ff00;stroke-width:0.26458332"
-       id="path12"
-       cx="152.70239"
-       cy="167.35417"
-       rx="41.577381"
-       ry="35.151787" />
+       id="rect3701"
+       width="117.17262"
+       height="84.666664"
+       x="36.285713"
+       y="158.66071" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="137.58333"
-       y="167.73213"
-       id="text16"><tspan
+       x="79.375"
+       y="73.994049"
+       id="text3705"><tspan
          sodipodi:role="line"
-         id="tspan14"
-         x="137.58333"
-         y="167.73213"
-         style="stroke-width:0.26458332">a</tspan></text>
+         id="tspan3703"
+         x="79.375"
+         y="73.994049"
+         style="stroke-width:0.26458332">NON</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="105.07738"
-       y="61.898808"
-       id="text20"><tspan
+       x="80.886909"
+       y="205.52977"
+       id="text3709"><tspan
          sodipodi:role="line"
-         id="tspan18"
-         x="105.07738"
-         y="61.898808"
-         style="stroke-width:0.26458332">b</tspan></text>
-    <path
-       style="fill:#ff0000;stroke-width:2.85714293"
-       d="M 314.85714,241.66254 V 157.37683 H 423.42857 532 v 84.28571 84.28572 H 423.42857 314.85714 Z m 103.98293,-13.57143 c 4.00542,-6.397 -0.71364,-14.63805 -9.09906,-15.88998 -3.27861,-0.48949 -6.53388,-3.06092 -7.23392,-5.71428 -0.70004,-2.65337 -1.42194,2.65395 -1.60423,11.79404 -0.32644,16.36809 -0.21746,16.60474 7.23753,15.71429 4.16294,-0.49724 8.97779,-3.15407 10.69968,-5.90407 z"
-       id="path22"
-       inkscape:connector-curvature="0"
-       transform="scale(0.26458333)" />
+         id="tspan3707"
+         x="80.886909"
+         y="205.52977"
+         style="stroke-width:0.26458332">OUI</tspan></text>
   </g>
 </svg>
