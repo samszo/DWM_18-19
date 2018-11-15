@@ -3,9 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Mac DS_STORE files
-*.DS_Store
-
 # User-specific files
 *.suo
 *.user
@@ -333,3 +330,4 @@ ASALocalRun/
 .mfractor/
 samszo/.DS_Store
 samszo/spip_dwm1819.sql
+zahir0699/.DS_Store
