@@ -72,14 +72,13 @@
             d3.csv(url, function(data) {
             dataForm = data;
             dataForm.forEach(function(d, i){		
-            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
-            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+            $('#colComp'+d['num photo']).append("<p>"+d['Votre prénom']+" "+d['Votre nom']+"</p>");
+            $('#colBes'+d['num photo']).append("<p>"+d['Votre mail']+"</p>" +d["N° D'étudiant"]+"</p>");
             })
       
             });
       }
-          
-                    
+                          
       
   </script>
 
