@@ -6,11 +6,10 @@
 -->
 <html>
 	<head>
-		<title>Phantom by HTML5 UP</title>
+		<title>Generic - Phantom by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -51,31 +50,18 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<header>
-								<h1>Noé ABDEL KALEK<br/>
-									Trombinoscope à l'aide du template Phantom<br />
-								</h1>
-								<!--<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>-->
-							</header>
-					
-
-							<section class="tiles">
-
-							
-							</section>
-					
-
-							
+							<h1>Generic Page</h1>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
+							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 						</div>
 					</div>
-
-				
 
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
 							<section>
-									<h2>Phantom : <a href="http://html5up.net">HTML5 UP</a>.</h2>
 								<h2>Get in touch</h2>
 								<form method="post" action="#">
 									<div class="fields">
@@ -121,66 +107,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-			<script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-	var dataPhoto,dataForm;
-	//récupération des photos du groupe flickr
-	//merci beaucoup à https://etienner.fr/flickr-json
-	var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
-	$.getJSON(urlFlickr,traitePhoto);
-	
-	function traitePhoto(data){
-	
-			
 
-			dataPhoto = data;
-			// Debut de la boucle        
-			dataPhoto.photoset.photo.forEach(function(item,i){
-				// Sockage de l'url dans une variable
-
-				
-				var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
-				console.log(photo);
-
-				var code = '<article class="style1" id="rowEtu'+i+'" >'
-				code +='<span id="colTof'+i+'"  class="image"><img src="'+photo+'" alt="www.farm5.static.flickr.com" /></span>'
-				code +='<a class ="up" id="colComp'+i+'"></a>';
-				
-				code +='</article>';
-				$('.tiles').append(code);
-				// Affichage des images dans la balise ul#images avec le l'url dans la balise li
-				//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
-			});
-			//Fin de la boucle
-			traiteForm();
-
-			
-	}
-
-
-	
-	
-	function traiteForm(){
-	
-		//récupération des données du formulaire google
-		var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-		//var url = "https://localhost/DWM18-19.csv";   
-		url.withCredentials = true;   
-		d3.csv(url, function(data) {
-			dataForm = data;
-			dataForm.forEach(function(d, i){
-				var code = "<h2>"+d['Votre prénom']+" "+d['Votre nom']+"</h2><div class='content'>"+d['Votre mail']+"</div>";
-				$('#colComp'+d['num photo']).append(code);
-				
-
-			})
-			
-		});
-	}
-	
-	</script>
 	</body>
 </html>
