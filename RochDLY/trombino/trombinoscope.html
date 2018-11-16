@@ -38,7 +38,7 @@
       <div class="container">
           <div class="row">
             <div class="col-8">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     
                   <ol class="carousel-indicators" id='slideIndicator'></ol>
                   <div class="carousel-inner" id='slideInner'></div>
@@ -53,8 +53,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-4">
-              Column
+            <div class="col-4" id="ColDonnees">
             </div>
           </div>
         </div>
@@ -102,8 +101,6 @@ function traitePhoto(data){
             var code = '<div id="rowEtu'+i+'" class="carousel-item ' + active + '">'
             code +='<img class="d-block w-100" src="'+photo+'" />';
             code +='<div id="colComp'+i+'" class="carousel-caption d-none d-md-block">';
-            code +='<h5>NOM</h5>';
-            code +='<p>Prénom</p>';
             code +='</div>';
             code +='</div>';
 
@@ -117,25 +114,34 @@ function traitePhoto(data){
             //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
         });
         //Fin de la boucle
-        // traiteForm();
+         traiteForm();
 }
-/*
+
 function traiteForm(){
 	//récupération des données du formulaire google
 	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-    //var url = "data/LPDesignWebMobile_17-18.csv";        
-	d3.csv(url, function(data) {
+    //var url = "data/LPDesignWebMobile_17-18.csv";          
+  
+   
+  
+  d3.csv(url, function(data) {
 		dataForm = data;
         dataForm.forEach(function(d, i){		
-            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
-            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+            $('#colComp'+d['num photo']).append("<h5>"+d['Votre nom']+"</h5>"+"<p>"+d['Votre prénom']+"</p>");
+           /* $('#myCarousel').on('slide.bs.carousel', function (event) {
+                // Mettre les données ici
+                $('#colDonnees'+d['num photo']).append("<p>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</p>");
+                }) 
+ */           
         })
         
+
     });
 }
-*/
+
 </script>
 
 
   </body>
 </html>
+
