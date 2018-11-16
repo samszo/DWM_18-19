@@ -56,123 +56,19 @@
 								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
 								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
 							</header>
-							<section class="tiles" id="lstPhoto">
-								<article class="style1">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4902/30742573077_4823616f31_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<div class="row">
-										<h2></h2>
-										</div>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4911/44958492934_88a132edaa_z.jpg" alt=""www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Roch</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4834/43865199120_8059ebfe72_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Hakim</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4843/45632649222_285aff1b4d_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Youssouf</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4886/31810787318_2367ec25c1_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Amadou</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4843/45683204601_c507d13142_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Goumba</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4810/45683205251_ce5a78cfae_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Mahamadou</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4839/45071165684_6e060bfffe_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Noé</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4860/30742565637_3686815da6_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Yohan</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="http://farm5.static.flickr.com/4908/43865194960_fd0a3ae90b_z.jpg" alt="www.farm5.static.flickr.com" />
-									</span>
-									<a href="generic.html">
-										<h2 class="row">Natacha</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								
-								
+					
+
+							<section class="tiles">
+
+							
 							</section>
+					
+
+							
 						</div>
 					</div>
+
+				
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -242,18 +138,21 @@
 				// Sockage de l'url dans une variable
 				var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
 				console.log(photo);
-				var code = '<div id="rowEtu'+i+'" class="row">'
-				code +='<div id="colTof'+i+'"  class="image"><img class="img-fluid" src="'+photo+'" /></div>'
-				code +='<div id="colComp'+i+'" class="col-sm-5 lg-12"></div>';
-				code +='<div id="colBes'+i+'" class="col-sm-5 lg-12"></div>';
-				code +='</div>';
-				$('#lstPhoto').append(code);
+				var code = '<article class="style1" id="rowEtu'+i+'" >'
+				code +='<span id="colTof'+i+'"  class="image"><img src="'+photo+'" alt="www.farm5.static.flickr.com" /></span>'
+				code +='<a href="generic.html" id="colComp'+i+'"><h2>Nom ex</h2><div class="content"><p>Exemple contenu</p></div></a>';
+				
+				code +='</article>';
+				$('.tiles').append(code);
 				// Affichage des images dans la balise ul#images avec le l'url dans la balise li
 				//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
 			});
 			//Fin de la boucle
 			traiteForm();
 	}
+
+
+	
 	
 	function traiteForm(){
 	
