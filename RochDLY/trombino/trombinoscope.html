@@ -128,16 +128,25 @@ function traiteForm(){
 		dataForm = data;
         dataForm.forEach(function(d, i){		
             $('#colComp'+d['num photo']).append("<h5>"+d['Votre nom']+"</h5>"+"<p>"+d['Votre prénom']+"</p>");
-           /* $('#myCarousel').on('slide.bs.carousel', function (event) {
-                // Mettre les données ici
-                $('#colDonnees'+d['num photo']).append("<p>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</p>");
-                }) 
- */           
         })
-        
-
     });
 }
+
+$('#myCarousel').on('slide.bs.carousel', function (event) {
+    // Mettre les données ici
+    console.log(event);
+    var d = dataForm.filter(function (d){
+      return  d['num photo'] == event.to;
+    });
+    console.log(d[0]);
+    var code = '';
+    for (var p in d[0]) {
+      code += "<p>"+p+ " = "+d[0][p]+"</p>" ;
+    }
+    $('#ColDonnees').html(code);
+    
+}) 
+
 
 </script>
 
