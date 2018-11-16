@@ -483,6 +483,6 @@ P+C/2f8AFf7P+K/2Hx8Jw7n/2Q==" transform="matrix(1.1886 0 0 1.1886 243.233 107.00
 <rect x="242.7" y="249" class="st0" width="81" height="88" onclick="alert('Nerveux')"/>
 <rect x="323.2" y="251" class="st0" width="81" height="90.8" onclick="alert('Dérangé')"/>
 <rect x="484.2" y="251" class="st0" width="81" height="90" onclick="alert('Timide')"/>
-<rect x="484" y="159.3" class="st0" width="81" height="91.8" onclick="alert('Relaxe')"/>
+<rect x="484" y="159.3" class="st0" width="81" height="91.8" onclick="alert('Relaxé')"/>
 <rect x="486.2" y="433" class="st0" width="81" height="88" onclick="alert('En chaleur')"/>
 </svg>

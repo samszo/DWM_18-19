@@ -3,9 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Mac DS_STORE files
-*.DS_Store
-
 # User-specific files
 *.suo
 *.user
@@ -333,4 +330,8 @@ ASALocalRun/
 .mfractor/
 samszo/.DS_Store
 samszo/spip_dwm1819.sql
+<<<<<<< HEAD
 lagann1/trombino.html
+=======
+zahir0699/.DS_Store
+>>>>>>> 7e2d9beb687bc87e5edee7153db933971444101e

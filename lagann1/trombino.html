@@ -46,6 +46,7 @@
 
     <script>
 
+<<<<<<< HEAD
             var dataPhoto, dataForm;
             var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
             
@@ -469,6 +470,46 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
             
+=======
+function traitePhoto(data){
+
+        dataPhoto = data;
+        // Debut de la boucle        
+        dataPhoto.photoset.photo.forEach(function(item,i){
+            // Sockage de l'url dans une variable
+            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+            console.log(photo);
+            var code = '<div id="rowEtu'+i+'" class="row">'
+            code +='<div id="colTof'+i+'"  class="col-sm-2 lg-12"><img class="img-fluid" src="'+photo+'" /></div>'
+            code +='<div id="colComp'+i+'" class="col-sm-5 lg-12"></div>';
+            code +='<div id="colBes'+i+'" class="col-sm-5 lg-12"></div>';
+            code +='</div>';
+            $('#lstPhoto').append(code);
+            // Affichage des images dans la balise ul#images avec le l'url dans la balise li
+            //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+        });
+        //Fin de la boucle
+        traiteForm();
+}
+
+function traiteForm(){
+
+	//récupération des données du formulaire google
+	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+    //var url = "data/LPDesignWebMobile_17-18.csv";        
+	d3.csv(url, function(data) {
+		dataForm = data;
+        dataForm.forEach(function(d, i){		
+            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+			$('#colComp'+d['num photo']).append("<div>"+d['Votre spécialité']+"</div>");
+        })
+        
+    });
+}
+
+</script>
+>>>>>>> 7e2d9beb687bc87e5edee7153db933971444101e
 </body>
 
 </html>
