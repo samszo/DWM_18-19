@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+		<title>Design Web Mobile : trombinoscope des étudiants 17-18</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+
+  </head>
+
+  <!--contenu du site-->
+
+  <body>
+      <!--Entête-->
+      <div class="container-fluid banner">
+        <div class="ban">
+          <h1> Trombinoscope Licence Pro Web Mobile 2018-2019</h1>
+          <a href="http://www.samszo.univ-paris8.fr/DWM/18-19/trombino.html"><button class="btn btn-custom"> Cliquez ici pour voir celui de 2017-2018</button> </a>
+        </div>
+        </div>
+      <!--fin entête-->
+
+      <!-- premiere ligne-->
+      <div class="container-fluid etudiant">
+        <div class="container">
+        <div class="row" id="etuCards" >
+        </div>      
+        </div>   
+      </div>
+
+  <script>
+        var dataPhoto, dataForm;
+            var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+            
+            //récupération des photos du groupe flickr
+            var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
+            $.getJSON(urlFlickr,
+            function(data){
+                dataPhoto = data;
+              // Debut de la boucle
+                // Debut de la boucle        
+        dataPhoto.photoset.photo.forEach(function(item,i){
+            // Sockage de l'url dans une variable
+            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+            console.log(photo);
+            var code = '<div id="etuCards'+i+'" class="row">' 
+            code += '<div id="coltof'+i+'" class="col"><img class="img-fluid" src="'+photo+'" />'
+            code +='<div id="colComp'+i+'" class="col"></div>';
+            code +='<div id="colBes'+i+'" class="col"></div>';
+            code +='</div>';
+            code +='</div>';
+            
+            $('#etuCards').append(code)
+            
+            
+        });
+        //Fin de la boucle
+        traiteForm();
+            });
+            
+            function traiteForm(){
+
+            //récupération des données du formulaire google
+            var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+            //var url = "data/LPDesignWebMobile_17-18.csv";        
+            d3.csv(url, function(data) {
+            dataForm = data;
+            dataForm.forEach(function(d, i){		
+            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+            })
+      
+            });
+      }
+          
+                    
+      
+  </script>
+
+
+
+
+  </body>
+
+</html>
