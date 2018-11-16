@@ -116,6 +116,8 @@ function traitePhoto(data){
         //Fin de la boucle
          traiteForm();
 }
+//GESTION des données du formulaire
+var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
 
 function traiteForm(){
 	//récupération des données du formulaire google
@@ -125,23 +127,38 @@ function traiteForm(){
    
   
   d3.csv(url, function(data) {
-		dataForm = data;
-        dataForm.forEach(function(d, i){		
+    dataForm = data;
+    
+    dataForm.forEach(function(d, i){		
             $('#colComp'+d['num photo']).append("<h5>"+d['Votre nom']+"</h5>"+"<p>"+d['Votre prénom']+"</p>");
         })
     });
 }
-
-$('#myCarousel').on('slide.bs.carousel', function (event) {
-    // Mettre les données ici
+//récupère l'évenement au changement d'une photo 
+//cf. https://getbootstrap.com/docs/4.1/components/carousel/#events
+$('#myCarousel')//sélectionne un élément
+  //pour réagir lorsque un événement se produit 
+  .on('slide.bs.carousel' //ici c'est l'énement changement de photo
+    , function (event) {//le traiteemnt à faire quand l'événement se produit
+    // affiche dans la console les informations de l'événément
     console.log(event);
+    //filtre les données du formulaire google 
     var d = dataForm.filter(function (d){
-      return  d['num photo'] == event.to;
+      return  d['num photo'] == event.to;//vérifie que la ligne du formulaire google correspond à la photo qui s'affiche
     });
+    //affiche les données du formulaire correspondant à la photo
     console.log(d[0]);
     var code = '';
+    //boucle sur toute les propopriétés de la ligne du formulaire google 
     for (var p in d[0]) {
       code += "<p>"+p+ " = "+d[0][p]+"</p>" ;
+      //vérifier que la donnée à une correspondance dans l'échelle des valeurs
+      if(vals[d[0][p]]){
+        var v = vals[d[0][p]];
+        var t = d[0][p];
+        var progress = '<div class="progress"><div class="progress-bar" role="progressbar" style="width: '+v+'%;" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="20">'+t+'</div></div>';
+        code += progress ;//on affiche la valeur
+      } 
     }
     $('#ColDonnees').html(code);
     
