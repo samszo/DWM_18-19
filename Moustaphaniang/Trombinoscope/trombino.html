@@ -49,12 +49,13 @@
             // Sockage de l'url dans une variable
             var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
             console.log(photo);
-            var code = '<div id="etuCards'+i+'" class="row">' 
-            code += '<div id="coltof'+i+'" class="col"><img class="img-fluid" src="'+photo+'" />'
-            code +='<div id="colComp'+i+'" class="col"></div>';
-            code +='<div id="colBes'+i+'" class="col"></div>';
-            code +='</div>';
-            code +='</div>';
+            var code = '<div id="etuCards'+i+'" class="col-3">' 
+                    code += '<div id="coltof'+i+'" class="row">';
+                        code += '<img class="img-fluid" src="'+photo+'" />'
+                    code +='</div>';
+                    code += '<div id="colInfo'+i+'" class="row">';
+                    code +='</div>';
+                code +='</div>';
             
             $('#etuCards').append(code)
             
@@ -72,8 +73,8 @@
             d3.csv(url, function(data) {
             dataForm = data;
             dataForm.forEach(function(d, i){		
-            $('#colComp'+d['num photo']).append("<p>"+d['Votre prénom']+" "+d['Votre nom']+"</p>");
-            $('#colBes'+d['num photo']).append("<p>"+d['Votre mail']+"</p>" +d["N° D'étudiant"]+"</p>");
+            $('#colInfo'+d['num photo']).append("<p>"+d['Votre prénom']+" "+d['Votre nom']+"</p>");
+            $('#colInfo'+d['num photo']).append("<p>"+d['Votre mail']+"</p>" +d["N° D'étudiant"]+"</p>");
             })
       
             });
