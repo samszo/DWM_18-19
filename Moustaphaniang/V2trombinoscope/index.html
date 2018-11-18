@@ -26,6 +26,15 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- Script -->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/main.js"></script>
+
 
 	</head>
 	
@@ -38,14 +47,13 @@
 			
 			<div class="fh5co-grid">
 				
-				<div class="fh5co-col-1">
+				<div class="fh5co-col-1" id="etuCards">
 					<div class="fh5co-intro padding-right">
 						<h1>Trombinoscope Licence Professionnelle Design Web Mobile.</h1>
 						<a href=" http://www.samszo.univ-paris8.fr/DWM/17-18/trombino.html"><button class="btn btn-custom"> Cliquez ici pour voir celui de 2017-2018</button> </a>
 					</div>
 					<div class="fh5co-item">
-						<a href="single.html" class="transition animate-box">
-							<img src="images/pic_1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">
+						<a href="single.html" class="transition animate-box" img src="images/pic_1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">
 							<div class="fh5co-item-text-wrap">
 								<div class="fh5co-item-text">
 									<h2>Nom</h2>
@@ -68,7 +76,7 @@
 					<div class="fh5co-item">
 						<a href="single.html" class="transition animate-box">
 							<img src="images/pic_7.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">
-							<div class="fh5co-item-text-wrap">
+							<div class="fh5co-item-text-wrap" id="ColDonnees">
 								<div class="fh5co-item-text">
 									<h2>Nom</h2>
 									<h3>Prenom</h3>
@@ -93,7 +101,7 @@
 						<a href="single.html" class="transition animate-box">
 							<img src="images/pic_3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">
 							<div class="fh5co-item-text-wrap">
-								<div class="fh5co-item-text">
+								<div class="fh5co-item-text" >
 									<h2>Nom</h2>
 									<h3>Prenom</h3>
 								</div>
@@ -150,62 +158,99 @@
 
 	</div>
 
-<!-- Script -->
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/main.js"></script>
+	<script>
+        var dataPhoto, dataForm;
+            var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+            
+            //récupération des photos du groupe flickr
+            var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
+            $.getJSON(urlFlickr,
+            function(data){
+                dataPhoto = data;
+              // Debut de la boucle
+                // Debut de la boucle        
+        dataPhoto.photoset.photo.forEach(function(item,i){
+            // Sockage de l'url dans une variable
+            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+            console.log(photo);
 
-<script>
+			/*<div class="fh5co-item">
+						<a href="single.html" class="transition animate-box" img src="images/pic_1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">
+							<div class="fh5co-item-text-wrap">
+								<div class="fh5co-item-text">
+									<h2>Nom</h2>
+									<h3>Prenom</h3>
+								</div>
+							</div>
+						</a>
+					</div>*/
 
-	var dataPhoto,dataForm;
-	//récupération des photos du groupe flickr
-	var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
-	$.getJSON(urlFlickr,traitePhoto);
-	
-	function traitePhoto(data){
-			dataPhoto = data;
-			// Debut de la boucle        
-			dataPhoto.photoset.photo.forEach(function(item,i){
-			// Sockage de l'url dans une variable
-			var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
-				console.log(photo);
+            var code = '<div id="etuCards'+i+'" class="fh5co-item">'
+					code +='<img class="transition animate-box" src="'+photo+'" />'
+                    code +='<div id="colComp'+i+'" class="fh5co-item-text-wrap">';
+					code +='<div id="colInfo'+i+'" class="fh5co-item-text">'
+                    code +='</div>';
+                code +='</div>';
+            
+            $('#etuCards').append(code)
+            
+            
+        });
+        //Fin de la boucle
+        traiteForm();
+            });
+            
+            function traiteForm(){
 
-				var code = '<div class="fh5co-item" id="rowEtu'+i+'" >'
-            	code +='<id= id="colTof'+i+'" class="image" img class="transition animate-box" src="'+photo+'" alt="Free HTML5 Website Template by FreeHTML5.co"/>';
-            	code +='<div id="colComp'+i+'" class="fh5co-item-text"> </div>';
-            	code +='</div>';
-				$('.rowEtu').append(code);
-				// Affichage des images dans la balise ul#images avec le l'url dans la balise li
-				//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
-			});
-			//Fin de la boucle
-			traiteForm();		
-	}
+            //récupération des données du formulaire google
+            var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+            //var url = "data/LPDesignWebMobile_17-18.csv";        
+            d3.csv(url, function(data) {
+            dataForm = data;
+            dataForm.forEach(function(d, i){		
+            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+			$('#colInfo'+d['num photo']).append("<div>"+d['Votre mail']+"</p>" +d["N° D'étudiant"]+"</div>");
+            })
+      
+            });
+
+/*
+		//récupère l'évenement au changement d'une photo 
+//cf. https://getbootstrap.com/docs/4.1/components/carousel/#events
+//$('#myModal').modal()                      // initialized with defaults
+//$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
+$('#myModal').modal('show'               // initializes and invokes show immediately
+  , function (event) {//le traiteemnt à faire quand l'événement se produit
+    // affiche dans la console les informations de l'événément
+    console.log(event);
+    //filtre les données du formulaire google 
+    var d = dataForm.filter(function (d){
+      return  d['num photo'] == event.to;//vérifie que la ligne du formulaire google correspond à la photo qui s'affiche
+    });
+    //affiche les données du formulaire correspondant à la photo
+    console.log(d[0]);
+    var code = '';
+    //boucle sur toute les propopriétés de la ligne du formulaire google 
+    for (var p in d[0]) {
+      code += "<p>"+p+ " = "+d[0][p]+"</p>" ;
+      //vérifier que la donnée à une correspondance dans l'échelle des valeurs
+      if(vals[d[0][p]]){
+        var v = vals[d[0][p]];
+        var t = d[0][p];
+        var progress = '<div class="progress"><div class="progress-bar" role="progressbar" style="width: '+v+'%;" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="20">'+t+'</div></div>';
+        code += progress ;//on affiche la valeur
+      } 
+    }
+    $('#ColDonnees').html(code);
+    
+})*/
+
+    }
 
 
-	function traiteForm(){
-	
-	//récupération des données du formulaire google
-	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-	//var url = "https://localhost/DWM18-19.csv";   
-		d3.csv(url, function(data) {
-			dataForm = data;
-			dataForm.forEach(function(d, i){
-				var code = "<h2>"+d['Votre prénom']+" "+d['Votre nom']+"</h2><div class='content'>"+d['Votre mail']+"</div>";
-				$('#colComp'+d['num photo']).append(code);
-				
-
-			})
-			
-		});
-	}
-
-
-</script>
+                          
+      
+  </script>
 
 	
 	</body>
