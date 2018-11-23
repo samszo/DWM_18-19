@@ -1,0 +1,49 @@
+ <!-- BODY -->
+    <body id="body" data-spy="scroll" data-target=".header">
+
+        <!--========== HEADER ==========-->
+        <header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container js_nav-item">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav navbar-nav-right">
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">
+                                    <BOUCLE_rubAccueil(RUBRIQUES){id_rubrique=3}>
+                                        #TITRE
+                                    </BOUCLE_rubAccueil></a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">
+                                    <BOUCLE_rubBio(RUBRIQUES){id_rubrique=4}>
+                                                #TITRE
+                                    </BOUCLE_rubBio></a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#experience">
+                                    <BOUCLE_rubExp(RUBRIQUES){id_rubrique=5}>
+                                                #TITRE
+                                    </BOUCLE_rubExp></a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#work">
+                                    <BOUCLE_rubReal(RUBRIQUES){id_rubrique=1}>
+                                        #TITRE
+                                    </BOUCLE_rubReal></a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">
+                                    <BOUCLE_rubCont(RUBRIQUES){id_rubrique=17}>
+                                        #TITRE
+                                    </BOUCLE_rubCont></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navbar Collapse -->
+                </div>
+            </nav>
+            <!-- Navbar -->
+        </header>
+        <!--========== END HEADER ==========-->
