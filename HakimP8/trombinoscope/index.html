@@ -63,138 +63,7 @@
 								<h1>DWM 18-19</h1>
 							</header>
 							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Magna</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Lorem</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Feugiat</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Aliquam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Veroeros</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic07.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ipsum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dolor</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Nullam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Ultricies</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Dictum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
+								
 							</section>
 						</div>
 					</div>
@@ -252,52 +121,51 @@
 	
 
 	<script>
-			var dataPhoto,dataForm;
-			//récupération des photos du groupe flickr
-			//merci beaucoup à https://etienner.fr/flickr-json
-			var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
-			$.getJSON(urlFlickr,traitePhoto);
-			function traitePhoto(data){
-					dataPhoto = data;
+		var dataPhoto,dataForm;
+		//récupération des photos du groupe flickr
+		//merci beaucoup à https://etienner.fr/flickr-json
+		var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
+		$.getJSON(urlFlickr,traitePhoto);
+		function traitePhoto(data){
+			dataPhoto = data;
+			console.log("Ceci est la data", data);
 
-					 // Debut de la boucle        
-					 dataPhoto.photoset.photo.forEach(function(item,i){
-            // Sockage de l'url dans une variable
-            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
-            console.log(photo);
-            var code = '<div id="rowEtu'+i+'" class="row">'
-            code +='<div id="colTof'+i+'"  class="col-sm-2 lg-12"><img class="img-fluid" src="'+photo+'" /></div>'
-            code +='<div id="colComp'+i+'" class="col-sm-5 lg-12"></div>';
-            code +='<div id="colBes'+i+'" class="col-sm-5 lg-12"></div>';
-            code +='</div>';
-            $('#lstPhoto').append(code);
-            // Affichage des images dans la balise ul#images avec le l'url dans la balise li
-            //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
-        });
-        //Fin de la boucle
-        traiteForm();
-}
-function traiteForm(){
-	//récupération des données du formulaire google
-	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-    //var url = "data/LPDesignWebMobile_17-18.csv";        
-	d3.csv(url, function(data) {
-		dataForm = data;
-        dataForm.forEach(function(d, i){		
-            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
-            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
-        })
-        
-    });
-}
-</script>
+			// Debut de la boucle        
+			dataPhoto.photoset.photo.forEach(function(item,i){
+				// Sockage de l'url dans une variable
+				var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+				console.log(photo);
+				console.log(i);
+				var code = '<article class="style'+i+'"><span class="image"><img src='+photo+'"/></span><a href="generic.html"><h2 id="colComp'+i+'"></h2><div id="colBes'+i+'" class="content"><p></p></div></a></article>';
+										
+				$('.tiles').append(code);
+				// Affichage des images dans la balise ul#images avec le l'url dans la balise li
+				//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+			});
+			//Fin de la boucle
+			traiteForm();
+		}
+		
+		function traiteForm() {
+			var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			d3.csv(url, function(data) {
+				console.log("CSV", data);
+				dataForm = data;
+				dataForm.forEach(function(d, i){
+					$("#colComp"+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+					$("#colBes"+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
+				})	
+			});
+		}
+	</script>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
