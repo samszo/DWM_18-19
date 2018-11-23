@@ -116,11 +116,13 @@
 							</div>*/
 
 					var code = '<div id="etu' + i + '" class="fh5co-item">'
-					code += '<a href="single.html" class="transition animate-box">';
+					code += '<a class="transition animate-box">';
 					code += '<img class="transition animate-box" src="' + photo + '" />';
-					code += '<div id="colComp' + i + '" class="fh5co-item-text-wrap" >';
-					code += '<div id="colInfo' + i + '" class="fh5co-item-text" />'
-					code += '</div>';
+					code += '<h2 id="colComp' + i + '" class="fh5co-col-2" >';
+					code += '</h2>';
+					code += '<h6 id="colInfo' + i + '" class="fh5co-col-1" />';
+					code += '</h6>';
+					
 					code += '</a>';
 					code += '</div>';
 					var col = (i%2)+1;
@@ -145,8 +147,13 @@
 			d3.csv(url, function (data) {
 				dataForm = data;
 				dataForm.forEach(function (d, i) {
-					$('#colComp' + d['num photo']).append("<h2>" + d['Votre prénom'] + " " + d['Votre nom'] + "</h2>");
-					$('#colInfo' + d['num photo']).append("<p>" + d['Votre mail'] + "</p><p>" + d["N° D'étudiant"] + "</p>");
+					$('#colComp' + d['num photo']).append("<h3>" + d['Votre prénom'] + " " + d['Votre nom'] + "</h3>");
+					$('#colComp' + d['num photo']).append("<h6>" + d['Votre mail'] + "</h6><h6>" + d["N° D'étudiant"] + "</h6>");
+					$('#colComp'+d['num photo']).append("<h5>"+d['Votre spécialité']+"</h5>");
+					$('#colInfo'+d['num photo']).append("<h6>"+d['Quelles sont besoins ? [connaître les outils d’édition web (éditeurs html, CSS, …) ]']+" "+d['Quelles sont besoins ? [connaître les base du langage HTML 5]']+"</h6>");
+					$('#colInfo'+d['num photo']).append("<h6>"+d['Quelles sont besoins ? [connaître les bases du responsive web design (RWD)]']+" "+d["Quelles sont besoins ? [savoir scénariser et réaliser les rubriques « statiques » d’un site web]"]+"</h6>");
+					$('#colInfo'+d['num photo']).append("<h6>"+d['Quelles sont besoins ? [savoir scénariser et réaliser des rubriques multimédias (« page vidéo », « page photo », exposition virtuelle, …)]']+" "+d["Quelles sont besoins ? [savoir utiliser des cartes géographiques interactives]"]+"</h6>");
+					$('#colInfo'+d['num photo']).append("<h6>"+d['Quelles sont besoins ? [savoir travailler avec le RSS]']+" "+d["Quelles sont besoins ? [savoir utiliser correctement les métadonnées pour une meilleure diffusion des contenus du site]"]+"</h6>");	
 				})
 
 			});

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>Design Web Mobile : trombinoscope des étudiants 18-19</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	  <script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!--  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script> -->
+    
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Trombinoscope</h1>
+          <p class="lead">Licence Professionnelle Design Web Mobile 18/19 #L3DWM</p>
+        </div>
+    </div>
+
+    <div class="container">
+      <div class="row" id="Cards">
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+  <!--  <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div> -->
+
+<script>
+
+var dataPhoto,dataForm;
+//récupération des photos du groupe flickr
+//merci beaucoup à https://etienner.fr/flickr-json
+var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?";
+$.getJSON(urlFlickr,traitePhoto);
+
+function traitePhoto(data){
+        dataPhoto = data;
+        // Debut de la boucle        
+        var active; 
+        dataPhoto.photoset.photo.forEach(function(item,i){
+            // Stockage de l'url dans une variable
+            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+            console.log(photo);
+            // Création des cards pour chaque étudiant
+            //merci à https://getbootstrap.com/
+
+            //if(i>0)active="";
+            active = (i==0) ? 'active' : '';
+
+            var code = '<div class="cards" style="width: 18rem;" ' + active + '">';
+            code +='<img class="card-img-top" src="'+photo+'" />';
+            code +='<div id="colNom'+i+'" class="card-body">';
+            code +='</div>';
+            code +='</div>';
+            code +='<div id="colComp'+i+'">';
+            code +='</div>';
+
+            $('#Cards').append(code);
+
+            // Affichage des images dans la balise ul#images avec le l'url dans la balise li
+            //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+        });
+        //Fin de la boucle
+         traiteForm();
+}
+
+//GESTION des données du formulaire
+var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+
+function traiteForm(){
+	//récupération des données du formulaire google
+	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+    //var url = "data/LPDesignWebMobile_17-18.csv"; 
+           
+ 
+  d3.csv(url, function(data) {
+    dataForm = data;
+
+
+    var d =  dataForm.forEach(function(d, i){		
+    $('#colNom'+d['num photo']).append("<h5>"+d['Votre nom']+"</h5>"+"<p>"+d['Votre prénom']+"</p>");
+    
+    console.log(d);
+    
+    var code='';
+    for (let i in d) { // organisation des données par identifiant
+    code += "<p>"+i+ " = "+d[i]+"</p>" ;
+    //vérifier que la donnée à une correspondance dans l'échelle des valeurs
+    if(vals[d[i]]){
+        var v = vals[d[i]];
+        var t = d[i];
+        var progress = '<div class="progress"><div class="progress-bar" role="progressbar" style="width: '+v+'%;" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="20">'+t+'</div></div>';
+        code += progress;
+        $('#colComp').html(code); 
+      }
+    }
+  })
+})
+};
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
