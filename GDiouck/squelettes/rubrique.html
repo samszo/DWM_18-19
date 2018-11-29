@@ -1,0 +1,46 @@
+			
+<INCLURE{fond=inclure/tete}>
+
+<INCLURE{fond=inclure/header}>
+
+
+<!-- Main -->
+			
+<div id="main">
+<!-- Portfolio -->
+<section id="portfolio" class="two">
+<div class="container">
+<header>
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>	
+<BOUCLE_art(ARTICLES){id_rubrique}>								
+<!--div class="row"-->
+
+<!--div class="col-4 col-12-mobile"-->
+
+
+<article class="item">
+
+										
+
+										
+<header>
+											<h3>#TITRE</h3>
+#TEXTE
+
+</header>
+
+</article>
+
+
+</BOUCLE_art>
+</BOUCLE_rub>
+</div>
+</section>
+
+</div>
+
+
+<INCLURE{fond=inclure/footer}>
+<INCLURE{fond=inclure/pied}>
+		
+		
