@@ -3,136 +3,188 @@
 <html>
 
 	<head>
-
+		<title>TROMBINOSCOPE</title>
+		<h1>TROMBINOSCOPE<br />
+			LICENCE PROFESSIONNELLE DESIGN WEB MOBILE 2018-2019</h1>
+		<h4>Natacha BILE</h4>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
+
 		<noscript>
 			<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-		 crossorigin="anonymous">
-
-		<title>Trombinoscope</title>
 	</head>
 
-	<body class="homepage is-preload">
-		<div id="page-wrapper">
-			<div class="navbar navbar-default">
-				<div class="container-fluid">
-					<h1 class="navbar-header">Trombinoscope</h1>
-					<p class="navbar-brand">LICENCE WEB DESIGN MOBILE 18-19</p>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html"><strong>trombinoscope</strong> by Natacha</a></h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon fa-info-circle">Contacts</a></li>
+							</ul>
+						</nav>
+					</header>
+
+
+					<section class="tiles">
+
+
+					</section>
+
+
+
 				</div>
 			</div>
-			<div class="nav navbar-nav" id="lstPhoto">
-				<div class="active">
-					<div class="col-sm-2 lg-12">
-						<div class="alert alert-dark" role="alert">
-							Etudiants
-						</div>
+
+			<!-- Footer -->
+			<footer id="footer" class="panel">
+				<div class="inner split">
+					<div>
+						<section>
+							<h2>Magna feugiat sed adipiscing</h2>
+							<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci
+								mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum sapien. Donec non
+								pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
+						</section>
+						<section>
+							<h2>Follow me on ...</h2>
+							<ul class="icons">
+								<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+								<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">
+							&copy; Unttled. Design: <a href="http://html5up.net">HTML5 UP</a>.
+						</p>
 					</div>
-					<div class="col-sm-2 lg-12">
-						<div class="alert alert-success" role="alert">
-							Compétences
-						</div>
-					</div>
-					<div class="col-sm-2 lg-12 ">
-						<div class="alert alert-danger" role="alert">
-							Besoins
-						</div>
+					<div>
+						<section>
+							<h2>Get in touch</h2>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field half">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="field half">
+										<input type="text" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="field">
+										<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send" class="primary" /></li>
+									<li><input type="reset" value="Reset" /></li>
+								</ul>
+							</form>
+						</section>
 					</div>
 				</div>
-			</div>
-			<!-- Optional JavaScript -->
-			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-			<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			 crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-			 crossorigin="anonymous"></script>
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-			 crossorigin="anonymous"></script>
-			<script src="https://d3js.org/d3.v4.min.js"></script>
-
-			<!-- Carousel -->
-			<section class="carousel">
-				<article id="lstcaroPhoto" class="reel">
-
-					<script>
-						var dataPhoto, dataForm;
-						//récupération des photos du groupe flickr
-						//merci beaucoup à https://etienner.fr/flickr-json
-						var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?";
-						$.getJSON(urlFlickr, traitePhoto);
-						function traitePhoto(data) {
-							dataPhoto = data;
-							// Debut de la boucle        
-							dataPhoto.photoset.photo.forEach(function (item, i) {
-								// Sockage de l'url dans une variable
-								var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
-
-								var code = '<article id="rowEtu' + i + '">'
-								code += '<a href="#" id="colTof' + i + '" class="image featured"><img  src="' + photo + '" alt="" /></a>';
-								code += '<header> <a id="colComp' + i + '" href="#"></a></header>';
-								code += '<p id="colBes' + i + '"></p>';
-								code += '</article>';
-								$('#lstcaroPhoto').append(code);
-
-								// Affichage des images dans la balise ul#images avec le l'url dans la balise li
-								//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
-							});
-							//Fin de la boucle
-							traiteForm();
-						}
-						function traiteForm() {
-							//récupération des données du formulaire google
-							var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-							//var url = "data/LPDesignWebMobile_17-18.csv";        
-							d3.csv(url, function (data) {
-								dataForm = data;
-								dataForm.forEach(function (d, i) {
-									$('#colComp' + d['num photo']).append("<div>" + d['Votre prénom'] + " " + d['Votre nom'] + "</div>");
-									$('#colBes' + d['num photo']).append("<div>" + d['Votre mail'] + " <br/>" + d["N° D'étudiant"] + "</div>");
-								})
-
-							});
-						}
-					</script>
+			</footer>
 
 		</div>
-		</section>
 
-
-		</div>
-		<hr />
-		<div class="row">
-			<div class="col-12">
-
-				<!-- Copyright -->
-				<div class="copyright">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li>
-						<li>Design: <a href="#">NATACHA</a></li>
-					</ul>
-				</div>
-
-			</div>
-
-		</div>
 
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		 crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		 crossorigin="anonymous"></script>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script>
+			var dataPhoto, dataForm;
+			//récupération des photos du groupe flickr
+			//merci beaucoup à https://etienner.fr/flickr-json
+			var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?";
+			$.getJSON(urlFlickr, traitePhoto);
+
+			function traitePhoto(data) {
+
+
+
+				dataPhoto = data;
+				// Debut de la boucle        
+				dataPhoto.photoset.photo.forEach(function (item, i) {
+					// Sockage de l'url dans une variable
+
+
+					var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+					console.log(photo);
+
+					var code = '<article id="rowEtu' + i + '" >'
+					code += '<span id="colTof' + i + '"  class="image"><img src="' + photo + '" alt="www.farm5.static.flickr.com" /></span>'
+					code += '<a class ="up" id="colComp' + i + '"></a>';
+
+					code += '</article>';
+					$('.tiles').append(code);
+					// Affichage des images dans la balise ul#images avec le l'url dans la balise li
+					//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+				});
+				//Fin de la boucle
+				traiteForm();
+
+
+			}
+
+
+
+
+			function traiteForm() {
+
+				//récupération des données du formulaire google
+				var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+				//var url = "https://localhost/DWM18-19.csv";   
+				url.withCredentials = true;
+				d3.csv(url, function (data) {
+					dataForm = data;
+					dataForm.forEach(function (d, i) {
+						var code = "<h2>" + d['Votre prénom'] + " " + d['Votre nom'] + "</h2><div class='content'>" + d['Votre mail'] + "</div>";
+						$('#colComp' + d['num photo']).append(code);
+
+
+					})
+
+				});
+			}
+
+
+			/* When the user scrolls the page, execute myFunction 
+			window.onscroll = function () { myFunction() };
+
+			function myFunction() {
+				var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+				var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				var scrolled = (winScroll / height) * 100;
+				document.getElementById("myBar").style.width = scrolled + "%";
+			}*/
+
+
+		</script>
+
+
+
 
 	</body>
 

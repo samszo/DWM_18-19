@@ -1,11 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
 @import url("font-awesome.min.css");
 
-/*
-	Helios by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -231,7 +227,7 @@ input, select, textarea {
 	.container {
 		margin: 0 auto;
 		max-width: 100%;
-		width: 1400px;
+		width: 1000px;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -2149,12 +2145,12 @@ input, select, textarea {
 
 	.wrapper {
 		background: #fff;
-		margin: 0 0 2em 0;
 		padding: 6em 0 6em 0;
 	}
 
 		.wrapper.style2 {
 			padding-top: 0;
+			height: 800px !important;
 		}
 
 /* Header */
@@ -2267,7 +2263,7 @@ input, select, textarea {
 /* Nav */
 
 	#nav {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -2275,6 +2271,8 @@ input, select, textarea {
 		padding: 1.5em 0 1.5em 0;
 		z-index: 1;
 		overflow: hidden;
+        background-color: #2b252c;
+        color: white;
 	}
 
 		#nav > ul {
@@ -2439,35 +2437,27 @@ input, select, textarea {
 			padding-top: 2em;
 		}
 
-/* Footer */
+/* Footer*/ 
 
 	#footer {
-		position: relative;
+		position: relative; 
 		overflow: hidden;
 		padding: 6em 0 6em 0;
 		background: #2b252c;
 		color: #fff;
 	}
-
-		#footer .icon.circled {
+     #footer .icon.circled {
 			background: #fff;
 			color: #2b252c;
 		}
 
-		#footer header {
-			text-align: center;
-			cursor: default;
-		}
-
-		#footer h2, #footer h3, #footer h4, #footer h5, #footer h6 {
+#footer h3 {
 			color: #fff;
 		}
 
-		#footer .contact {
-			text-align: center;
-		}
 
-			#footer .contact p {
+
+		/*#footer .contact p {
 				text-align: center;
 				margin: 0 0 3em 0;
 			}
@@ -2485,7 +2475,7 @@ input, select, textarea {
 
 				#footer .copyright a:hover {
 					color: rgba(212, 212, 212, 0.85);
-				}
+				}*/
 
 /* Carousel */
 
@@ -2851,6 +2841,7 @@ input, select, textarea {
 				-ms-transition: -ms-transform 0.5s ease;
 				transition: transform 0.5s ease;
 				padding-bottom: 1px;
+				margin-top: 20px;
 			}
 
 			#navButton {
@@ -3111,3 +3102,28 @@ input, select, textarea {
 					}
 
 	}
+
+.special{
+		width: 70%!important;
+		border: 2px solid #ef8376!important;
+		border-radius: 0px 40px 0px 40px!important;
+		height: 700px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		box-shadow: 1px 1px 12px #555!important;
+        padding:30px!important;
+background-color: white;
+	}
+
+.centrer{
+margin-left: auto!important;
+		margin-right: auto!important;
+text-align:center;
+}
+
+.bgsection{
+background-image: url("../../images/header.jpg");
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+}

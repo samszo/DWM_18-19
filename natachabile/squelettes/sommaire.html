@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<INCLURE{fond=inclure/tete}></INCLURE>
+    <body class="homepage is-preload">
+<!-- nav -->
+
+    <INCLURE{fond=inclure/nav}></INCLURE>
+        <div id="page-wrapper">
+<!-- Header -->
+            <INCLURE{fond=inclure/header}></INCLURE>
+
+<BOUCLErub(RUBRIQUES){tout}>
+<div id="#ID_SECTEUR" class="wrapper bgsection">
+<div class="container special">
+<h2 class="centrer">#TITRE</h2>
+<BOUCLEart(ARTICLES){id_rubrique}>
+<h4>#TITRE</h4>
+#TEXTE<br/>
+
+</BOUCLEart>
+<footer>
+                        <a href="#id-secteur+1" class="button circled scrolly">GO</a>
+                    </footer>
+</div>
+</div>
+
+</BOUCLErub>
+<section id="footer">
+            <INCLURE{fond=inclure/footer}></INCLURE>
+</section>
+    </body>
+            <!-- Pied -->
+          <INCLURE{fond=inclure/pied}></INCLURE>
+</html>
