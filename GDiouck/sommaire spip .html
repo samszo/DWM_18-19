@@ -1,0 +1,68 @@
+<INCLURE{fond=inclure/tete}>
+<INCLURE{fond=inclure/header}>
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2 class="alt">#DESCRIPTIF_SITE_SPIP</strong></a></h2>
+								<p>Étudiant en Licence pro Design Web Mobile<br />
+								Université Paris 8 - Saint Denis.</p>
+							</header>
+
+							<footer>
+								<a href="#portfolio" class="button scrolly">Rubriques</a>
+							</footer>
+
+						</div>
+					</section>
+
+				<!-- Rubriques -->
+					<section id="portfolio" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Rubriques</h2>
+							</header>
+
+							<p>Voici la liste des rubriques.</p>
+
+							<div class="row">
+							<BOUCLErub(RUBRIQUES){tout}>
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="#URL_RUBRIQUE" class="image fit"><!--<img src="#CHEMIN{images/pic02.jpg}" alt="" />-->[(#LOGO_ARTICLE_RUBRIQUE|image_reduire{400,200})]</a>
+										<header>
+											<h3>#TITRE</h3>
+										</header>
+									</article>
+								</div>	
+							</BOUCLErub>
+							</div>
+
+						</div>
+					</section>
+
+				<!-- About Me -->
+					<section id="about" class="three">
+						<div class="container">
+
+							<header>
+								<h2>A propos de moi</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="#CHEMIN{images/pic08.jpg}" alt="" /></a>
+
+							<p>Titulaire d'un BTS en informatique, je suis actuellement élève de licence pro Design Web Mobile à l'Université Paris 8 à Saint-Denis.</p>
+
+						</div>
+					</section>
+
+<INCLURE{fond=inclure/contact}>
+			</div>
+
+<INCLURE{fond=inclure/footer}>
+<INCLURE{fond=inclure/pied}>
