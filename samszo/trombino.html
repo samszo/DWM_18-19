@@ -48,12 +48,33 @@
 	<div class="container">
 		<div class="row" id="etuCards" >
 		</div>
-	</div>	
-			
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="infosEtu" tabindex="-1" role="dialog" aria-labelledby="modalEtuTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEtuTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div style="height:100%;width:100%" class="modal-body" id="modalEtuBody" >
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
 
 var dataPhoto, dataForm;
 var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+var selectEtu;
 
 //récupération des photos du groupe flickr
 //merci beaucoup à https://etienner.fr/flickr-json
@@ -145,7 +166,13 @@ function(data){
 	  	cards.append("div")
 	  			.attr('id',function(d) {return 'imgOver'+d['num photo']})
 	  			.attr('class','card-img-overlay')
-	  			.style('height','50%');
+                .style('height','50%')
+                .on("click",function(e){
+                    console.log(e);
+                    selectEtu = e;
+                    $('#infosEtu').modal('show');
+                });
+;
   		//ajoute le corps de la carte
 		var cardBody = cards.append('div').attr('class','card-body');
 		cardBody.append('h4').attr('class','card-title')	  			
@@ -469,6 +496,34 @@ function donutChart() {
 }
 
 //Fin appel JSON
+
+
+
+//gestion des fenêtre modale
+$('#infosEtu').on('show.bs.modal', function (e) {
+    console.log(e);
+    console.log(selectEtu);
+
+    d3.select('#modalEtuTitle').text(selectEtu['Votre prénom']+' '+selectEtu['Votre nom']);
+
+    //selectEtu['Votre compte Diigo']
+    ht= '<div class="diigo-tags">';
+    ht += '<div class="diigo-banner sidebar-title" style="font: bold 12px arial;margin-bottom:5px;">';
+    ht += '<a href="https://www.diigo.com">';
+    ht += '<img src="https://www.diigo.com/images/ii_blue.gif" width="16" height="16" alt="diigo"/>';
+    ht += '</a>';
+    ht += '<a href="https://www.diigo.com/cloud/luckysemiosis">';
+    ht += 'My Diigo Tags';
+    ht += '</a></div>';
+    ht += '<script type="text/javascript" src="https://www.diigo.com/tools/tagrolls_script/luckysemiosis?icon;size=11-23;color=87ceeb-0000ff;title=My%20Diigo%20Tags;name;showadd;v=3">';
+    ht += '<';
+    ht += '/script>';
+
+
+    d3.select('#modalEtuBody').html(ht);
+
+})
+
 
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
