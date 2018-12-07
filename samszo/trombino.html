@@ -32,9 +32,24 @@
 		    font-size: 0.9em;
 		    font-style: italic;
 		}
-		
-		
-		</style>
+		/*merci à https://www.codeply.com/go/rNFv5RJJqn/bootstrap-modal-full-screen */
+        .modal-full {
+            min-width: 100%;
+            margin: 0;
+        }
+
+        .modal-full .modal-content {
+            min-height: 100vh;
+        }		
+        .tab-pane{
+            height: 100%;
+        }
+        iframe{
+            height: 100%;
+            width:  100%;
+        }
+
+    	</style>
 	</head>
 <body>
 
@@ -48,12 +63,48 @@
 	<div class="container">
 		<div class="row" id="etuCards" >
 		</div>
-	</div>	
-			
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="infosEtu" tabindex="-1" role="dialog" aria-labelledby="modalEtuTitle" aria-hidden="true">
+    <div class="modal-dialog modal-full" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEtuTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalEtuBody" >
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="diigoTags-tab" data-toggle="tab" href="#diigoTags" role="tab" aria-controls="diigoTags" aria-selected="true">Diigo Tags</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="sitePerso-tab" data-toggle="tab" href="#sitePerso" role="tab" aria-controls="sitePerso" aria-selected="false">Site Perso</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="iemlTags-tab" data-toggle="tab" href="#iemlTags" role="tab" aria-controls="iemlTags" aria-selected="false">IEML Tags</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="diigoTags" role="tabpanel" aria-labelledby="diigoTags-tab">...</div>
+                <div class="tab-pane fade" id="sitePerso" role="tabpanel" aria-labelledby="sitePerso-tab">...</div>
+                <div class="tab-pane fade" id="iemlTags" role="tabpanel" aria-labelledby="iemlTags-tab">...</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
 
 var dataPhoto, dataForm;
 var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+var selectEtu;
 
 //récupération des photos du groupe flickr
 //merci beaucoup à https://etienner.fr/flickr-json
@@ -145,7 +196,13 @@ function(data){
 	  	cards.append("div")
 	  			.attr('id',function(d) {return 'imgOver'+d['num photo']})
 	  			.attr('class','card-img-overlay')
-	  			.style('height','50%');
+                .style('height','50%')
+                .on("click",function(e){
+                    console.log(e);
+                    selectEtu = e;
+                    $('#infosEtu').modal('show');
+                });
+;
   		//ajoute le corps de la carte
 		var cardBody = cards.append('div').attr('class','card-body');
 		cardBody.append('h4').attr('class','card-title')	  			
@@ -320,8 +377,8 @@ function donutChart() {
 
             // ===========================================================================================
 
-            	//ajoute le titre
-            	svg.append('text')
+            //ajoute le titre
+            svg.append('text')
                 .html(title)            
                 .attr('text-anchor', 'middle')
                 .attr('y', hSvg/2);            	
@@ -469,6 +526,60 @@ function donutChart() {
 }
 
 //Fin appel JSON
+
+
+
+//gestion des fenêtre modale
+//l'événement d'ouverture
+$('#infosEtu').on('show.bs.modal', function (e) {
+    console.log(e);
+    console.log(selectEtu);
+
+    d3.select('#modalEtuTitle').text(selectEtu['Votre prénom']+' '+selectEtu['Votre nom']);
+    var url = "diigo.php?user="+selectEtu['Votre compte Diigo'];
+    var htm = '<iframe id="ifDiigoEtu" title="Diigo étudiant" src="'+url+'"></iframe>';
+    d3.select('#diigoTags').html(htm);
+    url = "http://www.samszo.univ-paris8.fr/DWM/18-19/etudiants/"+selectEtu['site perso'];
+    htm = '<iframe id="ifSitePerso" title="Site Perso" src="'+url+'"></iframe>';
+    d3.select('#sitePerso').html(htm);
+
+
+
+    /*selectEtu['Votre compte Diigo']
+    ht= '<div class="diigo-tags">';
+    ht += '<div class="diigo-banner sidebar-title" style="font: bold 12px arial;margin-bottom:5px;">';
+    ht += '<a href="https://www.diigo.com">';
+    ht += '<img src="https://www.diigo.com/images/ii_blue.gif" width="16" height="16" alt="diigo"/>';
+    ht += '</a>';
+    ht += '<a href="https://www.diigo.com/cloud/luckysemiosis">';
+    ht += 'My Diigo Tags';
+    ht += '</a></div>';
+    //d3.select('#modalEtuBody').html(ht);
+	d3.html("diigo.php", function(html) {
+        //d3.select('#modalEtuBody').append(html);
+        document.getElementById('modalEtuBody').appendChild(html);
+    });
+    */
+})
+//l'événement de fin d'ouvertur
+$('#infosEtu').on('shown.bs.modal', function (e) {
+    console.log(e);
+    /**Création du script 
+     * merci à https://www.journaldunet.fr/web-tech/developpement/1202955-comment-inclure-un-fichier-javascript-dans-un-autre-fichier-javascript/
+    var js = document.createElement('script');
+    js.type = 'text/javascript';
+    js.src = "https://www.diigo.com/tools/tagrolls_script/luckysemiosis?icon;size=11-23;color=87ceeb-0000ff;title=My%20Diigo%20Tags;name;showadd;v=3" ;
+    document.getElementById('modalEtuBody').appendChild(js);
+    **/
+
+    //pour mettre le contenu des tabs à 100%
+    d3.select("#myTabContent").style('height',d3.select("#modalEtuBody").style('height'));
+    
+
+})
+
+
+
 
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
