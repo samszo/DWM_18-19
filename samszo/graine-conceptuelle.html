@@ -2,11 +2,11 @@
 <meta charset="utf-8">
 
 
-<script src="../../jdc/public/js/d3.v4.js"></script>
-<script src="../../jdc/public/js/jquery.min.js" ></script>
-<script src="../../jdc/public/js/w2ui.js" ></script>
+<script src="js/d3.v4.js"></script>
+<script src="js/jquery.min.js" ></script>
+<script src="js/w2ui.js" ></script>
 
-<link rel="stylesheet" type="text/css" href="../../jdc/public/css/w2ui-1.5.rc1.min.css" />
+<link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
 
 
 <style>
@@ -69,7 +69,9 @@ function setNewProp(d){
 }
 
 //récupère les données des archives
-d3.tsv("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/TSV/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
+
+d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
+//d3.tsv("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/TSV/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
 //d3.xml("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/XML/FRAN_RI_004_matieres.xml", function(error, data) {
     
   if (error) throw error;
