@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+
+<script src="../../jdc/public/js/d3.v4.js"></script>
+<script src="../../jdc/public/js/jquery.min.js" ></script>
+<script src="../../jdc/public/js/w2ui.js" ></script>
+
+<link rel="stylesheet" type="text/css" href="../../jdc/public/css/w2ui-1.5.rc1.min.css" />
+
+
+<style>
+
+body {
+    margin:0px;
+  font: 10px sans-serif;
+}
+
+.node circle {
+  fill: black;
+  stroke: steelblue;
+  stroke-width: 1px;
+}
+
+.node text { font: 8px sans-serif; }
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+#mainSVG {
+    height: 100%;
+    width: 100%;
+}
+
+</style>
+<body>
+    <svg id="mainSVG"></svg> 
+    <div id="gc" style="position:absolute;">
+        <div class="w2ui-field" >
+            <label></label>
+            <div> <input id="enum-custom"> </div>
+        </div>            
+    </div>
+
+<script>
+
+//définition de l'échelle colorimétrique
+var colorScale = d3.scaleSequential()
+    .interpolator(d3['interpolateWarm'])
+//définition des variable globale
+,xRacine,yRacine,sltConcept,dataTerms;
+
+
+////enrichissement des données
+function setNewProp(d){
+    if(!d.text)d.text = d['Terme'];
+    if(!d.id)d.id = d.IdentifiantConcept
+    d.rameau = '';
+    d.count = 0;
+    if(!d.children)d.children = [];
+    return d;
+}
+
+//récupère les données des archives
+d3.tsv("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/TSV/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
+//d3.xml("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/XML/FRAN_RI_004_matieres.xml", function(error, data) {
+    
+  if (error) throw error;
+    //construction des groupes
+    var arrTerm = [];
+    data.forEach(function(d){        
+            d = setNewProp(d);
+            //construction des regroupements        
+            if(arrTerm[d['IdConceptNiveauSuperieur']]){
+                //ajoute l'enfant au parent
+                arrTerm[d['IdConceptNiveauSuperieur']].children.push(d);
+            }else{
+                //recherche le parent
+                var arrP = data.filter(function(f){return f.IdentifiantConcept == d['IdConceptNiveauSuperieur']});
+                //ajoute le parent à la liste
+                arrP.forEach(function(p){
+                    p = setNewProp(p);
+                    p.children.push(d);
+                    arrTerm[p.IdentifiantConcept]=p; 
+                })
+            }
+            arrTerm[d.IdentifiantConcept]=d;        
+    });
+
+    //construction du tableau final
+    dataTerms = [], i = 0, maxChild = 0;
+    for (const key in arrTerm) {
+        var d = arrTerm[key];
+        d.count = arrTerm[key].children.length;
+        //traitement des concepts associés
+        if(d.IdsConceptsAssocies){
+            var arrC = d.IdsConceptsAssocies.split(' | ');
+            arrC.forEach(function(a){
+                //recherche le concept dans la liste
+                var id = a.substring(0, a.indexOf(" "));
+                var arrP = arrTerm.filter(function(f){return f.IdentifiantConcept == id});
+                //ajoute le concept associé
+                if(!d.associes)d.associes = [];
+                arrP.forEach(function(p){
+                    d.associes.push(d);
+                })
+            });
+        }
+        if(d.text)dataTerms.push(arrTerm[key]);
+        maxChild = maxChild > d.count ? maxChild : d.count; 
+    }
+    //ordonne le tableau
+    dataTerms.sort(function (a, b) {
+        return a.text.localeCompare(b.text);
+    });
+    //met à jour l'échelle des couleurs
+    colorScale.domain[0,maxChild];
+
+    /*construction du tableau des mots
+    var divA = d3.select('table').selectAll('tr').data(dataGroup).enter().append('tr');
+    divA.append('td')
+        .style('margin','3px')
+        .text(function(d){
+            return d['nivSup'];
+        })
+        .on('click',function(d, i){
+            var idFr = '#if_'+i;
+            var urlJDC =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+d.nivSup;
+            $.getJSON(urlJDC, function(dt){
+                if (dt.lenght<=0){
+                    d3.select('#rameau_'+i).text('Pas trouvé !')
+                }else{
+                    var arrRameau = dt.filter(function(dr, j){
+                        return dr.raw_category=='Rameau';
+                    });
+                    d3.select('#rameau_'+i).selectAll('div').data(arrRameau).enter()
+                        .append('div')
+                        .html(function(r){
+                            return "<button>"+r.label+"</button>";
+                        })
+                        .on('click',function(r){
+                            d3.select(idFr).attr('src',r.value);
+                        })
+                }
+            });
+        });
+    */
+    /*
+    divA.append('td')
+        .style('margin','3px')
+        .text(function(d){
+            return d['Terme'];
+        });
+    */
+   /*
+    divA.append('td')
+        .attr('id',function(d,i){return 'rameau_'+i;})
+        .style('margin','3px')
+        .text(function(d){
+            return '?';
+        });
+    */
+    /*
+    divA.append('td')
+        .style('margin','3px')
+        .html(function(d, i){
+            return '<iframe id="if_'+i+'" title="MotRameau" src=""></iframe>';
+        });
+    */
+
+
+
+    //var query = 'http://data.bnf.fr/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fnom+%3Fprenom+%3Fjour+%3Fdate1+%3Fdate2%0D%0AWHERE+%7B%0D%0A++%3Fperson+isni%3AidentifierValid+%220000000078338213%22+%3B%0D%0A++++foaf%3Afocus+%3Fidentity.%0D%0A++%3Fidentity+foaf%3AfamilyName+%3Fnom%3B%0D%0A++++foaf%3AgivenName+%3Fprenom.%0D%0A+++%3Fidentity++foaf%3Abirthday+%3Fjour.%0D%0A++%3Fidentity+bio%3Abirth+%3Fdate1.%0D%0A++%3Fidentity+bio%3Adeath+%3Fdate2.+%0D%0A%7D&format=application%2Fsparql-results%2Bjson&timeout=0&should-sponge=&debug=on'
+
+    //gestion du champ multiselect
+    $('#enum-custom').w2field('enum', { 
+        items: dataTerms, 
+        max: 1,
+        openOnFocus: true,
+        onAdd: function (event) {
+            var c = colorScale(event.item.count);
+            event.item.style = 'background-color:'+c+'; border: 1px solid black;';
+            sltConcept = event.item;
+            creerRacine();
+        },
+        onRemove: function(event){
+            d3.select(".svgRacine").remove();
+        },
+        renderItem: function (item, index, remove) {
+            d3.select('#gc > div > div > div').style('width','400px');
+            var c = colorScale(item.count);
+            var style = 'padding-right: 3px; color:black; background-color:'+c+';text-shadow: 1px 1px 3px white;';
+            var html = remove + '<span class="fa-trophy" style="'+ style +'; margin-left: -4px;"></span>' + item.text;
+            return html;
+        },
+        renderDrop: function (item, options) {
+            var c = colorScale(item.count);
+            var style = 'padding-right: 3px; color:black;text-shadow: 1px 1px 3px '+c+';';
+            return '<span class="fa-star"></span><span style="'+ style +'">'+item.text+'</span>';
+        }
+    });    
+
+    //gestion des tailles dans la fenêtre
+    $(window).resize(function(){
+        //positionne la graine au centre de la page
+        var t = ($(window).height()-$('#gc').height())/2, l=($(window).width()-$('#gc').width())/2;
+        yRacine = t;
+        xRacine = $('#gc').width()/2;
+        d3.select('#gc').style('top',t+"px").style('left',l+"px");  
+        //dimensionne le svg principal dans toute la fenêtre
+        d3.select('#mainSVG').style('height',$(window).height()+"px").style('width',$(window).width()+"px"); 
+        //redimensionne les racines
+        if(sltConcept)creerRacine();
+
+    })
+    $(window).resize();
+
+
+});
+
+/**
+ * merci beaucoup à https://bl.ocks.org/d3noob/b024fcce8b4b9264011a1c3e7c7d70dc
+ * */
+function creerRacine(){
+
+    treeData = sltConcept;
+        // set the dimensions and margins of the diagram
+        var wText = 100, margin = {top: 10, right: 30, bottom: 10, left: 30},
+            width = $(window).width() - margin.left - margin.right - wText,
+            height = ($(window).height()/2) - margin.top - margin.bottom - wText,
+            x = xRacine,
+            y = yRacine;
+
+        // declares a tree layout and assigns the size
+        var treemap = d3.tree()
+            .size([width, height]);
+
+        //  assigns the data to a hierarchy using parent-child relationships
+        var nodes = d3.hierarchy(treeData);
+
+        // maps the node data to the tree layout
+        nodes = treemap(nodes);
+
+        //suprime les anciennes racines
+        d3.select(".svgRacine").remove();
+        d3.select("#pRacine").remove();
+
+        // append the svg obgect to the mainSVG of the page
+        // appends a 'group' element to 'svg'
+        // moves the 'group' element to the top left margin
+        var svg = d3.select("#mainSVG").append("svg")
+            .attr("class", 'svgRacine')
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width", width + margin.left + margin.right + wText)
+            .attr("height", height + margin.top + margin.bottom + wText),
+            g = svg.append("g")
+            .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+        // adds the links between the nodes
+        var link = g.selectAll(".link")
+            .data( nodes.descendants().slice(1))
+        .enter().append("path")
+            .attr("class", "link")
+            .attr("d", function(d) {
+            return "M" + d.x + "," + d.y
+                + "C" + d.x + "," + (d.y + d.parent.y) / 2
+                + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
+                + " " + d.parent.x + "," + d.parent.y;
+            });
+
+        // adds each node as a group
+        var node = g.selectAll(".node")
+            .data(nodes.descendants())
+        .enter().append("g")
+            .attr("class", function(d) { 
+            return "node" + 
+                (d.children ? " node--internal" : " node--leaf"); })
+            .attr("transform", function(d) { 
+            return "translate(" + d.x + "," + d.y + ")"; })
+            .on('click',function(d){
+                console.log(d);
+                //$('#enum-custom').data('selected', [d.data]).change();
+                $('#enum-custom').w2field().set([d.data]);
+                sltConcept = d.data;
+                creerRacine()
+            });
+
+        // adds the circle to the node
+        node.append("circle")
+            .attr("r", 3);
+
+        // adds the text to the node après le cercle pour qu'il soit dessus
+        var mRect = 14;
+        node.append("text")
+            .attr("dy", ".35em")
+            .attr('id',function(d){
+                return "txtRacine_"+d.data.id;
+            })
+            .attr("x",-mRect/2)
+            .attr("y", function(d) { return d.children ? 0 : 0; })
+            .style("text-anchor", "end")
+            .attr("transform", "rotate(300)")        
+            .text(function(d) { 
+                return treeData.text == d.data.text ? "" : d.data.text; 
+            })
+            .call(wrap, wText);    
+        // met le texte dans un rectangle pour qu'il soit plus visible
+        var wMax = 0;
+        node.append("rect")
+            .attr("width", function(d){
+                //récupère la taille du texte
+                //merci à https://bl.ocks.org/mbostock/1160929
+                d.bb  = d3.select("#txtRacine_"+d.data.id).node().getBBox();
+                var w = d.bb.width+mRect;
+                wMax = wMax > w ? wMax : w;                
+                return w;
+            })
+            .attr("y", function(d) { return d.bb.y-mRect/3; })
+            .attr("x",function(d){
+                return d.bb.x-mRect/2;
+            })            
+            .attr("height", function(d){
+                return d.bb.height+(mRect/2);
+                })
+            .style("rx", 10)
+            .style("fill", "#ccc")
+            .style("fill-opacity", ".3")
+            .style("stroke", "#666")
+            .style("stroke-width", "1.5px")
+            .attr("transform", "rotate(300)");       
+        
+        //création du parent dans le svg global
+        if(sltConcept.IdConceptNiveauSuperieur){
+            //recherche le parent
+            var arrP = dataTerms.filter(function(f){return f.IdentifiantConcept == sltConcept.IdConceptNiveauSuperieur});
+            if(arrP.length){
+                var p = arrP[0];
+                //ajoute le parent au dessus de la graine
+                g = d3.select("#mainSVG").append("g")
+                    .attr('id',"pRacine")
+                    .on('click',function(d){
+                        $('#enum-custom').w2field().set([p]);
+                        sltConcept = p;
+                        creerRacine()
+                    });
+                    
+                g.append("text")
+                    .attr("dy", ".35em")
+                    .attr('id',"txtRacine_"+p.id)
+                    .style("text-anchor", "middle")
+                    .text(p.text);    
+                p.bb =  d3.select("#txtRacine_"+p.id).node().getBBox();   
+                g.append("rect")
+                    .attr("width", p.bb.width+mRect)
+                    .attr("y", p.bb.y-mRect/3)
+                    .attr("x", p.bb.x-mRect/2)            
+                    .attr("height", p.bb.height+(mRect/2))
+                    .style("rx", 10)
+                    .style("fill", "#ccc")
+                    .style("fill-opacity", ".3")
+                    .style("stroke", "#666")
+                    .style("stroke-width", "1.5px");      
+                //positionne l'élément graphique
+                var yp = ($(window).height()/2)-p.bb.height-mRect, xp=$(window).width()/2+margin.left;
+                g.attr("transform", "translate(" + xp + "," + yp + ")");         
+            }
+        }
+
+        /*redimensionne le svg avec la taille maximal du texte
+        var wFin = width + margin.left + margin.right, hFin = height + margin.top + margin.bottom + wMax;
+        svg.attr("viewBox","0 0 "+(wFin)+" "+(hFin))
+            .attr("width",window.innerWidth)
+            .attr("height",window.innerHeight/2)
+            .attr("preserveAspectRatio","xMidYMid meet");
+        */
+
+}
+//merci beaucoup à https://bl.ocks.org/guypursey/f47d8cd11a8ff24854305505dbbd8c07
+function wrap(text, width) {
+      text.each(function() {
+        var text = d3.select(this);
+        var words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        x = text.attr("x"),
+        dy = parseFloat(text.attr("dy"));
+        if(words.length>1)y -= lineHeight*4;//cyScale.bandwidth()/3;
+        var tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+        line.push(word)
+        tspan.text(line.join(" "))
+        if (tspan.node().getComputedTextLength() > width) {
+            line.pop()
+            tspan.text(line.join(" "))
+            line = [word]
+            tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", `${++lineNumber * lineHeight + dy}em`).text(word)
+        }
+        }        
+      })
+    }
+
+</script>
+</body>
+</html>
