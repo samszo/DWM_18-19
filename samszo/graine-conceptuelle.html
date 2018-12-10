@@ -1,185 +1,160 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="Samuel Szoniecky">
 
+    <title>Cultiver des graines conceptuelles</title>
 
-<script src="js/d3.v4.js"></script>
-<script src="js/jquery.min.js" ></script>
-<script src="js/w2ui.js" ></script>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css" />
 
-<link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
+    <script type="text/javascript" src="js/d3.v4.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/w2ui.js"></script>
+    <script type="text/javascript" src="js/d3.cloud.js" ></script>
+    <script type="text/javascript" src="js/fontawesome.v5.5.0.all.js" ></script>
 
+    <style>
 
-<style>
+        .node circle {
+        fill: black;
+        stroke: steelblue;
+        stroke-width: 1px;
+        }
 
-body {
-    margin:0px;
-  font: 10px sans-serif;
-}
+        .node text { font: 8px sans-serif; }
 
-.node circle {
-  fill: black;
-  stroke: steelblue;
-  stroke-width: 1px;
-}
+        .node--internal text {
+        text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+        }
 
-.node text { font: 8px sans-serif; }
+        .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;
+        }
 
-.node--internal text {
-  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
-}
+        #mainSVG {
+            height: 100%;
+            width: 100%;
+        }
 
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
-}
+    </style>
+  </head>
 
-#mainSVG {
-    height: 100%;
-    width: 100%;
-}
+  <body>
 
-</style>
-<body>
-    <svg id="mainSVG"></svg> 
-    <div id="gc" style="position:absolute;">
-        <div class="w2ui-field" >
-            <label></label>
-            <div> <input id="enum-custom"> </div>
-        </div>            
-    </div>
+    <header>
+      <!-- Fixed navbar -->
+      <nav id="mainNav" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Cultiver des graines conceptuelles</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <form class="form-inline mt-2 mt-md-0">
+            <button id="btnExport" class="btn btn-outline-primary " type="button">Exporter</button>
+            <button id="btnImport" class="btn btn-outline-primary " type="button">Importer</button>
+          </form>
+          <div class="w2ui-field" >
+                <label class="text-white bg-dark" >Graines :</label>
+                <div> <input id="enum-custom"> </div>
+            </div>            
+      
+        </div>
+      </nav>
+    </header>
 
-<script>
+    <!-- Begin page content -->
+    <main role="main" class="container">
 
-//définition de l'échelle colorimétrique
-var colorScale = d3.scaleSequential()
-    .interpolator(d3['interpolateWarm'])
+        <div class="row">
+            <div class="col-12">        
+                <svg id="mainSVG"></svg> 
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-zero"></i>Samuel Szoniecky - Laboratoire Paragraphe
+      </div>
+    </footer>
+
+    <script>
+
+ //définition des échelles colorimétriques
+var colorScale=d3.scaleSequential(d3.interpolateWarm)
+, colorHierarchie = d3.scaleSequential(d3.interpolateMagma).domain([-4, 4])
 //définition des variable globale
-,xRacine,yRacine,sltConcept,dataTerms;
+,hGlobal,wGlobal,xRacine,yRacine,sltConcept,dataTerms= [], rootTerms,sltBNF;
 
 
-////enrichissement des données
-function setNewProp(d){
-    if(!d.text)d.text = d['Terme'];
-    if(!d.id)d.id = d.IdentifiantConcept
-    d.rameau = '';
-    d.count = 0;
-    if(!d.children)d.children = [];
-    return d;
-}
 
 //récupère les données des archives
-
 d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
-//d3.tsv("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/TSV/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
-//d3.xml("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/XML/FRAN_RI_004_matieres.xml", function(error, data) {
     
   if (error) throw error;
-    //construction des groupes
-    var arrTerm = [];
-    data.forEach(function(d){        
-            d = setNewProp(d);
-            //construction des regroupements        
-            if(arrTerm[d['IdConceptNiveauSuperieur']]){
-                //ajoute l'enfant au parent
-                arrTerm[d['IdConceptNiveauSuperieur']].children.push(d);
-            }else{
-                //recherche le parent
-                var arrP = data.filter(function(f){return f.IdentifiantConcept == d['IdConceptNiveauSuperieur']});
-                //ajoute le parent à la liste
-                arrP.forEach(function(p){
-                    p = setNewProp(p);
-                    p.children.push(d);
-                    arrTerm[p.IdentifiantConcept]=p; 
-                })
+    //redéfinition du 
+    //ajoute une racine conceptuelle
+    data.unshift({'IdentifiantConcept':'racine','IdConceptNiveauSuperieur':"",'Terme':'Mots-clefs AN','NiveauHierarchique':0});
+    //construction de l'arboressence
+    rootTerms = d3.stratify()
+        .id(function(d) { return d.IdentifiantConcept; })
+        .parentId(function(d) { 
+            var p = d.NiveauHierarchique == 1 ? 'racine' : d.IdConceptNiveauSuperieur; 
+            if(d.IdentifiantConcept=='racine')p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.NiveauHierarchique; })
+        .sort(function(a, b) { return b.NiveauHierarchique - a.NiveauHierarchique; });
+    
+    //construction de la liste des termes
+    data.forEach(function(d){
+        //if(d.IdentifiantConcept!='racine'){
+            //récupère le noeud de la hiérarchie
+            var branche = rootTerms.descendants().find(function(f) { return f.id === d.IdentifiantConcept;});                
+            //ajoute des infos
+            var item = {'text':d.Terme,'id':d.IdentifiantConcept,'count':branche.value,'branche':branche};
+            //traitement des concepts associés
+            if(d.IdsConceptsAssocies){
+                var arrC = d.IdsConceptsAssocies.split(' | ');
+                arrC.forEach(function(a){
+                    //recherche le concept dans la liste
+                    var id = a.substring(0, a.indexOf(" "));
+                    var arrP = dataTerms.filter(function(f){return f.IdentifiantConcept == id});
+                    //ajoute le concept associé
+                    if(!item.associes)item.associes = [];
+                    arrP.forEach(function(p){
+                        item.associes.push(d);
+                    })
+                });        
             }
-            arrTerm[d.IdentifiantConcept]=d;        
+            dataTerms.push(item);
+        //}
     });
+    //met à jour des échelles des couleurs
+    var minMax = d3.extent(dataTerms.map(function(d){
+        if(d.id=='racine') return 100;
+        else return d.count;
+        }));
+    colorScale.domain(minMax);
+    minMax = d3.extent(rootTerms.descendants().map(function(d){ return d.depth; }));
+    colorHierarchie.domain(minMax);
 
-    //construction du tableau final
-    dataTerms = [], i = 0, maxChild = 0;
-    for (const key in arrTerm) {
-        var d = arrTerm[key];
-        d.count = arrTerm[key].children.length;
-        //traitement des concepts associés
-        if(d.IdsConceptsAssocies){
-            var arrC = d.IdsConceptsAssocies.split(' | ');
-            arrC.forEach(function(a){
-                //recherche le concept dans la liste
-                var id = a.substring(0, a.indexOf(" "));
-                var arrP = arrTerm.filter(function(f){return f.IdentifiantConcept == id});
-                //ajoute le concept associé
-                if(!d.associes)d.associes = [];
-                arrP.forEach(function(p){
-                    d.associes.push(d);
-                })
-            });
-        }
-        if(d.text)dataTerms.push(arrTerm[key]);
-        maxChild = maxChild > d.count ? maxChild : d.count; 
-    }
     //ordonne le tableau
     dataTerms.sort(function (a, b) {
         return a.text.localeCompare(b.text);
     });
-    //met à jour l'échelle des couleurs
-    colorScale.domain[0,maxChild];
-
-    /*construction du tableau des mots
-    var divA = d3.select('table').selectAll('tr').data(dataGroup).enter().append('tr');
-    divA.append('td')
-        .style('margin','3px')
-        .text(function(d){
-            return d['nivSup'];
-        })
-        .on('click',function(d, i){
-            var idFr = '#if_'+i;
-            var urlJDC =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+d.nivSup;
-            $.getJSON(urlJDC, function(dt){
-                if (dt.lenght<=0){
-                    d3.select('#rameau_'+i).text('Pas trouvé !')
-                }else{
-                    var arrRameau = dt.filter(function(dr, j){
-                        return dr.raw_category=='Rameau';
-                    });
-                    d3.select('#rameau_'+i).selectAll('div').data(arrRameau).enter()
-                        .append('div')
-                        .html(function(r){
-                            return "<button>"+r.label+"</button>";
-                        })
-                        .on('click',function(r){
-                            d3.select(idFr).attr('src',r.value);
-                        })
-                }
-            });
-        });
-    */
-    /*
-    divA.append('td')
-        .style('margin','3px')
-        .text(function(d){
-            return d['Terme'];
-        });
-    */
-   /*
-    divA.append('td')
-        .attr('id',function(d,i){return 'rameau_'+i;})
-        .style('margin','3px')
-        .text(function(d){
-            return '?';
-        });
-    */
-    /*
-    divA.append('td')
-        .style('margin','3px')
-        .html(function(d, i){
-            return '<iframe id="if_'+i+'" title="MotRameau" src=""></iframe>';
-        });
-    */
-
-
-
-    //var query = 'http://data.bnf.fr/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fnom+%3Fprenom+%3Fjour+%3Fdate1+%3Fdate2%0D%0AWHERE+%7B%0D%0A++%3Fperson+isni%3AidentifierValid+%220000000078338213%22+%3B%0D%0A++++foaf%3Afocus+%3Fidentity.%0D%0A++%3Fidentity+foaf%3AfamilyName+%3Fnom%3B%0D%0A++++foaf%3AgivenName+%3Fprenom.%0D%0A+++%3Fidentity++foaf%3Abirthday+%3Fjour.%0D%0A++%3Fidentity+bio%3Abirth+%3Fdate1.%0D%0A++%3Fidentity+bio%3Adeath+%3Fdate2.+%0D%0A%7D&format=application%2Fsparql-results%2Bjson&timeout=0&should-sponge=&debug=on'
 
     //gestion du champ multiselect
     $('#enum-custom').w2field('enum', { 
@@ -191,12 +166,15 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
             event.item.style = 'background-color:'+c+'; border: 1px solid black;';
             sltConcept = event.item;
             creerRacine();
+            chercheBNF();
         },
         onRemove: function(event){
+            //supprime les graphiques
             d3.select(".svgRacine").remove();
+            d3.select("#pRacine").remove();
+            d3.select('.tg').remove();
         },
         renderItem: function (item, index, remove) {
-            d3.select('#gc > div > div > div').style('width','400px');
             var c = colorScale(item.count);
             var style = 'padding-right: 3px; color:black; background-color:'+c+';text-shadow: 1px 1px 3px white;';
             var html = remove + '<span class="fa-trophy" style="'+ style +'; margin-left: -4px;"></span>' + item.text;
@@ -211,14 +189,18 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
 
     //gestion des tailles dans la fenêtre
     $(window).resize(function(){
-        //positionne la graine au centre de la page
-        var t = ($(window).height()-$('#gc').height())/2, l=($(window).width()-$('#gc').width())/2;
-        yRacine = t;
-        xRacine = $('#gc').width()/2;
-        d3.select('#gc').style('top',t+"px").style('left',l+"px");  
+        //calcule les tailles
+        hGlobal = $(window).height() 
+                        - $("header .navbar").height() 
+                        - $(".footer").height()
+                        - 20,  
+        wGlobal = $(window).width(); 
+
+        yRacine = hGlobal/2;
+        xRacine = wGlobal/2;
         //dimensionne le svg principal dans toute la fenêtre
-        d3.select('#mainSVG').style('height',$(window).height()+"px").style('width',$(window).width()+"px"); 
-        //redimensionne les racines
+        d3.select('#mainSVG').style('height',hGlobal+"px").style('width',wGlobal+"px"); 
+        //redimensionne les graphiques
         if(sltConcept)creerRacine();
 
     })
@@ -227,18 +209,422 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
 
 });
 
+
+function chercheBNF(){
+    var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+sltConcept.text;
+    $.getJSON(urlBNF, function(dt){
+        if (dt.length<=0){
+            w2alert("Nous n'avons rien trouvé !");
+        }else{
+            //
+            var arrRameau = dt.filter(function(dr, j){
+                return dr.raw_category=='Rameau';
+            });
+            //
+            if(arrRameau.length)
+                creerNuage(arrRameau);
+            else
+                w2alert("Nous n'avons pas trouvé de RAMEAU !");
+        }
+    });
+}
+
+function chercheSparqlBNF(){
+    sltBNF.idBNF = sltBNF.value.substring(sltBNF.value.lastIndexOf("/")+1);
+    var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=rameau&idBNF="
+        +sltBNF.idBNF;
+    var cpt = sltBNF;
+    $.getJSON(urlBNF, function(dt){
+        planteGraine(cpt, dt);
+    });
+}
+
+
+/**
+ * merci beaucoup à https://bl.ocks.org/abrahamdu/e1481e86dd4e9d553cc2d7d359b91e68
+ * */
+function creerNuage(data){
+
+    var margin = {top: 10, right: 50, bottom: 50, left: 50};
+    var width = ($(window).width()/2) - margin.left - margin.right;
+    var height = ($(window).height()/2) - margin.top - margin.bottom;
+    //supprime l'ancien nuage
+    d3.select('.tg').remove();
+    //création du conteneur pour le nuage
+    var g = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "tg")
+            .attr("id", "tg1")
+            .attr("transform", "translate(" + ($(window).width()/2) + "," + margin.top + ")");
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var categories = d3.keys(d3.nest().key(function(d) { return d.raw_category; }).map(data));
+    //var fontSize = d3.scalePow().exponent(5).domain([0,1]).range([4,80]);
+    //var fontStyle = d3.scaleLinear().domain([categories]).range(['normal','italic','oblique']);
+    
+    var layout = d3.layout.cloud()
+        .size([width, height])
+        .timeInterval(20)
+        .words(data)
+        .rotate(function(d) { return 0; })
+        .fontSize(function(d,i) { return 6; })//la taille du texte est petite pour afficher petit à petit;
+        //.fontStyle(function(d,i) { return fontSyle(Math.random()); })
+        .fontWeight(["bold"])
+        .text(function(d) { 
+            return d.label; 
+            })
+        .spiral("rectangular") // "archimedean" or "rectangular"
+        .on("end", drawTagCloud)
+        .start();
+
+   var wordcloud = g.append("g")
+      .attr('class','wordcloud')
+      .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+      
+   g.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height + ")")
+      .selectAll('text')
+      .style('font-size','20px')
+      .style('fill',function(d) { return color(d); })
+      .style('font','sans-serif');  
+
+    function drawTagCloud(words) {
+        wordcloud.selectAll("text")
+            .data(words)
+            .enter().append("text")
+            .attr('id',function(d, i) { d.idTxt = 'tcTxt'+i; return d.idTxt; })
+            .attr('class','word')
+            .style("fill", function(d, i) { return color(i); })
+            .style("font-size", function(d) { return d.size + "px"; })
+            .style("font-family", function(d) { return d.font; })
+            //.style("fill", function(d) { 
+                //var paringObject = data.filter(function(obj) { return obj.Team_CN === d.text});
+            // return color(paringObject[0].category); 
+            //})
+            .attr("text-anchor", "middle")
+            .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
+            .text(function(d) { return d.text; })
+            .on('click',function(d){
+                sltBNF = d;
+                chercheSparqlBNF();
+            })
+            .each(txtBattement);
+    };  
+}
+
+var easing = [
+    d3.easeElastic,
+    d3.easeBounce,
+    d3.easeLinear,
+    d3.easeSin,
+    d3.easeQuad,
+    d3.easeCubic,
+    d3.easePoly,
+    d3.easeCircle,
+    d3.easeExp,
+    d3.easeBack
+    ]
+    , rndEase = function(){return easing[parseInt(d3.randomUniform(0, easing.length-1)())]}
+    , rndDuree = d3.randomUniform(4000, 8000)
+    , rndTxtGrand = d3.randomUniform(10, 30)
+    , rndTxtPetit = d3.randomUniform(0, 10)
+    , arrCptGraine=[];
+function txtBattement(c, i){
+    var n = d3.select(this);
+    if(typeof c.battement == 'undefined')c.battement=true;
+    if(c.battement){
+        var r = rndTxtGrand();
+        var e = rndEase();
+        var d = rndDuree();
+        n.transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .style('font-size', rndTxtGrand()+'px') // augmente la taille du texte
+            .transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .style('font-size', rndTxtPetit()+'px') // diminue la taille du texte
+            .on("end", txtBattement);       // when the transition finishes start again
+    }
+}
+
+function planteGraine(cpt, dt){    
+    cpt.battement = false;
+    if (dt.length<=0){
+            w2alert("Nous n'avons rien trouvé !");
+    }else{
+        arrCptGraine.push(cpt);
+        cpt.plante = true;
+        d3.select('#'+cpt.idTxt).transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .attr("transform", "translate("+arrCptGraine.length*100+"," + 0 + ")") // positionne le texte dans l'humus
+            .on("end", creerBranche(cpt, dt));       // when the transition finishes fait pousser les branches
+    }
+}
+
+function creerBranche(cpt, dt){
+
+    //creation du concept à coté du parent
+    console.log('creerBranche '+cpt.idTxt);
+    d3.selectAll('#'+cpt.idTxt).style('font-size','100px');
+    /*
+    g = d3.select("#mainSVG").append("g")
+        .attr('id',"rameau_"+cpt.id)
+        .on('click',function(d){
+            $('#enum-custom').w2field().set([p]);
+            sltConcept = p;
+            creerRacine();
+            chercheBNF();
+        });
+        
+    g.append("text")
+        .attr("dy", ".35em")
+        .attr('id',"txtRacine_"+p.id)
+        .style("text-anchor", "middle")
+        .text(p.text);    
+    p.bb =  d3.select("#txtRacine_"+p.id).node().getBBox();   
+    g.append("rect")
+        .attr("width", p.bb.width+mRect)
+        .attr("y", p.bb.y-mRect/3)
+        .attr("x", p.bb.x-mRect/2)            
+        .attr("height", p.bb.height+(mRect/2))
+        .style("rx", 10)
+        .style("fill", "#ccc")
+        .style("fill-opacity", ".3")
+        .style("stroke", "#666")
+        .style("stroke-width", "1.5px");      
+    //positionne l'élément graphique
+    var yp = ($(window).height()/2)-p.bb.height-mRect, xp=$(window).width()/2+margin.left;
+    g.attr("transform", "translate(" + xp + "," + yp + ")");      
+    */
+}
+
+/* merci beaucoup à https://bl.ocks.org/mbostock/ca5b03a33affa4160321
+*/
+function creerBulles(data){
+
+    //formate les données
+    var nData = [], arrDoublons=[];
+    /*retrouve le concept d'origine
+    var cptOri = data.nodes.filter(function(f){return f.recid == sltBNF.idBNF})[0];
+    //ajoute son premier parent
+    var cptOriParent = data.links.filter(function(f){return f.target == cptOri.num})[0];
+    cptOri.id=cptOri.num;
+    cptOri.parent = cptOriParent.source;
+    cptOri.value = cptOriParent.value;
+    nData.push(cptOri);
+    */
+    //retrouve le concept root
+    var cptRoot = data.nodes.filter(function(f){return f.num == 0})[0];
+    cptRoot.id=0;
+    cptRoot.parent = '';
+    cptRoot.value = 1;
+    nData.push(cptRoot);
+    //recherche les enfants
+    getCptEnfant(cptRoot);    
+
+    function getCptEnfant(n){
+        //ajoute les enfants
+        var cptEnfant = data.links.filter(function(f){return f.source == n.num});
+        console.log('getCptEnfant nbEnfant='+cptEnfant.length);
+        cptEnfant.forEach(function(e){
+            //on ne prend le concpet finam
+            if(e.target!=1){
+                var cptEnf = data.nodes.filter(function(f){return f.num == e.target})[0];
+                cptEnf.id=cptEnf.num;
+                cptEnf.parent = e.source;
+                cptEnf.value = e.value;
+                nData.push(cptEnf);
+                getCptEnfant(cptEnf);
+            }
+        })
+        if(cptEnfant.length==1){
+            //ajoute un concept vide
+            var cptEnf = {'name':'vide', 'id':n.num+'_0', 'parent':n.num, 'value':1};
+            //nData.push(cptEnf);                            
+        }
+
+    }
+
+    var width=$(window).width()/2, height=$(window).height()/2
+    , svg = d3.select("#mainSVG").append('svg')
+        .attr("id",'svgBulle')
+        .attr("width",width)
+        .attr("height",height);
+    svg.append('g')
+
+    var format = d3.format(",d");
+
+    var color = d3.scaleSequential(d3.interpolateMagma)
+        .domain([-4, 4]);
+
+    var pack = d3.pack()
+        .size([width - 2, height - 2])
+        .padding(3);
+
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { return d.parent; })
+        (nData)
+        .sum(function(d) { return d.value; })
+        .sort(function(a, b) { return b.value - a.value; });
+    pack(root);
+
+    var desc = root.descendants();
+    var node = svg.select("g")
+        .selectAll("g")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        .each(function(d) { 
+            d.node = this; 
+        })
+        .on("mouseover", hovered(true))
+        .on("mouseout", hovered(false));
+
+    node.append("circle")
+        .attr("id", function(d) { return "node-" + d.id; })
+        .attr("r", function(d) { return d.r; })
+        .style("fill", function(d) { return color(d.depth); });
+
+    var leaf = node.filter(function(d) { return !d.children; });
+
+    leaf.append("clipPath")
+        .attr("id", function(d) { return "clip-" + d.id; })
+        .append("use")
+        .attr("xlink:href", function(d) { return "#node-" + d.id + ""; });
+
+    leaf.append("text")
+        .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { 
+            return d.data.name.split(" "); 
+            })
+        .enter().append("tspan")
+        .attr("x", 0)
+        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+        .text(function(d) { return d; });
+
+    node.append("title")
+        .text(function(d) { return d.data.name + "\n" + format(d.value); });
+
+    function hovered(hover) {
+        return function(d) {
+            d3.selectAll(d.ancestors().map(function(d) { return d.node; })).classed("node--hover", hover);
+        };
+    }
+
+}
+
+/* merci beaucoup à https://bl.ocks.org/mbostock/ca5b03a33affa4160321
+*/
+function creerRacine(){
+
+    var height = hGlobal/2, width = wGlobal
+    ,svg = d3.select("#mainSVG").append('svg')
+        .attr("id",'svgRacine')
+        .attr("y",height)
+        .attr("width",width)
+        .attr("height",height);
+    svg.append('g');
+
+    var format = d3.format(",d");
+
+    var pack = d3.pack()
+        .size([width - 2, height - 2])
+        .padding(3);
+    //filtre les résultats pour récupérer la parent du concept et ces enfants
+    var data = dataTerms.filter(function(f) { 
+        if(!f.branche.parent)f.branche.parent={'id':'no'}
+        return f.id == sltConcept.branche.parent.id 
+            || f.branche.parent.id == sltConcept.branche.parent.id
+            || f.id == sltConcept.branche.id 
+            || f.branche.parent.id == sltConcept.branche.id;
+        }); 
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { 
+            var p = d.branche.parent.id; 
+            if(d.id==sltConcept.branche.parent.id)p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
+        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    pack(root);
+
+    var desc = root.descendants();
+    var node = svg.select("g")
+        .selectAll("g")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        .each(function(d) { 
+            d.node = this; 
+        })
+        .on("mouseover", hovered(true))
+        .on("mouseout", hovered(false));
+
+    node.append("circle")
+        .attr("id", function(d) { return "node-" + d.id; })
+        .attr("r", function(d) { return d.r; })
+        .style("fill", function(d) { 
+            var c=colorHierarchie(d.data.branche.depth);
+            if(d.id==sltConcept.branche.id)c = 'white';
+            return c; 
+            });
+
+    var leaf = node.filter(function(d) { return !d.children; });
+
+    leaf.append("clipPath")
+        .attr("id", function(d) { return "clip-" + d.id; })
+        .append("use")
+        .attr("xlink:href", function(d) { return "#node-" + d.id + ""; });
+
+    leaf.append("text")
+        .style('text-anchor', 'middle')
+        .style('color', function(d) { 
+            var c = 'white'; 
+            if(d.id==sltConcept.branche.id)c = 'black';
+            return c; 
+            })
+        .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { 
+            return d.data.text.split(" "); 
+            })
+        .enter().append("tspan")
+        .attr("x", 0)
+        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+        .text(function(d) { return d; });
+
+    node.append("title")
+        .text(function(d) { return d.data.text + "\n" + format(d.value); });
+
+    function hovered(hover) {
+        return function(d) {
+            d3.selectAll(d.ancestors().map(function(d) { return d.node; })).classed("node--hover", hover);
+        };
+    }
+}
+
+
 /**
  * merci beaucoup à https://bl.ocks.org/d3noob/b024fcce8b4b9264011a1c3e7c7d70dc
  * */
-function creerRacine(){
+function creerRacineOld(){
 
     treeData = sltConcept;
-        // set the dimensions and margins of the diagram
-        var wText = 100, margin = {top: 10, right: 30, bottom: 10, left: 30},
-            width = $(window).width() - margin.left - margin.right - wText,
-            height = ($(window).height()/2) - margin.top - margin.bottom - wText,
-            x = xRacine,
-            y = yRacine;
+    // set the dimensions and margins of the diagram
+    var wText = 100, margin = {top: 10, right: 30, bottom: 10, left: 30},
+        width = $(window).width() - margin.left - margin.right - wText,
+        height = ($(window).height()/2) - margin.top - margin.bottom - wText,
+        x = xRacine,
+        y = yRacine;
 
         // declares a tree layout and assigns the size
         var treemap = d3.tree()
@@ -293,7 +679,8 @@ function creerRacine(){
                 //$('#enum-custom').data('selected', [d.data]).change();
                 $('#enum-custom').w2field().set([d.data]);
                 sltConcept = d.data;
-                creerRacine()
+                creerRacine();
+                chercheBNF();
             });
 
         // adds the circle to the node
@@ -352,7 +739,8 @@ function creerRacine(){
                     .on('click',function(d){
                         $('#enum-custom').w2field().set([p]);
                         sltConcept = p;
-                        creerRacine()
+                        creerRacine();
+                        chercheBNF();
                     });
                     
                 g.append("text")
@@ -413,6 +801,7 @@ function wrap(text, width) {
       })
     }
 
-</script>
-</body>
+    </script>
+
+    </body>
 </html>
