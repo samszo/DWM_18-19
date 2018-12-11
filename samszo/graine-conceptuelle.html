@@ -21,6 +21,7 @@
     <script type="text/javascript" src="js/w2ui.js"></script>
     <script type="text/javascript" src="js/d3.cloud.js" ></script>
     <script type="text/javascript" src="js/fontawesome.v5.5.0.all.js" ></script>
+    <script type="text/javascript" src="js/invert.js" ></script>    
 
     <style>
 
@@ -170,7 +171,7 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
         },
         onRemove: function(event){
             //supprime les graphiques
-            d3.select(".svgRacine").remove();
+            d3.select("#svgRacine").remove()
             d3.select("#pRacine").remove();
             d3.select('.tg').remove();
         },
@@ -212,6 +213,7 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
 
 function chercheBNF(){
     var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+sltConcept.text;
+    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=term&term="+sltConcept.text;
     $.getJSON(urlBNF, function(dt){
         if (dt.length<=0){
             w2alert("Nous n'avons rien trouvé !");
@@ -231,7 +233,7 @@ function chercheBNF(){
 
 function chercheSparqlBNF(){
     sltBNF.idBNF = sltBNF.value.substring(sltBNF.value.lastIndexOf("/")+1);
-    var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=rameau&idBNF="
+    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=rameau&idBNF="
         +sltBNF.idBNF;
     var cpt = sltBNF;
     $.getJSON(urlBNF, function(dt){
@@ -245,17 +247,14 @@ function chercheSparqlBNF(){
  * */
 function creerNuage(data){
 
-    var margin = {top: 10, right: 50, bottom: 50, left: 50};
-    var width = ($(window).width()/2) - margin.left - margin.right;
-    var height = ($(window).height()/2) - margin.top - margin.bottom;
+    var width = wGlobal,height = hGlobal/2;
     //supprime l'ancien nuage
     d3.select('.tg').remove();
     //création du conteneur pour le nuage
     var g = d3.select("#mainSVG")
             .append("g")
             .attr("class", "tg")
-            .attr("id", "tg1")
-            .attr("transform", "translate(" + ($(window).width()/2) + "," + margin.top + ")");
+            .attr("id", "tg1");
 
     var color = d3.scaleOrdinal(d3.schemeCategory20);
     var categories = d3.keys(d3.nest().key(function(d) { return d.raw_category; }).map(data));
@@ -295,6 +294,7 @@ function creerNuage(data){
             .enter().append("text")
             .attr('id',function(d, i) { d.idTxt = 'tcTxt'+i; return d.idTxt; })
             .attr('class','word')
+            .style("cursor","pointer")
             .style("fill", function(d, i) { return color(i); })
             .style("font-size", function(d) { return d.size + "px"; })
             .style("font-family", function(d) { return d.font; })
@@ -356,10 +356,13 @@ function planteGraine(cpt, dt){
     }else{
         arrCptGraine.push(cpt);
         cpt.plante = true;
+        //récupère les positions du svg racine
+        //var bb = d3.select("#svgRacine").node().getBBox();
         d3.select('#'+cpt.idTxt).transition()             // apply a transition
             .ease(rndEase())           // control the speed of the transition
             .duration(rndDuree())           // apply it over 2000 milliseconds
-            .attr("transform", "translate("+arrCptGraine.length*100+"," + 0 + ")") // positionne le texte dans l'humus
+            .style("font-size", "12px") // donne une taille standard
+            .attr("transform", "translate("+0+"," + hGlobal/4 + ")") // positionne le texte dans l'humus
             .on("end", creerBranche(cpt, dt));       // when the transition finishes fait pousser les branches
     }
 }
@@ -523,6 +526,10 @@ function creerBulles(data){
 */
 function creerRacine(){
 
+    //suprime le svg précédent
+    d3.select("#svgRacine").remove()
+    
+    //construction du svg
     var height = hGlobal/2, width = wGlobal
     ,svg = d3.select("#mainSVG").append('svg')
         .attr("id",'svgRacine')
@@ -572,11 +579,20 @@ function creerRacine(){
     node.append("circle")
         .attr("id", function(d) { return "node-" + d.id; })
         .attr("r", function(d) { return d.r; })
+        .style("cursor","pointer")
         .style("fill", function(d) { 
             var c=colorHierarchie(d.data.branche.depth);
             if(d.id==sltConcept.branche.id)c = 'white';
             return c; 
-            });
+            })
+        .on('click',function(d){
+            console.log(d);
+            //$('#enum-custom').data('selected', [d.data]).change();
+            $('#enum-custom').w2field().set([d.data]);
+            sltConcept = d.data;
+            creerRacine();
+            chercheBNF();
+        });
 
     var leaf = node.filter(function(d) { return !d.children; });
 
@@ -587,9 +603,8 @@ function creerRacine(){
 
     leaf.append("text")
         .style('text-anchor', 'middle')
-        .style('color', function(d) { 
-            var c = 'white'; 
-            if(d.id==sltConcept.branche.id)c = 'black';
+        .style('fill', function(d) { 
+            var c = invert(colorHierarchie(d.data.branche.depth), true); 
             return c; 
             })
         .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
