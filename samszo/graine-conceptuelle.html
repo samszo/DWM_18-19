@@ -99,7 +99,7 @@
       Samuel Szoniecky <img 
       src="img/logo-paragraphe.svg" 
       alt="logo-paragraphe"
-      height="87px"
+      height="auto"
       width="100px" />
       </div>
     </footer>
@@ -318,6 +318,15 @@ function creerNuage(data){
         .spiral("rectangular") // "archimedean" or "rectangular"
         .on("end", drawTagCloud)
         .start();
+    //ajoute le fond du nuage
+    g.append("rect")
+        .attr('width',width-10)
+        .attr('height',height)
+        .attr('x',5)
+        .attr('rx',50)
+        .attr('ry',30)
+        .attr('fill','#c1d9e640');
+
 
    var wordcloud = g.append("g")
       .attr('class','wordcloud')
@@ -356,6 +365,19 @@ function creerNuage(data){
                 chercheSparqlBNF();
             })
             .each(txtBattement);
+        /*création du nuage
+        var nuage = g.append("g")
+            .attr("class", "nuage");
+        nuage.append('path')
+            .attr('d','M 25,60 a 20,20 1 0,0 0,40 h 50 a 20,20 1 0,0 0,-40 a 10,10 1 0,0 -15,-10 a 15,15 1 0,0 -35,10 z')
+            .style('fill','none')
+            .style('stroke','black')
+            .style('stroke-width',2)
+            .style('stroke-linejoin','round');  
+        nuage.transition().duration(2000).attrTween("transform", function(d, i, a) {
+            return d3.interpolateString(a, 'scale(4)');
+        });
+        */
     };  
 }
 
