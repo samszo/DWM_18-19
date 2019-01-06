@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.point {
+  fill: steelblue;
+  stroke: #000;
+}
+
+</style>
+<body>
+    <table></table>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<script>
+
+
+d3.tsv("../../jdc/data/AN/07_les_archives_dans_le_web_de_donnees/RI/TSV/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
+  if (error) throw error;
+
+    var arrNivSup = [];
+    data.forEach(function(d){        
+        var t = {'terme':d['Terme'],'nivSup':d['TermeConceptNiveauSuperieur'],'rameau':''};
+        if(arrNivSup[d['TermeConceptNiveauSuperieur']]){
+            arrNivSup[d['TermeConceptNiveauSuperieur']].terms.push(t);
+        }else{
+            arrNivSup[d['TermeConceptNiveauSuperieur']]={'nivSup':d['TermeConceptNiveauSuperieur'],'terms':[t]};
+        }        
+    });
+    var dataGroup = [];
+    for (const key in arrNivSup) {
+        dataGroup.push({'nivSup':key,'rameau':''});
+    }
+    //construction du tableau des mots
+    var divA = d3.select('table').selectAll('tr').data(dataGroup).enter().append('tr');
+    divA.append('td')
+        .style('margin','3px')
+        .text(function(d){
+            return d['nivSup'];
+        })
+        .on('click',function(d, i){
+            var idFr = '#if_'+i;
+            var urlJDC =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+d.nivSup;
+            $.getJSON(urlJDC, function(dt){
+                if (dt.lenght<=0){
+                    d3.select('#rameau_'+i).text('Pas trouvé !')
+                }else{
+                    var arrRameau = dt.filter(function(dr, j){
+                        return dr.raw_category=='Rameau';
+                    });
+                    d3.select('#rameau_'+i).selectAll('div').data(arrRameau).enter()
+                        .append('div')
+                        .html(function(r){
+                            return "<button>"+r.label+"</button>";
+                        })
+                        .on('click',function(r){
+                            d3.select(idFr).attr('src',r.value);
+                        })
+                }
+            });
+        });
+    /*
+    divA.append('td')
+        .style('margin','3px')
+        .text(function(d){
+            return d['Terme'];
+        });
+    */
+    divA.append('td')
+        .attr('id',function(d,i){return 'rameau_'+i;})
+        .style('margin','3px')
+        .text(function(d){
+            return '?';
+        });
+        divA.append('td')
+        .style('margin','3px')
+        .html(function(d, i){
+            return '<iframe id="if_'+i+'" title="MotRameau" src=""></iframe>';
+        });
+
+
+
+
+    //var query = 'http://data.bnf.fr/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fnom+%3Fprenom+%3Fjour+%3Fdate1+%3Fdate2%0D%0AWHERE+%7B%0D%0A++%3Fperson+isni%3AidentifierValid+%220000000078338213%22+%3B%0D%0A++++foaf%3Afocus+%3Fidentity.%0D%0A++%3Fidentity+foaf%3AfamilyName+%3Fnom%3B%0D%0A++++foaf%3AgivenName+%3Fprenom.%0D%0A+++%3Fidentity++foaf%3Abirthday+%3Fjour.%0D%0A++%3Fidentity+bio%3Abirth+%3Fdate1.%0D%0A++%3Fidentity+bio%3Adeath+%3Fdate2.+%0D%0A%7D&format=application%2Fsparql-results%2Bjson&timeout=0&should-sponge=&debug=on'
+
+});
+
+</script>
+</body>
+</html>

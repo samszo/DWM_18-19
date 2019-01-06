@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="Samuel Szoniecky">
+
+    <title>Cultiver des graines conceptuelles</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css" />
+
+    <script type="text/javascript" src="js/d3.v4.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/w2ui.js"></script>
+    <script type="text/javascript" src="js/d3.cloud.js" ></script>
+    <script type="text/javascript" src="js/fontawesome.v5.5.0.all.js" ></script>
+    <script type="text/javascript" src="js/invert.js" ></script>    
+
+    <style>
+
+        .node circle {
+        fill: black;
+        stroke: steelblue;
+        stroke-width: 1px;
+        }
+
+        .node text { font: 8px sans-serif; }
+
+        .node--internal text {
+        text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+        }
+
+        .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;
+        }
+
+        #mainSVG {
+            position: absolute;
+        }
+
+        #pluie {
+            position: absolute;
+        }
+        .goutte {
+            float: left;
+            background:white;
+            display: inline-block;
+        }        
+
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav id="mainNav" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Cultiver des graines-concepts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <form class="form-inline mt-2 mt-md-0">
+            <button id="btnExport" class="btn btn-outline-primary " type="button">Exporter</button>
+            <button id="btnImport" class="btn btn-outline-primary " type="button">Importer</button>
+          </form>
+          <div class="w2ui-field" >
+                <label class="text-white bg-dark" >Graines :</label>
+                <div> <input id="enum-custom"> </div>
+            </div>            
+      
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+
+        <div class="row">
+            <div class="col-12" >       
+                    <div id="pluie" ></div> 
+                    <svg id="mainSVG"></svg> 
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-zero"></i>
+      Samuel Szoniecky <img 
+      src="img/logo-paragraphe.svg" 
+      alt="logo-paragraphe"
+      height="auto"
+      width="100px" />
+      </div>
+    </footer>
+
+    <script>
+
+ //définition des échelles colorimétriques
+var colorScale=d3.scaleSequential(d3.interpolateWarm)
+, colorHierarchie = d3.scaleSequential(d3.interpolateMagma).domain([-4, 4])
+//définition des variable globale
+,hGlobal,wGlobal,xRacine,yRacine,sltConcept,dataTerms= [], rootTerms,sltBNF;
+
+
+//récupère les données des archives
+d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
+    
+  if (error) throw error;
+    //redéfinition du 
+    //ajoute une racine conceptuelle
+    data.unshift({'IdentifiantConcept':'racine','IdConceptNiveauSuperieur':"",'Terme':'Mots-clefs AN','NiveauHierarchique':0});
+    //construction de l'arboressence
+    rootTerms = d3.stratify()
+        .id(function(d) { return d.IdentifiantConcept; })
+        .parentId(function(d) { 
+            var p = d.NiveauHierarchique == 1 ? 'racine' : d.IdConceptNiveauSuperieur; 
+            if(d.IdentifiantConcept=='racine')p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.NiveauHierarchique; })
+        .sort(function(a, b) { return b.NiveauHierarchique - a.NiveauHierarchique; });
+    
+    //construction de la liste des termes
+    data.forEach(function(d){
+        //if(d.IdentifiantConcept!='racine'){
+            //récupère le noeud de la hiérarchie
+            var branche = rootTerms.descendants().find(function(f) { return f.id === d.IdentifiantConcept;});                
+            //ajoute des infos
+            var item = {'text':d.Terme,'id':d.IdentifiantConcept,'count':branche.value,'branche':branche};
+            //traitement des concepts associés
+            if(d.IdsConceptsAssocies){
+                var arrC = d.IdsConceptsAssocies.split(' | ');
+                arrC.forEach(function(a){
+                    //recherche le concept dans la liste
+                    var id = a.substring(0, a.indexOf(" "));
+                    var arrP = dataTerms.filter(function(f){return f.IdentifiantConcept == id});
+                    //ajoute le concept associé
+                    if(!item.associes)item.associes = [];
+                    arrP.forEach(function(p){
+                        item.associes.push(d);
+                    })
+                });        
+            }
+            dataTerms.push(item);
+        //}
+    });
+    //met à jour des échelles des couleurs
+    var minMax = d3.extent(dataTerms.map(function(d){
+        if(d.id=='racine') return 100;
+        else return d.count;
+        }));
+    colorScale.domain(minMax);
+    minMax = d3.extent(rootTerms.descendants().map(function(d){ return d.depth; }));
+    colorHierarchie.domain(minMax);
+
+    //ordonne le tableau
+    dataTerms.sort(function (a, b) {
+        return a.text.localeCompare(b.text);
+    });
+
+    //gestion du champ multiselect
+    $('#enum-custom').w2field('enum', { 
+        items: dataTerms, 
+        max: 1,
+        openOnFocus: true,
+        onAdd: function (event) {
+            var c = colorScale(event.item.count);
+            event.item.style = 'background-color:'+c+'; border: 1px solid black;';
+            sltConcept = event.item;
+            creerRacine();
+            chercheBNF();
+        },
+        onRemove: function(event){
+            removeGraphique();
+        },
+        renderItem: function (item, index, remove) {
+            var c = colorScale(item.count);
+            var style = 'padding-right: 3px; color:black; background-color:'+c+';text-shadow: 1px 1px 3px white;';
+            var html = remove + '<span class="fa-trophy" style="'+ style +'; margin-left: -4px;"></span>' + item.text;
+            return html;
+        },
+        renderDrop: function (item, options) {
+            var c = colorScale(item.count);
+            var style = 'padding-right: 3px; color:black;text-shadow: 1px 1px 3px '+c+';';
+            return '<span class="fa-star"></span><span style="'+ style +'">'+item.text+'</span>';
+        }
+    });    
+
+    //gestion des tailles dans la fenêtre
+    $(window).resize(function(){
+        //calcule les tailles
+        hGlobal = $(window).height() 
+                        - $("header .navbar").height() 
+                        - $(".footer").height()
+                        - 20,  
+        wGlobal = $(window).width(); 
+
+        yRacine = hGlobal/2;
+        xRacine = wGlobal/2;
+        //dimensionne le svg principal dans toute la fenêtre
+        d3.select('#mainSVG').style('height',hGlobal+"px").style('width',wGlobal+"px"); 
+        //redimensionne les graphiques
+        if(sltConcept)creerRacine();
+
+        //supprime les élements
+        d3.select("#gInterieur").remove();        
+        d3.select("#gHumus").remove();        
+
+        //création de l'intérieur
+        var gInt = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "interieur")
+            .attr("id", "gInterieur")
+            .append('rect')
+            .attr('y',hGlobal/2)
+            .attr('width',wGlobal+'px')
+            .attr('height',hGlobal+'px')
+            .attr('fill','black');
+
+        //création de l'humus
+        var gHumus = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "humus")
+            .attr("id", "gHumus")
+            .append('rect')
+            .attr('y',hGlobal/2)
+            .attr('width',wGlobal+'px')
+            .attr('height','20px')
+            .attr('fill','brown');
+
+
+    })
+    $(window).resize();
+
+
+});
+
+function removeGraphique(){
+    //supprime les graphiques
+    d3.select("#gRacine").remove()
+    d3.select(".branche").remove();
+    d3.select('.tg').remove();
+}
+
+function chercheBNF(){
+    var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+sltConcept.text;
+    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=term&term="+sltConcept.text;
+    $.getJSON(urlBNF, function(dt){
+        if (dt.length<=0){
+            w2alert("Nous n'avons rien trouvé !");
+        }else{
+            //
+            var arrRameau = dt.filter(function(dr, j){
+                return dr.raw_category=='Rameau';
+            });
+            //
+            if(arrRameau.length)
+                creerNuage(arrRameau);
+            else
+                w2alert("Nous n'avons pas trouvé de RAMEAU !");
+        }
+    });
+}
+
+function chercheSparqlBNF(){
+    sltBNF.idBNF = sltBNF.value.substring(sltBNF.value.lastIndexOf("/")+1);
+    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=rameau&idBNF="
+        +sltBNF.idBNF;
+    var cpt = sltBNF;
+    $.getJSON(urlBNF, function(dt){
+        creerPluie(cpt, dt);
+    });
+}
+
+
+/**
+ * merci beaucoup à https://bl.ocks.org/abrahamdu/e1481e86dd4e9d553cc2d7d359b91e68
+ * */
+function creerNuage(data){
+
+    var width = wGlobal,height = hGlobal/4;
+    //supprime l'ancien nuage
+    d3.select('.tg').remove();
+    //création du conteneur pour le nuage
+    var g = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "tg")
+            .attr("id", "tg1");
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var categories = d3.keys(d3.nest().key(function(d) { return d.raw_category; }).map(data));
+    //var fontSize = d3.scalePow().exponent(5).domain([0,1]).range([4,80]);
+    //var fontStyle = d3.scaleLinear().domain([categories]).range(['normal','italic','oblique']);
+    
+    var layout = d3.layout.cloud()
+        .size([width, height])
+        .timeInterval(20)
+        .words(data)
+        .rotate(function(d) { return 0; })
+        .fontSize(function(d,i) { return 6; })//la taille du texte est petite pour afficher petit à petit;
+        //.fontStyle(function(d,i) { return fontSyle(Math.random()); })
+        .fontWeight(["bold"])
+        .text(function(d) { 
+            return d.label; 
+            })
+        .spiral("rectangular") // "archimedean" or "rectangular"
+        .on("end", drawTagCloud)
+        .start();
+    //ajoute le fond du nuage
+    g.append("rect")
+        .attr('width',width-10)
+        .attr('height',height)
+        .attr('x',5)
+        .attr('rx',50)
+        .attr('ry',30)
+        .attr('fill','#c1d9e640');
+
+
+   var wordcloud = g.append("g")
+      .attr('class','wordcloud')
+      .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+      
+   g.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + /*height*/0 + ")")
+      .selectAll('text')
+      .style('font-size','20px')
+      .style('fill',function(d) { return color(d); })
+      .style('font','sans-serif');  
+
+    function drawTagCloud(words) {
+        wordcloud.selectAll("text")
+            .data(words)
+            .enter().append("text")
+            .attr('id',function(d, i) { d.idTxt = 'tcTxt'+i; return d.idTxt; })
+            .attr('class','word')
+            .style("cursor","pointer")
+            .style("fill", function(d, i) { 
+                d.color = color(i);
+                return d.color; })
+            .style("font-size", function(d) { return "0px";})
+            //l'animation de battement augmente la taille du texte return d.size + "px"; })
+            .style("font-family", function(d) { return d.font; })
+            //.style("fill", function(d) { 
+                //var paringObject = data.filter(function(obj) { return obj.Team_CN === d.text});
+            // return color(paringObject[0].category); 
+            //})
+            .attr("text-anchor", "middle")
+            .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
+            .text(function(d) { return d.text; })
+            .on('click',function(d){
+                sltBNF = d;
+                chercheSparqlBNF();
+            })
+            .each(txtBattement);
+        /*création du nuage
+        var nuage = g.append("g")
+            .attr("class", "nuage");
+        nuage.append('path')
+            .attr('d','M 25,60 a 20,20 1 0,0 0,40 h 50 a 20,20 1 0,0 0,-40 a 10,10 1 0,0 -15,-10 a 15,15 1 0,0 -35,10 z')
+            .style('fill','none')
+            .style('stroke','black')
+            .style('stroke-width',2)
+            .style('stroke-linejoin','round');  
+        nuage.transition().duration(2000).attrTween("transform", function(d, i, a) {
+            return d3.interpolateString(a, 'scale(4)');
+        });
+        */
+    };  
+}
+
+var easing = [
+    d3.easeElastic,
+    d3.easeBounce,
+    d3.easeLinear,
+    d3.easeSin,
+    d3.easeQuad,
+    d3.easeCubic,
+    d3.easePoly,
+    d3.easeCircle,
+    d3.easeExp,
+    d3.easeBack
+    ]
+    , rndEase = function(){return easing[parseInt(d3.randomUniform(0, easing.length-1)())]}
+    , rndDuree = d3.randomUniform(4000, 8000)
+    , rndTxtGrand = d3.randomUniform(10, 30)
+    , rndTxtPetit = d3.randomUniform(0, 10)
+    , arrCptGraine=[];
+function txtBattement(c, i){
+    var n = d3.select(this);
+    if(typeof c.battement == 'undefined')c.battement=true;
+    if(c.battement){
+        var r = rndTxtGrand();
+        var e = rndEase();
+        var d = rndDuree();
+        n.transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .style('font-size', rndTxtGrand()+'px') // augmente la taille du texte
+            .transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .style('font-size', rndTxtPetit()+'px') // diminue la taille du texte
+            .on("end", txtBattement);       // when the transition finishes start again
+    }
+}
+
+/** merci beaucoup à https://bl.ocks.org/mbostock/70d5541b547cc222aa02
+*/
+function creerPluie(cpt, dt){
+
+var t = d3.select('#'+cpt.idTxt),
+    whitecolor = d3.interpolateRgb("white", cpt.color),
+    colorwhite = d3.interpolateRgb(cpt.color, "white"),
+    bbCpt = t.node().getBoundingClientRect(),
+    tailleGoutte=6, n = parseInt(((hGlobal/4)+wGlobal)*tailleGoutte)/1.5, firstEnd=true;
+    console.log(n+' creerPluie = '+cpt.idTxt+' - '+cpt.color);
+
+//initialise la pluie
+d3.select("#pluie").selectAll("div").remove();
+
+d3.select("#pluie")
+    .style('width',/*bbCpt.width*/wGlobal+"px")
+    .style('height', (hGlobal/4)+"px")
+    .style('top', /*(bbCpt.top)*/+(hGlobal/4)+"px")
+    .style('left', /*(bbCpt.left)*/+"0px")
+    .selectAll("div")
+  .data(d3.range(n))
+  .enter().append("div")
+  .attr('class','goutte')
+  .style('width',tailleGoutte+'px')
+  .style('height',tailleGoutte+'px')
+  .transition()
+    .delay(function(d, i) { 
+        //var a = i + Math.random() * n / 2;  
+        //console.log(n+' creerPluie = '+a);
+        return i + Math.random() * n / 2})
+    .ease(d3.easeLinear)
+    .on("start", function repeat() {
+        //console.log(n+' creerPluie = start');
+        d3.active(this)
+            .styleTween("background-color", function(d) { 
+                return whitecolor; 
+            })
+          .transition()
+            .delay(1000)
+            .styleTween("background-color", function() { return colorwhite; })
+          .transition()
+            .delay(n)
+            .on("end", function(d,i){
+                if(firstEnd){
+                    firstEnd=false;
+                    creerBranche(cpt, dt);
+                }
+            })
+      });
+}
+
+function planteGraine(cpt, dt){    
+    cpt.battement = false;
+    if (dt.length<=0){
+            w2alert("Nous n'avons rien trouvé !");
+    }else{
+        arrCptGraine.push(cpt);
+        cpt.plante = true;
+        //récupère les positions du svg racine
+        //var bb = d3.select("#svgRacine").node().getBBox();
+        d3.select('#'+cpt.idTxt).transition()             // apply a transition
+            .ease(rndEase())           // control the speed of the transition
+            .duration(rndDuree())           // apply it over 2000 milliseconds
+            .attr("transform", "translate("+0+"," + hGlobal/4 + ")") // positionne le texte dans l'humus
+            .on("end", creerBranche(cpt, dt));       // when the transition finishes fait pousser les branches
+    }
+}
+
+function creerBranche(cpt, dt){
+
+    console.log('creerBranche '+cpt.idTxt);
+    d3.select(".branche").remove();
+
+    // set the dimensions and margins of the diagram
+    var wText = 80, width = wGlobal,
+        height = (hGlobal/2)-wText;
+
+    //  création de la hiérarchie à partir du réseau Rameau
+    var nData = [], arrDoublons=[]; 
+    //retrouve le concept root
+    var cptRoot = dt.nodes.filter(function(f){return f.num == 0})[0];
+    cptRoot.id=0;
+    cptRoot.parent = '';
+    cptRoot.value = 1;
+    nData.push(cptRoot);
+    //recherche les enfants
+    getCptEnfant(cptRoot);    
+    function getCptEnfant(n){
+        //ajoute les enfants
+        var cptEnfant = dt.links.filter(function(f){return f.source == n.num});
+        console.log('getCptEnfant nbEnfant='+cptEnfant.length);
+        cptEnfant.forEach(function(e){
+            //on ne prend le concpet finam
+            if(e.target!=1){
+                var cptEnf = dt.nodes.filter(function(f){return f.num == e.target})[0];
+                cptEnf.id=cptEnf.num;
+                cptEnf.parent = e.source;
+                cptEnf.value = e.value;
+                //on ne prend qu'un seul parent
+                if(!arrDoublons[cptEnf.num]){
+                    nData.push(cptEnf);
+                    //nData.push({'id':cptEnf.num,'parent':e.source,'value':e.value});
+                    arrDoublons[cptEnf.num]={p:[e.source]};
+                    getCptEnfant(cptEnf);
+                } else arrDoublons[cptEnf.num].p.push(e.source);
+            }
+        })
+    }
+    //console.log(arrDoublons);
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { return d.parent; })
+        (nData)
+        .sum(function(d) { return d.value; })
+        .sort(function(a, b) { return b.value - a.value; });
+
+    // declares a tree layout and assigns the size
+    var treemap = d3.tree()
+        .size([width, height]);
+    // maps the node data to the tree layout
+    nodes = treemap(root);
+
+
+    //suprime les anciennes branches
+    d3.select("#gBranche"+cpt.idTxt).remove();
+
+    // append the group obgect to the mainSVG of the page
+    var g = d3.select("#mainSVG").append("g")
+        .attr("id", 'gBranche'+cpt.idTxt)
+        .attr("class","branche");
+
+    //pour choisir l'orientation de l'arbre merci à https://bl.ocks.org/mbostock/3184089
+    var link = g.selectAll(".link")
+        .data(nodes.links())
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", d3.linkVertical()
+            .x(function(d) { return d.x; })
+            .y(function(d) { return height - d.y; }));
+
+    var node = g.selectAll(".node")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("id", function(d, i){return 'node_'+cpt.idTxt+'_'+i})
+        .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+        .attr("transform", function(d) { return "translate(" + d.x + "," + (height - d.y) + ")"; })
+    node.append("circle")
+      .attr("r", 2.5);
+      
+    var mRect = 10;
+    node.append("text")
+        .text(function(d, i) {
+             return i ? d.data.name : ""; 
+            })
+        .attr('id',function(d, i) {
+            return "txtBranche_"+cpt.idTxt+'_'+i; 
+            })
+        .attr('y',mRect/2)
+        .attr('x',mRect)
+        .attr("dy", "0em")
+        .style("text-anchor", "start")
+        .attr("transform", "rotate(300)")        
+        .call(wrap, wText);    
+
+    // met le texte dans un rectangle pour qu'il soit plus visible
+    var wMax = 0;
+    node.append("rect")
+        .attr("width", function(d, i){
+            //récupère la taille du texte
+            //merci à https://bl.ocks.org/mbostock/1160929
+            d.bb  = d3.select("#txtBranche_"+cpt.idTxt+'_'+i).node().getBBox();
+            var w = d.bb.width+mRect*2;
+            wMax = wMax > w ? wMax : w;                
+            return w;
+        })
+        .attr("y", function(d) { 
+            return -mRect; })
+        .attr("x",function(d){
+            return 0;
+        })            
+        .attr("height", function(d, i){
+            return i ? d.bb.height+mRect : 0;
+            })
+        .style("rx", 10)
+        .style("fill", "#ccc")
+        .style("fill-opacity", ".3")
+        .style("stroke", "#666")
+        .style("stroke-width", "1.5px")
+        .attr("transform", "rotate(300)"); 
+
+
+    // récupère les coorodnnées des éléments graphiques
+    var bbRacine = d3.select('#gRacine').node().getBBox();
+    var bbRoot = d3.select('#node_'+cpt.idTxt+'_0').node().getBBox();
+    var bbBranche = d3.select('#gBranche'+cpt.idTxt).node().getBBox();
+    var bbRacineCpt = d3.select('#node-'+sltConcept.id).node().getBBox();
+    //g.attr("transform","translate("+(-bbBranche.x)+","+((hGlobal/2)-bbBranche.height-bbRoot.y)+")");
+    //déplace la branche dans l'humus
+    g.attr("transform","translate("+(0)+","+((hGlobal/2)+wText-bbRacine.height)+")");
+    //déplace le texte dans l'humus
+    d3.select('#'+cpt.idTxt).transition()            
+            .ease(rndEase())          
+            .duration(rndDuree())          
+            .attr("transform", "translate("+bbRoot.x+"," + hGlobal/4 + ")");
+}
+
+/* merci beaucoup à https://bl.ocks.org/mbostock/ca5b03a33affa4160321
+*/
+function creerBulles(data){
+
+    //formate les données
+    var nData = [], arrDoublons=[];
+    /*retrouve le concept d'origine
+    var cptOri = data.nodes.filter(function(f){return f.recid == sltBNF.idBNF})[0];
+    //ajoute son premier parent
+    var cptOriParent = data.links.filter(function(f){return f.target == cptOri.num})[0];
+    cptOri.id=cptOri.num;
+    cptOri.parent = cptOriParent.source;
+    cptOri.value = cptOriParent.value;
+    nData.push(cptOri);
+    */
+    //retrouve le concept root
+    var cptRoot = data.nodes.filter(function(f){return f.num == 0})[0];
+    cptRoot.id=0;
+    cptRoot.parent = '';
+    cptRoot.value = 1;
+    nData.push(cptRoot);
+    //recherche les enfants
+    getCptEnfant(cptRoot);    
+
+    function getCptEnfant(n){
+        //ajoute les enfants
+        var cptEnfant = data.links.filter(function(f){return f.source == n.num});
+        console.log('getCptEnfant nbEnfant='+cptEnfant.length);
+        cptEnfant.forEach(function(e){
+            //on ne prend le concpet finam
+            if(e.target!=1){
+                var cptEnf = data.nodes.filter(function(f){return f.num == e.target})[0];
+                cptEnf.id=cptEnf.num;
+                cptEnf.parent = e.source;
+                cptEnf.value = e.value;
+                nData.push(cptEnf);
+                getCptEnfant(cptEnf);
+            }
+        })
+        if(cptEnfant.length==1){
+            //ajoute un concept vide
+            var cptEnf = {'name':'vide', 'id':n.num+'_0', 'parent':n.num, 'value':1};
+            //nData.push(cptEnf);                            
+        }
+
+    }
+
+    var width=$(window).width()/2, height=$(window).height()/2
+    , svg = d3.select("#mainSVG").append('svg')
+        .attr("id",'svgBulle')
+        .attr("width",width)
+        .attr("height",height);
+    svg.append('g')
+
+    var format = d3.format(",d");
+
+    var color = d3.scaleSequential(d3.interpolateMagma)
+        .domain([-4, 4]);
+
+    var pack = d3.pack()
+        .size([width - 2, height - 2])
+        .padding(3);
+
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { return d.parent; })
+        (nData)
+        .sum(function(d) { return d.value; })
+        .sort(function(a, b) { return b.value - a.value; });
+    pack(root);
+
+    var desc = root.descendants();
+    var node = svg.select("g")
+        .selectAll("g")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        .each(function(d) { 
+            d.node = this; 
+        })
+        .on("mouseover", hovered(true))
+        .on("mouseout", hovered(false));
+
+    node.append("circle")
+        .attr("id", function(d) { return "node-" + d.id; })
+        .attr("r", function(d) { return d.r; })
+        .style("fill", function(d) { return color(d.depth); });
+
+    var leaf = node.filter(function(d) { return !d.children; });
+
+    leaf.append("clipPath")
+        .attr("id", function(d) { return "clip-" + d.id; })
+        .append("use")
+        .attr("xlink:href", function(d) { return "#node-" + d.id + ""; });
+
+    leaf.append("text")
+        .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { 
+            return d.data.name.split(" "); 
+            })
+        .enter().append("tspan")
+        .attr("x", 0)
+        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+        .text(function(d) { return d; });
+
+    node.append("title")
+        .text(function(d) { return d.data.name + "\n" + format(d.value); });
+
+    function hovered(hover) {
+        return function(d) {
+            d3.selectAll(d.ancestors().map(function(d) { return d.node; })).classed("node--hover", hover);
+        };
+    }
+
+}
+
+/* merci beaucoup à https://bl.ocks.org/mbostock/ca5b03a33affa4160321
+*/
+function creerRacine(){
+
+    //suprime les racines précédente
+    d3.select("#gRacine").remove()
+    //suprime les branches précédentes
+    d3.select(".branche").remove();
+    
+    //construction du svg
+    var height = hGlobal/2, width = wGlobal
+    ,g = d3.select("#mainSVG").append('g')
+        .attr("id",'gRacine')
+        .attr('transform', "translate(0," + yRacine + ")");
+
+    var format = d3.format(",d");
+
+    var pack = d3.pack()
+        .size([width - 2, height - 2])
+        .padding(3);
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var root = getHierarchieBranche(sltConcept);
+    pack(root);
+
+    var desc = root.descendants();
+    var node = g.selectAll("g")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
+        .each(function(d) { 
+            d.node = this; 
+        })
+        .on("mouseover", hovered(true))
+        .on("mouseout", hovered(false));
+
+    node.append("circle")
+        .attr("id", function(d) { return "node-" + d.id; })
+        .attr("r", function(d) { return d.r; })
+        .style("cursor","pointer")
+        .style("fill", function(d) { 
+            var c=colorHierarchie(d.data.branche.depth);
+            if(d.id==sltConcept.branche.id)c = 'white';
+            return c; 
+            })
+        .on('click',function(d){
+            console.log(d);
+            //$('#enum-custom').data('selected', [d.data]).change();
+            $('#enum-custom').w2field().set([d.data]);
+            sltConcept = d.data;
+            creerRacine();
+            chercheBNF();
+        });
+
+    var leaf = node.filter(function(d) { return !d.children; });
+
+    leaf.append("clipPath")
+        .attr("id", function(d) { return "clip-" + d.id; })
+        .append("use")
+        .attr("xlink:href", function(d) { return "#node-" + d.id + ""; });
+
+    leaf.append("text")
+        .style('text-anchor', 'middle')
+        .style('fill', function(d) { 
+            var c = invert(colorHierarchie(d.data.branche.depth), true); 
+            return c; 
+            })
+        .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+        .selectAll("tspan")
+        .data(function(d) { 
+            return d.data.text.split(" "); 
+            })
+        .enter().append("tspan")
+        .attr("x", 0)
+        .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+        .text(function(d) { return d; });
+
+    node.append("title")
+        .text(function(d) { return d.data.text + "\n" + format(d.value); });
+
+    function hovered(hover) {
+        return function(d) {
+            d3.selectAll(d.ancestors().map(function(d) { return d.node; })).classed("node--hover", hover);
+        };
+    }
+}
+
+function getHierarchieBranche(cpt){
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var data = dataTerms.filter(function(f) { 
+        if(!f.branche.parent)f.branche.parent={'id':'no'}
+        return f.id == cpt.branche.parent.id 
+            || f.branche.parent.id == cpt.branche.parent.id
+            || f.id == cpt.branche.id 
+            || f.branche.parent.id == cpt.branche.id;
+        }); 
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { 
+            var p = d.branche.parent.id; 
+            if(d.id==cpt.branche.parent.id)p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
+        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    return root;
+}
+
+function getHierarchieRameau(cpt){
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var data = dataTerms.filter(function(f) { 
+        if(!f.branche.parent)f.branche.parent={'id':'no'}
+        return f.id == cpt.branche.parent.id 
+            || f.branche.parent.id == cpt.branche.parent.id
+            || f.id == cpt.branche.id 
+            || f.branche.parent.id == cpt.branche.id;
+        }); 
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { 
+            var p = d.branche.parent.id; 
+            if(d.id==cpt.branche.parent.id)p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
+        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    return root;
+}
+
+//merci beaucoup à https://bl.ocks.org/guypursey/f47d8cd11a8ff24854305505dbbd8c07
+function wrap(text, width) {
+      text.each(function() {
+        var text = d3.select(this);
+        var words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        x = text.attr("x"),
+        dy = parseFloat(text.attr("dy"));
+        if(words.length>1)y -= lineHeight*4;//cyScale.bandwidth()/3;
+        var tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+        line.push(word)
+        tspan.text(line.join(" "))
+        if (tspan.node().getComputedTextLength() > width) {
+            line.pop()
+            tspan.text(line.join(" "))
+            line = [word]
+            tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", `${++lineNumber * lineHeight + dy}em`).text(word)
+        }
+        }        
+      })
+    }
+
+    </script>
+
+    </body>
+</html>
