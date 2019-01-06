@@ -1,0 +1,48 @@
+section
+{
+display: inline-block;
+vertical-align: top;
+width: 30%;
+margin-right: 2%;
+}
+
+#liseret, #contenu
+{
+display: inline-block;
+vertical-align: top;
+}
+
+#liseret
+{   
+width: 10%;
+margin-right: 3%;
+height: 550px;
+border-radius: 50px;
+}
+
+#contenu
+{
+width: 85%;
+}
+
+/*
+@media all and (max-width: 1015px)
+{
+section
+{
+display: block;
+width: auto;
+}
+
+#liseret
+{
+display: none;
+}
+
+#contenu
+{
+width: auto;
+}
+}
+*/
+
