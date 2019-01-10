@@ -124,7 +124,7 @@ function traiteForm(){
       //gestion des fenêtre modale
       //l'événement d'ouverture
       var cards = cards
-                        .on("click",function(e){
+                        .addEventListener("click", function(e){
                           console.log(e);
                           selectEtu = e;
                           $('#colNom').modal('show');
