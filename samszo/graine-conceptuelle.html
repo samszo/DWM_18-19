@@ -44,9 +44,17 @@
         }
 
         #mainSVG {
-            height: 100%;
-            width: 100%;
+            position: absolute;
         }
+
+        #pluie {
+            position: absolute;
+        }
+        .goutte {
+            float: left;
+            background:white;
+            display: inline-block;
+        }        
 
     </style>
   </head>
@@ -56,7 +64,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav id="mainNav" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Cultiver des graines conceptuelles</a>
+        <a class="navbar-brand" href="#">Cultiver des graines-concepts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -78,15 +86,21 @@
     <main role="main" class="container">
 
         <div class="row">
-            <div class="col-12">        
-                <svg id="mainSVG"></svg> 
+            <div class="col-12" >       
+                    <div id="pluie" ></div> 
+                    <svg id="mainSVG"></svg> 
             </div>
         </div>
     </main>
 
     <footer class="footer">
       <div class="container">
-      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-zero"></i>Samuel Szoniecky - Laboratoire Paragraphe
+      <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-zero"></i>
+      Samuel Szoniecky <img 
+      src="img/logo-paragraphe.svg" 
+      alt="logo-paragraphe"
+      height="auto"
+      width="100px" />
       </div>
     </footer>
 
@@ -97,7 +111,6 @@ var colorScale=d3.scaleSequential(d3.interpolateWarm)
 , colorHierarchie = d3.scaleSequential(d3.interpolateMagma).domain([-4, 4])
 //définition des variable globale
 ,hGlobal,wGlobal,xRacine,yRacine,sltConcept,dataTerms= [], rootTerms,sltBNF;
-
 
 
 //récupère les données des archives
@@ -170,10 +183,7 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
             chercheBNF();
         },
         onRemove: function(event){
-            //supprime les graphiques
-            d3.select("#svgRacine").remove()
-            d3.select("#pRacine").remove();
-            d3.select('.tg').remove();
+            removeGraphique();
         },
         renderItem: function (item, index, remove) {
             var c = colorScale(item.count);
@@ -204,12 +214,45 @@ d3.tsv("data/FRAN_RI_004_motsMatieres.tsv", function(error, data) {
         //redimensionne les graphiques
         if(sltConcept)creerRacine();
 
+        //supprime les élements
+        d3.select("#gInterieur").remove();        
+        d3.select("#gHumus").remove();        
+
+        //création de l'intérieur
+        var gInt = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "interieur")
+            .attr("id", "gInterieur")
+            .append('rect')
+            .attr('y',hGlobal/2)
+            .attr('width',wGlobal+'px')
+            .attr('height',hGlobal+'px')
+            .attr('fill','black');
+
+        //création de l'humus
+        var gHumus = d3.select("#mainSVG")
+            .append("g")
+            .attr("class", "humus")
+            .attr("id", "gHumus")
+            .append('rect')
+            .attr('y',hGlobal/2)
+            .attr('width',wGlobal+'px')
+            .attr('height','20px')
+            .attr('fill','brown');
+
+
     })
     $(window).resize();
 
 
 });
 
+function removeGraphique(){
+    //supprime les graphiques
+    d3.select("#gRacine").remove()
+    d3.select(".branche").remove();
+    d3.select('.tg').remove();
+}
 
 function chercheBNF(){
     var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+sltConcept.text;
@@ -237,7 +280,7 @@ function chercheSparqlBNF(){
         +sltBNF.idBNF;
     var cpt = sltBNF;
     $.getJSON(urlBNF, function(dt){
-        planteGraine(cpt, dt);
+        creerPluie(cpt, dt);
     });
 }
 
@@ -247,7 +290,7 @@ function chercheSparqlBNF(){
  * */
 function creerNuage(data){
 
-    var width = wGlobal,height = hGlobal/2;
+    var width = wGlobal,height = hGlobal/4;
     //supprime l'ancien nuage
     d3.select('.tg').remove();
     //création du conteneur pour le nuage
@@ -275,6 +318,15 @@ function creerNuage(data){
         .spiral("rectangular") // "archimedean" or "rectangular"
         .on("end", drawTagCloud)
         .start();
+    //ajoute le fond du nuage
+    g.append("rect")
+        .attr('width',width-10)
+        .attr('height',height)
+        .attr('x',5)
+        .attr('rx',50)
+        .attr('ry',30)
+        .attr('fill','#c1d9e640');
+
 
    var wordcloud = g.append("g")
       .attr('class','wordcloud')
@@ -282,7 +334,7 @@ function creerNuage(data){
       
    g.append("g")
       .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + /*height*/0 + ")")
       .selectAll('text')
       .style('font-size','20px')
       .style('fill',function(d) { return color(d); })
@@ -295,8 +347,11 @@ function creerNuage(data){
             .attr('id',function(d, i) { d.idTxt = 'tcTxt'+i; return d.idTxt; })
             .attr('class','word')
             .style("cursor","pointer")
-            .style("fill", function(d, i) { return color(i); })
-            .style("font-size", function(d) { return d.size + "px"; })
+            .style("fill", function(d, i) { 
+                d.color = color(i);
+                return d.color; })
+            .style("font-size", function(d) { return "0px";})
+            //l'animation de battement augmente la taille du texte return d.size + "px"; })
             .style("font-family", function(d) { return d.font; })
             //.style("fill", function(d) { 
                 //var paringObject = data.filter(function(obj) { return obj.Team_CN === d.text});
@@ -310,6 +365,19 @@ function creerNuage(data){
                 chercheSparqlBNF();
             })
             .each(txtBattement);
+        /*création du nuage
+        var nuage = g.append("g")
+            .attr("class", "nuage");
+        nuage.append('path')
+            .attr('d','M 25,60 a 20,20 1 0,0 0,40 h 50 a 20,20 1 0,0 0,-40 a 10,10 1 0,0 -15,-10 a 15,15 1 0,0 -35,10 z')
+            .style('fill','none')
+            .style('stroke','black')
+            .style('stroke-width',2)
+            .style('stroke-linejoin','round');  
+        nuage.transition().duration(2000).attrTween("transform", function(d, i, a) {
+            return d3.interpolateString(a, 'scale(4)');
+        });
+        */
     };  
 }
 
@@ -349,6 +417,57 @@ function txtBattement(c, i){
     }
 }
 
+/** merci beaucoup à https://bl.ocks.org/mbostock/70d5541b547cc222aa02
+*/
+function creerPluie(cpt, dt){
+
+var t = d3.select('#'+cpt.idTxt),
+    whitecolor = d3.interpolateRgb("white", cpt.color),
+    colorwhite = d3.interpolateRgb(cpt.color, "white"),
+    bbCpt = t.node().getBoundingClientRect(),
+    tailleGoutte=6, n = parseInt(((hGlobal/4)+wGlobal)*tailleGoutte)/1.5, firstEnd=true;
+    console.log(n+' creerPluie = '+cpt.idTxt+' - '+cpt.color);
+
+//initialise la pluie
+d3.select("#pluie").selectAll("div").remove();
+
+d3.select("#pluie")
+    .style('width',/*bbCpt.width*/wGlobal+"px")
+    .style('height', (hGlobal/4)+"px")
+    .style('top', /*(bbCpt.top)*/+(hGlobal/4)+"px")
+    .style('left', /*(bbCpt.left)*/+"0px")
+    .selectAll("div")
+  .data(d3.range(n))
+  .enter().append("div")
+  .attr('class','goutte')
+  .style('width',tailleGoutte+'px')
+  .style('height',tailleGoutte+'px')
+  .transition()
+    .delay(function(d, i) { 
+        //var a = i + Math.random() * n / 2;  
+        //console.log(n+' creerPluie = '+a);
+        return i + Math.random() * n / 2})
+    .ease(d3.easeLinear)
+    .on("start", function repeat() {
+        //console.log(n+' creerPluie = start');
+        d3.active(this)
+            .styleTween("background-color", function(d) { 
+                return whitecolor; 
+            })
+          .transition()
+            .delay(1000)
+            .styleTween("background-color", function() { return colorwhite; })
+          .transition()
+            .delay(n)
+            .on("end", function(d,i){
+                if(firstEnd){
+                    firstEnd=false;
+                    creerBranche(cpt, dt);
+                }
+            })
+      });
+}
+
 function planteGraine(cpt, dt){    
     cpt.battement = false;
     if (dt.length<=0){
@@ -361,7 +480,6 @@ function planteGraine(cpt, dt){
         d3.select('#'+cpt.idTxt).transition()             // apply a transition
             .ease(rndEase())           // control the speed of the transition
             .duration(rndDuree())           // apply it over 2000 milliseconds
-            .style("font-size", "12px") // donne une taille standard
             .attr("transform", "translate("+0+"," + hGlobal/4 + ")") // positionne le texte dans l'humus
             .on("end", creerBranche(cpt, dt));       // when the transition finishes fait pousser les branches
     }
@@ -369,39 +487,140 @@ function planteGraine(cpt, dt){
 
 function creerBranche(cpt, dt){
 
-    //creation du concept à coté du parent
     console.log('creerBranche '+cpt.idTxt);
-    d3.selectAll('#'+cpt.idTxt).style('font-size','100px');
-    /*
-    g = d3.select("#mainSVG").append("g")
-        .attr('id',"rameau_"+cpt.id)
-        .on('click',function(d){
-            $('#enum-custom').w2field().set([p]);
-            sltConcept = p;
-            creerRacine();
-            chercheBNF();
-        });
-        
-    g.append("text")
-        .attr("dy", ".35em")
-        .attr('id',"txtRacine_"+p.id)
-        .style("text-anchor", "middle")
-        .text(p.text);    
-    p.bb =  d3.select("#txtRacine_"+p.id).node().getBBox();   
-    g.append("rect")
-        .attr("width", p.bb.width+mRect)
-        .attr("y", p.bb.y-mRect/3)
-        .attr("x", p.bb.x-mRect/2)            
-        .attr("height", p.bb.height+(mRect/2))
+    d3.select(".branche").remove();
+
+    // set the dimensions and margins of the diagram
+    var wText = 80, width = wGlobal,
+        height = (hGlobal/2)-wText;
+
+    //  création de la hiérarchie à partir du réseau Rameau
+    var nData = [], arrDoublons=[]; 
+    //retrouve le concept root
+    var cptRoot = dt.nodes.filter(function(f){return f.num == 0})[0];
+    cptRoot.id=0;
+    cptRoot.parent = '';
+    cptRoot.value = 1;
+    nData.push(cptRoot);
+    //recherche les enfants
+    getCptEnfant(cptRoot);    
+    function getCptEnfant(n){
+        //ajoute les enfants
+        var cptEnfant = dt.links.filter(function(f){return f.source == n.num});
+        console.log('getCptEnfant nbEnfant='+cptEnfant.length);
+        cptEnfant.forEach(function(e){
+            //on ne prend le concpet finam
+            if(e.target!=1){
+                var cptEnf = dt.nodes.filter(function(f){return f.num == e.target})[0];
+                cptEnf.id=cptEnf.num;
+                cptEnf.parent = e.source;
+                cptEnf.value = e.value;
+                //on ne prend qu'un seul parent
+                if(!arrDoublons[cptEnf.num]){
+                    nData.push(cptEnf);
+                    //nData.push({'id':cptEnf.num,'parent':e.source,'value':e.value});
+                    arrDoublons[cptEnf.num]={p:[e.source]};
+                    getCptEnfant(cptEnf);
+                } else arrDoublons[cptEnf.num].p.push(e.source);
+            }
+        })
+    }
+    //console.log(arrDoublons);
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { return d.parent; })
+        (nData)
+        .sum(function(d) { return d.value; })
+        .sort(function(a, b) { return b.value - a.value; });
+
+    // declares a tree layout and assigns the size
+    var treemap = d3.tree()
+        .size([width, height]);
+    // maps the node data to the tree layout
+    nodes = treemap(root);
+
+
+    //suprime les anciennes branches
+    d3.select("#gBranche"+cpt.idTxt).remove();
+
+    // append the group obgect to the mainSVG of the page
+    var g = d3.select("#mainSVG").append("g")
+        .attr("id", 'gBranche'+cpt.idTxt)
+        .attr("class","branche");
+
+    //pour choisir l'orientation de l'arbre merci à https://bl.ocks.org/mbostock/3184089
+    var link = g.selectAll(".link")
+        .data(nodes.links())
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", d3.linkVertical()
+            .x(function(d) { return d.x; })
+            .y(function(d) { return height - d.y; }));
+
+    var node = g.selectAll(".node")
+        .data(root.descendants())
+        .enter().append("g")
+        .attr("id", function(d, i){return 'node_'+cpt.idTxt+'_'+i})
+        .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+        .attr("transform", function(d) { return "translate(" + d.x + "," + (height - d.y) + ")"; })
+    node.append("circle")
+      .attr("r", 2.5);
+      
+    var mRect = 10;
+    node.append("text")
+        .text(function(d, i) {
+             return i ? d.data.name : ""; 
+            })
+        .attr('id',function(d, i) {
+            return "txtBranche_"+cpt.idTxt+'_'+i; 
+            })
+        .attr('y',mRect/2)
+        .attr('x',mRect)
+        .attr("dy", "0em")
+        .style("text-anchor", "start")
+        .attr("transform", "rotate(300)")        
+        .call(wrap, wText);    
+
+    // met le texte dans un rectangle pour qu'il soit plus visible
+    var wMax = 0;
+    node.append("rect")
+        .attr("width", function(d, i){
+            //récupère la taille du texte
+            //merci à https://bl.ocks.org/mbostock/1160929
+            d.bb  = d3.select("#txtBranche_"+cpt.idTxt+'_'+i).node().getBBox();
+            var w = d.bb.width+mRect*2;
+            wMax = wMax > w ? wMax : w;                
+            return w;
+        })
+        .attr("y", function(d) { 
+            return -mRect; })
+        .attr("x",function(d){
+            return 0;
+        })            
+        .attr("height", function(d, i){
+            return i ? d.bb.height+mRect : 0;
+            })
         .style("rx", 10)
         .style("fill", "#ccc")
         .style("fill-opacity", ".3")
         .style("stroke", "#666")
-        .style("stroke-width", "1.5px");      
-    //positionne l'élément graphique
-    var yp = ($(window).height()/2)-p.bb.height-mRect, xp=$(window).width()/2+margin.left;
-    g.attr("transform", "translate(" + xp + "," + yp + ")");      
-    */
+        .style("stroke-width", "1.5px")
+        .attr("transform", "rotate(300)"); 
+
+
+    // récupère les coorodnnées des éléments graphiques
+    var bbRacine = d3.select('#gRacine').node().getBBox();
+    var bbRoot = d3.select('#node_'+cpt.idTxt+'_0').node().getBBox();
+    var bbBranche = d3.select('#gBranche'+cpt.idTxt).node().getBBox();
+    var bbRacineCpt = d3.select('#node-'+sltConcept.id).node().getBBox();
+    //g.attr("transform","translate("+(-bbBranche.x)+","+((hGlobal/2)-bbBranche.height-bbRoot.y)+")");
+    //déplace la branche dans l'humus
+    g.attr("transform","translate("+(0)+","+((hGlobal/2)+wText-bbRacine.height)+")");
+    //déplace le texte dans l'humus
+    d3.select('#'+cpt.idTxt).transition()            
+            .ease(rndEase())          
+            .duration(rndDuree())          
+            .attr("transform", "translate("+bbRoot.x+"," + hGlobal/4 + ")");
 }
 
 /* merci beaucoup à https://bl.ocks.org/mbostock/ca5b03a33affa4160321
@@ -526,46 +745,28 @@ function creerBulles(data){
 */
 function creerRacine(){
 
-    //suprime le svg précédent
-    d3.select("#svgRacine").remove()
+    //suprime les racines précédente
+    d3.select("#gRacine").remove()
+    //suprime les branches précédentes
+    d3.select(".branche").remove();
     
     //construction du svg
     var height = hGlobal/2, width = wGlobal
-    ,svg = d3.select("#mainSVG").append('svg')
-        .attr("id",'svgRacine')
-        .attr("y",height)
-        .attr("width",width)
-        .attr("height",height);
-    svg.append('g');
+    ,g = d3.select("#mainSVG").append('g')
+        .attr("id",'gRacine')
+        .attr('transform', "translate(0," + yRacine + ")");
 
     var format = d3.format(",d");
 
     var pack = d3.pack()
         .size([width - 2, height - 2])
         .padding(3);
-    //filtre les résultats pour récupérer la parent du concept et ces enfants
-    var data = dataTerms.filter(function(f) { 
-        if(!f.branche.parent)f.branche.parent={'id':'no'}
-        return f.id == sltConcept.branche.parent.id 
-            || f.branche.parent.id == sltConcept.branche.parent.id
-            || f.id == sltConcept.branche.id 
-            || f.branche.parent.id == sltConcept.branche.id;
-        }); 
-    var root = d3.stratify()
-        .id(function(d) { return d.id; })
-        .parentId(function(d) { 
-            var p = d.branche.parent.id; 
-            if(d.id==sltConcept.branche.parent.id)p="";
-            return p
-        })
-        (data)
-        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
-        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var root = getHierarchieBranche(sltConcept);
     pack(root);
 
     var desc = root.descendants();
-    var node = svg.select("g")
-        .selectAll("g")
+    var node = g.selectAll("g")
         .data(root.descendants())
         .enter().append("g")
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
@@ -627,168 +828,50 @@ function creerRacine(){
     }
 }
 
-
-/**
- * merci beaucoup à https://bl.ocks.org/d3noob/b024fcce8b4b9264011a1c3e7c7d70dc
- * */
-function creerRacineOld(){
-
-    treeData = sltConcept;
-    // set the dimensions and margins of the diagram
-    var wText = 100, margin = {top: 10, right: 30, bottom: 10, left: 30},
-        width = $(window).width() - margin.left - margin.right - wText,
-        height = ($(window).height()/2) - margin.top - margin.bottom - wText,
-        x = xRacine,
-        y = yRacine;
-
-        // declares a tree layout and assigns the size
-        var treemap = d3.tree()
-            .size([width, height]);
-
-        //  assigns the data to a hierarchy using parent-child relationships
-        var nodes = d3.hierarchy(treeData);
-
-        // maps the node data to the tree layout
-        nodes = treemap(nodes);
-
-        //suprime les anciennes racines
-        d3.select(".svgRacine").remove();
-        d3.select("#pRacine").remove();
-
-        // append the svg obgect to the mainSVG of the page
-        // appends a 'group' element to 'svg'
-        // moves the 'group' element to the top left margin
-        var svg = d3.select("#mainSVG").append("svg")
-            .attr("class", 'svgRacine')
-            .attr("x", x)
-            .attr("y", y)
-            .attr("width", width + margin.left + margin.right + wText)
-            .attr("height", height + margin.top + margin.bottom + wText),
-            g = svg.append("g")
-            .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
-
-        // adds the links between the nodes
-        var link = g.selectAll(".link")
-            .data( nodes.descendants().slice(1))
-        .enter().append("path")
-            .attr("class", "link")
-            .attr("d", function(d) {
-            return "M" + d.x + "," + d.y
-                + "C" + d.x + "," + (d.y + d.parent.y) / 2
-                + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
-                + " " + d.parent.x + "," + d.parent.y;
-            });
-
-        // adds each node as a group
-        var node = g.selectAll(".node")
-            .data(nodes.descendants())
-        .enter().append("g")
-            .attr("class", function(d) { 
-            return "node" + 
-                (d.children ? " node--internal" : " node--leaf"); })
-            .attr("transform", function(d) { 
-            return "translate(" + d.x + "," + d.y + ")"; })
-            .on('click',function(d){
-                console.log(d);
-                //$('#enum-custom').data('selected', [d.data]).change();
-                $('#enum-custom').w2field().set([d.data]);
-                sltConcept = d.data;
-                creerRacine();
-                chercheBNF();
-            });
-
-        // adds the circle to the node
-        node.append("circle")
-            .attr("r", 3);
-
-        // adds the text to the node après le cercle pour qu'il soit dessus
-        var mRect = 14;
-        node.append("text")
-            .attr("dy", ".35em")
-            .attr('id',function(d){
-                return "txtRacine_"+d.data.id;
-            })
-            .attr("x",-mRect/2)
-            .attr("y", function(d) { return d.children ? 0 : 0; })
-            .style("text-anchor", "end")
-            .attr("transform", "rotate(300)")        
-            .text(function(d) { 
-                return treeData.text == d.data.text ? "" : d.data.text; 
-            })
-            .call(wrap, wText);    
-        // met le texte dans un rectangle pour qu'il soit plus visible
-        var wMax = 0;
-        node.append("rect")
-            .attr("width", function(d){
-                //récupère la taille du texte
-                //merci à https://bl.ocks.org/mbostock/1160929
-                d.bb  = d3.select("#txtRacine_"+d.data.id).node().getBBox();
-                var w = d.bb.width+mRect;
-                wMax = wMax > w ? wMax : w;                
-                return w;
-            })
-            .attr("y", function(d) { return d.bb.y-mRect/3; })
-            .attr("x",function(d){
-                return d.bb.x-mRect/2;
-            })            
-            .attr("height", function(d){
-                return d.bb.height+(mRect/2);
-                })
-            .style("rx", 10)
-            .style("fill", "#ccc")
-            .style("fill-opacity", ".3")
-            .style("stroke", "#666")
-            .style("stroke-width", "1.5px")
-            .attr("transform", "rotate(300)");       
-        
-        //création du parent dans le svg global
-        if(sltConcept.IdConceptNiveauSuperieur){
-            //recherche le parent
-            var arrP = dataTerms.filter(function(f){return f.IdentifiantConcept == sltConcept.IdConceptNiveauSuperieur});
-            if(arrP.length){
-                var p = arrP[0];
-                //ajoute le parent au dessus de la graine
-                g = d3.select("#mainSVG").append("g")
-                    .attr('id',"pRacine")
-                    .on('click',function(d){
-                        $('#enum-custom').w2field().set([p]);
-                        sltConcept = p;
-                        creerRacine();
-                        chercheBNF();
-                    });
-                    
-                g.append("text")
-                    .attr("dy", ".35em")
-                    .attr('id',"txtRacine_"+p.id)
-                    .style("text-anchor", "middle")
-                    .text(p.text);    
-                p.bb =  d3.select("#txtRacine_"+p.id).node().getBBox();   
-                g.append("rect")
-                    .attr("width", p.bb.width+mRect)
-                    .attr("y", p.bb.y-mRect/3)
-                    .attr("x", p.bb.x-mRect/2)            
-                    .attr("height", p.bb.height+(mRect/2))
-                    .style("rx", 10)
-                    .style("fill", "#ccc")
-                    .style("fill-opacity", ".3")
-                    .style("stroke", "#666")
-                    .style("stroke-width", "1.5px");      
-                //positionne l'élément graphique
-                var yp = ($(window).height()/2)-p.bb.height-mRect, xp=$(window).width()/2+margin.left;
-                g.attr("transform", "translate(" + xp + "," + yp + ")");         
-            }
-        }
-
-        /*redimensionne le svg avec la taille maximal du texte
-        var wFin = width + margin.left + margin.right, hFin = height + margin.top + margin.bottom + wMax;
-        svg.attr("viewBox","0 0 "+(wFin)+" "+(hFin))
-            .attr("width",window.innerWidth)
-            .attr("height",window.innerHeight/2)
-            .attr("preserveAspectRatio","xMidYMid meet");
-        */
-
+function getHierarchieBranche(cpt){
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var data = dataTerms.filter(function(f) { 
+        if(!f.branche.parent)f.branche.parent={'id':'no'}
+        return f.id == cpt.branche.parent.id 
+            || f.branche.parent.id == cpt.branche.parent.id
+            || f.id == cpt.branche.id 
+            || f.branche.parent.id == cpt.branche.id;
+        }); 
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { 
+            var p = d.branche.parent.id; 
+            if(d.id==cpt.branche.parent.id)p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
+        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    return root;
 }
+
+function getHierarchieRameau(cpt){
+    //filtre les résultats pour récupérer les parents du concept et ces enfants
+    var data = dataTerms.filter(function(f) { 
+        if(!f.branche.parent)f.branche.parent={'id':'no'}
+        return f.id == cpt.branche.parent.id 
+            || f.branche.parent.id == cpt.branche.parent.id
+            || f.id == cpt.branche.id 
+            || f.branche.parent.id == cpt.branche.id;
+        }); 
+    var root = d3.stratify()
+        .id(function(d) { return d.id; })
+        .parentId(function(d) { 
+            var p = d.branche.parent.id; 
+            if(d.id==cpt.branche.parent.id)p="";
+            return p
+        })
+        (data)
+        .sum(function(d) { return d.branche.data.NiveauHierarchique; })
+        .sort(function(a, b) { return b.data.branche.data.NiveauHierarchique - a.data.branche.data.NiveauHierarchique; });
+    return root;
+}
+
 //merci beaucoup à https://bl.ocks.org/guypursey/f47d8cd11a8ff24854305505dbbd8c07
 function wrap(text, width) {
       text.each(function() {
