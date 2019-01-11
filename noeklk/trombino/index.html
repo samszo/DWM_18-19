@@ -46,18 +46,19 @@
 					<span class="symbol"><img src="images/FB.png" alt="" /></span><span class="title">PARIS 8</span>
 				</a>
 
-				<!-- Nav -->
+				<!-- Nav 
+
 				<nav>
 					<ul>
 						<li><a href="#menu">Menu</a></li>
 					</ul>
 				</nav>
-
+-->
 			</div>
 		</header>
 
 		<!-- Menu -->
-		<nav id="menu">
+		<!--<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
 				<li><a href="index.html">Home</a></li>
@@ -66,7 +67,7 @@
 				<li><a href="generic.html">Consequat dolor</a></li>
 				<li><a href="elements.html">Elements</a></li>
 			</ul>
-		</nav>
+		</nav>-->
 
 		<!-- Main -->
 		<div id="main">
@@ -101,41 +102,37 @@
 				<footer id="footer">
 					<div class="inner">
 						<section>
-							<h2>Phantom : <a href="http://html5up.net">HTML5 UP</a>.</h2>
-							<h2>Get in touch</h2>
-							<form method="post" action="#">
+							
+							<h2>Vous avez un commentaire ?</h2>
+							<form method="post" action="send_mail.php" >
 								<div class="fields">
 									<div class="field half">
-										<input type="text" name="name" id="name" placeholder="Name" />
+										<input type="text" name="first_name" id="name" placeholder="Nom/Pseudo" />
 									</div>
 									<div class="field half">
-										<input type="email" name="email" id="email" placeholder="Email" />
+										<input type="email" name="email_address" id="email" placeholder="Email" />
 									</div>
 									<div class="field">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
+										<textarea name="comments" id="message" placeholder="Message"></textarea>
 									</div>
 								</div>
 								<ul class="actions">
-									<li><input type="submit" value="Send" class="primary" /></li>
+									<li><input type="submit" value="Envoyer" class="primary" /></li>
 								</ul>
 							</form>
 						</section>
 						<section>
-							<h2>Follow</h2>
+							<h2>Réseaux sociaux</h2>
 							<ul class="icons">
-								<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
-								<li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-								<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+								<li><a href="https://twitter.com/Noe_klk?lang=fr" target="_blank" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="https://www.facebook.com/noe.abdelkalek" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="https://github.com/noeklk" target="_blank" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="mailto:noe.abdelkalke@gmail.com" target="_blank" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
 							</ul>
 						</section>
 						<ul class="copyright">
-							<li>&copy; Untitled. All rights reserved</li>
-							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; DarkArrow. All rights reserved</li>
+							<li>Design: Noé ABDEL KALEK</li>
 						</ul>
 					</div>
 
@@ -182,7 +179,7 @@
 						var code = '<article id="rowEtu' + i + '">';
 						code += '<span id="colTof' + i + '"  class="image"><img src="' + photo +
 							'" alt="www.farm5.static.flickr.com" /></span>';
-						code += '<a class="up" id="colComp' + i + '"></a>';
+						code += '<a class="up" id="colComp' + i + '"><div class="modalhead"></div></a>';
 						code +=
 							'<p><button class="btnspr over" type="button" data-toggle="modal" data-target="#supprModal' +
 							i + '">';
@@ -195,11 +192,13 @@
 						code += '<div class="modal-dialog" role="document">';
 						code += '<div class="modal-content"><div class="modal-header">';
 						code +=
-							'<h5 class="modal-title" id="exampleModalLabel">Détails étudiant</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+							'<h5 class="modal-title titletof'+i+'" id="exampleModalLabel">Détails étudiant</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 						code += '</div>';
 
 						code +=
-							'<div class="modal-body">Contenu Etudiant Contenu EtudiantContenu EtudiantContenu EtudiantContenu Etudiant Contenu Etudiant </div>';
+							'<div class="modal-body bodytof'+i+'">';
+						code += '';
+						code += '</div>';
 						code +=
 							'<div class="modal-footer"><button type="button" class="btn btn-secondary blc" data-dismiss="modal">Fermer</button></div></div></div></div>';
 
@@ -232,6 +231,22 @@
 							var code = "<h2>" + d['Votre prénom'] + " " + d['Votre nom'] + "</h2><div class='content'>" + d['Votre mail'] +
 								"</div>";
 							$('#colComp' + d['num photo']).append(code);
+
+							var code1 = "<br><br><p class='lowkey fontlil'>Prénom(s) : " +d['Votre prénom']+ "</p>";
+								code1 += "<p class='lowkey fontlil'>Nom : " +d['Votre nom'] + "</p>";
+								code1 += '<p class ="lowkey fontlil">Spécialité : '+ d['Votre spécialité'] + '</p>' ;
+							$('h5.titletof' + d['num photo']).append(code1);
+
+							var code2 = 'Numéro étudiant : ' + d['N° D\'étudiant'];
+								code2 += '<br><br><p>Notes /5 <p>';
+								code2 += '&nbsp;&nbsp;&nbsp;' + 'Template trombinoscope ' + d['template trombino 1 / 5'] + '/5';
+								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Travail de comparaison ' + d['travail de comparaison / 5'] + '/5';
+								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Palette de tweet ' + d['paelette tweet / 5'] + '/5';
+
+
+
+							$('div.bodytof' + d['num photo']).append(code2);
+
 
 						})
 					});
