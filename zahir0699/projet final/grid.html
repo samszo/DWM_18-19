@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="Samuel Szoniecky">
+
+    <title>Grille</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/dwm_18-19/samszo/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost/dwm_18-19/samszo/css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/dwm_18-19/samszo/css/sticky-footer-navbar.css" />
+
+    <script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/d3.v4.js"></script>
+    <script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/popper.min.js"></script>
+    <script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/w2ui.js"></script>
+    <script type="text/javascript" src="http://localhost/dwm_18-19/samszo/js/fontawesome.v5.5.0.all.js" ></script>
+
+</head>
+<body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+                <a class="navbar-brand" href="#">Top navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+
+ 
+<div id="grid" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+$(function () {    
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'lname', caption: 'Last Name', type: 'text' },
+            { field: 'fname', caption: 'First Name', type: 'text' },
+            { field: 'email', caption: 'Email', type: 'text' }
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'lname', caption: 'Last Name', size: '30%', sortable: true },
+            { field: 'fname', caption: 'First Name', size: '30%', sortable: true },
+            { field: 'email', caption: 'Email', size: '40%' },
+            { field: 'sdate', caption: 'Start Date', size: '120px' }
+        ],
+        onAdd: function (event) {
+            w2alert('add');
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, fname: 'Jane', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 3, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 4, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 5, fname: 'Kelly', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 6, fname: 'Francis', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 7, fname: 'Mark', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 8, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 9, fname: 'Sergei', lname: 'Rachmaninov', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 20, fname: 'Jill', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 21, fname: 'Frank', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 22, fname: 'Peter', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 23, fname: 'Andrew', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 24, fname: 'Manny', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 25, fname: 'Ben', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 26, fname: 'Doer', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 27, fname: 'Shashi', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+            { recid: 28, fname: 'Av', lname: 'Rachmaninov', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+        ]
+    });    
+});
+</script>
+
+</body>
+</html>
