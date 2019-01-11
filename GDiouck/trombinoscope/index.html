@@ -1,89 +1,121 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<title>Verti by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+		<style type="text/css"></style>        
+	</head>
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
 
-    <title>Trombinoscope</title>
-  </head>
-  <body>
-    <div class="jumbotron">
-        <h1 class="display-4">Design Web Mobile</h1>
-        <p class="lead">Trombinoscope</p>
-        <hr class="my-6">
-        <p>Promotion 2018-2019</p>
-        
-    </div>
-            
-    
-    <div class="container" >
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
 
-        <div class="row" id="etuCards">
-           
-        </div>                            
-    </div>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="index.html">TROMBINOSCOPE</a></h1>
+								<span>DWM_18-19</span>
+							</div>
 
-<script>
-var dataPhoto,dataForm;
-        var vals = {"Pas besoin":1, "Besoin d'approfondissement":5, "Besoin urgent":10, "je ne connais pas du tout":1,"je connais un peu":5,"je me débrouille":10,"je suis expert(e)":20};
+						
+					</header>
+				</div>
 
-//récupération des photos du groupe flickr
-//merci beaucoup à https://etienner.fr/flickr-json
-var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
-$.getJSON(urlFlickr,traitePhoto);
+			<!-- Banner -->
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Design Web Mobile</h2>
+								<p>2018-2019</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="" class="button large icon fa-arrow-circle-right">Ok let's go</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 
-function traitePhoto(data){
+			<!-- Features -->
+				<div id="features-wrapper">
+					<div class="container">
+						<div class="row" id="etuCards">
+							
+						</div>
+					</div>
+				</div>
 
-        dataPhoto = data;
-        // Debut de la boucle        
-        dataPhoto.photoset.photo.forEach(function(item,i){
-            // Sockage de l'url dans une variable
-            var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
-            console.log(photo);
-            var code = '<div id="etuCards'+i+'" class="row">'
-            //var code =   '<div class="container"><div class="row">';
-            code +='<div id="coltof'+i+'"  class="col">';
-            code += '<img class="img-fluid" src="'+photo+'" />';
-            code +='<div id="colComp'+i+'" class="col-4"></div>';
-            code +='<div id="colBes'+i+'"  class="col-4"></div>';
-            code +='</div>';
-            code +='</div>';
-            
-            
-          $('#etuCards').append(code);
-            // Affichage des images dans la balise ul#images avec le l'url dans la balise li
-            //$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
-        });
-        //Fin de la boucle
-        traiteForm();
-}
+	
+	<script>
+		var dataPhoto,dataForm;
+		//récupération des photos du groupe flickr
+		//merci beaucoup à https://etienner.fr/flickr-json
+		var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=79672885f8a018343cd8849f57e8a50a&photoset_id=72157699869235592&extras=original_format&format=json&jsoncallback=?"; 
+		$.getJSON(urlFlickr,traitePhoto);
+		
+		function traitePhoto(data){
+		
+				dataPhoto = data;
+				// Debut de la boucle        
+				dataPhoto.photoset.photo.forEach(function(item,i){
+					// Sockage de l'url dans une variable
+					var photo = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+					console.log(photo);
+					var code = '<div id="features-wrapper'+i+'" class="row">'
+                    code += '<div id="colTof'+i+'"  class="col">';
+					code += '<img class="img-fluid" src="'+photo+'" />';
+					code += '<div id="colComp'+i+'" class="box feature"></div>';
+					code += '<div id="colBes'+i+'" class="box feature"></div>';
+					code += '</div>';
+					code += '</div>';
+					$('#etuCards').append(code);
+					// Affichage des images dans la balise ul#images avec le l'url dans la balise li
+					//$("<img/>").attr({src: photo, alt: item.title}).appendTo("#images").wrap("<li id='photo"+i+"'><a href=' "+ url +"' title=' "+ item.title +" ' ></a></li>");
+				});
+				//Fin de la boucle
+				traiteForm();
+		}
+		
+		function traiteForm(){
+		
+			//récupération des données du formulaire google
+			var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
+			//var url = "data/LPDesignWebMobile_17-18.csv";        
+			d3.csv(url, function(data) {
+				dataForm = data;
+				dataForm.forEach(function(d, i){		
+					$('#colBes'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d["N° D'étudiant"]+"</div>");
+					/*$('#colBes'+d['num photo']).append("<div>"+d['Votre spécialité']+"</div>");
+					$('#colBBes'+d['num photo']).append("<div>"+d['Votre compte GitHub']+" "+d['Votre compte Diigo']+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d["Votre compte NetVibes"]+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d['Quelles sont besoins ? [connaître les outils d’édition web (éditeurs html, CSS, …) ]']+" "+d['Quelles sont besoins ? [connaître les base du langage HTML 5]']+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d['Quelles sont besoins ? [connaître les bases du responsive web design (RWD)]']+" "+d["Quelles sont besoins ? [savoir scénariser et réaliser les rubriques « statiques » d’un site web]"]+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d['Quelles sont besoins ? [savoir scénariser et réaliser des rubriques multimédias (« page vidéo », « page photo », exposition virtuelle, …)]']+" "+d["Quelles sont besoins ? [savoir utiliser des cartes géographiques interactives]"]+"</div>");
+					$('#colBes'+d['num photo']).append("<div>"+d['Quelles sont besoins ? [savoir travailler avec le RSS]']+" "+d["Quelles sont besoins ? [savoir utiliser correctement les métadonnées pour une meilleure diffusion des contenus du site]"]+"</div>");*/
+				})
+				
+			});
+		}
+		
+		</script>
 
-function traiteForm(){
-
-	//récupération des données du formulaire google
-	var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv';
-    //var url = "data/LPDesignWebMobile_17-18.csv";        
-	d3.csv(url, function(data) {
-		dataForm = data;
-        dataForm.forEach(function(d, i){		
-            $('#colComp'+d['num photo']).append("<div>"+d['Votre prénom']+" "+d['Votre nom']+"</div>");
-            $('#colBes'+d['num photo']).append("<div>"+d['Votre mail']+" "+d["N° D'étudiant"]+"</div>");
-        })
-        
-    });
-}
-
-</script>
-</body>
+	</body>
 </html>
