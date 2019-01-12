@@ -72,5 +72,6 @@ else {
 	mail( "$webmaster_email", "Feedback Form Results", $msg );
 
 	header( "Location: $thankyou_page" );
+//header( "refresh:3;url=$thankyou_page" );
 }
 ?>

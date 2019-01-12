@@ -82,7 +82,7 @@
 				<body>
 
 
-					<section href="www.google.fr" class="tiles">
+					<section class="tiles">
 
 
 					</section>
@@ -104,6 +104,7 @@
 						<section>
 							
 							<h2>Vous avez un commentaire ?</h2>
+							<p>(Marche sur le PC de Noé seulement)</p>
 							<form method="post" action="send_mail.php" >
 								<div class="fields">
 									<div class="field half">
@@ -238,11 +239,16 @@
 							$('h5.titletof' + d['num photo']).append(code1);
 
 							var code2 = 'Numéro étudiant : ' + d['N° D\'étudiant'];
+							
+								code2 += '<br>ID Netvibes : ' + d['Votre compte NetVibes'];
+								code2 += '<br>ID Diigo : ' + d['Votre compte Diigo'];
+								code2 += '<br>ID GitHub : ' + d['Votre compte GitHub'];
+								code2 += '<span">';
 								code2 += '<br><br><p>Notes /5 <p>';
 								code2 += '&nbsp;&nbsp;&nbsp;' + 'Template trombinoscope ' + d['template trombino 1 / 5'] + '/5';
 								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Travail de comparaison ' + d['travail de comparaison / 5'] + '/5';
 								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Palette de tweet ' + d['paelette tweet / 5'] + '/5';
-
+								code2 += '</span>';
 
 
 							$('div.bodytof' + d['num photo']).append(code2);
