@@ -30,6 +30,44 @@
 <div id="grid" style="width: 100%; height: 400px;"></div>
 
 <script type="text/javascript">
+
+function verifForm(){
+    let rep = true;
+    if (w2ui.gQuestions.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les questions.');
+        rep = false;
+    }
+    if (w2ui.gReponse.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les réponses.');
+        rep = false;
+    }
+
+    return rep;
+
+}
+
+function getParamsForm() {
+    var params = {
+        'iptForm': $('#iptForm').val(),
+        'iptFormIeml': $('#iptFormIeml').val(),
+        'chkGeo': $('#chkGeo').val(),
+        'chkTime': $('#chkTime').val(),
+        'chkBDD': $('#chkBDD').val(),
+        'iptBddID': $('#iptBddID').val()
+    };
+    return params;
+}
+
+function exportJson(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {
+        type: contentType
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
 $(function () {    
     $('#grid').w2grid({ 
         name: 'grid', 
@@ -41,20 +79,38 @@ $(function () {
             toolbarSave: true,
             toolbarEdit: true
         },
-        searches: [                
+        searches: [ 
+			{ field: 'recid', caption: 'ID', type: 'int' },		
             { field: 'lname', caption: 'Last Name', type: 'text' },
             { field: 'fname', caption: 'First Name', type: 'text' },
             { field: 'email', caption: 'Email', type: 'text' }
         ],
         columns: [                
-            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
-            { field: 'lname', caption: 'Last Name', size: '30%', sortable: true },
-            { field: 'fname', caption: 'First Name', size: '30%', sortable: true },
-            { field: 'email', caption: 'Email', size: '40%' },
-            { field: 'sdate', caption: 'Start Date', size: '120px' }
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center'
+			},
+            { field: 'lname', caption: 'Last Name', size: '30%', sortable: true,
+			 
+                editable: { type: 'text' } },
+            { field: 'fname', caption: 'First Name', size: '30%', sortable: true,
+			 
+                editable: { type: 'text' }},
+            { field: 'email', caption: 'Email', size: '40%',
+			 
+                editable: { type: 'text' } },
+            
+			{ field: 'email', caption: 'Email', size: '40%',
+			 
+                editable: { type: 'text' } },
+				{ field: 'iml', caption: 'iEML', size: '50px',
+                editable: { type: 'int' }  },
+			{ field: 'niml', caption: 'nom iEML', size: '150px', sortable: true,
+                editable: { type: 'date' }  },
+			
         ],
         onAdd: function (event) {
-            w2alert('add');
+			
+			
+			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
         },
         onEdit: function (event) {
             w2alert('edit');
@@ -63,7 +119,18 @@ $(function () {
             console.log('delete has default behavior');
         },
         onSave: function (event) {
-            w2alert('save');
+          //  w2ui.grid.save();
+			w2alert('edit');
+			 
+				 
+        var params = getParamsForm();
+        var jsonData = {
+            "questions": arrQR,
+            "params": params,
+            "reponses": arrReponses
+        };
+        exportJson(JSON.stringify(jsonData), 'formulaireSemantique.json', 'text/plain');    
+    
         },
         records: [
             { recid: 1, fname: 'Jane', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },

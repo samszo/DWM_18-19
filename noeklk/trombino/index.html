@@ -102,10 +102,10 @@
 				<footer id="footer">
 					<div class="inner">
 						<section>
-							
+
 							<h2>Vous avez un commentaire ?</h2>
 							<p>(Marche sur le PC de Noé seulement)</p>
-							<form method="post" action="send_mail.php" >
+							<form method="post" action="send_mail.php">
 								<div class="fields">
 									<div class="field half">
 										<input type="text" name="first_name" id="name" placeholder="Nom/Pseudo" />
@@ -126,7 +126,8 @@
 							<h2>Réseaux sociaux</h2>
 							<ul class="icons">
 								<li><a href="https://twitter.com/Noe_klk?lang=fr" target="_blank" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/noe.abdelkalek" target="_blank" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="https://www.facebook.com/noe.abdelkalek" target="_blank" class="icon style2 fa-facebook"><span
+										 class="label">Facebook</span></a></li>
 								<li><a href="https://github.com/noeklk" target="_blank" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
 								<li><a href="mailto:noe.abdelkalke@gmail.com" target="_blank" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
 							</ul>
@@ -188,16 +189,17 @@
 
 
 						code +=
-							'<div class="modal fade mdlspr" id="supprModal' + i +
+							'<div class="modal mdlspr fade" id="supprModal' + i +
 							'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
 						code += '<div class="modal-dialog" role="document">';
 						code += '<div class="modal-content"><div class="modal-header">';
 						code +=
-							'<h5 class="modal-title titletof'+i+'" id="exampleModalLabel">Détails étudiant</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+							'<h5 class="modal-title titletof' + i +
+							'" id="exampleModalLabel">Détails étudiant</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 						code += '</div>';
 
 						code +=
-							'<div class="modal-body bodytof'+i+'">';
+							'<div class="modal-body bodytof' + i + '">';
 						code += '';
 						code += '</div>';
 						code +=
@@ -233,22 +235,25 @@
 								"</div>";
 							$('#colComp' + d['num photo']).append(code);
 
-							var code1 = "<br><br><p class='lowkey fontlil'>Prénom(s) : " +d['Votre prénom']+ "</p>";
-								code1 += "<p class='lowkey fontlil'>Nom : " +d['Votre nom'] + "</p>";
-								code1 += '<p class ="lowkey fontlil">Spécialité : '+ d['Votre spécialité'] + '</p>' ;
+							var code1 = "<br><br><p class='lowkey fontlil'>Prénom(s) : " + d['Votre prénom'] + "</p>";
+							code1 += "<p class='lowkey fontlil'>Nom : " + d['Votre nom'] + "</p>";
+							code1 += '<p class ="lowkey fontlil">Spécialité : ' + d['Votre spécialité'] + '</p>';
 							$('h5.titletof' + d['num photo']).append(code1);
 
-							var code2 = 'Numéro étudiant : ' + d['N° D\'étudiant'];
-							
-								code2 += '<br>ID Netvibes : ' + d['Votre compte NetVibes'];
-								code2 += '<br>ID Diigo : ' + d['Votre compte Diigo'];
-								code2 += '<br>ID GitHub : ' + d['Votre compte GitHub'];
-								code2 += '<span">';
-								code2 += '<br><br><p>Notes /5 <p>';
-								code2 += '&nbsp;&nbsp;&nbsp;' + 'Template trombinoscope ' + d['template trombino 1 / 5'] + '/5';
-								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Travail de comparaison ' + d['travail de comparaison / 5'] + '/5';
-								code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Palette de tweet ' + d['paelette tweet / 5'] + '/5';
-								code2 += '</span>';
+							var code2 = 'Numéro étudiant : ' + d['N° D\'étudiant'] + "<br>";
+
+							code2 += '<br>ID Netvibes : ' + d['Votre compte NetVibes'];
+							code2 += '<br>ID Diigo : ' + d['Votre compte Diigo'];
+							code2 += '<br>ID GitHub : ' + d['Votre compte GitHub'] + "<br>";
+							code2 +=
+								'<button class="btnmore" data-dismiss="modal" data-toggle="modal" data-target="#notlong" href="#notlong">Besoins</button>';
+							//code2 += 'Besoin html-css-php-js : ' + d[];
+
+							code2 += '<br><br><p>Notes /5 <p>';
+							code2 += '&nbsp;&nbsp;&nbsp;' + 'Template trombinoscope ' + d['template trombino 1 / 5'] + '/5';
+							code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Travail de comparaison ' + d['travail de comparaison / 5'] + '/5';
+							code2 += '<br>&nbsp;&nbsp;&nbsp;' + 'Palette de tweet ' + d['paelette tweet / 5'] + '/5';
+
 
 
 							$('div.bodytof' + d['num photo']).append(code2);
