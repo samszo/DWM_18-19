@@ -2,7 +2,6 @@
 "cmd"     : "save-records",
 "name"    : "grid2",
 "changes" : [],
-"total": 9,
 "records": [
     { "recid": 1, "nom":"Voix de GD", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/1/1979", "check": true },
     { "recid": 2, "nom":"Voix de GD", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/1/1979", "check": true },
