@@ -1,0 +1,11 @@
+{
+"cmd"     : "save-records",
+"changes" : [],
+"total": 9,
+"records": [
+    { "recid": 1, "nom":"A", "prenom": "a", "mail": "a@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
+    { "recid": 2, "nom":"B", "prenom": "b", "mail": "b@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
+    { "recid": 3, "nom":"C", "prenom": "c", "mail": "c@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
+    { "recid": 4, "nom":"D", "prenom": "d", "mail": "d@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true }
+    ]
+}

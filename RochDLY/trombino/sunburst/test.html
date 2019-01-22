@@ -23,12 +23,11 @@
       <div id="legend" style="visibility: hidden;"></div>
     </div>
     <div class="tab-pane fade" id="form" role="tabpanel" aria-labelledby="planning-tab">
-      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTXBMs5GYAPsGM1zhMTp3bFZnrVxGZcxEBEliF23GRd0NF-raDqp2fLYLgLR7X4HZ5fGSHm8P6VFoUm/pub?gid=129893724&single=true&output=csv" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
     <script type="text/javascript" src="sequences.js"></script>
     <script type="text/javascript">
       // Hack to make this example display correctly in an iframe on bl.ocks.org
-      d3.select("iframe").style("height", "700px");
+      d3.select(self.frameElement).style("height", "700px");
   </script> 
   </body>
 </html>
