@@ -128,16 +128,8 @@ return rep;
 
 }
 
-function getParamsForm() {
-var params = {
-    'iptForm': $('#iptForm').val(),
-    'iptFormIeml': $('#iptFormIeml').val(),
-    'chkGeo': $('#chkGeo').val(),
-    'chkTime': $('#chkTime').val(),
-    'chkBDD': $('#chkBDD').val(),
-    'iptBddID': $('#iptBddID').val()
-};
 return params;
+
 }
 
 function exportJson(content, fileName, contentType) {
@@ -149,6 +141,6 @@ a.href = URL.createObjectURL(file);
 a.download = fileName;
 a.click();
 }
-}
+
 
 </script>
