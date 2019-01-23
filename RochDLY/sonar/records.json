@@ -2,9 +2,9 @@
 "cmd"     : "save-records",
 "changes" : [],
 "records": [
-    { "recid": 1, "nom":"A", "prenom": "a", "mail": "a@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
-    { "recid": 2, "nom":"B", "prenom": "b", "mail": "b@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
-    { "recid": 3, "nom":"C", "prenom": "c", "mail": "c@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true },
-    { "recid": 4, "nom":"D", "prenom": "d", "mail": "d@gmailcom", "date": "1/1/2014", "mdp": "John Cook", "check": true }
+    { "recid": 1, "nom":"Dupond", "prenom": "Jean", "mail": "jean.dupond@gmailcom", "date": "29/03/2019", "mdp": "John Cook", "check": true },
+    { "recid": 2, "nom":"Moulin", "prenom": "Victor", "mail": "j.moulin@gmailcom", "date": "29/03/2019", "mdp": "John Cook", "check": true },
+    { "recid": 3, "nom":"Kergellen", "prenom": "Sophie", "mail": "sophie.k@gmailcom", "date": "29/03/2019", "mdp": "John Cook", "check": true },
+    { "recid": 4, "nom":"Nessburg", "prenom": "Johan", "mail": "j.n@gmailcom", "date": "29/03/2019", "mdp": "John Cook", "check": true }
     ]
 }
