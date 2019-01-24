@@ -1,0 +1,16 @@
+{
+"cmd"     : "save-records",
+"changes" : [],
+"records": [
+    { "recid": 1, "concept":"créer et reconnaître des formes sonores", "clef": "O:U:.f.U:.-"},
+    { "recid": 2, "concept":"environnement collaboratif", "clef": "b.x.-"},
+    { "recid": 3, "concept":"économie politique, philosophie économique", "clef": "s.-e.-s.y.-'"},
+    { "recid": 4, "concept":"science", "clef": "d.o.-n.o.-'"},
+    { "recid": 5, "concept":"esthétique, philosophie de l'art", "clef": "s.-j.-s.y.-'"},
+    { "recid": 6, "concept":"santé", "clef": "n.o.-f.o.-'"},
+    { "recid": 7, "concept":"électro-nano-bio technologies", "clef": "x.-'T:.-'k.o.-t.o.-',"},
+    { "recid": 8, "concept":"réseau de volontés, disposition éthique, écosystème de subjectivités", "clef": "s.o.-k.o.-'h.-',M:.-',_"},
+    { "recid": 9, "concept":"culture", "clef": "n.o.-s.o.-'"},
+    { "recid": 10, "concept":"virtuel", "clef": "U:"}
+    ]
+}

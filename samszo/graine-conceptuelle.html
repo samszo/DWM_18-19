@@ -253,10 +253,10 @@ function removeGraphique(){
     d3.select(".branche").remove();
     d3.select('.tg').remove();
 }
-
+//var urlDomain = "http://localhost/jdc/";
+var urlDomain = "http://jardindesconnaissances.univ-paris8.fr/";
 function chercheBNF(){
-    var urlBNF =  "http://jardindesconnaissances.univ-paris8.fr/public/flux/databnf?obj=term&term="+sltConcept.text;
-    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=term&term="+sltConcept.text;
+    var urlBNF =  urlDomain+"public/flux/databnf?obj=term&term="+sltConcept.text;
     $.getJSON(urlBNF, function(dt){
         if (dt.length<=0){
             w2alert("Nous n'avons rien trouvé !");
@@ -276,7 +276,7 @@ function chercheBNF(){
 
 function chercheSparqlBNF(){
     sltBNF.idBNF = sltBNF.value.substring(sltBNF.value.lastIndexOf("/")+1);
-    var urlBNF =  "http://localhost/jdc/public/flux/databnf?obj=rameau&idBNF="
+    var urlBNF =  urlDomain+"public/flux/databnf?obj=rameau&idBNF="
         +sltBNF.idBNF;
     var cpt = sltBNF;
     $.getJSON(urlBNF, function(dt){
