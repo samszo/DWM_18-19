@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="tweet.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient22481">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop22477" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="1"
+         id="stop22479" />
+    </linearGradient>
+    <marker
+       inkscape:stockid="Tail"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Tail"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <g
+         id="g961"
+         transform="scale(-1.2)"
+         style="stroke:none;stroke-opacity:1;fill:#ff0000;fill-opacity:1">
+        <path
+           id="path949"
+           d="M -3.8048674,-3.9585227 L 0.54352094,0"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path951"
+           d="M -1.2866832,-3.9585227 L 3.0617053,0"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path953"
+           d="M 1.3053582,-3.9585227 L 5.6537466,0"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path955"
+           d="M -3.8048674,4.1775838 L 0.54352094,0.21974226"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path957"
+           d="M -1.2866832,4.1775838 L 3.0617053,0.21974226"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path959"
+           d="M 1.3053582,4.1775838 L 5.6537466,0.21974226"
+           style="fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+      </g>
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path916"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#ff5555;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1231"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1229"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#ff5555;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1197"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1195"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:none;stroke-width:1pt;stroke-opacity:1;fill:#ff0000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path913"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#ff5555;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient899">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop895" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop897" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient899"
+       id="linearGradient903"
+       x1="70.920479"
+       y1="39.395199"
+       x2="133.95023"
+       y2="39.395199"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient22481"
+       id="radialGradient22483"
+       cx="110.74877"
+       cy="153.54147"
+       fx="110.74877"
+       fy="153.54147"
+       r="92.457928"
+       gradientTransform="matrix(1,0,0,1.1039345,0,-15.958251)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.41053452"
+     inkscape:cx="437.6406"
+     inkscape:cy="568.08199"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:url(#radialGradient22483);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.23650821;stroke-miterlimit:4;stroke-dasharray:0.2365081, 0.47301627000000002;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Tail);marker-mid:url(#marker1197);paint-order:stroke fill markers"
+       id="path815"
+       cx="109.71666"
+       cy="153.54147"
+       rx="90.479782"
+       ry="101.12146"
+       transform="matrix(1,0,-0.01964244,0.99980707,0,0)" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       id="path825"
+       sodipodi:cx="44.804596"
+       sodipodi:cy="227.80806"
+       sodipodi:expansion="15.02"
+       sodipodi:revolution="12.6779"
+       sodipodi:radius="18.707249"
+       sodipodi:argument="-77.84182"
+       sodipodi:t0="0"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       transform="matrix(0.75791196,0,0,0.75969819,26.993675,24.260082)" />
+    <text
+
+
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.14282417px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="25.521654"
+       y="212.67255"
+       id="text829"
+       onclick="alert('Trois semaine après la fécondation le coeur de l\'embryon commence à battre!!! merveilleux non!!! La plupart des organes, Le placenta ainsi que le cordon ombilical se mettent en place. ')"
+       transform="scale(1.0434306,0.95837708)"><tspan
+         sodipodi:role="line"
+         id="tspan827"
+         x="25.521654"
+         y="212.67255"
+         style="stroke-width:2.26458332">1er Mois</tspan></text>
+    <path
+       transform="matrix(1.0835633,0,0,0.71830523,3.4217632,4.5240031)"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       sodipodi:t0="0"
+       sodipodi:argument="-77.84182"
+       sodipodi:radius="18.707249"
+       sodipodi:revolution="12.6779"
+       sodipodi:expansion="15.02"
+       sodipodi:cy="227.80806"
+       sodipodi:cx="44.804596"
+       id="path841"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       sodipodi:type="spiral" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="22.439638"
+       y="176.50038"
+       id="text845"><tspan
+       onclick="alert('Dès le début de votre 2ème mois de grossesse, le visage de votre embryon commence à prendre forme. En effet, les yeux, le nez, la bouche et les oreilles de votre embryon se apparaissent petit à petit. De plus, ses jambes et ses bras continuent de pousser et son cœur a presque doublé de volume !')"
+         sodipodi:role="line"
+         id="tspan843"
+         x="22.439638"
+         y="176.50038"
+         style="stroke-width:0.26458332">2e Mois</tspan></text>
+    <path
+       sodipodi:type="spiral"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       id="path849"
+       sodipodi:cx="44.804596"
+       sodipodi:cy="227.80806"
+       sodipodi:expansion="15.02"
+       sodipodi:revolution="12.6779"
+       sodipodi:radius="18.707249"
+       sodipodi:argument="-77.84182"
+       sodipodi:t0="0"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       transform="matrix(1.3281934,0,0,0.87924851,-7.2054611,-63.502584)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="23.694654"
+       y="147.72752"
+       id="text853"><tspan
+       onclick="alert('Bébé mesure désormais 11 cm et prend de plus en plus de place! Son squelette se précise, ses organes fonctionnent, il commence à bouger : il tourne la tête, serre les poings et écarte les doigts de pied, même si vous ne le sentez pas encore. Son visage aussi prend forme, chaque élément est désormais présent : oreilles, yeux, nez, bouche, menton. La tête s\'arrondit!')"
+         sodipodi:role="line"
+         id="tspan851"
+         x="23.694654"
+         y="147.72752"
+         style="stroke-width:0.26458332">3e Mois</tspan></text>
+    <path
+       transform="matrix(1.5218313,0,0,0.6836185,-8.5149331,-53.858407)"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       sodipodi:t0="0"
+       sodipodi:argument="-77.84182"
+       sodipodi:radius="18.707249"
+       sodipodi:revolution="12.6779"
+       sodipodi:expansion="15.02"
+       sodipodi:cy="227.80806"
+       sodipodi:cx="44.804596"
+       id="path855"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       sodipodi:type="spiral" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       id="path857"
+       sodipodi:cx="44.804596"
+       sodipodi:cy="227.80806"
+       sodipodi:expansion="15.02"
+       sodipodi:revolution="12.6779"
+       sodipodi:radius="18.707249"
+       sodipodi:argument="-77.84182"
+       sodipodi:t0="0"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       transform="matrix(1.574997,0,0,0.80448276,43.100947,-91.09549)" />
+    <path
+       transform="matrix(1.6385129,0,0,0.92552064,88.455008,-104.0113)"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       sodipodi:t0="0"
+       sodipodi:argument="-77.84182"
+       sodipodi:radius="18.707249"
+       sodipodi:revolution="12.6779"
+       sodipodi:expansion="15.02"
+       sodipodi:cy="227.80806"
+       sodipodi:cx="44.804596"
+       id="path859"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       sodipodi:type="spiral" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       id="path861"
+       sodipodi:cx="44.804596"
+       sodipodi:cy="227.80806"
+       sodipodi:expansion="15.02"
+       sodipodi:revolution="12.6779"
+       sodipodi:radius="18.707249"
+       sodipodi:argument="-77.84182"
+       sodipodi:t0="0"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       transform="matrix(1.7455632,0,0,1.1463842,88.972958,-123.04095)" />
+    <path
+       transform="matrix(-0.44241677,2.0903503,-1.5341774,-0.21656142,540.01094,135.27435)"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       sodipodi:t0="0"
+       sodipodi:argument="-77.84182"
+       sodipodi:radius="18.707249"
+       sodipodi:revolution="12.6779"
+       sodipodi:expansion="15.02"
+       sodipodi:cy="227.80806"
+       sodipodi:cx="44.804596"
+       id="path863"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.28635266"
+       sodipodi:type="spiral" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.2828598"
+       id="path865"
+       sodipodi:cx="44.804596"
+       sodipodi:cy="227.80806"
+       sodipodi:expansion="15.02"
+       sodipodi:revolution="12.6779"
+       sodipodi:radius="18.707249"
+       sodipodi:argument="-77.84182"
+       sodipodi:t0="0"
+       d="m 44.804596,227.80806 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 -10e-7,0 0,0 1e-6,0 10e-7,0 2e-6,0 2e-6,0 0,0 -4e-6,10e-6 -6e-6,10e-6 -6e-6,0 -10e-6,-10e-6 -10e-6,-2e-5 10e-7,-1e-5 1.5e-5,-2e-5 2.7e-5,-2e-5 2.7e-5,0 4.1e-5,3e-5 4e-5,6e-5 -3e-6,5e-5 -6e-5,8e-5 -1.08e-4,8e-5 -1.01e-4,-1e-5 -1.55e-4,-1.2e-4 -1.47e-4,-2.1e-4 1.8e-5,-1.9e-4 2.2e-4,-2.9e-4 3.92e-4,-2.7e-4 3.41e-4,3e-5 5.19e-4,4e-4 4.81e-4,7.1e-4 -7.2e-5,6.1e-4 -7.27e-4,9.2e-4 -0.0013,8.5e-4 -0.0011,-1.4e-4 -0.0016,-0.001 -0.0014,-0.002 2.58e-4,-0.002 0.0022,-0.003 0.0039,-0.002 0.003,4.7e-4 0.0045,0.004 0.004,0.006 -8.13e-4,0.005 -0.0062,0.007 -0.01074,0.007 -0.008,-0.001 -0.0119,-0.0101 -0.01054,-0.0175 0.0023,-0.0127 0.01623,-0.0189 0.02804,-0.0166 0.01996,0.004 0.0297,0.0257 0.02596,0.0443 -0.0062,0.0309 -0.04022,0.046 -0.06914,0.0399 -0.04741,-0.01 -0.07029,-0.0621 -0.06069,-0.10647 0.01552,-0.0718 0.09469,-0.10623 0.161995,-0.0912 0.107432,0.024 0.158783,0.14276 0.135556,0.24369 -0.03662,0.15914 -0.212904,0.23486 -0.362657,0.19944 -0.233377,-0.0552 -0.343956,-0.31425 -0.290562,-0.53421 0.08229,-0.33901 0.459309,-0.49899 0.779298,-0.41943 0.487999,0.12134 0.717416,0.6651 0.60012,1.12638 -0.177093,0.69644 -0.954576,1.02266 -1.613768,0.85147 -0.985759,-0.25599 -1.445914,-1.35849 -1.198456,-2.29273 0.366681,-1.38435 1.917778,-2.02845 3.23139,-1.67397 1.929559,0.5207 2.824524,2.6865 2.32109,4.51961 -0.733334,2.67023 -3.735669,3.90504 -6.275289,3.19591 -3.66988,-1.02474 -5.362127,-5.15801 -4.371017,-8.65214 1.421258,-5.0106 7.07385,-7.31478 11.849409,-5.93986 6.797973,1.95718 9.915949,9.63851 8.022125,16.12401 -2.190309,7.50083 -9.842812,11.98401 -17.435168,11.5385"
+       transform="matrix(-1.3347553,1.9449082,-2.3233281,-1.0056053,711.75767,364.10046)" />
+    <text
+       id="text869"
+       y="111.43011"
+       x="34.138065"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+        onclick="alert('L\'utérus augmente encore de volume et atteint le niveau du nombril. La maman peut le sentir en palpant son abdomen. L\'augmentation de volume de l\'utérus entraîne une pression sur la vessie entraînant la nécessité d\'aller uriner très souvent. Des douleurs et des sensations d\'étirements surviennent des 2 côtés du bas de l\'abdomen.  !')"
+         style="stroke-width:0.26458332"
+         y="111.43011"
+         x="34.138065"
+         id="tspan867"
+         sodipodi:role="line">4e Mois</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11.41345978px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="92.946922"
+       y="94.24157"
+       id="text873"
+       transform="scale(0.92726772,1.0784372)"><tspan
+        onclick="alert('Au cours du 5ème mois de grossesse, le fœtus bouge de plus en plus, et les changements physiques sont importants pour la mère. Le fœtus bouge davantage et se retourne fréquemment pendant le 5ème mois de grossesse. Sa maman ressent d\'ailleurs fortement ses coups de pied. Plusieurs rendez-vous médicaux et administratifs sont aussi à inscrire dans l\'agenda.!')"
+         sodipodi:role="line"
+         id="tspan871"
+         x="92.946922"
+         y="94.24157"
+         style="stroke-width:0.26458332">5e Mois</tspan></text>
+    <text
+       id="text877"
+       y="119.16394"
+       x="131.98447"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+        onclick="alert('La croissance de Bébé et la pression sur votre estomac qu\'elle entraîne provoque aussi des troubles digestifs : vous souffrez peut-être de régurgitations acides. Les insomnies se font de plus en plus fréquentes : Bébé bouge beaucoup... même la nuit ! À éviter absolument : les somnifères en auto-médication. !')"
+         style="stroke-width:0.26458332"
+         y="119.16394"
+         x="131.98447"
+         id="tspan875"
+         sodipodi:role="line">6e Mois</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="138.89334"
+       y="151.02728"
+       id="text881"><tspan
+        onclick="alert('Bébé avale une grande quantité de liquide amniotique, développe son goût, son corps s\'arrondit. A la fin du 7ème mois il pèse environ un kilo et demi et mesure 40 cm. Il écoute attentivement votre voix et celles de votre entourage. Ses mouvements respiratoires ainsi que sa température interne se régulent, ses nerfs s\'entourent d\'une gaine (la myéline). C\'est la dernière étape de maturation du cerveau et cela va durer pendant 20 ans ! Grande nouveauté au 7e mois,  !')"
+         sodipodi:role="line"
+         id="tspan879"
+         x="138.89334"
+         y="151.02728"
+         style="stroke-width:0.26458332">7e Mois</tspan></text>
+    <text
+       id="text885"
+       y="238.03278"
+       x="89.164886"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+        onclick="alert('Ça y est vous entrez enfin dans votre neuvième mois de grossesse ! La première rencontre avec votre bébé est imminente.
+
+A partir de maintenant, votre bébé peut naître à tout moment sans être considéré comme un prématuré, sauf retard de croissance in utéro ou pathologie particulière observée.
+
+Lors de ce neuvième mois de grossesse, votre bébé passe d’une taille de 45 cm de la tête aux talons à environ 50 cm de la tête aux talons ! Son poids va passer de 2,400 kg à environ 3,300 kg !')"
+         style="stroke-width:0.26458332"
+         y="238.03278"
+         x="89.164886"
+         id="tspan883"
+         sodipodi:role="line">9e Mois</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="143.14694"
+       y="192.84148"
+       id="text889"><tspan
+        onclick="alert('Bébé grandit et grossit, il se prépare à quitter l’environnement douillet de l’utérus. Ses membres s’allongent, et ses os continuent à se calcifier.
+
+Généralement c’est au cours de ce 8ème mois de grossesse qu’il prend sa position définitive : tête en bas et fesses en l’air (présentation céphalique). Mais cela peut changer jusqu’au début du 9ème mois.
+
+Il boit du liquide amniotique en permanence, contribuant à la maturation de son système digestif, et ses poumons continuent également à de développer, se préparant ainsi à la vie extra-utérine.
+
+Bébé mesure alors 43 cm et pèse 2,2 kg en moyenne.
+
+Il réagit particulièrement à son environnement, au toucher et au son. L’espace utérin étant réduit, ses mouvements sont moins amples mais beaucoup plus vifs et francs. !')"
+         sodipodi:role="line"
+         id="tspan887"
+         x="143.14694"
+         y="192.84148"
+         style="stroke-width:0.26458332">8e Mois</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#28220b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="58.493454"
+       y="76.508797"
+       id="text893"><tspan
+         sodipodi:role="line"
+         id="tspan891"
+         x="58.493454"
+         y="76.508797"
+         style="fill:#28220b;fill-opacity:1;stroke-width:0.26458332">Cycle de grossesse</tspan></text>
+  </g>
+</svg>
