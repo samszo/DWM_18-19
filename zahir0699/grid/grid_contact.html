@@ -70,7 +70,7 @@ $(function () {
         ],
         columns: [                
             { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
-            { field: 'lname', caption: 'nom dutilisateur', size: '20%', sortable: true },
+            { field: 'lname', caption: 'Email', size: '20%', sortable: true },
             { field: 'fname', caption: 'sujet', size: '20%', sortable: true },
             { field: 'email', caption: 'message', size: '50%', sortable: true },
         ],
@@ -87,9 +87,9 @@ $(function () {
             w2alert('save');
         },
         records: [
-            { recid: 1, fname: 'Jane', lname: 'Doe', email: 'jdoe@gmail.com'},
-            { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com'},
-            { recid: 3, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com'},
+            { recid: 1, lname: 'Jane@gmail.com', fname: 'projet grid', email: 'comment en peu importer de informations depuit un ficher Json'},
+            { recid: 2, lname: 'Stuart@gmail.fr', fname: 'Motzart', email: 'comment en peu '},
+            { recid: 3, lname: 'Jin@gmail.com', fname: 'Franson', email: 'vous pouvez menvoyer le code source svp'},
            
         ]
     });    
