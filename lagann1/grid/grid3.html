@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="Samuel Szoniecky">
+
+    <title>Grille</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../samszo/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../samszo/css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../samszo/css/sticky-footer-navbar.css" />
+
+    <script type="text/javascript" src="../../samszo/js/d3.v4.js"></script>
+    <script type="text/javascript" src="../../samszo/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../samszo/js/popper.min.js"></script>
+    <script type="text/javascript" src="../../samszo/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../samszo/js/w2ui.js"></script>
+    <script type="text/javascript" src="../../samszo/js/fontawesome.v5.5.0.all.js" ></script>
+
+</head>
+<body>
+
+ 
+<div id="grid" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+
+function verifForm(){
+    let rep = true;
+    if (w2ui.gQuestions.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les questions.');
+        rep = false;
+    }
+    if (w2ui.gReponse.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les réponses.');
+        rep = false;
+    }
+
+    return rep;
+
+}
+
+function getParamsForm() {
+    var params = {
+        'iptForm': $('#iptForm').val(),
+        'iptFormIeml': $('#iptFormIeml').val(),
+        'chkGeo': $('#chkGeo').val(),
+        'chkTime': $('#chkTime').val(),
+        'chkBDD': $('#chkBDD').val(),
+        'iptBddID': $('#iptBddID').val()
+    };
+    return params;
+}
+
+function exportJson(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {
+        type: contentType
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+$(function () {    
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [ 
+			{ field: 'recid', caption: 'ID', type: 'int' },		
+            { field: 'nutriscore', caption: 'nutriscore', type: 'text' },
+            { field: 'nomproduit', caption: 'nomproduit', type: 'text' },
+
+    	
+            
+        ],
+        columnGroups:[
+            {caption: 'codeieml', span:3 },
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center'
+			},
+
+            { field: 'nomproduit', caption: 'Prénom', size: '30%', sortable: true,
+			
+			
+			 
+                editable: { type: 'text' }},
+       
+			            { field: 'nutriscore', caption: 'nutriscore', size: '30%', sortable: true,
+			 
+                editable: { type: 'text' } },
+        ],
+        onAdd: function (event) {
+			
+			
+			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+          //  w2ui.grid.save();
+			w2alert('edit');
+			
+			 
+				 
+        var params = getParamsForm();
+        var jsonData = {
+            "questions": arrQR,
+            "params": params,
+            "reponses": arrReponses
+        };
+        exportJson(JSON.stringify(jsonData), 'formulaireSemantique.json', 'text/plain');    
+    
+        },
+        records: [
+            { recid: 1, nomproduit: 'Coca Cola', nutriscore: 'E'},
+            { recid: 2, nomproduit: 'Nutella', nutriscore: 'E'},
+            { recid: 3, nomproduit: 'Haricots Bonduelle', nutriscore: 'A'},
+            { recid: 4, nomproduit: 'Salade Sodebo', nutriscore: 'A'},
+            { recid: 5, nomproduit: 'Fromage Kiri', nutriscore: 'D' },
+            { recid: 6, nomproduit: 'Philadelphia', nutriscore: 'D' },
+            { recid: 7, nomproduit: 'Beurre President', nutriscore: 'E' },
+            { recid: 8, nomproduit: 'Orangina', nutriscore: 'E' },
+            { recid: 9, nomproduit: 'Mais Bonduelle', nutriscore: 'A'},
+            { recid: 10, nomproduit: 'Sandwich Daunat', nutriscore: 'C' }
+          
+        ]
+    });    
+});
+</script>
+
+</body>
+</html>

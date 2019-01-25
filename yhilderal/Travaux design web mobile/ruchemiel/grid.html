@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W2UI Demo: grid-17</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    <meta charset="utf-8">
+</head>
+<body>
+
+<div id="grid" style="width: 100%; height: 400px;"></div>
+<div id="grid2" style="width: 100%; height: 400px;"></div>
+<div id="grid3" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+$(function () {    
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'iname', caption: 'First Name', type: 'text' },
+             { field: 'ieml', caption: 'IEML Code', type: 'text' },
+
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'iname', caption: 'First Name', size: '30%', sortable: true },
+              { field: 'ieml', caption: 'IEML Code', size: '30%', sortable: true },
+
+        ],
+        onAdd: function (event) {
+             var g = w2ui['grid'].records.length;
+            w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, iname: 'Voler, se déplacer', ieml: 'u.F:.-'},
+            { recid: 2, iname: 'Animal volant sauvage', ieml: 'B:.B:.n.-n.-u.S:.-' },
+            { recid: 3, iname: 'Disperser, Distribuer', ieml: 'e.S:.-' },
+            { recid: 4, iname: 'Écosystème de subjectifs, disposition éthique', ieml: 's.o.-k.o.-h.-,' },
+            { recid: 5, iname: 'Couleur', ieml: 'b.-S:.A:.-' },
+            { recid: 6, iname: 'Jaune orangé', ieml: 'b.-S:.A:.-B:.-T:.-' },
+            { recid: 7, iname: 'Cultiver son énergie physique', ieml: 'wa.f.-' },
+            { recid: 8, iname: 'Distribution', ieml: 'E:M:M:.' },
+            { recid: 9, iname: 'Diffuser un goût | Une odeur', ieml: 'wa.f.B:.-'},
+            { recid: 10, iname: 'Système', ieml: 'E:.T:.h.-' },
+
+        ]
+    });    
+});
+function addARecord() {
+    var g = w2ui['grid'].records.length;
+    w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+}
+
+
+</script>
+
+<script type="text/javascript">
+$(function () {    
+    $('#grid2').w2grid({ 
+        name: 'grid2', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'iname', caption: 'First Name', type: 'text' },
+             { field: 'ieml', caption: 'IEML Code', type: 'text' },
+
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'iname', caption: 'First Name', size: '30%', sortable: true },
+              { field: 'ieml', caption: 'IEML Code', size: '30%', sortable: true },
+
+        ],
+        onAdd: function (event) {
+             var g = w2ui['grid'].records.length;
+            w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, iname: 'cycle de vie, cycle du temps', ieml: 'we.we.t.-'},
+            { recid: 2, iname: 'Animal volant sauvage', ieml: 'B:.B:.n.-n.-u.S:.-' },
+            { recid: 3, iname: 'Fonder une famille', ieml: 'u.we.-' },
+            { recid: 4, iname: 'Écosystème de subjectifs, disposition éthique', ieml: 's.o.-k.o.-h.-,' },
+            { recid: 5, iname: 'Couleur', ieml: 'b.-S:.A:.-' },
+            { recid: 6, iname: 'Technique de connection', ieml: 'l.i.-' },
+            { recid: 7, iname: 'Menacer, être dangereux', ieml: 'e.m.-' },
+            { recid: 8, iname: 'Communauté', ieml: 'wu.c.-' },
+            { recid: 9, iname: 'Intolérance au climat', ieml: 'b.i.-s.i.-wo.-' },
+            { recid: 10, iname: 'Sécuriser une ruche', ieml: 'm.i.-t.i.-' },
+
+        ]
+    });    
+});
+function addARecord() {
+    var g = w2ui['grid'].records.length;
+    w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+}
+
+
+</script>
+
+<script type="text/javascript">
+$(function () {    
+    $('#grid3').w2grid({ 
+        name: 'grid3', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'iname', caption: 'First Name', type: 'text' },
+             { field: 'ieml', caption: 'IEML Code', type: 'text' },
+
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'iname', caption: 'First Name', size: '30%', sortable: true },
+              { field: 'ieml', caption: 'IEML Code', size: '30%', sortable: true },
+
+        ],
+        onAdd: function (event) {
+             var g = w2ui['grid'].records.length;
+            w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, iname: 'Paris 8', ieml: 'École'},
+            { recid: 2, iname: 'Vitamines', ieml: 'Santé' },
+            { recid: 3, iname: 'Récolte', ieml: 'Écologie' },
+            { recid: 4, iname: 'Faune et flore', ieml: 'Biodiversité' },
+            { recid: 5, iname: 'Ruches', ieml: 'Toit' },
+            { recid: 6, iname: 'Allergies', ieml: 'Dangereux, mortel' },
+            { recid: 7, iname: 'Piqure', ieml: 'Mortel, Maladie' },
+            { recid: 8, iname: 'Famille', ieml: 'Complicité' },
+            { recid: 9, iname: 'Hierarchie', ieml: 'Règles' },
+            { recid: 10, iname: 'Apports nutrionnels', ieml: 'Santé' },
+
+        ]
+    });    
+});
+function addARecord() {
+    var g = w2ui['grid'].records.length;
+    w2ui['grid'].add( { recid: g + 1, iname: 'Goût', ieml: 'code' } );
+}
+</script>
+
+</body>
+</html>

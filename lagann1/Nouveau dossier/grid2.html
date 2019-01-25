@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="Samuel Szoniecky">
+
+    <title>Grille</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../samszo/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../samszo/css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../samszo/css/sticky-footer-navbar.css" />
+
+    <script type="text/javascript" src="../samszo/js/d3.v4.js"></script>
+    <script type="text/javascript" src="../samszo/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../samszo/js/popper.min.js"></script>
+    <script type="text/javascript" src="../samszo/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../samszo/js/w2ui.js"></script>
+    <script type="text/javascript" src="../samszo/js/fontawesome.v5.5.0.all.js" ></script>
+
+</head>
+<body>
+
+ 
+<div id="grid" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+
+function verifForm(){
+    let rep = true;
+    if (w2ui.gQuestions.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les questions.');
+        rep = false;
+    }
+    if (w2ui.gReponse.getChanges().length > 0) {
+        w2alert('Veuillez enregistrer les réponses.');
+        rep = false;
+    }
+
+    return rep;
+
+}
+
+function getParamsForm() {
+    var params = {
+        'iptForm': $('#iptForm').val(),
+        'iptFormIeml': $('#iptFormIeml').val(),
+        'chkGeo': $('#chkGeo').val(),
+        'chkTime': $('#chkTime').val(),
+        'chkBDD': $('#chkBDD').val(),
+        'iptBddID': $('#iptBddID').val()
+    };
+    return params;
+}
+
+function exportJson(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {
+        type: contentType
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+$(function () {    
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [ 
+			{ field: 'recid', caption: 'ID', type: 'int' },		
+            { field: 'ing1', caption: 'ingredient', type: 'text' },
+            { field: 'ing2', caption: 'ingredient2', type: 'text' },
+			{ field: 'difficult', caption: 'difficulte', type: 'text' }
+			
+            
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center'
+			},
+            { field: 'ing1', caption: 'Ingredient1', size: '30%', sortable: true,
+			 
+                editable: { type: 'text' } },
+            { field: 'ing2', caption: 'Ingredient2', size: '30%', sortable: true,
+			
+			
+			 
+                editable: { type: 'text' }},
+       
+            
+			{ field: 'ing3', caption: 'Ingredient3', size: '50px', sortable: true,
+			 
+                editable: { type: 'int' } },
+				
+				{ field: 'level', caption: 'Diffulté', size: '75px', sortable: true,
+			 
+                editable: { type: 'int' } },
+				{ field: 'time', caption: 'durée', size: '75px', sortable: true,
+			 
+                editable: { type: 'int' } },
+			
+        ],
+        onAdd: function (event) {
+			
+			
+			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+          //  w2ui.grid.save();
+			w2alert('edit');
+			
+			 
+				 
+        var params = getParamsForm();
+        var jsonData = {
+            "questions": arrQR,
+            "params": params,
+            "reponses": arrReponses
+        };
+        exportJson(JSON.stringify(jsonData), 'formulaireSemantique.json', 'text/plain');    
+    
+        },
+        records: [
+            { recid: 1, ing1: 'oeuf', ing2: 'salade',ing3: 'avocat', difficult: 'facile'},
+            { recid: 2, ing1: 'gruyere', ing2: 'pate',ing3: 'tomate',difficult: 'facile'},
+            { recid: 3, ing1: 'fromage blanc', ing2: 'lait',ing3: 'beurre',difficult: 'moyen'},
+            { recid: 4, ing1: 'salade', ing2: 'olives',ing3: 'tomates',difficult: 'facile'},
+            { recid: 5, ing1: 'beurre', ing2: 'poivron',ing3: 'pate',difficult: 'difficile'}
+            { recid: 6, ing1: 'fromage de brebis', ing2: 'salade',ing3: 'surimi',difficult: 'moyen'},
+            { recid: 7, ing1: 'poivron', ing2: 'pate',ing3: 'poisson',difficult: 'moyen'},
+            { recid: 8, ing1: 'saumon', ing2: 'oeuf',ing3: 'Jane',difficult: 'difficile'},
+            { recid: 9, ing1: 'cabillaud', ing2: 'poids',ing3: 'sel',difficult: 'moyen'},
+            { recid: 10, ing1: 'viande', ing2: 'poivre',ing3: 'poivron',difficult: 'difficile'}
+          
+        ]
+    });    
+});
+</script>
+
+</body>
+</html>
