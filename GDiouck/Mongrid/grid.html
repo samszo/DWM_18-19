@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W2UI Demo: grid-17</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+</head>
+<body>
+
+
+<div id="grid1" style="width: 100%; height: 400px;"></div>
+<br>
+<div id="grid2" style="width: 100%; height: 400px;"></div>
+<br>
+<div id="grid3" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript">
+$(function () {    
+    $('#grid1').w2grid({ 
+        name: 'grid1', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'aname', caption: 'Acteurs culturel', type: 'text' },
+            { field: 'sname', caption: 'Societe', type: 'text' },
+            { field: 'lname', caption: 'Ville', type: 'text' }
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'aname', caption: 'Acteurs culturels', size: '30%', sortable: true },
+            { field: 'sname', caption: 'Societe', size: '30%', sortable: true },
+            { field: 'lname', caption: 'Ville', size: '40%' },
+        ],
+        onAdd: function (event) {
+            var g = w2ui['grid1'].records.length;
+    w2ui['grid1'].add( { recid: g + 1, sname: 'Club', aname: 'Danseur', lname: 'Clignacour'} );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, sname: 'Centre culturel', aname: 'Artistes', lname: 'Saint-Denis' },
+            { recid: 2, sname: 'Collectivite territoriale', aname: 'Etats', lname: 'Saint-Ouen' },
+            { recid: 3, sname: 'Communaute', aname: 'Jeunesse', lname: 'Aubervillier' },
+            { recid: 4, sname: 'Association', aname: '18 ans et +', lname: 'Epinay-Sur-Seine' },
+            { recid: 5, sname: 'Structure sociale', aname: 'Assaciation', lname: 'Bobigny' },
+            { recid: 6, sname: 'Groupement', aname: 'Ministere', lname: 'Finistere' },
+            { recid: 7, sname: 'Confrerie', aname: 'Ministre de la culture', lname: 'Herault' },
+            { recid: 8, sname: 'Culture', aname: 'Collectivites locales', lname: 'Bas-Rhin' },
+            { recid: 9, sname: 'Colonie', aname: 'Elus', lname: 'Guyanne' },
+            { recid: 10, sname: 'Humanite', aname: 'Administrations', lname: 'Genevillier' },
+        ]
+    });    
+});
+
+function onAdd() {
+    var g = w2ui['grid1'].records.length;
+    w2ui['grid1'].add( { recid: g + 1, sname: 'Club', aname: 'Danseur', lname: 'Clignacour'} );
+}
+
+$('#grid2').w2grid({ 
+        name: 'grid2', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'nname', caption: 'Nom', type: 'text' },
+            { field: 'cname', caption: 'Code', type: 'text' },
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'nname', caption: 'Nom', size: '30%', sortable: true },
+            { field: 'cname', caption: 'Code', size: '30%', sortable: true },
+           
+        ],
+        onAdd: function (event) {
+            var g = w2ui['grid2'].records.length;
+            w2ui['grid2'].add( { recid: g + 1, nname: 'Club', cname: "'L.f.-o'"} );
+
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, nname: 'Creation culturelle', cname: "M:M:.h.-'" },
+            { recid: 2, nname: 'Projet culturel', cname: "s.h.-'" },
+            { recid: 3, nname: 'Communaute desprit', cname: "k.h.-'" },
+            { recid: 4, nname: 'Raffinement culturel', cname: "d.h.-'" },
+            { recid: 5, nname: 'Heritage spirituel', cname: "t.h.-'" },
+            { recid: 6, nname: 'Acculturation', cname: "n.h.-'" },
+            { recid: 7, nname: 'Migration culturelle', cname: "l.h.-'" },
+            { recid: 8, nname: 'Culture', cname: "n.o.-s.o-'" },
+            { recid: 9, nname: 'Ouverture culturelle', cname: "s.e.-b.u-'" },
+            { recid: 10, nname: 'Etude culturelle', cname: "n.-M:O:.-s.y.-'"},
+        ]
+    });  
+    function onAdd() {
+    var g = w2ui['grid2'].records.length;
+    w2ui['grid2'].add( { recid: g + 1, nname: 'Club', cname: "'L.f.-o'"} );
+}
+    $('#grid3').w2grid({ 
+        name: 'grid3', 
+        show: { 
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'cname', caption: 'Culture', type: 'text' },
+            { field: 'ename', caption: 'Extra', type: 'text' },
+            { field: 'dname', caption: 'Decouverte', type: 'text' }
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+            { field: 'cname', caption: 'Culture', size: '30%', sortable: true },
+            { field: 'ename', caption: 'Extra', size: '30%', sortable: true },
+            { field: 'dname', caption: 'Decouverte', size: '40%' },
+        ],
+        onAdd: function (event) {
+            var g = w2ui['grid3'].records.length;
+    w2ui['grid3'].add( { recid: g + 1, cname: 'Elevage', ename: 'Exterieur', dname: 'Espace culturel'} );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, cname: 'Art', ename: 'Ouverture', dname: 'Musee' },
+            { recid: 2, cname: 'Musique', ename: 'Auxiliaire', dname: 'Voyage' },
+            { recid: 3, cname: 'Danse', ename: 'Addition', dname: 'Site' },
+            { recid: 4, cname: 'Cinema', ename: 'Supplementaire', dname: 'Tourisme' },
+            { recid: 5, cname: 'Theatre', ename: 'Super', dname: 'Trouvaille' },
+            { recid: 6, cname: 'Humour', ename: 'Superieur', dname: 'recherche' },
+            { recid: 7, cname: 'Erudution', ename: 'Complement', dname: 'exploration' },
+            { recid: 8, cname: 'Civilisation', ename: 'Depense', dname: 'Sortie' },
+            { recid: 9, cname: 'Societe', ename: 'Fameux', dname: 'Discernement' },
+            { recid: 10, cname: 'Pratique', ename: 'Extraordinaire', dname: 'Conquete' },
+        ]
+    });    
+    function onAdd() {
+    var g = w2ui['grid3'].records.length;
+    w2ui['grid3'].add( { recid: g + 1, cname: 'Elevage', ename: 'Exterieur', dname: 'Espace culturel'} );
+}
+
+</script>
+</body>
+</html>
