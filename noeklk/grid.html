@@ -5,10 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Cultiver des graines conceptuelles">
-    <meta name="author" content="Samuel Szoniecky">
+    <meta name="description" content="Grille attribut personnes">
+    <meta name="author" content="Noé klk et mamadou magassa">
 
-    <title>Grille</title>
+    <title>Attribut Utilisateurs</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="../samszo/css/bootstrap.min.css" />
@@ -27,7 +27,7 @@
 <body>
 
  
-<div id="grid" style="width: 100%; height: 400px;"></div>
+<div id="grid" style="width: 700px; height: 375px;"></div>
 
 <script type="text/javascript">
 
@@ -87,13 +87,19 @@ $(function () {
 			
             
         ],
+        columnGroups: [
+            
+            { caption: 'code ieml : E:E:U:.', span: 3 },
+            { caption: 'nom ieml : attribut du nom, copule', span: 6 }
+
+    ],
         columns: [                
             { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center'
 			},
-            { field: 'lname', caption: 'Nom', size: '30%', sortable: true,
+            { field: 'lname', caption: 'Nom', size: '100px', sortable: true,
 			 
                 editable: { type: 'text' } },
-            { field: 'fname', caption: 'Prénom', size: '30%', sortable: true,
+            { field: 'fname', caption: 'Prénom', size: '100px', sortable: true,
 			
 			
 			 
@@ -110,15 +116,11 @@ $(function () {
 				{ field: 'hgt', caption: 'Taille(cm)', size: '75px', sortable: true,
 			 
                 editable: { type: 'int' } },
-				{ field: 'nope', caption: 'Allergie(s)/Intolérance', size: '150px', sortable: true,
+				{ field: 'nope', caption: 'Allergie(s)/Intolérance', size: '250px', sortable: true,
 			 
                 editable: { type: 'text' } },
 				
-				{ field: 'iml', caption: 'iEML', size: '50px', sortable: true,
-                editable: { type: 'int' }  },
 				
-				{ field: 'niml', caption: 'nom iEML', size: '150px', sortable: true,
-                editable: { type: 'date' }  },
 			
         ],
         onAdd: function (event) {
@@ -148,16 +150,16 @@ $(function () {
     
         },
         records: [
-            { recid: 1, fname: 'Jane', lname: 'Doe'},
-            { recid: 2, fname: 'Stuart', lname: 'Motzart'},
-            { recid: 3, fname: 'Jin', lname: 'Franson'},
-            { recid: 4, fname: 'Susan', lname: 'Ottie'},
-            { recid: 5, fname: 'Kelly', lname: 'Silver' },
-            { recid: 6, fname: 'Francis', lname: 'Gatos' },
-            { recid: 7, fname: 'Mark', lname: 'Welldo' },
-            { recid: 8, fname: 'Thomas', lname: 'Bahh' },
-            { recid: 9, fname: 'Sergei', lname: 'Rachmaninov'},
-            { recid: 10, fname: 'Jill', lname: 'Doe' }
+            { recid: 1, fname: 'Jane', lname: 'Doe', yrold: '22',wgt: '70',hgt: '1.80',nope : 'Les arachides'},
+            { recid: 2, fname: 'Stuart', lname: 'Motzart', yrold: '25',wgt: '82',hgt: '1.76',nope : 'Le blé'},
+            { recid: 3, fname: 'Jin', lname: 'Franson', yrold: '27',wgt: '90',hgt: '1.90',nope : 'Les fruits de mer'},
+            { recid: 4, fname: 'Susan', lname: 'Ottie', yrold: '20',wgt: '75',hgt: '1.82',nope : 'Les graines de sésame'},
+            { recid: 5, fname: 'Kelly', lname: 'Silver' , yrold: '18',wgt: '89',hgt: '1.69',nope : 'Le lait'},
+            { recid: 6, fname: 'Francis', lname: 'Gatos', yrold: '32',wgt: '69', hgt: '1.87',nope : 'Les noix'},
+            { recid: 7, fname: 'Mark', lname: 'Welldo', yrold: '40',wgt: '70',hgt: '1.80',nope : 'Les œufs' },
+            { recid: 8, fname: 'Thomas', lname: 'Bahh' , yrold: '22',wgt: '85',hgt: '1.81',nope : 'Le soja'},
+            { recid: 9, fname: 'Sergei', lname: 'Rachmaninov', yrold: '30',wgt: '76',hgt: '2.10',nope : 'Les sulfites'},
+            { recid: 10, fname: 'Jill',lname: 'Doe', yrold: '20',wgt: '22', hgt: '1.75',nope : 'La moutarde'}
           
         ]
     });    
