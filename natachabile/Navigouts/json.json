@@ -1,0 +1,24 @@
+{
+    "cmd": "json",
+    "changes": [],
+    "records": [
+        {
+            "recid": 1,
+            "nom": "sara",
+            "prenom": "butet",
+            "mail": "sara.butet@gmailcom",
+            "date": "14/07/1997",
+            "mdp": "sarabutet",
+            "check": false
+        },
+        {
+            "recid": 2,
+            "nom": "marcello",
+            "prenom": "quentin",
+            "mail": "marcello@gmailcom",
+            "date": "09/12/1999",
+            "mdp": "marcelloquentin",
+            "check": true
+        }
+    ]
+}

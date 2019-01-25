@@ -1,0 +1,56 @@
+{
+    "cmd": "json2",
+    "changes": [],
+    "records": [
+        {
+            "recid": 1,
+            "concept": "cartographié",
+            "code": "d.u.-s.u.-d.u.-'"
+        },
+        {
+            "recid": 2,
+            "concept": "goûts",
+            "code": "f.-M:.O:.-'"
+        },
+        {
+            "recid": 3,
+            "concept": "goût piquant",
+            "code": "f.-T:.U:.-'"
+        },
+        {
+            "recid": 4,
+            "concept": "sucré",
+            "code": "f.-S:.A:.-'"
+        },
+        {
+            "recid": 5,
+            "concept": "études littérature, cinéma, musique",
+            "code": "b.-j.-s.y.-'"
+        },
+        {
+            "recid": 6,
+            "concept": "études habitation | tourisme",
+            "code": "l.-c.-s.y.-'"
+        },
+        {
+            "recid": 7,
+            "concept": "partage",
+            "code": "x.p.-"
+        },
+        {
+            "recid": 8,
+            "concept": "expérimenter",
+            "code": "wa.d.-"
+        },
+        {
+            "recid": 9,
+            "concept": "géolocalisation | territoires intelligents",
+            "code": "l.-x.-'"
+        },
+        {
+            "recid": 10,
+            "concept": "statistiques (données)",
+            "code": "d.-g.-'"
+        }
+    ]
+}

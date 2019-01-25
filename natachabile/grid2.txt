@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Grid</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <a class="navbar-brand" href="#">Top navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <main role="main" class="container">
+            <div class="jumbotron">
+                <h1>Navbar example</h1>
+                <p class="lead">This example is a quick exercise to illustrate how
+                    the top-aligned navbar works. As you scroll, this navbar remains in its
+                    original position and moves with the rest of the page.</p>
+                <a class="btn btn-lg btn-primary" href="https://getbootstrap.com/docs/4.2/components/navbar/" role="button">View
+                    navbar docs »</a>
+            </div>
+        </main>
+
+        <div id="grid" style="width: 100%; height: 400px;"></div>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#grid').w2grid({
+                    name: 'grid',
+                    show: {
+                        toolbar: true,
+                        footer: true,
+                        toolbarAdd: true,
+                        toolbarDelete: true,
+                        toolbarSave: true,
+                        toolbarEdit: true
+                    },
+                    searches: [
+                        { field: 'lname', caption: 'Last Name', type: 'text' },
+                        { field: 'fname', caption: 'First Name', type: 'text' },
+                        { field: 'email', caption: 'Email', type: 'text' }
+                    ],
+                    columns: [
+                        { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+                        { field: 'lname', caption: 'Last Name', size: '30%', sortable: true },
+                        { field: 'fname', caption: 'First Name', size: '30%', sortable: true },
+                        { field: 'email', caption: 'Email', size: '40%', sortable: true },
+                        { field: 'sdate', caption: 'Start Date', size: '120px', sortable: true }
+                    ],
+                    onAdd: function (event) {
+                        w2alert('add');
+                    },
+                    onEdit: function (event) {
+                        w2alert('edit');
+                    },
+                    onDelete: function (event) {
+                        console.log('delete has default behavior');
+                    },
+                    onSave: function (event) {
+                        w2alert('save');
+                    },
+                    records: [
+                        { recid: 1, fname: 'Jane', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 3, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 4, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 5, fname: 'Kelly', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 6, fname: 'Francis', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 7, fname: 'Mark', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 8, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 9, fname: 'Sergei', lname: 'Rachmaninov', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 20, fname: 'Jill', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 21, fname: 'Frank', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 22, fname: 'Peter', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 23, fname: 'Andrew', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 24, fname: 'Manny', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 25, fname: 'Ben', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 26, fname: 'Doer', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 27, fname: 'Shashi', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
+                        { recid: 28, fname: 'Av', lname: 'Rachmaninov', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+                    ]
+                });
+            });
+        </script>
+        <script src="../samszo/css/grille_fichiers/jquery-3.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../samszo/css/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="../samszo/css/grille_fichiers/bootstrap.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
