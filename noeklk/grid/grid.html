@@ -25,12 +25,14 @@
 
 </head>
 <body>
-
- 
+<div align="center">
 <div id="grid" style="width: 700px; height: 375px;"></div>
+<p></p>
 <div id="grid2" style="width: 700px; height: 375px;"></div>
+<p></p>
 <div id="grid3" style="width: 700px; height: 375px;"></div>
 
+</div>
 <script type="text/javascript">
 
 function verifForm(){
@@ -226,13 +228,15 @@ $(function () {
 $(function () {    
     $('#grid2').w2grid({ 
         name: 'grid2', 
+        header: 'Recette', 
         show: { 
             toolbar: true,
             footer: true,
             toolbarAdd: true,
             toolbarDelete: true,
             toolbarSave: true,
-            toolbarEdit: true
+            toolbarEdit: true,
+            header: true
         },
         searches: [ 
 			{ field: 'recid', caption: 'ID', type: 'int' },		
@@ -298,14 +302,16 @@ $(function () {
 
 $(function () {    
     $('#grid3').w2grid({ 
-        name: 'grid3', 
+        name: 'grid3',
+        header: 'Qualité nutritive',  
         show: { 
             toolbar: true,
             footer: true,
             toolbarAdd: true,
             toolbarDelete: true,
             toolbarSave: true,
-            toolbarEdit: true
+            toolbarEdit: true,
+            header : true
         },
         searches: [ 
 			{ field: 'recid', caption: 'ID', type: 'int' },		
