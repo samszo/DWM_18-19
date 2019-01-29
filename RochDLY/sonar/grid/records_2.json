@@ -3,10 +3,10 @@
 "name"    : "grid2",
 "changes" : [],
 "records": [
-    { "recid": 1, "nom":"Anti-Oedipe", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1980", "url": "http://sonar.com/archive/cours/deleuze/anti-oedipe.mp3"},
-    { "recid": 2, "nom":"Spinoza", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/3/1981", "url": "http://sonar.com/archive/cours/deleuze/spinoza.mp3"},
-    { "recid": 3, "nom":"La peinture et la question des concepts", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1981", "url": "http://sonar.com/archive/cours/deleuze/la-peinture-et-la-question-des-concepts.mp3"},
-    { "recid": 4, "nom":"Cinéma: une classification des signes et du temps", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1982", "url": "http://sonar.com/archive/cours/deleuze/cinema-une-classification-des-signes-et-du-temps.mp3"},
-    { "recid": 5, "nom":"Vérité et Temps - La puissance du faux", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1984", "url": "http://sonar.com/archive/cours/deleuze/verite-et-temps-la-puissance-du-faux.mp3"}
+    { "recid": 1, "nom":"Anti-Oedipe", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1980", "url": "http://www.univ-paris8.com/sonar/archive/cours/deleuze/anti-oedipe.mp3"},
+    { "recid": 2, "nom":"Spinoza", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/3/1981", "url": "http://www.univ-paris8.com/sonar/archive/cours/deleuze/spinoza.mp3"},
+    { "recid": 3, "nom":"La peinture et la question des concepts", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1981", "url": "http://www.univ-paris8.com/sonar/archive/cours/deleuze/la-peinture-et-la-question-des-concepts.mp3"},
+    { "recid": 4, "nom":"Cinéma: une classification des signes et du temps", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1982", "url": "http://www.univ-paris8.com/sonar/archive/cours/deleuze/cinema-une-classification-des-signes-et-du-temps.mp3"},
+    { "recid": 5, "nom":"Vérité et Temps - La puissance du faux", "theme": "Science Humaine & So.", "auteur": "Deleuze Gilles", "format": "mp3", "date": "1/6/1984", "url": "http://www.univ-paris8.com/sonar/archive/cours/deleuze/verite-et-temps-la-puissance-du-faux.mp3"}
     ]
 }
