@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Cultiver des graines conceptuelles">
+<meta name="author" content="Samuel Szoniecky">
+
+<title>Grille IEML</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
+<!-- Custom styles for this template -->
+<link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css" />
+
+<script type="text/javascript" src="js/d3.v4.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/w2ui.js"></script>
+<script type="text/javascript" src="js/fontawesome.v5.5.0.all.js" ></script>
+</head>
+
+<body>
+<center>
+<table width="100%">
+<th><h1><center>GRILLE IEML Youssouf</center></h1></th>
+<!--<th><h1><center><a href="?" alt="GRILLE IEML Youssouf" title="ACCUEIL">GRILLE IEML Youssouf</a></center></h1></th>-->
+</table>
+</center>
+<br/>
+
+<main role="main" class="container2">
+<div id="grid" style="width: 100%; height: 330px;"></div>
+</main>              
+
+<script type="text/javascript">
+$(function ()
+{    
+$('#grid').w2grid(
+{ 
+name: 'grid', 
+show:
+{ 
+toolbar: true,
+footer: true,
+toolbarAdd: true,
+toolbarDelete: true,
+toolbarSave: true,
+toolbarEdit: true
+},
+searches: [                
+{ field: 'lname', caption: 'Mots', type: 'text' },
+{ field: 'fname', caption: 'Codes', type: 'text' },
+],
+columns: [                
+{ field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+{ field: 'fname', caption: 'Mots', size: '30%', sortable: true },
+{ field: 'lname', caption: 'Codes', size: '30%', sortable: true },
+],
+onAdd: function (event)
+{
+w2alert('Ajouter');
+},
+onEdit: function (event)
+{
+w2alert('Modifier');
+},
+onDelete: function (event)
+{
+console.log('Supprimer');
+},
+onSave: function (event)
+{
+w2alert('Sauvegarder');
+},
+records: [
+{ recid: 1, fname: 'Donner', lname: 'e.i.-'},
+{ recid: 2, fname: 'Jouer de la comédie', lname: 's.e.-m.u.-wa.e.-\''},
+{ recid: 3, fname: 'Voler comme un oiseau', lname: 'u.S:.-U:.-\''},
+{ recid: 4, fname: 'Génétif', lname: 'E:E:A:.'},
+{ recid: 5, fname: 'Datif', lname: 'E:E:B:.'},
+{ recid: 6, fname: 'Attribut du nom', lname: 'E:E:U:.'},
+{ recid: 7, fname: 'Construction interrogative', lname: 'E:U:U:.'},
+{ recid: 8, fname: 'Moins bon', lname: 'E:U:S:.'},
+{ recid: 9, fname: 'Meilleur', lname: 'E:U:T:.'},
+{ recid: 10, fname: 'Construction affirmative', lname: 'E:A:A:.'},
+]
+});    
+});
+</script><br/>
+
+<main role="main" class="container2">
+<div id="grid2" style="width: 100%; height: 330px;"></div>
+</main>  
+
+<script type="text/javascript">
+$(function ()
+{    
+$('#grid2').w2grid(
+{ 
+name: 'grid2', 
+show:
+{ 
+toolbar: true,
+footer: true,
+toolbarAdd: true,
+toolbarDelete: true,
+toolbarSave: true,
+toolbarEdit: true
+},
+searches: [                
+{ field: 'lname', caption: 'Mots', type: 'text' },
+{ field: 'fname', caption: 'Codes', type: 'text' },
+],
+columns: [                
+{ field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+{ field: 'fname', caption: 'Mots', size: '30%', sortable: true },
+{ field: 'lname', caption: 'Codes', size: '30%', sortable: true },
+],
+onAdd: function (event)
+{
+w2alert('Ajouter');
+},
+onEdit: function (event)
+{
+w2alert('Modifier');
+},
+onDelete: function (event)
+{
+console.log('Supprimer');
+},
+onSave: function (event)
+{
+w2alert('Sauvegarder');
+},
+records: [
+{ recid: 11, fname: 'cycle de vie, cycle du temps', lname: 'we.we.t.-'},
+{ recid: 12, fname: 'Animal volant sauvage', lname: 'B:.B:.n.-n.-u.S:.-'},
+{ recid: 13, fname: 'Fonder une famille', lname: 'u.we.-'},
+{ recid: 14, fname: 'Écosystème de subjectifs, disposition éthique', lname: 's.o.-k.o.-h.-,'},
+{ recid: 15, fname: 'Couleur', lname: 'b.-S:.A:.-'},
+{ recid: 16, fname: 'Technique de connection', lname: 'l.i.-'},
+{ recid: 17, fname: 'Menacer, être dangereux', lname: 'e.m.-'},
+{ recid: 18, fname: 'Communauté', lname: 'wu.c.-'},
+{ recid: 19, fname: 'Intolérance au climat', lname: 'b.i.-s.i.-wo.-'},
+{ recid: 20, fname: 'Sécuriser une ruche', lname: 'm.i.-t.i.-'}
+]
+});    
+});
+</script><br/>
+
+<main role="main" class="container2">
+<div id="grid3" style="width: 100%; height: 330px;"></div>
+</main>  
+
+<script type="text/javascript">
+$(function ()
+{    
+$('#grid3').w2grid(
+{ 
+name: 'grid3', 
+show:
+{ 
+toolbar: true,
+footer: true,
+toolbarAdd: true,
+toolbarDelete: true,
+toolbarSave: true,
+toolbarEdit: true
+},
+searches: [                
+{ field: 'lname', caption: 'Mots', type: 'text' },
+{ field: 'fname', caption: 'Codes', type: 'text' },
+],
+columns: [                
+{ field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+{ field: 'fname', caption: 'Mots', size: '30%', sortable: true },
+{ field: 'lname', caption: 'Codes', size: '30%', sortable: true },
+],
+onAdd: function (event)
+{
+w2alert('Ajouter');
+},
+onEdit: function (event)
+{
+w2alert('Modifier');
+},
+onDelete: function (event)
+{
+console.log('Supprimer');
+},
+onSave: function (event)
+{
+w2alert('Sauvegarder');
+},
+records: [
+{ recid: 21, fname: 'Voler, se déplacer', lname: 'u.F:.-'},
+{ recid: 22, fname: 'Animal volant sauvage', lname: 'B:.B:.n.-n.-u.S:.-'},
+{ recid: 23, fname: 'Disperser, Distribuer', lname: 'e.S:.-' },
+{ recid: 24, fname: 'Écosystème de subjectifs, disposition éthique', lname: 's.o.-k.o.-h.-,'},
+{ recid: 25, fname: 'Couleur', lname: 'b.-S:.A:.-'},
+{ recid: 26, fname: 'Jaune orangé', lname: 'b.-S:.A:.-B:.-T:.-'},
+{ recid: 27, fname: 'Cultiver son énergie physique', lname: 'wa.f.-'},
+{ recid: 28, fname: 'Distribution', lname: 'E:M:M:.'},
+{ recid: 29, fname: 'Diffuser un goût / Une odeur', lname: 'wa.f.B:.-'},
+{ recid: 30, fname: 'Système', lname: 'E:.T:.h.-'}
+]
+});    
+});
+</script><br/>
+</body>
+
+<style>
+body
+{
+background: #b4c7dc;
+}
+
+table
+{
+background: #000000;
+border-color: #7c7c7c;
+/*border-radius: 30px;*/
+font-family: 'droid_sansregular', 'Arial', sans-serif;
+}
+
+.grid2
+{
+font-family: 'droid_sansregular', 'Arial', sans-serif;
+font-size: 15px;
+border-radius: 30px;
+}
+
+th
+{
+color: #ffffff;
+}
+</style>
+
+</html>
+
