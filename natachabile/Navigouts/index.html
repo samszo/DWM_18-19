@@ -58,70 +58,6 @@
         <button class="w2ui-btn" onclick="showChanged()">Get Changed</button>
 
         <script type="text/javascript">
-            var people = [
-                { id: 1, text: 'John Cook' },
-                { id: 2, text: 'Steve Jobs' },
-                { id: 3, text: 'Peter Sanders' },
-                { id: 4, text: 'Mark Newman' },
-                { id: 5, text: 'Addy Osmani' },
-                { id: 6, text: 'Paul Irish' },
-                { id: 7, text: 'Doug Crocford' },
-                { id: 8, text: 'Nicolas Cage' }
-            ];
-
-            $(function () {
-                $('#grid').w2grid({
-                    name: 'grid',
-                    url: 'json.json',
-                    show: {
-                        toolbar: true,
-                        footer: true,
-                        toolbarSave: true
-                    },
-                    columns: [
-                        { field: 'recid', caption: 'ID', size: '50px', sortable: true, resizable: true },
-                        {
-                            field: 'nom', caption: 'Nom', size: '120px', sortable: true, resizable: true,
-                            editable: { type: 'text' }
-                        },
-                        {
-                            field: 'prenom', caption: 'Prénom', size: '80px', sortable: true, resizable: true,
-                            editable: { type: 'text' }
-                        },
-                        {
-                            field: 'mail', caption: 'Mail', size: '120px', sortable: true, resizable: true,
-                            editable: { type: 'text' }
-                        },
-                        {
-                            field: 'mdp', caption: 'Mdp', size: '80px', sortable: true, resizable: true,
-                            editable: { type: 'text' }
-                        },
-                        {
-                            field: 'date', caption: 'date', size: '90px', sortable: true, resizable: true, render: 'date', style: 'text-align: right',
-                            editable: { type: 'date' }
-                        },
-                        {
-                            field: 'check', caption: 'check', size: '60px', sortable: true, resizable: true, style: 'text-align: center',
-                            editable: { type: 'checkbox', style: 'text-align: center' }
-                        }
-                    ],
-                    toolbar: {
-                        items: [
-                            { id: 'add', type: 'button', caption: 'Add Record', icon: 'w2ui-icon-plus' }
-                        ],
-                        onClick: function (event) {
-                            if (event.target == 'add') {
-                                w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
-                            }
-                        }
-                    },
-
-                });
-            });
-
-        </script>
-        </br>
-        <script type="text/javascript">
 
             $(function () {
                 $('#grid2').w2grid({
@@ -165,7 +101,7 @@
                             }
                         }
                     },
-                    /*onEdit: function (event) {
+                    onEdit: function (event) {
                         w2alert('edit');
                     },
                     onDelete: function (event) {
@@ -173,7 +109,7 @@
                     },
                     onSave: function (event) {
                         w2alert('save');
-                    },*/
+                    },
 
                 });
             });
@@ -184,81 +120,124 @@
             }*/
         </script>
 
-        </br></br>
-        <button class="w2ui-btn" onclick="addARecord();">Add One Record</button>
-        <button class="w2ui-btn" onclick="addMRecord();">Add Multiple Records</button>
-        <button class="w2ui-btn" onclick="removeRecords();">Remove All Added Records</button>
-
         <script type="text/javascript">
+            var people = [
+                { id: 1, text: 'John Cook' },
+                { id: 2, text: 'Steve Jobs' },
+                { id: 3, text: 'Peter Sanders' },
+                { id: 4, text: 'Mark Newman' },
+                { id: 5, text: 'Addy Osmani' },
+                { id: 6, text: 'Paul Irish' },
+                { id: 7, text: 'Doug Crocford' },
+                { id: 8, text: 'Nicolas Cage' }
+            ];
+
             $(function () {
-                $('#grid3').w2grid({
-                    name: 'grid3',
-                    url: 'json3.json',
+                $('#grid').w2grid({
+                    name: 'grid',
+                    url: 'json.json',
                     show: {
-                        lineNumbers: true,
-                        footer: true
+                        toolbar: true,
+                        footer: true,
+                        toolbarSave: true,
                     },
                     columns: [
-                        { field: 'recid', caption: 'ID', size: '60px', sortable: true },
-                        { field: 'pseudo', caption: 'pseudo', size: '20%', sortable: true },
-                        { field: 'mdp', caption: 'Mdp', size: '20%', sortable: true },
-                        { field: 'email', caption: 'Email', size: '30%', sortable: true },
-                        { field: 'sdate', caption: 'Start Date', size: '20px', sortable: true }
-                    ],
+                        { field: 'recid', caption: 'ID', size: '50px', sortable: true, resizable: true },
+                        {
+                            field: 'nom', caption: 'Nom', size: '120px', sortable: true, resizable: true,
+                            editable: { type: 'text' }
+                        },
+                        {
+                            field: 'prenom', caption: 'Prénom', size: '80px', sortable: true, resizable: true,
+                            editable: { type: 'text' }
+                        },
+                        {
+                            field: 'mail', caption: 'Mail', size: '120px', sortable: true, resizable: true,
+                            editable: { type: 'text' }
+                        },
+                        {
+                            field: 'mot de pass', caption: 'mot de pass', size: '80px', sortable: true, resizable: true,
+                            editable: { type: 'text' }
+                        },
 
+                        {
+                            field: 'check', caption: 'check', size: '60px', sortable: true, resizable: true, style: 'text-align: center',
+                            editable: { type: 'checkbox', style: 'text-align: center' }
+                        }
+                    ],
                     toolbar: {
                         items: [
                             { id: 'add', type: 'button', caption: 'Add Record', icon: 'w2ui-icon-plus' }
                         ],
                         onClick: function (event) {
                             if (event.target == 'add') {
-                                w2ui.grid3.add({ recid: w2ui.grid3.records.length + 1 });
+                                w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
                             }
                         }
                     },
 
-
-                    /* records: [
-                         { recid: 1, fname: 'John', lname: 'doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                         { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
-                     ]*/
                 });
             });
 
+        </script>
+        </br>
 
-            /*function addARecord() {
+
+        <button class="w2ui-btn" onclick="showChanged()">Get Changed</button>
+
+        <script type="text/javascript">
+
+            $(function () {
+                $('#grid3').w2grid({
+                    name: 'grid3',
+                    show: {
+                        toolbar: true,
+                        footer: true,
+                        toolbarAdd: true,
+                        toolbarDelete: true,
+                        toolbarSave: true,
+                        toolbarEdit: true
+                    },
+                    searches: [
+                        { field: 'aname', caption: 'sens', type: 'text' },
+                        { field: 'sname', caption: 'themes', type: 'text' },
+                        { field: 'lname', caption: 'details', type: 'text' }
+                    ],
+                    columns: [
+                        { field: 'recid', caption: 'ID', size: '50px', sortable: true, attr: 'align=center' },
+                        { field: 'aname', caption: 'sens', size: '30%', sortable: true },
+                        { field: 'sname', caption: 'themes', size: '30%', sortable: true },
+                        { field: 'lname', caption: 'details', size: '40%' },
+                    ],
+                    onAdd: function (event) {
+                        var g = w2ui['grid1'].records.length;
+                        w2ui['grid1'].add({ recid: g + 1, sname: 'sens', aname: 'themes', lname: 'details' });
+                    },
+                    onEdit: function (event) {
+                        w2alert('edit');
+                    },
+                    onDelete: function (event) {
+                        console.log('delete has default behavior');
+                    },
+                    onSave: function (event) {
+                        w2alert('save');
+                    },
+                    records: [
+                        { recid: 1, sname: 'Peinture', aname: 'LA VUE', lname: 'Arts et images' },
+                        { recid: 2, sname: 'MUSIQUE', aname: 'LOUIE', lname: 'Musique classique' },
+                        { recid: 3, sname: '', aname: 'LE TOUCHER', lname: '' },
+                        { recid: 4, sname: '', aname: 'LODORAT', lname: '' },
+                        { recid: 5, sname: 'Cuisiner', aname: 'LE GOUT', lname: '' },
+
+                    ]
+                });
+            });
+
+            function onAdd() {
                 var g = w2ui['grid3'].records.length;
-                w2ui['grid3'].add({ recid: g + 1, fname: 'Jin', lname: 'Franson', email: 'jdoe@gmail.com', sdate: '4/3/2012' });
-            }*/
-
-            function addMRecord() {
-                var g = w2ui['grid3'].records.length;
-                w2ui['grid3'].add([
-                    { recid: g + 1, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 2, fname: 'Kelly', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 3, fname: 'Francis', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 4, fname: 'Mark', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 5, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 6, fname: 'Susan', lname: 'Ottie', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 7, fname: 'Kelly', lname: 'Silver', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 8, fname: 'Francis', lname: 'Gatos', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 9, fname: 'Mark', lname: 'Welldo', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: g + 10, fname: 'Thomas', lname: 'Bahh', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-
-                ]);
-            }
-
-            function removeRecords() {
-                w2ui.grid.clear();
-                w2ui.grid.records = [
-                    { recid: 1, fname: 'John', lname: 'doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' },
-                    { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
-                ];
-                w2ui.grid.total = 2;
-                w2ui.grid.refresh();
+                w2ui['grid3'].add({ recid: g + 1, sname: 'sens', aname: 'themes', lname: 'details' });
             }
         </script>
-
         <script src="../samszo/css/grille_fichiers/jquery-3.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="../samszo/css/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
