@@ -1,81 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Grille attribut personnes">
-    <meta name="author" content="Noé klk et mamadou magassa">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Attribut Utilisateurs</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../../samszo/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../samszo/css/w2ui-1.5.rc1.min.css" />
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../../samszo/css/sticky-footer-navbar.css" />
-
-    <script type="text/javascript" src="../../samszo/js/d3.v4.js"></script>
-    <script type="text/javascript" src="../../samszo/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../samszo/js/popper.min.js"></script>
-    <script type="text/javascript" src="../../samszo/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../samszo/js/w2ui.js"></script>
-    <script type="text/javascript" src="../../samszo/js/fontawesome.v5.5.0.all.js" ></script>
-
+        <meta charset="utf-8">
+    <title>W2UI Demo: combo-1</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
 </head>
 <body>
-<div align="center">
-<div id="grid" style="width: 700px; height: 375px;"></div>
-<p></p>
-<div id="grid2" style="width: 700px; height: 375px;"></div>
-<p></p>
-<div id="grid3" style="width: 700px; height: 375px;"></div>
 
-</div>
+<div id="main"  style="width: 900px; height: 400px; "></div>
+
 <script type="text/javascript">
-
-function verifForm(){
-    let rep = true;
-    if (w2ui.gQuestions.getChanges().length > 0) {
-        w2alert('Veuillez enregistrer les questions.');
-        rep = false;
-    }
-    if (w2ui.gReponse.getChanges().length > 0) {
-        w2alert('Veuillez enregistrer les réponses.');
-        rep = false;
-    }
-
-    return rep;
-
-}
-
-function getParamsForm() {
-    var params = {
-        'iptForm': $('#iptForm').val(),
-        'iptFormIeml': $('#iptFormIeml').val(),
-        'chkGeo': $('#chkGeo').val(),
-        'chkTime': $('#chkTime').val(),
-        'chkBDD': $('#chkBDD').val(),
-        'iptBddID': $('#iptBddID').val()
-    };
-    return params;
-}
-
-function exportJson(content, fileName, contentType) {
-    var a = document.createElement("a");
-    var file = new Blob([content], {
-        type: contentType
-    });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-}
-
-
-$(function () {    
-    $('#grid').w2grid({ 
-        name: 'grid',
+// widget configuration
+var config = {
+    layout: {
+        name: 'layout',
+        padding: 0,
+        panels: [
+            { type: 'left', size: 200, resizable: true, minSize: 120 },
+            { type: 'main', minSize: 550, overflow: 'hidden' }
+        ]
+    },
+    sidebar: {
+        name: 'sidebar',
+        nodes: [ 
+            { id: 'general', text: 'General', group: true, expanded: true, nodes: [
+                { id: 'grid1', text: 'Grid 1', img: 'icon-page', selected: true },
+                { id: 'grid2', text: 'Grid 2', img: 'icon-page' },
+                { id: 'grid3', text: 'Grid 3', img: 'icon-page' }
+            ]}
+        ],
+        
+        onClick: function (event) {
+            switch (event.target) {
+                case 'grid1':
+                    w2ui.layout.content('main', w2ui.grid1);
+                    break;
+                case 'grid2':
+                    w2ui.layout.content('main', w2ui.grid2);
+                    break;
+                case 'grid3':
+                    w2ui.layout.content('main', w2ui.grid3);
+                    break;
+               
+            }
+        }
+    },
+    
+    grid1: { 
+        name: 'grid1',
         header: 'Attribut des utilisateurs', 
         show: { 
             toolbar: true,
@@ -134,7 +111,7 @@ $(function () {
         onAdd: function (event) {
 			
 			
-			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
+			w2ui.grid1.add({ recid: w2ui.grid1.records.length + 1 });
         },
         onEdit: function (event) {
             w2alert('edit');
@@ -142,20 +119,84 @@ $(function () {
         onDelete: function (event) {
             console.log('delete has default behavior');
         },
+        exportData: function (Data, type, showFields) {
+        // Data       : {}. Can be any data you want to export (records, columns, custom, etc...).
+        // type       : string. Extension of file name 'xls' or 'csv' are possible. By default 'excel' format is done on array
+        // showFields : boolean (optional). Insert field names on top of the file data. By default 'false'
+
+            var arrData = typeof Data != 'object' ? JSON.parse(Data) : Data;
+            fileName = 'ExportData.' + type;
+            var Data = '';
+            // show fields on first row ?
+            if (showFields) {
+                var row = "";
+                for (var index in arrData[0]) {
+                    if (row !="" && type =='csv') row +=',';
+                    row += index + '\t';
+                }
+                row = row.slice(0, -1);
+                Data += row + '\r\n';
+            }
+            // Prepare array data format
+            for (var i = 0; i < arrData.length; i++) {
+                var row = "";
+                for (var index in arrData[i]) {
+                    if (row !="" && type =='csv') row +=',';
+                    row += (type == 'xls') ? '"' + arrData[i][index] + '"\t' :  arrData[i][index] + '\t'
+                }
+                row.slice(0, row.length - 1);
+                Data += row + '\r\n';
+            }
+            // No data?
+            if (Data == '') {
+                w2alert('No Data Found');
+                return;
+            }
+            var link = document.createElement("a");
+            // browser with HTML5 support download attribute
+            if (link.download !== undefined) {
+                var uri = 'data:application/vnd.ms-excel,' + escape(Data);
+                link.setAttribute ( 'href', uri);
+                link.setAttribute('style', "visibility:hidden");
+                link.setAttribute ('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            // IE 10,11+
+            else if (navigator.msSaveBlob) {
+                var blob = new Blob([Data], {
+                    "type": "text/csv;charset=utf8;"			
+                });
+                navigator.msSaveBlob(blob, fileName);
+            }
+            // old IE 9-  remove this part ?? deprecated browsers ??
+            var ua = window.navigator.userAgent;
+            var ie = ua.indexOf('MSIE ');
+            if ((ie > -1)) {
+                if (document.execCommand) {
+                    var oWin = window.open("about:blank","_blank");
+                    oWin.document.write(Data);
+                    oWin.document.close();
+                    var success = oWin.document.execCommand('SaveAs', true, fileName)
+                    oWin.close();
+                }
+            }
+    },
         onSave: function (event) {
           //  w2ui.grid.save();
 			//w2alert('edit');
 			
-
+        exportData('records','csv',1);
            
 				 
-        var params = getParamsForm();
+      /*  var params = getParamsForm();
         var jsonData = {
             "questions": arrQR,
             "params": params,
             "reponses": arrReponses
         };
-        exportJson(JSON.stringify(jsonData), 'formulaireSemantique.json', 'text/plain'); 
+        exportJson(JSON.stringify(jsonData), 'formulaireSemantique.json', 'text/plain'); */
     
         },
         records: [
@@ -171,11 +212,8 @@ $(function () {
             { recid: 10, fname: 'Jill',lname: 'Doe', yrold: '20',wgt: '22', hgt: '1.75',nope : 'La moutarde'}
           
         ]
-    });    
-});
-
-$(function () {    
-    $('#grid2').w2grid({ 
+    },
+    grid2: { 
         name: 'grid2', 
         header: 'Recette', 
         show: { 
@@ -210,7 +248,7 @@ $(function () {
         onAdd: function (event) {
 			
 			
-			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
+			w2ui.grid2.add({ recid: w2ui.grid2.records.length + 1 });
             
             
         },
@@ -249,12 +287,9 @@ $(function () {
             { recid: 10, ingredient: 'oeuf', difficult: 'facile' }
           
         ]
-    });    
-});
-
-$(function () {    
-    $('#grid3').w2grid({ 
-        name: 'grid3',
+    },
+    grid3: {
+    name: 'grid3',
         header: 'Qualité nutritive',  
         show: { 
             toolbar: true,
@@ -290,7 +325,7 @@ $(function () {
         onAdd: function (event) {
 			
 			
-			w2ui.grid.add({ recid: w2ui.grid.records.length + 1 });
+			w2ui.grid3.add({ recid: w2ui.grid3.records.length + 1 });
         },
         onEdit: function (event) {
             w2alert('edit');
@@ -326,7 +361,16 @@ $(function () {
             { recid: 10, nomproduit: 'Sandwich Daunat', nutriscore: 'C' }
           
         ]
-    });    
+}};
+
+$(function () {
+    // initialization
+    $('#main').w2layout(config.layout);
+    w2ui.layout.content('left', $().w2sidebar(config.sidebar));
+    w2ui.layout.content('main', $().w2grid(config.grid1));
+    // in memory initialization
+    $().w2grid(config.grid2);
+    $().w2grid(config.grid3);
 });
 </script>
 
