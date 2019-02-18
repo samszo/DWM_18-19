@@ -9,15 +9,6 @@ header
     height: 100px;
 }
 
-input {
-    border-radius: 15px;
-    width: 1040px;
-    height: 30px;
-    border: 1px solid #04f5b5;
-    background-color: black;
-    color: #04f5b5;
-}
-
 footer
 {
     width: 100%;
@@ -59,10 +50,23 @@ footer
 
     #searchthis #search-btn {
         background-color: black;
+        border-radius: 15px;
         border: 1px solid #04f5b5;
         color: #04f5b5;
         font-family: Arial, Helvetica, sans-serif;
+        height: 30px;
+        margin-top: 30px;
+        width: 100px;
     }
+
+        #searchthis #search {
+            border-radius: 15px;
+            background-color: black;
+            border: 1px solid #04f5b5;
+            color: #04f5b5;
+            height: 30px;
+            width: 1040px;
+        }
 
         #searchthis #search-btn:hover {
             background-color: #04f5b5;
