@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="styles/main.css" />
         <script type="text/js" src="scripts/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     </head>
     <body>
     <header>
@@ -13,18 +14,109 @@
             <input id="search" name="search" type="text" placeholder="Rechercher" />
             <input id="search-btn" type="submit" value="Rechercher" />
             </form>
-                        
-                        
+                                        
         </div>
     </header>
 
-        <div class="force"></div>
+        <div class="force">
+            <div id="orbit">
+            <svg width="960" height="800" viewBox="-480 -250 960 500">
+                <circle r="100" stroke="#04f5b5" stroke-opacity="0.5" fill="none"></circle>
+                <circle r="200" stroke="#04f5b5" stroke-opacity="0.5" fill="none"></circle>
+                <circle r="300" stroke="#04f5b5" stroke-opacity="0.5" fill="none"></circle>
+              </svg>
+              </div>
+        </div>
 
         <div class="titreArchive"></div>
 
     <footer>
         <div class="navButton"></div>
     </footer>
-    </body>
 
+<script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="https://d3js.org/d3-collection.v1.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+<script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+<script src="https://d3js.org/d3-force.v1.min.js"></script>
+
+<script>
+
+/* Merci à Mike Bostock pour son algorithmme Radial Force : 
+https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9 */
+
+// Données JSON Deleuze
+// var urlDeleuze = "http://www.localhost/DWM_18-19/RochDLY/sonar/application/data/data.json";
+var urlDeleuze = "http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
+var data = $.getJSON(urlDeleuze);
+var dataDeleuze = JSON.parse(data);
+
+  
+// Code Radial Force D3js
+var nodes = [].concat(
+  d3.dataDeleuze.map(function() { 
+      if (dataDeleuze.score >= 0.3)
+        return {type: "a"}; }),
+  d3.dataDeleuze.map(function() { 
+    if (dataDeleuze.score >= 0.2)
+        return {type: "b"}; }),
+  d3.dataDeleuze.map(function() { 
+      if (dataDeleuze.score < 0.2)
+        return {type: "c"}; })
+);
+/*
+var node = d3.select("svg")
+  .append("g")
+  .selectAll("circle")
+  .data(nodes)
+  .enter().append("circle")
+    .attr("r", 2.5)
+    .attr("fill", function(d) { return d.type === "a" ? "#04f5b5" : "#04f5b5"; })
+
+var simulation = d3.forceSimulation(nodes)
+    .force("charge", d3.forceCollide().radius(5))
+    .force("r", d3.forceRadial(function(d) { return d.type === "a" ? 100 : 200; }))
+    .on("tick", ticked);
+
+function ticked() {
+  node
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+*/
+
+// Code expérimental Roch
+var node = d3.select("svg")
+  .append("g")
+  .selectAll("circle")
+  .data(nodes)
+  .enter().append("circle")
+    .attr("r", 2.5)
+    .attr("fill", "#04f5b5");
+
+var simulation = d3.forceSimulation(nodes)
+    .force("charge", d3.forceCollide().radius(5))
+    .force("r", d3.forceRadial(function(d) { 
+        if (d.type === "a") {
+            return  100;}
+        else if (d.type === "b") {
+            return 200;}
+        else {
+            return 300;}
+    }))
+    .on("tick", ticked);
+
+function ticked() {
+  node
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+
+
+</script>
+
+    </body>
 </html>
