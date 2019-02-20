@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="707" viewBox="0 0 375 707">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.073" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00f7a1"/>
+      <stop offset="1" stop-color="#54d6ff" stop-opacity="0.365"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect width="241.871" height="356" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-iPhone_6_7_8_11">
+      <rect width="375" height="707"/>
+    </clipPath>
+  </defs>
+  <g id="iPhone_6_7_8_11" data-name="iPhone 6/7/8 – 11" clip-path="url(#clip-iPhone_6_7_8_11)">
+    <rect width="375" height="707" fill="#fff"/>
+    <rect id="Rectangle_41" data-name="Rectangle 41" width="375" height="707" fill="#fff"/>
+    <g id="Ellipse_129" data-name="Ellipse 129" transform="translate(318 45)" fill="#00f7a1" stroke="#00f7a1" stroke-width="2">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+    </g>
+    <g id="Ellipse_130" data-name="Ellipse 130" transform="translate(9.393 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_131" data-name="Ellipse 131" transform="translate(17.186 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_132" data-name="Ellipse 132" transform="translate(24.98 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_133" data-name="Ellipse 133" transform="translate(32.773 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_134" data-name="Ellipse 134" transform="translate(40.567 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <text id="Adobe" transform="translate(65.958 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-14.725" y="0">Adobe</tspan></text>
+    <g id="wifi" transform="translate(91.225 10.241)">
+      <path id="Tracé_3" data-name="Tracé 3" d="M11.684,5.41A8.07,8.07,0,0,0,5.91,3,7.992,7.992,0,0,0,.136,5.41a.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,6.366,6.366,0,0,1,9,0,.439.439,0,0,0,.636,0l.636-.636a.413.413,0,0,0,.136-.318A.354.354,0,0,0,11.684,5.41Z" transform="translate(0 -3)"/>
+      <path id="Tracé_4" data-name="Tracé 4" d="M9.019,11a4.425,4.425,0,0,0-3.182,1.318.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,2.68,2.68,0,0,1,1.909-.773,2.886,2.886,0,0,1,1.909.773.439.439,0,0,0,.636,0l.636-.636a.439.439,0,0,0,0-.636A4.425,4.425,0,0,0,9.019,11Z" transform="translate(-3.109 -7.363)"/>
+      <ellipse id="Ellipse_7" data-name="Ellipse 7" cx="0.909" cy="0.909" rx="0.909" ry="0.909" transform="translate(5.001 7.274)"/>
+    </g>
+    <text id="_16:50" data-name="16:50" transform="translate(187.758 17.644)" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.761" y="0">16:50</tspan></text>
+    <text id="_100_" data-name="100%" transform="translate(321.146 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.34" y="0">100%</tspan></text>
+    <path id="battery" d="M7.625,1.664H5.878V0H2.672V1.664H.926C.415,1.664,0,2.311,0,3.106v20.42c0,.795.415,1.441.926,1.441h6.7c.51,0,.926-.647.926-1.441V3.106C8.55,2.311,8.135,1.664,7.625,1.664ZM3.206.832H5.344v.832H3.206Zm4.81,22.693c0,.336-.175.609-.391.609H.926c-.216,0-.391-.273-.391-.609V3.106C.534,2.77.71,2.5.926,2.5h6.7c.216,0,.391.273.391.609Z" transform="translate(365.586 9.541) rotate(90)"/>
+    <rect id="Rectangle_42" data-name="Rectangle 42" width="23" height="8" rx="1" transform="translate(341 10)"/>
+    <line id="Ligne_76" data-name="Ligne 76" x2="21.554" transform="translate(324.5 56.376)" fill="none" stroke="#fff" stroke-width="2"/>
+    <line id="Ligne_77" data-name="Ligne 77" x2="21.554" transform="translate(324.5 62.438)" fill="none" stroke="#fff" stroke-width="2"/>
+    <line id="Ligne_78" data-name="Ligne 78" x2="21.554" transform="translate(324.5 68.5)" fill="none" stroke="#fff" stroke-width="2"/>
+    <rect id="Rectangle_43" data-name="Rectangle 43" width="188" height="100" transform="translate(0 62)" fill="#00f7a1"/>
+    <text id="Bibliothêque" transform="translate(132 129)" font-size="32" font-family="Mermaid-Bold, Mermaid" font-weight="700" opacity="0.999"><tspan x="-88.072" y="0">Bibliothêque</tspan></text>
+    <text id="Dates" transform="translate(46 237)" font-size="24" font-family="Mermaid-Bold, Mermaid" font-weight="700" opacity="0.752"><tspan x="0" y="0">Dates</tspan></text>
+    <rect id="Rectangle_44" data-name="Rectangle 44" width="19" height="12" transform="translate(44 253)" fill="#00f7a1"/>
+    <line id="Ligne_79" data-name="Ligne 79" x2="259" transform="translate(44.5 258.5)" fill="none" stroke="#000" stroke-width="1" opacity="0.301"/>
+    <path id="left-arrow" d="M13.091,20.5,6.722,14.306H28.3V10.768H6.722l6.368-6.192L10.437,2.1,0,12.537,10.437,22.974Z" transform="translate(318.5 623.9)" fill="url(#linear-gradient)"/>
+    <g id="Grille_de_répétition_6" data-name="Grille de répétition 6" transform="translate(46 301)" clip-path="url(#clip-path)">
+      <g transform="translate(-46 -301)">
+        <rect id="Rectangle_69" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36" data-name="Groupe 36" transform="translate(0)">
+          <text id="_1950_-_1960" data-name="1950 - 1960" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">1950 - 1960</tspan></text>
+          <line id="Ligne_90" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 -248)">
+        <rect id="Rectangle_69-2" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-2" data-name="Groupe 36" transform="translate(0)">
+          <text id="_1960_-_1970" data-name="1960 - 1970" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">1960 - 1970</tspan></text>
+          <line id="Ligne_90-2" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 -195)">
+        <rect id="Rectangle_69-3" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-3" data-name="Groupe 36" transform="translate(0)">
+          <text id="_1970_-_1980" data-name="1970 - 1980" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">1970 - 1980</tspan></text>
+          <line id="Ligne_90-3" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 -142)">
+        <rect id="Rectangle_69-4" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-4" data-name="Groupe 36" transform="translate(0)">
+          <text id="_1980_-_1990" data-name="1980 - 1990" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">1980 - 1990</tspan></text>
+          <line id="Ligne_90-4" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 -89)">
+        <rect id="Rectangle_69-5" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-5" data-name="Groupe 36" transform="translate(0)">
+          <text id="_1990_-_2000" data-name="1990 - 2000" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">1990 - 2000</tspan></text>
+          <line id="Ligne_90-5" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 -36)">
+        <rect id="Rectangle_69-6" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-6" data-name="Groupe 36" transform="translate(0)">
+          <text id="_2000_-_2010" data-name="2000 - 2010" transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">2000 - 2010</tspan></text>
+          <line id="Ligne_90-6" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+      <g transform="translate(-46 17)">
+        <rect id="Rectangle_69-7" data-name="Rectangle 69" width="19" height="7" transform="translate(46 327)" fill="#00f7a1"/>
+        <g id="Groupe_36-7" data-name="Groupe 36" transform="translate(0)">
+          <text id="_2010_-_" data-name="2010 - " transform="translate(46.765 317)" font-size="21" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">2010 - </tspan></text>
+          <line id="Ligne_90-7" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

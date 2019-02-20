@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="667" viewBox="0 0 375 667">
+  <defs>
+    <clipPath id="clip-iPhone_6_7_8_14">
+      <rect width="375" height="667"/>
+    </clipPath>
+  </defs>
+  <g id="iPhone_6_7_8_14" data-name="iPhone 6/7/8 – 14" clip-path="url(#clip-iPhone_6_7_8_14)">
+    <rect width="375" height="667" fill="#fff"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="375" height="667" fill="#fff"/>
+    <text id="Bibliothèque_Personnelle" data-name="Bibliothèque Personnelle" transform="translate(173 194)" font-size="20" font-family="Mermaid-Bold, Mermaid" font-weight="700"><tspan x="-106.79" y="0">Bibliothèque Personnelle</tspan></text>
+    <text id="Bibliothèque_Public" data-name="Bibliothèque Public" transform="translate(151 260)" font-size="20" font-family="Mermaid-Bold, Mermaid" font-weight="700"><tspan x="-84.595" y="0">Bibliothèque Public</tspan></text>
+    <text id="Mes_Annotations" data-name="Mes Annotations" transform="translate(140 326)" font-size="20" font-family="Mermaid-Bold, Mermaid" font-weight="700"><tspan x="-71.905" y="0">Mes Annotations</tspan></text>
+    <text id="Deconnexion" transform="translate(125 472)" font-size="20" font-family="Mermaid-Bold, Mermaid" font-weight="700"><tspan x="-55.975" y="0">Deconnexion</tspan></text>
+    <line id="Ligne_98" data-name="Ligne 98" x2="141" transform="translate(68.5 489.5)" fill="none" stroke="#000" stroke-width="1"/>
+    <path id="Tracé_62" data-name="Tracé 62" d="M2475.409,69H2310.93V418.77" transform="translate(-2265.909 71.73)" fill="none" stroke="#000" stroke-width="1"/>
+    <path id="Tracé_64" data-name="Tracé 64" d="M2496.93,576.17h263V540.045" transform="translate(-2429.43 -50.545)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Groupe_34" data-name="Groupe 34" transform="translate(21 -7)">
+      <line id="Ligne_65" data-name="Ligne 65" y1="12" x2="14" transform="translate(316.5 62.5)" fill="none" stroke="#5aecbc" stroke-width="2"/>
+      <g id="Ellipse_122" data-name="Ellipse 122" transform="translate(306 51)" fill="none" stroke="#00f7a1" stroke-width="2">
+        <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+        <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+      </g>
+      <line id="Ligne_68" data-name="Ligne 68" x2="14" y2="12" transform="translate(316.5 62.5)" fill="none" stroke="#5aecbc" stroke-width="2"/>
+    </g>
+    <line id="Ligne_95" data-name="Ligne 95" x2="259" transform="translate(67.5 211.5)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Ligne_97" data-name="Ligne 97" x2="259" transform="translate(71.5 343.5)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Ligne_96" data-name="Ligne 96" x2="259" transform="translate(67.5 277.5)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Ellipse_130" data-name="Ellipse 130" transform="translate(9.393 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_131" data-name="Ellipse 131" transform="translate(17.186 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_132" data-name="Ellipse 132" transform="translate(24.98 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_133" data-name="Ellipse 133" transform="translate(32.773 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_134" data-name="Ellipse 134" transform="translate(40.567 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <text id="Adobe" transform="translate(65.958 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-14.725" y="0">Adobe</tspan></text>
+    <g id="wifi" transform="translate(91.225 10.241)">
+      <path id="Tracé_3" data-name="Tracé 3" d="M11.684,5.41A8.07,8.07,0,0,0,5.91,3,7.992,7.992,0,0,0,.136,5.41a.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,6.366,6.366,0,0,1,9,0,.439.439,0,0,0,.636,0l.636-.636a.413.413,0,0,0,.136-.318A.354.354,0,0,0,11.684,5.41Z" transform="translate(0 -3)"/>
+      <path id="Tracé_4" data-name="Tracé 4" d="M9.019,11a4.425,4.425,0,0,0-3.182,1.318.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,2.68,2.68,0,0,1,1.909-.773,2.886,2.886,0,0,1,1.909.773.439.439,0,0,0,.636,0l.636-.636a.439.439,0,0,0,0-.636A4.425,4.425,0,0,0,9.019,11Z" transform="translate(-3.109 -7.363)"/>
+      <ellipse id="Ellipse_7" data-name="Ellipse 7" cx="0.909" cy="0.909" rx="0.909" ry="0.909" transform="translate(5.001 7.274)"/>
+    </g>
+    <text id="_16:50" data-name="16:50" transform="translate(187.758 17.644)" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.761" y="0">16:50</tspan></text>
+    <text id="_100_" data-name="100%" transform="translate(321.146 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.34" y="0">100%</tspan></text>
+    <path id="battery" d="M7.625,1.664H5.878V0H2.672V1.664H.926C.415,1.664,0,2.311,0,3.106v20.42c0,.795.415,1.441.926,1.441h6.7c.51,0,.926-.647.926-1.441V3.106C8.55,2.311,8.135,1.664,7.625,1.664ZM3.206.832H5.344v.832H3.206Zm4.81,22.693c0,.336-.175.609-.391.609H.926c-.216,0-.391-.273-.391-.609V3.106C.534,2.77.71,2.5.926,2.5h6.7c.216,0,.391.273.391.609Z" transform="translate(365.586 9.541) rotate(90)"/>
+    <rect id="Rectangle_42" data-name="Rectangle 42" width="23" height="8" rx="1" transform="translate(341 10)"/>
+  </g>
+</svg>

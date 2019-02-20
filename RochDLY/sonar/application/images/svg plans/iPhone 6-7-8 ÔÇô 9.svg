@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="667" viewBox="0 0 375 667">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="241.573" height="333.015" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.073" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00f7a1"/>
+      <stop offset="1" stop-color="#54d6ff" stop-opacity="0.365"/>
+    </linearGradient>
+    <clipPath id="clip-iPhone_6_7_8_9">
+      <rect width="375" height="667"/>
+    </clipPath>
+  </defs>
+  <g id="iPhone_6_7_8_9" data-name="iPhone 6/7/8 – 9" clip-path="url(#clip-iPhone_6_7_8_9)">
+    <rect width="375" height="667" fill="#fff"/>
+    <rect id="Rectangle_45" data-name="Rectangle 45" width="375" height="667" fill="#fff"/>
+    <g id="Ellipse_135" data-name="Ellipse 135" transform="translate(318 45)" fill="#00f7a1" stroke="#00f7a1" stroke-width="2">
+      <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+      <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+    </g>
+    <g id="Ellipse_136" data-name="Ellipse 136" transform="translate(9.393 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_137" data-name="Ellipse 137" transform="translate(17.186 10.541)" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_138" data-name="Ellipse 138" transform="translate(24.98 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_139" data-name="Ellipse 139" transform="translate(32.773 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <g id="Ellipse_140" data-name="Ellipse 140" transform="translate(40.567 10.541)" fill="none" stroke="#000" stroke-width="1">
+      <ellipse cx="3.247" cy="3.247" rx="3.247" ry="3.247" stroke="none"/>
+      <ellipse cx="3.247" cy="3.247" rx="2.747" ry="2.747" fill="none"/>
+    </g>
+    <text id="Adobe" transform="translate(65.958 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-14.725" y="0">Adobe</tspan></text>
+    <g id="wifi" transform="translate(91.225 10.241)">
+      <path id="Tracé_3" data-name="Tracé 3" d="M11.684,5.41A8.07,8.07,0,0,0,5.91,3,7.992,7.992,0,0,0,.136,5.41a.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,6.366,6.366,0,0,1,9,0,.439.439,0,0,0,.636,0l.636-.636a.413.413,0,0,0,.136-.318A.354.354,0,0,0,11.684,5.41Z" transform="translate(0 -3)"/>
+      <path id="Tracé_4" data-name="Tracé 4" d="M9.019,11a4.425,4.425,0,0,0-3.182,1.318.439.439,0,0,0,0,.636l.636.636a.439.439,0,0,0,.636,0,2.68,2.68,0,0,1,1.909-.773,2.886,2.886,0,0,1,1.909.773.439.439,0,0,0,.636,0l.636-.636a.439.439,0,0,0,0-.636A4.425,4.425,0,0,0,9.019,11Z" transform="translate(-3.109 -7.363)"/>
+      <ellipse id="Ellipse_7" data-name="Ellipse 7" cx="0.909" cy="0.909" rx="0.909" ry="0.909" transform="translate(5.001 7.274)"/>
+    </g>
+    <text id="_16:50" data-name="16:50" transform="translate(187.758 17.644)" font-size="11" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.761" y="0">16:50</tspan></text>
+    <text id="_100_" data-name="100%" transform="translate(321.146 17.644)" font-size="10" font-family="HelveticaNeue, Helvetica Neue"><tspan x="-13.34" y="0">100%</tspan></text>
+    <path id="battery" d="M7.625,1.664H5.878V0H2.672V1.664H.926C.415,1.664,0,2.311,0,3.106v20.42c0,.795.415,1.441.926,1.441h6.7c.51,0,.926-.647.926-1.441V3.106C8.55,2.311,8.135,1.664,7.625,1.664ZM3.206.832H5.344v.832H3.206Zm4.81,22.693c0,.336-.175.609-.391.609H.926c-.216,0-.391-.273-.391-.609V3.106C.534,2.77.71,2.5.926,2.5h6.7c.216,0,.391.273.391.609Z" transform="translate(365.586 9.541) rotate(90)"/>
+    <rect id="Rectangle_46" data-name="Rectangle 46" width="23" height="8" rx="1" transform="translate(341 10)"/>
+    <line id="Ligne_86" data-name="Ligne 86" x2="21.554" transform="translate(324.5 56.376)" fill="none" stroke="#fff" stroke-width="2"/>
+    <line id="Ligne_87" data-name="Ligne 87" x2="21.554" transform="translate(324.5 62.438)" fill="none" stroke="#fff" stroke-width="2"/>
+    <line id="Ligne_88" data-name="Ligne 88" x2="21.554" transform="translate(324.5 68.5)" fill="none" stroke="#fff" stroke-width="2"/>
+    <rect id="Rectangle_47" data-name="Rectangle 47" width="188" height="100" transform="translate(0 62)" fill="#00f7a1"/>
+    <text id="Bibliothêque" transform="translate(132 129)" font-size="32" font-family="Mermaid-Bold, Mermaid" font-weight="700" opacity="0.998"><tspan x="-88.072" y="0">Bibliothêque</tspan></text>
+    <text id="Tags" transform="translate(64 238)" font-size="24" font-family="Mermaid-Bold, Mermaid" font-weight="700" opacity="0.752"><tspan x="-23.274" y="0">Tags</tspan></text>
+    <rect id="Rectangle_48" data-name="Rectangle 48" width="19" height="12" transform="translate(44 253)" fill="#00f7a1"/>
+    <line id="Ligne_89" data-name="Ligne 89" x2="259" transform="translate(44.5 258.5)" fill="none" stroke="#000" stroke-width="1" opacity="0.301"/>
+    <g id="Grille_de_répétition_2" data-name="Grille de répétition 2" transform="translate(46.298 303)" clip-path="url(#clip-path)">
+      <g transform="translate(-46.298 -303)">
+        <text id="Entretien" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Entretien</tspan></text>
+        <line id="Ligne_90" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_10" data-name="10" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-8.351" y="0">10</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -254)">
+        <text id="Cours" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Cours</tspan></text>
+        <line id="Ligne_90-2" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_07" data-name="07" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-10.239" y="0">07</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -205)">
+        <text id="Débats" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Débats</tspan></text>
+        <line id="Ligne_90-3" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_05" data-name="05" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-10.359" y="0">05</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -156)">
+        <text id="Témoignage" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Témoignage</tspan></text>
+        <line id="Ligne_90-4" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_03" data-name="03" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-10.198" y="0">03</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -107)">
+        <text id="Analyse" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Analyse</tspan></text>
+        <line id="Ligne_90-5" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_02" data-name="02" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-9.87" y="0">02</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -58)">
+        <text id="Analyse-2" data-name="Analyse" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Analyse</tspan></text>
+        <line id="Ligne_90-6" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_02-2" data-name="02" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-9.87" y="0">02</tspan></text>
+      </g>
+      <g transform="translate(-46.298 -9)">
+        <text id="Analyse-3" data-name="Analyse" transform="translate(46.765 317)" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="0" y="0">Analyse</tspan></text>
+        <line id="Ligne_90-7" data-name="Ligne 90" x2="241.573" transform="translate(46.298 330.515)" fill="none" stroke="#000" stroke-width="1" opacity="0.304"/>
+        <text id="_02-3" data-name="02" transform="translate(276.751 320.664)" fill="#00f7a1" font-size="17" font-family="LarkeNeue-Regular, Larke Neue"><tspan x="-9.87" y="0">02</tspan></text>
+      </g>
+    </g>
+    <path id="left-arrow" d="M13.091,20.5,6.722,14.306H28.3V10.768H6.722l6.368-6.192L10.437,2.1,0,12.537,10.437,22.974Z" transform="translate(318.5 623.9)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>
