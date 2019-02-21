@@ -45,83 +45,91 @@
 <script src="https://d3js.org/d3-selection.v1.min.js"></script>
 <script src="https://d3js.org/d3-timer.v1.min.js"></script>
 <script src="https://d3js.org/d3-force.v1.min.js"></script>
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
 
 <script>
 
 // Données JSON Deleuze
 // var urlDeleuze = "http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 var urlDeleuze = "http://localhost/DWM_18-19/RochDLY/sonar/application/data/data.json";
-var data = $.getJSON(urlDeleuze);
-var dataDeleuze = JSON.parse(data);
+var dataDeleuze;
+
+d3.json(urlDeleuze)
+  .then(function(data){
+    // Code from your callback goes here...
+    dataDeleuze = data;
     //console.log(dataDeleuze.result);
 
-  
-// Code Radial Force D3js
-var nodes = [].concat(
-  d3.range(80).map(function() { 
-      if (dataDeleuze.score >= 0.3)
-        return {type: "a"}; }),
-  d3.range(160).map(function() { 
-    if (dataDeleuze.score >= 0.2)
-        return {type: "b"}; }),
-  d3.range(240).map(function() { 
-      if (dataDeleuze.score < 0.2)
-        return {type: "c"}; })
-);
-/* Merci à Mike Bostock pour son algorithmme Radial Force : 
-https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
+    // Code Radial Force D3js
+    var nodes = [].concat(
+    d3.range(80).map(function() { 
+        if (dataDeleuze.score >= 0.3)
+            return {type: "a"}; }),
+    d3.range(160).map(function() { 
+        if (dataDeleuze.score >= 0.2)
+            return {type: "b"}; }),
+    d3.range(240).map(function() { 
+        if (dataDeleuze.score < 0.2)
+            return {type: "c"}; })
+    );
+    /* Merci à Mike Bostock pour son algorithmme Radial Force : 
+    https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
 
-var nodes = [].concat(
-  d3.range(80).map(function() { return {type: "a"}; }),
-  d3.range(160).map(function() { return {type: "b"}; })
-);
+    var nodes = [].concat(
+    d3.range(80).map(function() { return {type: "a"}; }),
+    d3.range(160).map(function() { return {type: "b"}; })
+    );
 
-var node = d3.select("svg")
-  .append("g")
-  .selectAll("circle")
-  .data(nodes)
-  .enter().append("circle")
-    .attr("r", 2.5)
-    .attr("fill", function(d) { return d.type === "a" ? "#04f5b5" : "#04f5b5"; })
+    var node = d3.select("svg")
+    .append("g")
+    .selectAll("circle")
+    .data(nodes)
+    .enter().append("circle")
+        .attr("r", 2.5)
+        .attr("fill", function(d) { return d.type === "a" ? "#04f5b5" : "#04f5b5"; })
 
-var simulation = d3.forceSimulation(nodes)
-    .force("charge", d3.forceCollide().radius(5))
-    .force("r", d3.forceRadial(function(d) { return d.type === "a" ? 100 : 200; }))
-    .on("tick", ticked);
+    var simulation = d3.forceSimulation(nodes)
+        .force("charge", d3.forceCollide().radius(5))
+        .force("r", d3.forceRadial(function(d) { return d.type === "a" ? 100 : 200; }))
+        .on("tick", ticked);
 
-function ticked() {
-  node
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
-}
-*/
+    function ticked() {
+    node
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+    }
+    */
 
-// Code expérimental Roch
-var node = d3.select("svg")
-  .append("g")
-  .selectAll("circle")
-  .data(nodes)
-  .enter().append("circle")
-    .attr("r", 2.5)
-    .attr("fill", "#04f5b5");
+    // Code expérimental Roch
+    var node = d3.select("svg")
+    .append("g")
+    .selectAll("circle")
+    .data(nodes)
+    .enter().append("circle")
+        .attr("r", 2.5)
+        .attr("fill", "#04f5b5");
 
-var simulation = d3.forceSimulation(nodes)
-    .force("charge", d3.forceCollide().radius(5))
-    .force("r", d3.forceRadial(function(d) { 
-        if (d.type === "a") {
-            return  100;}
-        else if (d.type === "b") {
-            return 200;}
-        else {
-            return 300;}
-    }))
-    .on("tick", ticked);
+    var simulation = d3.forceSimulation(nodes)
+        .force("charge", d3.forceCollide().radius(5))
+        .force("r", d3.forceRadial(function(d) { 
+            if (d.type === "a") {
+                return  100;}
+            else if (d.type === "b") {
+                return 200;}
+            else {
+                return 300;}
+        }))
+        .on("tick", ticked);
 
-function ticked() {
-  node
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
-}
+    function ticked() {
+    node
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+    }
+
+});  
+
 
 
 
