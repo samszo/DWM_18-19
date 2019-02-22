@@ -53,7 +53,7 @@
 // Données JSON Deleuze
 // var urlDeleuze = "http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 var urlDeleuze = "http://localhost/DWM_18-19/RochDLY/sonar/application/data/data.json";
-var dataDeleuze;
+var dataDeleuze, x;
 
 // Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
@@ -93,7 +93,7 @@ d3.json(urlDeleuze)
 
     // Code expérimental Roch
 
-    var x,i, myObj = loop();
+    var i, myObj = loop();
 
     function loop(){
         JSON.parse(dataDeleuze);
