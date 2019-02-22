@@ -93,14 +93,19 @@ d3.json(urlDeleuze)
 
     // Code expérimental Roch
 
-    var i, myObj = loop();
+    var i, myObj = try1();
 
-    function loop(){
+    function parse(){
         JSON.parse(dataDeleuze);
-            
+    };
+    function loop(){      
         for (i in dataDeleuze.score) {
             x += dataDeleuze.score[i];
-    }
+    };
+    function try1(){
+        parse(),
+        loop()
+    };
 };
 
 
