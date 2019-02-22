@@ -11,6 +11,19 @@ if( isset($_POST['lat']) )
 
 
 // Formulation de la requête SQL :  insertion de données
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $sql= "INSERT INTO `uti` ('ip','maj') 
+    VALUES ('$ip', NOW())";    
+    // Exécution de la requête SQL : insertion de données
+    if (mysqli_query($conn, $sql))
+    {
+        echo "Nouvel enregistrement effectué <br />";
+    } 
+    else
+    {
+        echo "Erreur de requête :  " , $sql , "<br>" , mysqli_error($conn);
+    }       
+
     $sql= "INSERT INTO `geo` (`lat`, `lng`, `alt`, `acc`, `maj`) 
     VALUES ('$lat', '$lng', '$alt', '$acc', NOW())";
     
