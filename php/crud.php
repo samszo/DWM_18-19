@@ -1,6 +1,27 @@
 <?php
 
-$insert_comm = "INSERT INTO commentaire (pseudo, email, texte, `date`, id_article) VALUES ('$pseud', '$mail', '$_comment', '$today','$ID_ART')";
+if( isset($_POST['']) )
+{
+    // Récupération de la saisie du formulaire
+    $titre1 = $_POST[""];
+    $texte1 = $_POST[""];
+    $auteur1 = $_POST[""];
+    $date1 = $_POST[""];
 
-$affichart = "SELECT id, auteur, titre, texte, `date` FROM article WHERE id = '$ID_ART'";
+
+// Formulation de la requête SQL :  insertion de données
+    $sql = "INSERT INTO ** (*)
+    VALUES ('$auteur1', '$titre1', '$texte1', '$date1')";
+    
+    // Exécution de la requête SQL : insertion de données
+    if (mysqli_query($conn, $sql))
+    {
+        echo "Nouvel enregistrement effectué <br />";
+    } 
+    else
+    {
+        echo "Erreur de requête :  " , $sql , "<br>" , mysqli_error($conn);
+    }   
+}
+
 ?>
