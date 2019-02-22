@@ -60,6 +60,7 @@ d3.json(urlDeleuze)
   .then(function(data){
     // Code from your callback goes here...
     dataDeleuze = data;
+    JSON.parse(dataDeleuze);
     // console.log(dataDeleuze);
  
     /* Merci à Mike Bostock pour son algorithmme Radial Force : 
@@ -93,19 +94,9 @@ d3.json(urlDeleuze)
 
     // Code expérimental Roch
 
-    var i, myObj = try1();
-
-    function parse(){
-        JSON.parse(dataDeleuze);
-    };
-    function loop(){      
+        
         for (i in dataDeleuze.score) {
             x += dataDeleuze.score[i];
-    };
-    function try1(){
-        parse(),
-        loop()
-    };
 };
 
 
