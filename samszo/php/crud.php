@@ -1,5 +1,20 @@
 <?php
 include_once('connect.php');
+session_start(); 
+
+if (!$_SESSION['idUti']) { 
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $idSession = session_id();
+    $sql= "INSERT INTO uti (`ip`, `maj`,`session`)  
+    VALUES ('$ip', NOW(),'$idSession')";    
+    // Exécution de la requête SQL : insertion de données
+    $mysqli->query($sql);
+    $idUti = $mysqli->insert_id;
+    $_SESSION['idUti'] = $idUti;
+    echo "Cession enregistrée = $idUti <br />";    
+}else{
+    $idUti = $_SESSION['idUti'];
+}
 
 if( isset($_POST['lat']) )
 {
@@ -9,33 +24,12 @@ if( isset($_POST['lat']) )
     $alt = $_POST["alt"];
     $acc = $_POST["acc"];
 
-
-// Formulation de la requête SQL :  insertion de données
-    $ip = $_SERVER['REMOTE_ADDR'];
-    $sql= "INSERT INTO `uti` ('ip','maj') 
-    VALUES ('$ip', NOW())";    
+    $sql= "INSERT INTO `geo` (`id_uti`, `lat`, `lng`, `alt`, `acc`, `maj`) 
+    VALUES ('$idUti','$lat', '$lng', '$alt', '$acc', NOW())";
     // Exécution de la requête SQL : insertion de données
-    if (mysqli_query($conn, $sql))
-    {
-        echo "Nouvel enregistrement effectué <br />";
-    } 
-    else
-    {
-        echo "Erreur de requête :  " , $sql , "<br>" , mysqli_error($conn);
-    }       
-
-    $sql= "INSERT INTO `geo` (`lat`, `lng`, `alt`, `acc`, `maj`) 
-    VALUES ('$lat', '$lng', '$alt', '$acc', NOW())";
-    
-    // Exécution de la requête SQL : insertion de données
-    if (mysqli_query($conn, $sql))
-    {
-        echo "Nouvel enregistrement effectué <br />";
-    } 
-    else
-    {
-        echo "Erreur de requête :  " , $sql , "<br>" , mysqli_error($conn);
-    }   
+    $mysqli->query($sql);
+    echo "Nouvel enregistrement effectué <br />";
+  
 }
 
 ?>
