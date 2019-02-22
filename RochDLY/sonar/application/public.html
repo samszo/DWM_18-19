@@ -93,21 +93,26 @@ d3.json(urlDeleuze)
 
     // Code expérimental Roch
 
-for (i in dataDeleuze) {
-    
-}
+    var x,i, myObj = loop();
 
+    function loop(){
+        JSON.parse(dataDeleuze);
+            
+        for (i in dataDeleuze.score) {
+            x += dataDeleuze.score[i];
+    }
+};
 
 
     var nodes = [].concat(
     d3.range(80).map(function() { 
-        if (dataDeleuze.score > 0.3)
+        if (x > 0.3)
             return {type: "a"}; }),
     d3.range(160).map(function() { 
-        if (dataDeleuze.score >= 0.2)
+        if (x >= 0.2)
             return {type: "b"}; }),
     d3.range(240).map(function() { 
-        if (dataDeleuze.score < 0.2)
+        if (x < 0.2)
             return {type: "c"}; })
     );
 
