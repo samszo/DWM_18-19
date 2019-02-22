@@ -55,27 +55,17 @@
 var urlDeleuze = "http://localhost/DWM_18-19/RochDLY/sonar/application/data/data.json";
 var dataDeleuze;
 
+// Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
   .then(function(data){
     // Code from your callback goes here...
     dataDeleuze = data;
-    //console.log(dataDeleuze.result);
-
-    // Code Radial Force D3js
-    var nodes = [].concat(
-    d3.range(80).map(function() { 
-        if (dataDeleuze.score >= 0.3)
-            return {type: "a"}; }),
-    d3.range(160).map(function() { 
-        if (dataDeleuze.score >= 0.2)
-            return {type: "b"}; }),
-    d3.range(240).map(function() { 
-        if (dataDeleuze.score < 0.2)
-            return {type: "c"}; })
-    );
+    // console.log(dataDeleuze);
+ 
     /* Merci à Mike Bostock pour son algorithmme Radial Force : 
     https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
 
+    // Code Radial Force D3js    
     var nodes = [].concat(
     d3.range(80).map(function() { return {type: "a"}; }),
     d3.range(160).map(function() { return {type: "b"}; })
@@ -102,6 +92,19 @@ d3.json(urlDeleuze)
     */
 
     // Code expérimental Roch
+
+    var nodes = [].concat(
+    d3.range(80).map(function() { 
+        if (dataDeleuze.score > 0.3)
+            return {type: "a"}; }),
+    d3.range(160).map(function() { 
+        if (dataDeleuze.score >= 0.2)
+            return {type: "b"}; }),
+    d3.range(240).map(function() { 
+        if (dataDeleuze.score < 0.2)
+            return {type: "c"}; })
+    );
+
     var node = d3.select("svg")
     .append("g")
     .selectAll("circle")
@@ -113,12 +116,18 @@ d3.json(urlDeleuze)
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceCollide().radius(5))
         .force("r", d3.forceRadial(function(d) { 
-            if (d.type === "a") {
-                return  100;}
-            else if (d.type === "b") {
-                return 200;}
-            else {
-                return 300;}
+            if (d.type === "a") 
+            {
+                return  100;
+            }
+            else if (d.type === "b") 
+            {
+                return 200;
+            }
+            else 
+            {
+                return 300;
+            }
         }))
         .on("tick", ticked);
 
