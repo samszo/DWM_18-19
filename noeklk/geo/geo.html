@@ -6,16 +6,29 @@
     <title>Geolocalisation</title>
 
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js" ></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&ext=.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+    <script src="jquery-3.3.1.min.js"></script>
 </head>
 <body>
-
+  <div align="center" style="width:100%">
+  <main style="width:500px; ">
+    
 <h1>Exemple de géolocalisation</h1>
 <div id="txtGeo" ></div>
-<div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
+<br />
+<button id="delete-button" style="background-position-x: 50%;">Envoyer vos coordonnées dans la bdd</button>
+<br />
+<br />
+</main>
+<div id="map_2385853" style="width:50%;height:500px; z-index:1;"></div>
+
+
+</div>
 
 <script>
+
+
 var geoPosi, optionsGeo = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -24,18 +37,25 @@ var geoPosi, optionsGeo = {
   
   function successGeo(pos) {
     geoPosi = pos;
-    let html = 'Votre position actuelle est :<br/>'
+    var html = 'Votre position actuelle est :<br/>'
       +'Latitude : '+geoPosi.coords.latitude+'<br/>'
       +'Longitude : '+geoPosi.coords.longitude+'<br/>'
       +'La précision est de '+geoPosi.coords.accuracy+' mètres.';
 
     document.getElementById('txtGeo').innerHTML=html;
+
+
+ /*   var lat1 = geoPosi.coords.latitude;
+    var lng1 = geoPosi.coords.longitude;
+    var acc1 = geoPosi.coords.accuracy;*/
+
     /*
     console.log('Votre position actuelle est :');    
     console.log(`Latitude : ${geoPosi.coords.latitude}`);
     console.log(`Longitude : ${geoPosi.coords.longitude}`);
     console.log(`La précision est de ${geoPosi.coords.accuracy} mètres.`);
     */
+    
   }
   
   function errorGeo(err) {
@@ -78,9 +98,31 @@ function initializeMapAndLocator(){
 
 }
 
+$("#delete-button").click(function(){
+    if(confirm("êtes vous sûr de vouloir envoyer vos données ?")){
+       // $("#delete-button").attr("href", "query.php?ACTION=delete&ID='1'");
+       crudgeo(geoPosi.coords.latitude, geoPosi.coords.longitude, geoPosi.coords.accuracy);
+       
+
+
+    }
+    else{
+        return false;
+    }
+});
+
+
+function crudgeo(lat1, lng1, acc1){
+
+$.post( "crud.php", { lat : lat1, lng : lng1, acc : acc1 } );
+
+}
+
+
 initializeMapAndLocator();
 
 navigator.geolocation.getCurrentPosition(successGeo, errorGeo, optionsGeo);
+
 </script>
 </body>
 </html>
