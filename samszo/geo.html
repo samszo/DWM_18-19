@@ -6,13 +6,14 @@
     <title>Geolocalisation</title>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script src="js/leaflet.js" ></script>
+    <script type="text/javascript" src="js/leaflet.js" ></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
 </head>
 <body>
 
 <h1>Exemple de géolocalisation</h1>
 <div id="btnGeo" >ENREGISTRER</div>
+<div id="btnConcert" >Les concerts</div>
 <div id="txtGeo" ></div>
 <div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
 
@@ -32,6 +33,12 @@ $('#btnGeo').click(function() {
     ,'obj':geoPosi
     });
 });
+
+$('#btnConcert').click(function() {
+  getConcert();
+});
+
+
 
   function successGeo(pos) {
     geoPosi = pos;
@@ -122,6 +129,22 @@ function crudGeo(params){
     });  
 }
 
+function getConcert(){
+
+  var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags=concert&refine.date_start=2019';  
+
+  $.get( url)
+    .done(function( data ) {
+      console.log( "Data Loaded: " + data );
+    })
+    .fail(function() {
+      console.log( "error" );
+    })
+    .always(function() {
+      console.log( "finished" );
+    });  
+
+}
 
 </script>
 </body>
