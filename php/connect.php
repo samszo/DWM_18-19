@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "dwm_1819";
 
 // Connexion au serveur MySQL
 $conn = mysqli_connect($servername, $username, $password, $dbname);
