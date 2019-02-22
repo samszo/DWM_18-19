@@ -7,11 +7,12 @@ if( isset($_POST['code']) )
     $lng = $_POST["lng"];
     $alt = $_POST["alt"];
     $acc = $_POST["acc"];
+    $obj = $_POST["obj"];
 
 
 // Formulation de la requête SQL :  insertion de données
-    $sql = "INSERT INTO ** (*)
-    VALUES ('$auteur1', '$titre1', '$texte1', '$date1')";
+    $sql= "INSERT INTO `geo` (`lat`, `lng`, `alt`, `acc`, `maj`, `obj`) 
+    VALUES ('$lat', '$lng', '$alt', '$acc', NOW(), '$obj');
     
     // Exécution de la requête SQL : insertion de données
     if (mysqli_query($conn, $sql))
