@@ -1,12 +1,12 @@
 <?php
 
-if( isset($_POST['']) )
+if( isset($_POST['code']) )
 {
     // Récupération de la saisie du formulaire
-    $titre1 = $_POST[""];
-    $texte1 = $_POST[""];
-    $auteur1 = $_POST[""];
-    $date1 = $_POST[""];
+    $lat = $_POST["lat"];
+    $lng = $_POST["lng"];
+    $alt = $_POST["alt"];
+    $acc = $_POST["acc"];
 
 
 // Formulation de la requête SQL :  insertion de données
