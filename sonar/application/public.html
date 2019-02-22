@@ -52,8 +52,8 @@
 
 // Données JSON Deleuze
 // var urlDeleuze = "http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
-var urlDeleuze = "http://localhost/DWM_18-19/RochDLY/sonar/application/data/data.json";
-var dataDeleuze;
+var urlDeleuze = "http://localhost/DWM_18-19/sonar/application/data/data.json";
+var dataDeleuze, x;
 
 // Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
@@ -93,21 +93,31 @@ d3.json(urlDeleuze)
 
     // Code expérimental Roch
 
-for (i in dataDeleuze) {
-    
-}
+    var i, myObj = try1();
 
+    function parse(){
+        JSON.parse(dataDeleuze);
+    };
+    function loop(){      
+        for (i in dataDeleuze.score) {
+            x += dataDeleuze.score[i];
+    };
+    function try1(){
+        parse(),
+        loop()
+    };
+};
 
 
     var nodes = [].concat(
     d3.range(80).map(function() { 
-        if (dataDeleuze.score > 0.3)
+        if (x > 0.3)
             return {type: "a"}; }),
     d3.range(160).map(function() { 
-        if (dataDeleuze.score >= 0.2)
+        if (x >= 0.2)
             return {type: "b"}; }),
     d3.range(240).map(function() { 
-        if (dataDeleuze.score < 0.2)
+        if (x < 0.2)
             return {type: "c"}; })
     );
 
