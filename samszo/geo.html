@@ -16,7 +16,7 @@
 <div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
 
 <script>
-var geoPosi, optionsGeo = {
+var map, geoPosi, optionsGeo = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
@@ -30,6 +30,13 @@ var geoPosi, optionsGeo = {
       +'La précision est de '+geoPosi.coords.accuracy+' mètres.';
 
     document.getElementById('txtGeo').innerHTML=html;
+    geoPosi.latlng = {
+      lat: geoPosi.coords.latitude,
+      lng: geoPosi.coords.longitude      
+    };
+    geoPosi.accuracy = geoPosi.coords.accuracy;
+    onLocationFound(geoPosi);
+
     /*
     console.log('Votre position actuelle est :');    
     console.log(`Latitude : ${geoPosi.coords.latitude}`);
@@ -50,37 +57,45 @@ function getGeoInfos(){
         return {};
 }
 
-
-
+/*
+merci à https://stackoverflow.com/questions/40433317/leaflet-map-update-marker-using-navigator-geolocation-watchposition
+*/
 function initializeMapAndLocator(){
 
-  var map = L.map('map_2385853')
+  map = L.map('map_2385853');
 
-  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-  maxZoom: 20,
-  subdomains:['mt0','mt1','mt2','mt3']
-  }).addTo(map);
-
-
+  /*fond de carte google
+  var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
+  */
+  // fond de carte OSM
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    osm = L.tileLayer(osmUrl, {minZoom: 1, maxZoom: 16, attribution: osmAttrib})
+      .addTo(map);
+  
   map.locate({setView: true, 
         maxZoom: 16, 
         watch:true, 
         timeout: 60000
         });
     
-  function onLocationFound(e) {
-      var radius = e.accuracy / 2;
-      L.marker(e.latlng).addTo(map)
-      .bindPopup("You are within " + radius + " meters from this point").openPopup();
-      L.circle(e.latlng, radius).addTo(map);
-  }
   map.on('locationfound', onLocationFound);
-
+  
 }
 
-initializeMapAndLocator();
+function onLocationFound(e) {
+      var radius = e.accuracy / 2;
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("Vous êtes environ à " + radius + " mètres de ce point").openPopup();
+      L.circle(e.latlng, radius).addTo(map);
+  }
 
+initializeMapAndLocator();
 navigator.geolocation.getCurrentPosition(successGeo, errorGeo, optionsGeo);
+
 </script>
 </body>
 </html>
