@@ -52,7 +52,7 @@
 
 // Données JSON Deleuze
 // var urlDeleuze = "http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
-var urlDeleuze = "http://localhost/DWM_18-19/sonar/application/data/data.json";
+var urlDeleuze = "data/data.json";
 var dataDeleuze, x;
 
 // Merci à Samszo pour ses corrections !
@@ -60,9 +60,8 @@ d3.json(urlDeleuze)
   .then(function(data){
     // Code from your callback goes here...
     dataDeleuze = data;
-    JSON.parse(dataDeleuze);
-    // console.log(dataDeleuze);
- 
+    console.log(dataDeleuze);
+  });
     /* Merci à Mike Bostock pour son algorithmme Radial Force : 
     https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
 
@@ -93,7 +92,7 @@ d3.json(urlDeleuze)
     */
 
     // Code expérimental Roch
-
+/*
         
         for (i in dataDeleuze.score) {
             x += dataDeleuze.score[i];
@@ -144,7 +143,7 @@ d3.json(urlDeleuze)
         .attr("cy", function(d) { return d.y; });
     }
 
-});  
+}); */  
 
 
 
