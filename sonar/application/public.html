@@ -109,7 +109,7 @@ d3.json(urlDeleuze)
     .selectAll("circle")
     .data(nodes)
     .enter().append("circle")
-        .attr("r", 2.5)
+        .attr("r", 10)
         .attr("fill", "#04f5b5");
 
     var simulation = d3.forceSimulation(nodes)
