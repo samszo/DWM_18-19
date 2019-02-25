@@ -83,7 +83,7 @@
 // http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 
 var urlDeleuze = "data/data.json";
-var dataDeleuze, x, i = 0;
+var dataDeleuze, x, i;
 
 // Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
@@ -91,21 +91,20 @@ d3.json(urlDeleuze)
     // Code from your callback goes here...
     dataDeleuze = data;
     //console.log(dataDeleuze[0].score);    
-    for (i in dataDeleuze) {      
-        x += dataDeleuze[i].score;
-        i++;
+    for (i=0;  i < dataDeleuze.length; i++) {      
+        x = dataDeleuze[i].score;
         console.log(x);
     }
 
     var nodes = [].concat(
     d3.range(80).map(function() { 
-        if (x[i] > 0.3)
+        if (x > 0.3)
             return {type: "a"}; }),
     d3.range(160).map(function() { 
-        if (x[i] >= 0.2)
+        if (x >= 0.2)
             return {type: "b"}; }),
     d3.range(240).map(function() { 
-        if (x[i] < 0.2)
+        if (x < 0.2)
             return {type: "c"}; })
     );
 
