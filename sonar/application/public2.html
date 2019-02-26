@@ -90,25 +90,19 @@ d3.json(urlDeleuze)
   .then(function(data){
     // Code from your callback goes here...
     dataDeleuze = data;
-    //console.log(dataDeleuze[0].score);  
-    var nodes =  
-    dataDeleuze.forEach(function(d){
-        var t, r;
-
-        if(d.score>0.3){
-            type="a";
-            r=100;
-        }
-        if(d.score>0.2){
-            type="b";
-            r=200;
-        }
-        if(d.score<=0.2){
-            type="c";
-            r=300;
-        }
-        d.type = t;
-    
+    //console.log(dataDeleuze[0].score);    
+    for (i=0;  i < dataDeleuze.length; i++) {      
+        x = dataDeleuze[i].score;
+        console.log(x);
+        var nodes = [].concat(
+        d3.range(x>0.3).map(function() { 
+                return {type: "a"}; }),
+        d3.range(x>0.2).map(function() {
+                return {type: "b"}; }),
+        d3.range(x<=0.2).map(function() {
+                return {type: "c"}; })
+        );
+    }
 
     var node = d3.select("svg")
     .append("g")
@@ -121,7 +115,18 @@ d3.json(urlDeleuze)
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceCollide().radius(5))
         .force("r", d3.forceRadial(function(d) { 
-            return d.r;
+            if (d.type === "a") 
+            {
+                return  100;
+            }
+            else if (d.type === "b") 
+            {
+                return 200;
+            }
+            else 
+            {
+                return 300;
+            }
         }))
         .on("tick", ticked);
 
@@ -131,7 +136,6 @@ d3.json(urlDeleuze)
         .attr("cy", function(d) { return d.y; });
     }
 
-});
 });
 
 </script>
