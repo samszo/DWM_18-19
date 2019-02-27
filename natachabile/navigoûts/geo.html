@@ -23,12 +23,38 @@
 
   <body>
 
-    <h1>Exemple de géolocalisation</h1>
-    <div id="btnGeo">ENREGISTRER</div>
-    <div id="btnConcert">Les concerts</div>
-    <div id="btnTheatre">Les pièces de thêatre</div>
-    <div id="btnmusique"> Musique</div>
-    <div id="btndanse"> danse</div>
+    <h1 style="position: center;">géolocalisation des goûts</h1></br>
+    <h4>
+      <div id="btnGeo">faites votre choix
+
+        <button class="btn btn-primary" type="submit">LA VUE</button>&nbsp;
+        <div id="btnConcert">Les concerts</div>
+        <div id="btnTheatre">Les pièces de thêatre</div>
+        <div id="btndanse">La danse</div>
+        <div id="btnpeinture"> La peinture</div>
+
+        <button type="button" class="btn btn-warning">L'OUIE</button>&nbsp;
+        <div id="btnConcert">Les concerts</div>
+        <div id="btnTheatre">Les pièces de thêatre</div>
+        <div id="btnmusique"> Musique</div>
+        <div id="btndanse"> danse</div>
+
+        <button type="button" class="btn btn-success">LE GOUTER</button>&nbsp;
+        <div id="btnchant">Les chants</div>
+        <div id="btngastronomie">La gastronomie</div>
+        <div id="btncuisine">La cuisine</div>
+
+        <button type="button" class="btn btn-danger">LE TOUCHER</button>&nbsp;
+        <div id="btncuisine">La cuisine</div>
+        <div id="btnjeu">Les jeux</div>
+
+        <button type="button" class="btn btn-dark">L'ODORAT</button>&nbsp;
+        <div id="btngastronomie">La gastronomie</div>
+        <div id="btncuisine">La cuisine</div>
+
+      </div>&nbsp;
+    </h4>
+
 
     <div id="txtGeo"></div>
     <div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
@@ -68,7 +94,7 @@
 
       $('#btnmusique').click(function () {
         var m = L.AwesomeMarkers.icon({
-          icon: 'university',
+          icon: 'music',
           markerColor: 'red'
         });
         getEvent('musique', m);
@@ -76,11 +102,19 @@
 
       $('#btndanse').click(function () {
         var m = L.AwesomeMarkers.icon({
-          icon: 'university',
+          icon: 'danse',
           markerColor: 'red'
         });
         getEvent('danse', m);
       });
+      $('#btnpeinture').click(function () {
+        var m = L.AwesomeMarkers.icon({
+          icon: 'pint',
+          markerColor: 'red'
+        });
+        getEvent('peinture', m);
+      });
+
 
 
 
