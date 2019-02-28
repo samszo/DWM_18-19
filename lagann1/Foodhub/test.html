@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Test Api</title>
+    </head>
+    <body>
+        <div id="prodname"></div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script>
+
+            //Création d'un lien pour l'API en fonction du code barre reçu ( A compléter)
+            
+            /*var requestURL = 'https://ssl-api.openfoodfacts.org/api/v0/product/';
+            requestURL += barcode +".json";*/
+
+            
+            var requestURL = 'https://ssl-api.openfoodfacts.org/api/v0/product/3073780258098.json';
+            var request = new XMLHttpRequest();
+            request.open('GET', requestURL);
+            request.onload = function(){
+                var data = JSON.parse(request.responseText);
+                console.log(data);
+                affichage(data);
+            };
+            request.send();
+
+            //Fonction d'affichage des données du produit recherché
+            function affichage(donnees){
+                var string = "";
+                var prod = donnees['product'];
+                console.log(prod);
+                console.log(prod.product_name);
+                string += "<h1> Nom produit: " + prod.product_name + "</h1><br>";
+                string += "<p> Code barre: " + donnees['code'] + "</p><br>";
+                string += "<p> Ingrédients: " + prod.ingredients_text_fr+ "</p><br>";
+                $('#prodname').append(string);
+                $('#prodname').append('<img class="imageClass" src="' + prod.image_url+ '" /><br>');
+                $('#prodname').append('<img class="imageClass" src="' + prod.image_small_url+ '" />');
+            }
+            
+        </script>
+    </body>
+</html>

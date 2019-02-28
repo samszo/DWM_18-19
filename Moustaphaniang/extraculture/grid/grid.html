@@ -62,7 +62,9 @@
 $(function () {    
     $('#grid').w2grid({ 
         name: 'grid', 
+        header: 'List of Names',
         show: {
+            header         : true,
             lineNumbers: true,
             footer: true
         },
@@ -129,7 +131,10 @@ function removeRecords() {
 $(function () {
     $('#grid2').w2grid({ 
         name: 'grid2', 
-        show: { selectColumn: true },
+        header: 'List of Names',
+        show: { 
+            header         : true,
+            selectColumn: true },
         multiSelect: false,
         columns: [                
             { field: 'recid', caption: 'ID', size: '50px' },
@@ -152,7 +157,10 @@ $(function () {
 
 $(function () {
     $('#grid3').w2grid({ 
-        name: 'grid3', 
+        name: 'grid3',
+        header: 'List of Names', 
+        show: { 
+        header         : true},
         columns: [                
             { field: 'lname', caption: 'IEML', size: '30%' },
             { field: 'fname', caption: 'Concept', size: '30%' }
