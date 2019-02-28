@@ -83,15 +83,14 @@
 // http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 
 var urlDeleuze = "data/data.json";
-var dataDeleuze, x, i, e, nodes;
+var dataDeleuze;
 
 // Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
   .then(function(data){
     // Code from your callback goes here...
     dataDeleuze = data;
-    var l = dataDeleuze.length;
-    
+  
     dataDeleuze.forEach(function(d){
                if(d.score > 0.3)
                 { 
@@ -106,7 +105,7 @@ d3.json(urlDeleuze)
                     d.rg=300;
                     }
             });
-    
+
     var node = d3.select("svg")
     .append("g")
     .selectAll("circle")
@@ -114,6 +113,12 @@ d3.json(urlDeleuze)
     .enter().append("circle")
         .attr("r", 10)
         .attr("fill", "#04f5b5");
+  /*.on("mouseover", function(){
+        d3.select(this)
+        .bindpopup(dataDeleuze.rubTitre)
+        .openpopup()
+    });*/
+
 
     var simulation = d3.forceSimulation(dataDeleuze)
         .force("charge", d3.forceCollide().radius(5))
@@ -126,9 +131,9 @@ d3.json(urlDeleuze)
     node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
-    }
-
+    } 
 });
+
 
 </script>
 
