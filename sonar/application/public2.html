@@ -95,38 +95,27 @@ d3.json(urlDeleuze)
         x = dataDeleuze[i].score;
         console.log(x);
         var nodes = [].concat(
-        d3.range(x>0.3).map(function() { 
-                return {type: "a"}; }),
-        d3.range(x>0.2).map(function() {
-                return {type: "b"}; }),
-        d3.range(x<=0.2).map(function() {
-                return {type: "c"}; })
-        );
-    }
+        d3.range(0, 20, x>0.3).map(function() { 
+                return {r: 100}; }),
+        d3.range(0, 40, x>0.2).map(function() {
+                return {r: 200}; }),
+        d3.range(0, 80, x<=0.2).map(function() {
+                return {r: 300}; })
+        );    
+    };
 
     var node = d3.select("svg")
     .append("g")
     .selectAll("circle")
     .data(nodes)
     .enter().append("circle")
-        .attr("r", 10)
+        .attr("r", 5)
         .attr("fill", "#04f5b5");
 
     var simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceCollide().radius(5))
         .force("r", d3.forceRadial(function(d) { 
-            if (d.type === "a") 
-            {
-                return  100;
-            }
-            else if (d.type === "b") 
-            {
-                return 200;
-            }
-            else 
-            {
-                return 300;
-            }
+            return d.r;
         }))
         .on("tick", ticked);
 
