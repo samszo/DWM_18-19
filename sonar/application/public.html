@@ -28,7 +28,7 @@
               </div>
         </div>
 
-        <div class="titreArchive"></div>
+        <div id="titreArchive"></div>
 
     <footer>
         <div class="navButton">
@@ -113,12 +113,6 @@ d3.json(urlDeleuze)
     .enter().append("circle")
         .attr("r", 10)
         .attr("fill", "#04f5b5");
-  /*.on("mouseover", function(){
-        d3.select(this)
-        .bindpopup(dataDeleuze.rubTitre)
-        .openpopup()
-    });*/
-
 
     var simulation = d3.forceSimulation(dataDeleuze)
         .force("charge", d3.forceCollide().radius(5))
@@ -131,9 +125,18 @@ d3.json(urlDeleuze)
     node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
-    } 
-});
+    }
 
+    node.on("click", function(dataDeleuze){
+        var url = "<iframe src= \""+ dataDeleuze.fichier +"\"></iframe>" ;
+        var titre = dataDeleuze.rubTitre;
+        var code = "<p>" + titre + "<br />";
+            code += url + "</p>";
+        console.log(code);
+        document.getElementById('titreArchive').innerHTML = code;
+
+    })
+});
 
 </script>
 

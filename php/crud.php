@@ -11,8 +11,8 @@ if( isset($_POST['code']) )
 
 
 // Formulation de la requête SQL :  insertion de données
-    $sql= "INSERT INTO `geo` (`lat`, `lng`, `alt`, `acc`, `maj`, `obj`) 
-    VALUES ('$lat', '$lng', '$alt', '$acc', NOW(), '$obj');
+    $sql= "INSERT INTO `geo` (`lat`, `lng`, `alt`, `acc`, `maj`, `obj`)
+    VALUES ('$lat', '$lng', '$alt', '$acc', NOW(), '$obj')";
     
     // Exécution de la requête SQL : insertion de données
     if (mysqli_query($conn, $sql))
