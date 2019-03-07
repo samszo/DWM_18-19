@@ -1,4 +1,24 @@
-<!DOCTYPE HTML>
+<?php
+
+/*
+ * Squelette : squelettes/sommaire.html
+ * Date :      Thu, 07 Mar 2019 11:56:01 GMT
+ * Compile :   Thu, 07 Mar 2019 11:56:05 GMT
+ * Boucles :   
+ */ 
+//
+// Fonction principale du squelette squelettes/sommaire.html
+// Temps de compilation total: 0.604 ms
+//
+
+function html_20bad19474852c2c1a99d7289d969071($Cache, $Pile, $doublons = array(), $Numrows = array(), $SP = 0) {
+
+	if (isset($Pile[0]["doublons"]) AND is_array($Pile[0]["doublons"]))
+		$doublons = nettoyer_env_doublons($Pile[0]["doublons"]);
+
+	$connect = '';
+	$page = (
+'<!DOCTYPE HTML>
 <!--
 	Dimension by HTML5 UP
 	html5up.net | @ajlkn
@@ -6,11 +26,17 @@
 -->
 <html>
 	<head>
-		<title>Dimension by HTML5 UP</title>
+		<title>' .
+interdire_scripts(typo($GLOBALS['meta']['nom_site'], "TYPO", $connect, $Pile[0])) .
+'</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="#CHEMIN{assets/css/main.css}" />
-		<noscript><link rel="stylesheet" href="#CHEMIN{assets/css/noscript.css}" /></noscript>
+		<link rel="stylesheet" href="' .
+find_in_path('assets/css/main.css') .
+'" />
+		<noscript><link rel="stylesheet" href="' .
+find_in_path('assets/css/noscript.css') .
+'" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -24,7 +50,9 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Dimension</h1>
+								<h1>' .
+interdire_scripts(typo($GLOBALS['meta']['nom_site'], "TYPO", $connect, $Pile[0])) .
+'</h1>
 								<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
 								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
 							</div>
@@ -46,7 +74,9 @@
 						<!-- Intro -->
 							<article id="intro">
 								<h2 class="major">Intro</h2>
-								<span class="image main"><img src="#CHEMIN{images/pic01.jpg}" alt="" /></span>
+								<span class="image main"><img src="' .
+find_in_path('images/pic01.jpg') .
+'" alt="" /></span>
 								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
 							</article>
@@ -54,7 +84,9 @@
 						<!-- Work -->
 							<article id="work">
 								<h2 class="major">Work</h2>
-								<span class="image main"><img src="#CHEMIN{images/pic02.jpg}" alt="" /></span>
+								<span class="image main"><img src="' .
+find_in_path('images/pic02.jpg') .
+'" alt="" /></span>
 								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
 								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
@@ -62,7 +94,9 @@
 						<!-- About -->
 							<article id="about">
 								<h2 class="major">About</h2>
-								<span class="image main"><img src="#CHEMIN{images/pic03.jpg}" alt="" /></span>
+								<span class="image main"><img src="' .
+find_in_path('images/pic03.jpg') .
+'" alt="" /></span>
 								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
 							</article>
 
@@ -119,12 +153,12 @@
 									<pre><code>i = 0;
 
 while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
+    print \'Iteration \' + i;
     deck.shuffle();
     i++;
 }
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+print \'It took \' + i + \' iterations to sort the deck.\';</code></pre>
 								</section>
 
 								<section>
@@ -352,11 +386,26 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="#CHEMIN{assets/js/jquery.min.js}"></script>
-			<script src="#CHEMIN{assets/js/browser.min.js}"></script>
-			<script src="#CHEMIN{assets/js/breakpoints.min.js}"></script>
-			<script src="#CHEMIN{assets/js/util.js}"></script>
-			<script src="#CHEMIN{assets/js/main.js}"></script>
+			<script src="' .
+find_in_path('assets/js/jquery.min.js') .
+'"></script>
+			<script src="' .
+find_in_path('assets/js/browser.min.js') .
+'"></script>
+			<script src="' .
+find_in_path('assets/js/breakpoints.min.js') .
+'"></script>
+			<script src="' .
+find_in_path('assets/js/util.js') .
+'"></script>
+			<script src="' .
+find_in_path('assets/js/main.js') .
+'"></script>
 
 	</body>
 </html>
+');
+
+	return analyse_resultat_skel('html_20bad19474852c2c1a99d7289d969071', $Cache, $page, 'squelettes/sommaire.html');
+}
+?>
