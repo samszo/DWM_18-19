@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="styles/main.css" />
+        <link rel="stylesheet" href="res/cercle_audio.css"/>
         <script type="text/js" src="scripts/main.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="res/cercle_audio.js"></script>
     </head>
     <body>
     <header>
@@ -19,13 +21,15 @@
     </header>
 
         <div class="force">
+            
             <div id="orbit">
-            <svg width="960" height="800" viewBox="-480 -250 960 500">
-                <circle r="100" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-                <circle r="200" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-                <circle r="300" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-              </svg>
-              </div>
+                <div id="audio_conteneur2"></div>
+                    <svg width="960" height="800" viewBox="-480 -250 960 500">
+                        <circle r="100" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
+                        <circle r="200" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
+                        <circle r="300" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
+                    </svg>
+            </div>
         </div>
 
         <div id="titreArchive"></div>
@@ -50,38 +54,12 @@
 
 <script>
 
-    /* Merci à Mike Bostock pour son algorithmme Radial Force : 
+/* Merci à Mike Bostock pour son algorithmme Radial Force : 
     https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
 
-    // Code Radial Force D3js    
-    var nodes = [].concat(
-    d3.range(80).map(function() { return {type: "a"}; }),
-    d3.range(160).map(function() { return {type: "b"}; })
-    );
-
-    var node = d3.select("svg")
-    .append("g")
-    .selectAll("circle")
-    .data(nodes)
-    .enter().append("circle")
-        .attr("r", 2.5)
-        .attr("fill", function(d) { return d.type === "a" ? "#04f5b5" : "#04f5b5"; })
-
-    var simulation = d3.forceSimulation(nodes)
-        .force("charge", d3.forceCollide().radius(5))
-        .force("r", d3.forceRadial(function(d) { return d.type === "a" ? 100 : 200; }))
-        .on("tick", ticked);
-
-    function ticked() {
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-    }
-    */
-
-// Données JSON Deleuze
-// http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
-
+    Données JSON Deleuze
+    http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
+*/
 var urlDeleuze = "data/data.json";
 var dataDeleuze;
 
@@ -128,14 +106,35 @@ d3.json(urlDeleuze)
     }
 
     node.on("click", function(dataDeleuze){
-        var url = "<iframe src= \""+ dataDeleuze.fichier +"\"></iframe>" ;
+        var url = dataDeleuze.fichier;
         var titre = dataDeleuze.rubTitre;
-        var code = "<p>" + titre + "<br />";
-            code += url + "</p>";
+        var code = "<p>" + titre + "</p>";
         console.log(code);
         document.getElementById('titreArchive').innerHTML = code;
+    
+    // Merci à @karamel pour son code : https://codes-sources.commentcamarche.net/source/101676-lecteur-audio-circulaire-rond
+        addEventListener('click', crea_audio_cercle, false);
 
-    })
+    function crea_audio_cercle(){
+
+        var config={
+		    conteneur:'audio_conteneur2',
+		    couleur_centre:"rgb(0, 0, 0, 0.1)",
+		    couleur_progres:"rgb(0, 247, 161, 0.1)",
+		    couleur_fond:"rgb(255, 255, 255, 0.1)",
+		    couleur_ombre:"black",
+		    diametre_lecteur:350,
+		    diametre_detect:105,
+		    epaisseur_barre:0,
+		    ressources:"res/",
+		    class_suplementaire:"position",
+            ressources:"res/",					
+            class_suplementaire:false,
+            fichier: url,						
+        }
+        new cercle_audio(config);
+    }
+})
 });
 
 </script>
