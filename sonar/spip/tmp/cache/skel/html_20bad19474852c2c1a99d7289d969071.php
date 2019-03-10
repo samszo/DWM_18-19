@@ -2,13 +2,13 @@
 
 /*
  * Squelette : squelettes/sommaire.html
- * Date :      Thu, 07 Mar 2019 11:56:01 GMT
- * Compile :   Thu, 07 Mar 2019 11:56:05 GMT
+ * Date :      Fri, 08 Mar 2019 09:11:57 GMT
+ * Compile :   Fri, 08 Mar 2019 09:15:56 GMT
  * Boucles :   
  */ 
 //
 // Fonction principale du squelette squelettes/sommaire.html
-// Temps de compilation total: 0.604 ms
+// Temps de compilation total: 1.739 ms
 //
 
 function html_20bad19474852c2c1a99d7289d969071($Cache, $Pile, $doublons = array(), $Numrows = array(), $SP = 0) {
@@ -63,7 +63,7 @@ interdire_scripts(typo($GLOBALS['meta']['nom_site'], "TYPO", $connect, $Pile[0])
 								<li><a href="#work">Work</a></li>
 								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+								<li><a href="#elements">Elements</a></li>
 							</ul>
 						</nav>
 					</header>

@@ -5644,13 +5644,13 @@ Le plugin Articles_Lister (Alis) propose d’ajouter au menu des statistiques un
 <archive id="article_pdf.zip" dtd="paquet">
 <zip>
 	<file>article_pdf.zip</file>
-	<size>161337</size>
-	<date>1545519848</date>
+	<size>161346</size>
+	<date>1551992642</date>
 	<source>_plugins_/article_pdf/trunk</source>
-	<last_commit>2018-12-22 23:46:06</last_commit>
+	<last_commit>2019-03-07 21:30:47</last_commit>
 </zip>
 <traductions>
-<traduction module="articlepdf" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_plugins_/article_pdf/lang/" reference="fr">
+<traduction module="articlepdf" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_plugins_/article_pdf/trunk/lang/" reference="fr">
 	<langue code="de" url="https://trad.spip.net/tradlang_module/articlepdf?lang_cible=de" total="12" traduits="1" relire="0" modifs="0" nouveaux="11" pourcent="8.33">
 	</langue>
 	<langue code="en" url="https://trad.spip.net/tradlang_module/articlepdf?lang_cible=en" total="12" traduits="8" relire="0" modifs="0" nouveaux="4" pourcent="66.67">
@@ -62656,10 +62656,10 @@ P.S.&#160;2&#160;: {Le pr&#233;sent plugin ne fonctionne pas si le &#171;&#160;C
 <archive id="roles_auteurs.zip" dtd="paquet">
 <zip>
 	<file>roles_auteurs.zip</file>
-	<size>47082</size>
-	<date>1533197044</date>
+	<size>47111</size>
+	<date>1551985446</date>
 	<source>_plugins_/roles_auteurs/trunk</source>
-	<last_commit>2018-08-02 09:33:27</last_commit>
+	<last_commit>2019-03-07 19:26:58</last_commit>
 </zip>
 <traductions>
 <traduction module="roles_auteurs" reference="fr">
@@ -62669,7 +62669,7 @@ P.S.&#160;2&#160;: {Le pr&#233;sent plugin ne fonctionne pas si le &#171;&#160;C
 <paquet
 	prefix="roles_auteurs"
 	categorie="edition"
-	version="1.0.3"
+	version="1.0.4"
 	etat="experimental"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/roles_auteurs-64.png"
@@ -64225,10 +64225,10 @@ Pour éviter les doublons et les imports successifs, une fois l'article créé, 
 <archive id="saisies_v3.zip" dtd="paquet">
 <zip>
 	<file>saisies_v3.zip</file>
-	<size>219355</size>
-	<date>1551762250</date>
+	<size>221102</size>
+	<date>1552003444</date>
 	<source>_plugins_/saisies/trunk</source>
-	<last_commit>2019-03-05 05:39:53</last_commit>
+	<last_commit>2019-03-08 01:04:01</last_commit>
 </zip>
 <traductions>
 <traduction module="paquet-saisies" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_plugins_/saisies/trunk/lang/" reference="fr">
@@ -64315,7 +64315,7 @@ Pour éviter les doublons et les imports successifs, une fois l'article créé, 
 <paquet
 	prefix="saisies"
 	categorie="outil"
-	version="3.16.0"
+	version="3.17.0"
 	etat="stable"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="images/logo_saisie_48.png"
@@ -64340,6 +64340,7 @@ Pour éviter les doublons et les imports successifs, une fois l'article créé, 
 	<pipeline nom="saisies_verifier" action="" />
 	<pipeline nom="formulaire_charger" inclure="saisies_pipelines.php" />
 	<pipeline nom="formulaire_verifier" inclure="saisies_pipelines.php" />
+	<pipeline nom="formulaire_verifier_etape" inclure="saisies_pipelines.php" />
 	<pipeline nom="styliser" inclure="saisies_pipelines.php" />
 
 	<menu nom="saisies_doc" titre="saisies:titre_page_saisies_doc" parent="menu_developpement"  icone="images/saisies-16.png" />
@@ -80645,13 +80646,13 @@ _ Utilisation de [jquery.tooltips de Bassistance.de->http://bassistance.de/jquer
 <archive id="yaml_v2.zip" dtd="paquet">
 <zip>
 	<file>yaml_v2.zip</file>
-	<size>204344</size>
-	<date>1542899044</date>
+	<size>204357</size>
+	<date>1551992644</date>
 	<source>_plugins_/yaml/trunk</source>
-	<last_commit>2018-11-22 15:54:31</last_commit>
+	<last_commit>2019-03-07 21:31:25</last_commit>
 </zip>
 <traductions>
-<traduction module="paquet-yaml" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_plugins_/yaml/lang/" reference="fr">
+<traduction module="paquet-yaml" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_plugins_/yaml/trunk/lang/" reference="fr">
 	<langue code="de" url="https://trad.spip.net/tradlang_module/paquet-yaml?lang_cible=de" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="Torsten Willmann" lien="https://trad.spip.net/auteur/torsten-willmann" />
 	</langue>
@@ -83369,10 +83370,10 @@ Maak vooraf de cache leeg om het resultaat te zien.
 <archive id="escal_V4.zip" dtd="paquet">
 <zip>
 	<file>escal_V4.zip</file>
-	<size>1270552</size>
-	<date>1551953046</date>
+	<size>1268395</size>
+	<date>1551981846</date>
 	<source>_squelettes_/escal/trunk</source>
-	<last_commit>2019-03-07 11:04:04</last_commit>
+	<last_commit>2019-03-07 18:34:11</last_commit>
 </zip>
 <traductions>
 <traduction module="escal" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_squelettes_/escal/trunk/lang/" reference="fr">
@@ -83425,7 +83426,7 @@ Maak vooraf de cache leeg om het resultaat te zien.
 <paquet
 	prefix="escal"
 	categorie="squelette"
-	version="4.2.66"
+	version="4.2.69"
 	schema="1.0.13"
 	etat="stable"
 	compatibilite="[3.2.0;3.2.*]"
@@ -84901,10 +84902,10 @@ Un squelette de portail d&#8217;Etablissement, destin&#233;e &#224; une &#233;co
 <archive id="html5up_phantom.zip" dtd="paquet">
 <zip>
 	<file>html5up_phantom.zip</file>
-	<size>1026466</size>
-	<date>1551027844</date>
+	<size>1027072</size>
+	<date>1551999842</date>
 	<source>_squelettes_/html5up_phantom</source>
-	<last_commit>2019-02-24 17:26:28</last_commit>
+	<last_commit>2019-03-07 23:22:53</last_commit>
 </zip>
 <traductions>
 <traduction module="html5up" reference="fr">
@@ -84918,7 +84919,7 @@ Un squelette de portail d&#8217;Etablissement, destin&#233;e &#224; une &#233;co
 <paquet
 	prefix="html5up_phantom"
 	categorie="squelette"
-	version="0.2.2"
+	version="0.2.3"
 	schema="0.0.2" 
 	etat="test"
 	compatibilite="[3.1.0;3.2.*]"

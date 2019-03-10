@@ -23,12 +23,13 @@
         <div class="force">
             
             <div id="orbit">
-                <div id="audio_conteneur2"></div>
+                
                     <svg width="960" height="800" viewBox="-480 -250 960 500">
                         <circle r="100" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
                         <circle r="200" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
                         <circle r="300" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
                     </svg>
+                    <div id="audio_conteneur2"></div>
             </div>
         </div>
 
@@ -61,7 +62,7 @@
     http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 */
 var urlDeleuze = "data/data.json";
-var dataDeleuze;
+var dataDeleuze, cercleAudio;
 
 // Merci à Samszo pour ses corrections !
 d3.json(urlDeleuze)
@@ -90,7 +91,31 @@ d3.json(urlDeleuze)
     .data(dataDeleuze)
     .enter().append("circle")
         .attr("r", 10)
-        .attr("fill", "#04f5b5");
+        .attr("fill", "#04f5b5")
+    .on("click", function(d){
+        var code = "<p>" + d.rubTitre + "</p>";
+        d3.select('#titreArchive').html(code);
+        d3.select('#audio_conteneur2').html("");
+        
+        var config={
+		    conteneur:'audio_conteneur2',
+		    couleur_centre:"rgb(0, 0, 0, 0.1)",
+		    couleur_progres:"rgb(0, 247, 161, 0.1)",
+		    couleur_fond:"rgb(255, 255, 255, 0.1)",
+		    couleur_ombre:"black",
+		    diametre_lecteur:800,
+		    diametre_detect:105,
+		    epaisseur_barre:0,
+		    ressources:"res/",
+		    class_suplementaire:"position",
+            ressources:"res/",					
+            class_suplementaire:false,
+            fichier: d.fichier,						
+        }
+        cercleAudio = new cercle_audio(config);
+       
+    })
+        ;
 
     var simulation = d3.forceSimulation(dataDeleuze)
         .force("charge", d3.forceCollide().radius(5))
@@ -100,41 +125,10 @@ d3.json(urlDeleuze)
         .on("tick", ticked);
 
     function ticked() {
-    node
+        node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
     }
-
-    node.on("click", function(dataDeleuze){
-        var url = dataDeleuze.fichier;
-        var titre = dataDeleuze.rubTitre;
-        var code = "<p>" + titre + "</p>";
-        console.log(code);
-        document.getElementById('titreArchive').innerHTML = code;
-    
-    // Merci à @karamel pour son code : https://codes-sources.commentcamarche.net/source/101676-lecteur-audio-circulaire-rond
-        addEventListener('click', crea_audio_cercle, false);
-
-    function crea_audio_cercle(){
-
-        var config={
-		    conteneur:'audio_conteneur2',
-		    couleur_centre:"rgb(0, 0, 0, 0.1)",
-		    couleur_progres:"rgb(0, 247, 161, 0.1)",
-		    couleur_fond:"rgb(255, 255, 255, 0.1)",
-		    couleur_ombre:"black",
-		    diametre_lecteur:350,
-		    diametre_detect:105,
-		    epaisseur_barre:0,
-		    ressources:"res/",
-		    class_suplementaire:"position",
-            ressources:"res/",					
-            class_suplementaire:false,
-            fichier: url,						
-        }
-        new cercle_audio(config);
-    }
-})
 });
 
 </script>
