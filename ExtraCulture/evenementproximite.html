@@ -24,18 +24,22 @@
        
   </head>
 <body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Evenement près de moi</h1>
+  
+    <button type="button" class="btn btn-link" id="btnGeo" >ENREGISTRER</button>
+    <button type="button" class="btn btn-danger" id="btnConcert" >Concerts</button>
+    <button type="button" class="btn btn-warning" id="btnTheatre" >Thêatre</button>
+    <button type="button" class="btn btn-dark" id="btnExposition" >Exposition</button>
+    <button type="button" class="btn btn-primary" id="btnCinema" >Cinema</button>
+    <button type="button" class="btn btn-info" id="btnMusique" >Musique</button>
+    <button type="button" class="btn btn-success" id="btnDanse" >Danse</button>
 
-<h1>Exemple de géolocalisation</h1>
-<div id="btnGeo" >ENREGISTRER</div>
-<div id="btnConcert" >Concerts</div>
-<div id="btnTheatre" >Thêatre</div>
-<div id="btnExposition" >Exposition</div>
-<div id="btnCinema" >Cinema</div>
-<div id="btnMusique" >Musique</div>
-<div id="btnDanse" >Danse</div>
-
-<div id="txtGeo" ></div>
-<div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
+    <div id="txtGeo" ></div>
+    <div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
+  </div>
+</div>
 
 <script>
 var map, geoPosi, optionsGeo = {
@@ -73,7 +77,7 @@ $('#btnTheatre').click(function() {
 $('#btnExposition').click(function() {
   var m = L.AwesomeMarkers.icon({
     icon: 'university',
-    markerColor: 'black'
+    markerColor: 'gray'
   });
   getEvent('exposition',m);
 });
@@ -97,7 +101,7 @@ $('#btnMusique').click(function() {
 $('#btnDanse').click(function() {
   var m = L.AwesomeMarkers.icon({
     icon: 'drum',
-    markerColor: 'pink'
+    markerColor: 'green'
   });
   getEvent('Danse',m);
 });
@@ -194,8 +198,7 @@ function crudGeo(params){
 }
 
 function getEvent(typeEvent, marker){
-//var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=100&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags=musique&refine.tags=th%C3%A9%C3%A2tre&refine.tags=festival&refine.tags=Concert&refine.tags=spectacle&refine.tags=cin%C3%A9ma&refine.tags=exposition&refine.tags=Danse&refine.tags=Exposition'
-  var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=1000&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags='+typeEvent+'&refine.date_start=2018';
+  var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=1000&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags='+typeEvent+'&refine.date_start=2019&refine.date_end=2019';
 //var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags='+typeEvent+'&refine.date_start=2018';  
 
   $.get( url)
