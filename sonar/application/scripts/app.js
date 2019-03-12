@@ -1,6 +1,9 @@
 /* Merci à Mike Bostock pour son algorithmme Radial Force : 
     https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
 
+    Merci @karamel pour son cercle_audio:
+    https://codes-sources.commentcamarche.net/source/101676-lecteur-audio-circulaire-rond
+
     Données JSON Deleuze
     http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 */
@@ -46,11 +49,10 @@ d3.json(urlDeleuze)
 		    couleur_progres:"rgb(0, 247, 161, 0.1)",
 		    couleur_fond:"rgb(255, 255, 255, 0.1)",
 		    couleur_ombre:"black",
-		    diametre_lecteur:800,
+		    diametre_lecteur:300,
 		    diametre_detect:105,
 		    epaisseur_barre:0,
 		    ressources:"scripts/res/",
-		    class_suplementaire:"position",
             class_suplementaire:false,
             fichier: d.fichier,						
         }
