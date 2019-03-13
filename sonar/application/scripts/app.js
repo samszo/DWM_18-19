@@ -39,9 +39,10 @@ d3.json(urlDeleuze)
         .attr("r", 10)
         .attr("fill", "#04f5b5")
     .on("click", function(d){
-        var code = "<p>" + d.rubTitre + "</p>";
+        var code = "<p>" + d.rubTitre +"</p>";
         d3.select('#titreArchive').html(code);
         d3.select('#audio_conteneur2').html("");
+
         
         var config={
 		    conteneur:'audio_conteneur2',
@@ -74,3 +75,5 @@ d3.json(urlDeleuze)
         .attr("cy", function(d) { return d.y; });
     }
 });
+
+    
