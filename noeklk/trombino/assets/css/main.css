@@ -3621,8 +3621,8 @@ button.blc {
 button.btnmore {
 
 	position: absolute;
-	top: 10%;
-	right: 30px;
+	top: 90px;
+	right: 70px;
 
 	display: inline-block;
 	*display: inline;
