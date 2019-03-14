@@ -7,6 +7,20 @@
     Données JSON Deleuze
     http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
 */
+
+var urlTag = "scripts/tag.php";
+var tag ="";
+
+$.post(urlTag, function(d){
+    tag = d;
+    tag.sort();
+});
+
+$('input[type=list]').w2field('list', { items : tag});
+
+
+
+
 var urlDeleuze = "data/data.json";
 var dataDeleuze, cercleAudio;
 

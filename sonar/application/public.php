@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="scripts/jquery-3.3.1.min.js"></script>
         <script src="scripts/res/cercle_audio.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
@@ -18,9 +19,8 @@
 
             <div class="w2ui-field w2ui-span3">
                 <label>List:</label>
-                <div> <input type="list"> <span class="legend">Cannot type any text, but only items from the list</span> </div>
-            </div>
-                                        
+                <div> <input type="list"></div>
+            </div>                                      
         </div>
     </header>
 
@@ -55,6 +55,7 @@
 <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
 <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
 <script src="scripts/app.js"></script>
+
 
     </body>
 </html>
