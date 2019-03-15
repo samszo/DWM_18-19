@@ -7,7 +7,7 @@
     Données JSON Deleuze
     http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?";
 
-    // Merci à Samszo et Hamri et pour leurs conseils !
+    // Merci à Samszo et Amri et pour leurs conseils !
 */
 var tag, dataDeleuze, cercleAudio;
 
