@@ -8,18 +8,31 @@ $dbname = "sonar";
 
 // Connexion au serveur MySQL
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-
+if (mysqli_connect_errno($conn)){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
 
 // Formulation de requête SQL : sélection de données
 $req = "SELECT tag FROM tag";
 
-
 // Exécution de la requête SQL
 $reponse = mysqli_query($conn, $req);
-    while($row = mysqli_fetch_assoc($reponse))
+
+    if (mysqli_num_rows($reponse) > 0)
     {
-        $data []= $row;
+        while($row = mysqli_fetch_assoc($reponse)) 
+        {
+            echo  $row["tag"]. "<br>";
+        }
     }
-    $tag = json_encode($data);
+    else 
+    {
+        echo "Pas de données";
+    }
+
+// Encode en JSON
+
+echo json_encode($row);
+
 ?>
+
