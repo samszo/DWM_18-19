@@ -5,7 +5,9 @@
     https://codes-sources.commentcamarche.net/source/101676-lecteur-audio-circulaire-;
 
     Données JSON Deleuze
-    http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
+    http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?";
+
+    // Merci à Samszo et Hamri et pour leurs conseils !
 */
 var tag, dataDeleuze, cercleAudio;
 
@@ -24,7 +26,6 @@ var tag, dataDeleuze, cercleAudio;
         var select = $('input[type=list]').w2field().get().text;
 
         var urlDeleuze = 'http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=' + select;
-        // Merci à Samszo pour ses corrections !
         d3.json(urlDeleuze)
         .then(function(data){
             dataDeleuze = data;
