@@ -14,25 +14,30 @@ if (mysqli_connect_errno($conn)){
 
 // Formulation de requête SQL : sélection de données
 $req = "SELECT tag FROM tag";
-
+$myArray = array();
 // Exécution de la requête SQL
-$reponse = mysqli_query($conn, $req);
+//$reponse = mysqli_query($conn, $req);
+if ($result = $conn->query($req)) {
 
-    if (mysqli_num_rows($reponse) > 0)
-    {
-        while($row = mysqli_fetch_assoc($reponse)) 
-        {
-            echo  $row["tag"]. "<br>";
-        }
+    while($row = mysqli_fetch_assoc($result)) {
+            $myArray[] = $row["tag"];
     }
-    else 
-    {
-        echo "Pas de données";
-    }
+}
 
 // Encode en JSON
+function utf8ize( $mixed ) {
+    if (is_array($mixed)) {
+        foreach ($mixed as $key => $value) {
+            $mixed[$key] = utf8ize($value);
+        }
+    } elseif (is_string($mixed)) {
+        return mb_convert_encoding($mixed, "UTF-8", "UTF-8");
+    }
+    return $mixed;
+}
 
-echo json_encode($row);
+$data = json_encode(utf8ize($myArray));
+echo $data;
 
 ?>
 
