@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cultiver des graines conceptuelles">
+    <meta name="author" content="MEDHOUCHE Zahir">
+
+    <title>Grille</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/w2ui-1.5.rc1.min.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css" />
+
+    <script type="text/javascript" src="js/d3.v4.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/w2ui.js"></script>
+    <script type="text/javascript" src="js/fontawesome.v5.5.0.all.js" ></script>
+
+</head>
+<body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+                <table>
+                        <tr>
+                          <td><img src="logo1.png" style="margin-right: 15px;"></td>
+                      </tr>  
+                    </table>
+              </nav>
+                    <div id="grid" style="width: 100%; height: 400px;"></div>
+                    <div id="grid2" style="width: 100%; height: 400px;"></div>
+                    <div id="grid3" style="width: 100%; height: 400px;"></div>
+<script type="text/javascript">
+$(function () {    
+    $('#grid').w2grid({ 
+        name: 'grid', 
+        show: { 
+            header: 'la liste des gouts', 
+            lineNumbers: true,
+            footer: true,
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        searches: [                
+            { field: 'lname', caption: 'Last name', type: 'text' },
+            { field: 'sexe', caption: 'sexe', type: 'text' },
+            { field: 'fname', caption: 'First Name', type: 'text' },
+            { field: 'email', caption: 'Email', type: 'text' }
+        ],
+        columns: [                
+            { field: 'recid', caption: 'ID', size:'20%',  sortable: true, attr: 'align=center' },
+            { field: 'sexe',  caption: 'ouïe', size: '20%', sortable: true, attr: 'align=center' },
+            { field: 'lname', caption: 'odorat', size: '20%', sortable: true },
+            { field: 'fname', caption: 'goût', size: '20%', sortable: true },
+            { field: 'email', caption: 'vue', size: '20%' },
+            { field: 'sdate', caption: 'toucher', size: '20%' }
+        ],
+
+        onAdd: function (event) {
+            var g = w2ui['grid'].records.length;
+            w2ui['grid'].add( { recid: g + 1, sexe: 'rap',lname: 'pizza', fname: 'grac', email: 'comidie', sdate: 'chaud' } );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, sexe: 'rap', lname: 'pizza', fname: 'grac', email: 'comidie', sdate: 'chaud' },    
+        ]
+    });    
+});
+
+$(function () {
+    $('#grid2').w2grid({ 
+        name: 'grid2', 
+        header: 'List of Names',
+        show: { 
+            header: true,
+            lineNumbers: true,
+            footer: true,
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        columns: [                
+            { field: 'recid', caption: 'ID', size: '50px' },
+            { field: 'lname', caption: 'Profession', size: '30%' },
+            { field: 'fname', caption: 'Centre dinteret', size: '30%' },
+            { field: 'email', caption: 'Sexe', size: '40%' }, 
+        ],
+        onAdd: function (event) {
+            var g = w2ui['grid2'].records.length;
+            w2ui['grid2'].add( { recid: g + 1, fname: 'grac', lname: 'pizza', email: 'comidie'} );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, fname: 'John', lname: 'doe', email: 'Masculin'}, 
+        ]
+    });    
+});
+
+$(function () {
+    $('#grid3').w2grid({ 
+        name: 'grid3',
+        header: 'List of Names', 
+        show: { 
+            header: true,
+            lineNumbers: true,
+            footer: true,
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
+        },
+        columns: [                
+            { field: 'lname', caption: 'IEML', size: '30%' },
+            { field: 'fname', caption: 'Concept', size: '30%' }
+        ],
+        onAdd: function (event) {
+            var g = w2ui['grid3'].records.length;
+            w2ui['grid3'].add( { recid: g + 1, fname: 'grac', lname: 'pizza', email: 'comidie'} );
+        },
+        onEdit: function (event) {
+            w2alert('edit');
+        },
+        onDelete: function (event) {
+            console.log('delete has default behavior');
+        },
+        onSave: function (event) {
+            w2alert('save');
+        },
+        records: [
+            { recid: 1, fname: 'culture', lname: '', w2ui: { children: [] }},
+        ]
+    });    
+});
+</script>
+<footer class="container">
+        <p>© zahir 2018-2019</p>
+      </footer>
+</body>
+</html>

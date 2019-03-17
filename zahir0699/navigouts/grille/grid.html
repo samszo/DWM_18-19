@@ -28,28 +28,18 @@
     <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
 </head>
 
-
-
-
-
 <body>
-        <div class="container">
-                <table>
-                    <tr>
-                      <td><img src="mon_logo.png" style="margin-right: 15px;"></td>
-                      <td><h1 class="display-3">Grille NAVIGOÛTS</h1>
-                      <p>la liste des grille de projet Navigouts</p></td>
-                  </tr>  
-                </table>
-                <div id="grid" style="width: 100%; height: 400px;"></div>
-
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <table>
+                <tr>
+                    <td><img src="logo1.png" style="margin-right: 15px;"></td>
+                </tr>  
+            </table>
+        </nav>
+            <div id="grid" style="width: 100%; height: 400px;"></div>
     <br>
     <button class="w2ui-btn" onclick="addARecord();">Ajouter une nouvelle ligne</button>
-    <button class="w2ui-btn" onclick="addMRecord();">Ajouter plusieurs lignes</button>
-    <button class="w2ui-btn" onclick="removeRecords();">Rétablir par défauts</button>
-
- 
-        </div>
+   </div>
     
     <br>
     <div id="grid2" style="width: 100%; height: 260px;"></div>
@@ -67,10 +57,22 @@ $(function () {
         name: 'grid', 
         header: 'List of Names',
         show: {
-            header         : true,
+            header: true,
             lineNumbers: true,
-            footer: true
+            footer: true,
+            toolbar: true,
+            footer: true,
+            toolbarAdd: true,
+            toolbarDelete: true,
+            toolbarSave: true,
+            toolbarEdit: true
         },
+        searches: [                
+            { field: 'lname', caption: 'Last name', type: 'text' },
+            { field: 'sexe', caption: 'sexe', type: 'text' },
+            { field: 'fname', caption: 'First Name', type: 'text' },
+            { field: 'email', caption: 'Email', type: 'text' }
+        ],
         columns: [                
             { field: 'recid', caption: 'ID', size: '60px', sortable: true },
             { field: 'lname', caption: 'Nom', size: '30%' },
@@ -79,53 +81,53 @@ $(function () {
             { field: 'sdate', caption: 'Date de naissance', size: '90px' }
         ],
         records: [
-            { recid: 1, fname: 'John', lname: 'doe', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-            { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' }
+            { recid: 1, fname: 'John', lname: 'doe', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+            { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'zahir@gmail.com', sdate: '4/3/2012' }
         ]
     });    
 });
 
 function addARecord() {
     var g = w2ui['grid'].records.length;
-    w2ui['grid'].add( { recid: g + 1, fname: 'Jin', lname: 'Franson', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' } );
+    w2ui['grid'].add( { recid: g + 1, fname: 'Jin', lname: 'Franson', email: 'zahir@gmail.com', sdate: '4/3/2012' } );
 }
 
 function addMRecord() {
     var g = w2ui['grid'].records.length;
     w2ui['grid'].add([
-        { recid: g + 1, fname: 'Susan', lname: 'Ottie', email: 'susan@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 2, fname: 'Kelly', lname: 'Silver', email: 'ameli@hotmail.fr', sdate: '4/3/2012' },
-        { recid: g + 3, fname: 'Francis', lname: 'Gatos', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 4, fname: 'Mark', lname: 'Welldo', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 5, fname: 'Thomas', lname: 'Bahh', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 6, fname: 'Susan', lname: 'Ottie', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 7, fname: 'Kelly', lname: 'Silver', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 8, fname: 'Francis', lname: 'Gatos', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 9, fname: 'Mark', lname: 'Welldo', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 10, fname: 'Thomas', lname: 'Bahh', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 11, fname: 'Susan', lname: 'Ottie', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 12, fname: 'Kelly', lname: 'Silver', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 13, fname: 'Francis', lname: 'Gatos', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 14, fname: 'Mark', lname: 'Welldo', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 15, fname: 'Thomas', lname: 'Bahh', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 16, fname: 'Susan', lname: 'Ottie', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 17, fname: 'Kelly', lname: 'Silver', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 18, fname: 'Francis', lname: 'Gatos', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 19, fname: 'Mark', lname: 'Welldo', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 20, fname: 'Thomas', lname: 'Bahh', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 21, fname: 'Susan', lname: 'Ottie', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 22, fname: 'Kelly', lname: 'Silver', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 23, fname: 'Francis', lname: 'Gatos', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 24, fname: 'Mark', lname: 'Welldo', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: g + 25, fname: 'Thomas', lname: 'Bahh', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' }
+        { recid: g + 1, fname: 'Susan', lname: 'Ottie', email: 'zahir0699@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 2, fname: 'Kelly', lname: 'Silver', email: 'natacha@hotmail.fr', sdate: '4/3/2012' },
+        { recid: g + 3, fname: 'Francis', lname: 'Gatos', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 4, fname: 'Mark', lname: 'Welldo', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 5, fname: 'Thomas', lname: 'Bahh', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 6, fname: 'Susan', lname: 'Ottie', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 7, fname: 'Kelly', lname: 'Silver', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 8, fname: 'Francis', lname: 'Gatos', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 9, fname: 'Mark', lname: 'Welldo', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 10, fname: 'Thomas', lname: 'Bahh', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 11, fname: 'Susan', lname: 'Ottie', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 12, fname: 'Kelly', lname: 'Silver', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 13, fname: 'Francis', lname: 'Gatos', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 14, fname: 'Mark', lname: 'Welldo', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 15, fname: 'Thomas', lname: 'Bahh', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 16, fname: 'Susan', lname: 'Ottie', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 17, fname: 'Kelly', lname: 'Silver', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 18, fname: 'Francis', lname: 'Gatos', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 19, fname: 'Mark', lname: 'Welldo', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 20, fname: 'Thomas', lname: 'Bahh', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 21, fname: 'Susan', lname: 'Ottie', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 22, fname: 'Kelly', lname: 'Silver', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 23, fname: 'Francis', lname: 'Gatos', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 24, fname: 'Mark', lname: 'Welldo', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: g + 25, fname: 'Thomas', lname: 'Bahh', email: 'zahir@gmail.com', sdate: '4/3/2012' }
     ]);
 }
 
 function removeRecords() {
     w2ui.grid.clear();
     w2ui.grid.records = [
-        { recid: 1, fname: 'John', lname: 'doe', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' },
-        { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'amadoumoustaphaniang@gmail.com', sdate: '4/3/2012' }
+        { recid: 1, fname: 'John', lname: 'doe', email: 'zahir@gmail.com', sdate: '4/3/2012' },
+        { recid: 2, fname: 'Stuart', lname: 'Motzart', email: 'zahir@gmail.com', sdate: '4/3/2012' }
     ];
     w2ui.grid.total = 2;
     w2ui.grid.refresh();
@@ -170,17 +172,20 @@ $(function () {
         ],
         records: [
             { recid: 1, fname: 'culture', lname: '', w2ui: { children: [] }},
-            { recid: 4, fname: 'Mediation', lname: '', w2ui: { children: [] } },
-            { recid: 5, fname: 'Cinéma', lname: '', w2ui: { children: [] } },
-            { recid: 7, fname: 'Theatre', lname: '', w2ui: { children: [] } },
-            { recid: 8, fname: 'Musique', lname: '', w2ui: { children: [] } },
-            { recid: 8, fname: 'acteurs', lname: '', w2ui: { children: [] } }
+            { recid: 4, fname: 'ouïe', lname: '', w2ui: { children: [] } },
+            { recid: 5, fname: 'odorat', lname: '', w2ui: { children: [] } },
+            { recid: 7, fname: 'goût', lname: '', w2ui: { children: [] } },
+            { recid: 8, fname: 'vue', lname: '', w2ui: { children: [] } },
+            { recid: 8, fname: 'toucher', lname: '', w2ui: { children: [] } }
         ]
     });    
 });
 </script>
 
 
+<footer class="container">
+    <p>© zahir 2018-2019</p>
+  </footer>
 
 </body>
 </html>
