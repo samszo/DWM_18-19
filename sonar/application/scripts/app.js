@@ -9,7 +9,7 @@
 
     // Merci à Samszo et Amri et pour leurs conseils !
 */
-var tag, dataDeleuze, cercleAudio;
+var tag, dataDeleuze, cercleAudio, dataFrag;
 
     function clear(){
         d3.selectAll('g').remove();
@@ -43,7 +43,7 @@ var tag, dataDeleuze, cercleAudio;
                         {
                             d.rg=300;
                             }
-                    });
+                    })
 
             var node = d3.select("svg")
             .append("g")
@@ -53,9 +53,52 @@ var tag, dataDeleuze, cercleAudio;
                 .attr("r", 10)
                 .attr("fill", "#04f5b5")
             .on("click", function(d){
+                clear();
                 var code = "<p>" + d.rubTitre +"</p>";
                 d3.select('#titreArchive').html(code);
                 d3.select('#audio_conteneur2').html("");
+                dataFrag = d.phrases.slice();
+                //console.log(dataFrag);
+                dataFrag.forEach(function(e){
+                    if(e.pHTML > 30000)
+                        { 
+                            e.rg= 100;
+                        } 
+                    else if(e.pHTML >= 20000)
+                        {
+                            e.rg= 200;
+                        }
+                    else
+                        {
+                            e.rg=300;
+                        }
+                    })
+                var frag = d3.select("svg")
+                    .append("g")
+                    .selectAll("circle")
+                    .data(dataFrag)
+                    .enter().append("circle")
+                        .attr('r', 8)
+                        .attr("fill", "#FF7F50")
+                        .attr("draggable", true)
+                    .on("dragstart", function(e){
+                        e.dataTransfer.setData('text/plain', "Ce texte sera transmis à l'élément HTML de réception");
+                    })
+                    
+
+                var simulationFrag = d3.forceSimulation(dataFrag)
+                    .force("charge", d3.forceCollide().radius(5))
+                    .force("r", d3.forceRadial(function(e) { 
+                        return e.rg;
+                    }))
+                    .on("tick", ticked);
+        
+                function ticked() {
+                    frag
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+                    }
+                
 
                 
                 var config={
@@ -73,13 +116,19 @@ var tag, dataDeleuze, cercleAudio;
                 }
                 cercleAudio = new cercle_audio(config);
             
-            })
-                ;
+            });
 
-            var simulation = d3.forceSimulation(dataDeleuze)
+            var simulationData = d3.forceSimulation(dataDeleuze)
                 .force("charge", d3.forceCollide().radius(5))
                 .force("r", d3.forceRadial(function(d) { 
                         return d.rg;
+                }))
+                .on("tick", ticked);
+            
+            var simulationFrag = d3.forceSimulation(dataFrag)
+                .force("charge", d3.forceCollide().radius(5))
+                .force("r", d3.forceRadial(function(e) { 
+                    return e.rg;
                 }))
                 .on("tick", ticked);
 
