@@ -80,10 +80,22 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
                     .enter().append("circle")
                         .attr('r', 8)
                         .attr("fill", "#FF7F50")
-                        .attr("draggable", true)
-                    .on("dragstart", function(e){
-                        e.dataTransfer.setData('text/plain', "Ce texte sera transmis à l'élément HTML de réception");
-                    })
+                        .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+                
+                    function dragstarted(d) {
+                    d3.select(this).raise().classed("active", true);
+                    }
+                    
+                    function dragged(d) {
+                    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+                    }
+                    
+                    function dragended(d) {
+                    d3.select(this).classed("active", false);
+                    }
                     
 
                 var simulationFrag = d3.forceSimulation(dataFrag)
@@ -98,8 +110,6 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
                     .attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
                     }
-                
-
                 
                 var config={
                     conteneur:'audio_conteneur2',
@@ -122,13 +132,6 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
                 .force("charge", d3.forceCollide().radius(5))
                 .force("r", d3.forceRadial(function(d) { 
                         return d.rg;
-                }))
-                .on("tick", ticked);
-            
-            var simulationFrag = d3.forceSimulation(dataFrag)
-                .force("charge", d3.forceCollide().radius(5))
-                .force("r", d3.forceRadial(function(e) { 
-                    return e.rg;
                 }))
                 .on("tick", ticked);
 
