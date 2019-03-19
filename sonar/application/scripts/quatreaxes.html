@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body { 
+    font-family: Helvetica;
+    background-color: black; 
+}
+  
+.axis, .axis path {
+  fill: none;
+  stroke: #00fad9;
+}
+text {
+  stroke: none;
+  fill: #00fad9;
+}
+</style>
+<body>
+  <svg id="scatter" width="500" height="500"></svg>
+  
+<script src="https://d3js.org/d3.v4.min.js"></script>
+  
+<script>
+var svg = d3.select("#scatter"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    domainwidth = width - margin.left - margin.right,
+    domainheight = height - margin.top - margin.bottom;
+  
+var x = d3.scaleLinear()
+    .domain(padExtent([-100,100]))
+    .range(padExtent([0, domainwidth]));
+var y = d3.scaleLinear()
+    .domain(padExtent([-100,100]))
+    .range(padExtent([domainheight, 0]));
+  
+var g = svg.append("g")
+		.attr("transform", "translate(" + margin.top + "," + margin.top + ")");
+  
+g.append("rect")
+    .attr("width", width - margin.left - margin.right)
+    .attr("height", height - margin.top - margin.bottom)
+    .attr("fill", "black")
+    .on('mousemove', function(){
+        console.log(y.invert(d3.mouse(this)[1]));
+        console.log(x.invert(d3.mouse(this)[0]));
+      });
+
+    g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
+        .call(d3.axisBottom(x).ticks(10));
+
+    g.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
+        .call(d3.axisLeft(y).ticks(10));
+
+    svg.append("text")
+        .attr("x", 450 )
+        .attr("y", 240 )
+        .style("text-anchor", "middle")
+        .text("Clarté");
+
+    svg.append("text")   
+        .attr("x", 270 )
+        .attr("y", 15 )
+        .style("text-anchor", "middle")
+        .text("Pertinence");
+
+  
+function padExtent(e, p) {
+  	if (p === undefined) p = 1;
+  	return ([e[0] - p, e[1] + p]);
+}
+</script>
+</body>

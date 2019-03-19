@@ -3,6 +3,16 @@ body
     background-color: black;
 }
 
+.axis, .axis path {
+    fill: none;
+    stroke: #00fad9;
+    
+  }
+text {
+    stroke: none;
+    fill: #00fad9;
+}
+
 header
 {
     width: 100%;

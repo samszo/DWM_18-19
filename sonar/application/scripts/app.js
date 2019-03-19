@@ -15,6 +15,67 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
         d3.selectAll('g').remove();
     };
 
+    function clearQuatreAxes(){
+        d3.select('#scatter').selectAll('g').remove();
+    };
+
+    function quatreAxes(){
+
+        var svg = d3.select("#scatter"),
+            margin = {top: 20, right: 20, bottom: 30, left: 50},
+            width = +svg.attr("width"),
+            height = +svg.attr("height"),
+            domainwidth = width - margin.left - margin.right,
+            domainheight = height - margin.top - margin.bottom;
+  
+        var x = d3.scaleLinear()
+            .domain(padExtent([-100,100]))
+            .range(padExtent([0, domainwidth]));
+        var y = d3.scaleLinear()
+            .domain(padExtent([-100,100]))
+            .range(padExtent([domainheight, 0]));
+        
+        var g = svg.append("g")
+                .attr("transform", "translate(" + margin.top + "," + margin.top + ")");
+        
+            g.append("rect")
+                .attr("width", width - margin.left - margin.right)
+                .attr("height", height - margin.top - margin.bottom)
+                .attr("fill", "black")
+                .on('mousemove', function(){
+                    console.log(y.invert(d3.mouse(this)[1]));
+                    console.log(x.invert(d3.mouse(this)[0]));
+                });
+
+            g.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
+                .call(d3.axisBottom(x).ticks(10));
+
+            g.append("g")
+                .attr("class", "y axis")
+                .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
+                .call(d3.axisLeft(y).ticks(10));
+
+            g.append("text")
+                .attr("x", 450 )
+                .attr("y", 240 )
+                .style("text-anchor", "middle")
+                .text("Clarté");
+
+            g.append("text")   
+                .attr("x", 270 )
+                .attr("y", 15 )
+                .style("text-anchor", "middle")
+                .text("Pertinence");
+
+    
+        function padExtent(e, p) {
+            if (p === undefined) p = 1;
+            return ([e[0] - p, e[1] + p]);
+        }
+    };
+
 
    $.get('scripts/tag.php', function (data){   
     tag = JSON.parse(data);
@@ -31,19 +92,19 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
             dataDeleuze = data;
         
             dataDeleuze.forEach(function(d){
-                    if(d.score > 0.3)
-                        { 
-                            d.rg= 100;
-                        } 
-                        else if(d.score > 0.2)
-                        {
-                            d.rg= 200;
-                        }
-                        else
-                        {
-                            d.rg=300;
-                            }
-                    })
+                if(d.score > 0.3)
+                { 
+                    d.rg= 100;
+                } 
+                else if(d.score > 0.2)
+                {
+                    d.rg= 200;
+                }
+                else
+                {
+                    d.rg=300;
+                }
+            })
 
             var node = d3.select("svg")
             .append("g")
@@ -87,6 +148,7 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
                 
                     function dragstarted(d) {
                     d3.select(this).raise().classed("active", true);
+                    quatreAxes();
                     }
                     
                     function dragged(d) {
@@ -95,6 +157,7 @@ var tag, dataDeleuze, cercleAudio, dataFrag;
                     
                     function dragended(d) {
                     d3.select(this).classed("active", false);
+                    clearQuatreAxes();
                     }
                     
 
