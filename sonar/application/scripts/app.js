@@ -9,27 +9,28 @@
 
     // Merci à Samszo et Amri et pour leurs conseils !
 */
-var domOrbit = document.getElementById('orbit');
-var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4,
-    margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = domOrbit.clientWidth,
-    height = domOrbit.clientHeight,
-    widthDomain = domOrbit.clientWidth-margin.right-margin.left,
-    heightDomain = domOrbit.clientHeight-margin.top-margin.bottom,
-    gGlobal = d3.select('#orbit').append("svg")
+// Création des orbites dans #orbit
+var domOrbit = document.getElementById('orbit'); //Récupération de l'id #orbit avec js
+var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de variables globales
+    margin = {top: 20, right: 20, bottom: 30, left: 50},  //paramètres nbRayons
+    width = domOrbit.clientWidth,                           
+    height = domOrbit.clientHeight,                         
+    widthDomain = domOrbit.clientWidth-margin.right-margin.left,    
+    heightDomain = domOrbit.clientHeight-margin.top-margin.bottom,  
+    gGlobal = d3.select('#orbit').append("svg")                 // Création d'un "G" global (voir svg)
         .attr('width',width+'px')
         .attr('height',height+'px')
         .append("g")
         .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
     
     //création des cercles
-    var arrRayons = d3.range(nbRayons);
+    var arrRayons = d3.range(nbRayons);             // Création d'un tableau pour les rayons des cercles
     var scCircle = d3.scaleBand()
         .domain(arrRayons)
         .range([0, widthDomain<heightDomain ? widthDomain/2 : heightDomain/2])
         .padding(0.1);
 
-    gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle')
+    gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Création des cercles + attributs
         .attr('class','cFond')
         .attr('id',function(d,i){
             return 'orbit'+i;
@@ -45,29 +46,38 @@ var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4,
         .attr('stroke-opacity',"0.5")
         .attr('fill',"none");
 
-    
+// Fonction pour l'event "drag" d3js
+function dragstarted(d) {
+    d3.select(this).raise().classed("active", true);
+    quatreAxes();
+}
 
+function dragged(d) {
+    d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+    d3.select(this).classed("active", false);
+    clearQuatreAxes();
+}
+    
+// Fonction pour effacer les fichiers audio
 function clear() {
     d3.selectAll('.gFiles').remove();
 };
-
+// Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
     d3.select('#scatter').selectAll('g').remove();
 };
 
+// Fonction pour créer les axes pertinence / clartés
 function quatreAxes() {
 
-    var svg = d3.select("#scatter"),
-        margin = {
-            top: 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        width = +svg.attr("width"),
-        height = +svg.attr("height"),
-        domainwidth = width - margin.left - margin.right,
-        domainheight = height - margin.top - margin.bottom;
+    var svg = d3.select("#scatter")
+        .attr('width',widthDomain+'px')
+        .attr('height',heightDomain+'px')
+        domainwidth = (widthDomain/2),
+        domainheight = (heightDomain/2);
 
     var x = d3.scaleLinear()
         .domain(padExtent([-100, 100]))
@@ -80,10 +90,10 @@ function quatreAxes() {
         .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
 
     g.append("rect")
-        .attr("width", width - margin.left - margin.right)
-        .attr("height", height - margin.top - margin.bottom)
-        .attr("fill", "black")
-        .on('mousemove', function () {
+        .attr("width", width)
+        .attr("height", height)
+        .attr("fill", "none")
+        .on('mousemove', function () {          // Récupération des coordonnées de la souris
             console.log(y.invert(d3.mouse(this)[1]));
             console.log(x.invert(d3.mouse(this)[0]));
         });
@@ -117,7 +127,7 @@ function quatreAxes() {
     }
 };
 
-
+// Récupération des données de la base de données depuis le script tag.php (liste)
 $.get('scripts/tag.php', function (data) {
     tag = JSON.parse(data);
     $('input[type=list]').w2field('list', {
@@ -125,6 +135,7 @@ $.get('scripts/tag.php', function (data) {
     })
 });
 
+// Récupération de l'item selectionné dans la liste pour push dans l'url
 function getSelect() {
     clear();
     var select = $('input[type=list]').w2field().get().text;
@@ -133,7 +144,7 @@ function getSelect() {
     d3.json(urlDeleuze)
         .then(function (data) {
             dataDeleuze = data;
-
+            // Boucle forEach qui permet de boucler sur une propriété du tableau
             dataDeleuze.forEach(function (d) {
                 if (d.score > 0.3) {
                     d.rg = scCircle(1);
@@ -146,7 +157,8 @@ function getSelect() {
 
             var gFiles = gGlobal.append('g').attr('class','gFiles')
                 .attr("transform", "translate(" + widthDomain/2 + "," + heightDomain/2 + ")");
-        
+
+            // Création des nodes (fichiers)
             var node = gFiles
                 .selectAll("circle")
                 .data(dataDeleuze)
@@ -158,19 +170,24 @@ function getSelect() {
                     var code = "<p>" + d.rubTitre + "</p>";
                     d3.select('#titreArchive').html(code);
                     d3.select('#audio_conteneur2').html("");
+
+                    // Récupération des fragments dans le tableau [phrases]
                     dataFrag = d.phrases.slice();
                     //console.log(dataFrag);
                     dataFrag.forEach(function (e) {
                         if (e.pHTML > 30000) {
-                            e.rg = 100;
+                            e.rg = scCircle(1);
                         } else if (e.pHTML >= 20000) {
-                            e.rg = 200;
+                            e.rg = scCircle(2);
                         } else {
-                            e.rg = 300;
+                            e.rg = scCircle(3);
                         }
                     })
-                    var frag = d3.select("svg")
-                        .append("g")
+                    
+                    var gFrag = gGlobal.append('g').attr('class','gFrag')
+                    .attr("transform", "translate(" + widthDomain/2 + "," + heightDomain/2 + ")");
+                    // Création des nodes frag
+                    var frag = gFrag
                         .selectAll("circle")
                         .data(dataFrag)
                         .enter().append("circle")
@@ -180,21 +197,6 @@ function getSelect() {
                             .on("start", dragstarted)
                             .on("drag", dragged)
                             .on("end", dragended));
-
-                    function dragstarted(d) {
-                        d3.select(this).raise().classed("active", true);
-                        quatreAxes();
-                    }
-
-                    function dragged(d) {
-                        d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
-                    }
-
-                    function dragended(d) {
-                        d3.select(this).classed("active", false);
-                        clearQuatreAxes();
-                    }
-
 
                     var simulationFrag = d3.forceSimulation(dataFrag)
                         .force("charge", d3.forceCollide().radius(5))
@@ -212,6 +214,7 @@ function getSelect() {
                                 return d.y;
                             });
                     }
+                    // Création du player audio
                     var idLastOrbit = '#orbit'+(nbRayons-1);
                     var posiOrbit = d3.select(idLastOrbit).node().getBBox();
                     var config = {
@@ -227,14 +230,14 @@ function getSelect() {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                    cercleAudio = new cercle_audio(config);
+                  //  cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
                         .style('top',(posiOrbit.y+160)+"px")
                         .style('left',(posiOrbit.x-margin.right+margin.left)+"px")
 
 
                 });
-
+            // Force radial appliqué aux fichiers audio
             var simulationData = d3.forceSimulation(dataDeleuze)
                 .force("charge", d3.forceCollide().radius(5))
                 .force("r", d3.forceRadial(function (d) {
