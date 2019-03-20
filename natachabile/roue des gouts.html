@@ -1,0 +1,272 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+     <!-- HTML -->
+    <div id="chartdiv"></div>
+    
+    <!-- Styles -->
+    <style>
+    #chartdiv {
+      width: 100%;
+      height: 800px;
+    }
+    </style> 
+
+
+</head>
+<body>
+    <!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.ChordDiagram);
+
+// colors of main characters
+chart.colors.saturation = 0.45;
+chart.colors.step = 3;
+var colors = {
+    toucher:chart.colors.next(),
+    goûts:chart.colors.next(),
+    Phoebe:chart.colors.next(),
+    odorat:chart.colors.next(),
+    vue:chart.colors.next(),
+    ouïe:chart.colors.next()
+}
+
+// data was provided by: https://www.reddit.com/user/notrudedude
+
+chart.data = [
+// node property fields take data from data items where they are first mentioned, that's 
+// why we add empty data items at the beginning and set colors here
+{"from":"goûts", "image":"goûts.png", "color":colors.goûts},
+{"from":"toucher", "image":"toucher.png", "color":colors.toucher},
+{"from":"ouïe", "image":"ouïe.png", "color":colors.ouïe},
+{"from":"odorat", "image":"odorat.png", "color":colors.odorat},
+{"from":"vue", "color":colors.vue, "image":"vue.png",},
+
+
+// real data
+{"from":"goûts","to":"Veggie chili","value":4},
+{"from":"goûts","to":"Penne au pesto & aux légumes","value":13},
+{"from":"goûts","to":"Cocotte de lentilles & légumes rôtis","value":16},
+{"from":"goûts","to":"Lasagne ricotta & épinard","value":3},
+{"from":"goûts","to":"Risotto aux épinards & au bleu","value":1},
+{"from":"goûts","to":"Pork chili","value":6},
+{"from":"goûts","to":"Emincé de poulet à la moutarde et poêlée de légumes","value":5},
+{"from":"goûts","to":"Brandade de cabillaud","value":1},
+{"from":"goûts","to":"Gravlax de Saumon islandais","value":1},
+{"from":"goûts","to":"Carotte râpée & graine de courge 100% bio","value":5},
+{"from":"goûts","to":"Soupe de tomates au gingembre","value":3},
+{"from":"goûts","to":"Velouté de chou-fleur à la noisette","value":3},
+{"from":"goûts","to":"Patates douces rôties, betteraves & chèvre","value":16},
+{"from":"goûts","to":"Little Caesar Salad","value":1},
+{"from":"goûts","to":"Camembert de Normandie AOP","value":1},
+{"from":"goûts","to":"Yaourt artisanal - nature au lait de brebis","value":10},
+{"from":"goûts","to":"Yaourt artisanal - 4 agrumes au lait de brebis","value":1},
+{"from":"goûts","to":"Fromage blanc, sirop d'érable bio & amandes","value":1},
+{"from":"goûts","to":"Cake aux pommes","value":1},
+{"from":"goûts","to":"Cheesecake au thé vert de Rachel's","value":3},
+{"from":"goûts","to":"Shake de fruits Foodchéri: Ananas, Kiwi, Orange, Grenade","value":5},
+{"from":"goûts","to":"P'tite tablette de chocolat noir (20g)","value":3},
+{"from":"goûts","to":"Chips de patate douce curry & mangue","value":16},
+{"from":"goûts","to":"P'tites chips au sel marin","value":1},
+{"from":"goûts","to":"Noix de cajou finement salées (25g)","value":1},
+{"from":"goûts","to":"Barre de granola bio - miel & graines","value":10},
+{"from":"goûts","to":"Energy ball mangue coco","value":1},
+{"from":"goûts","to":"Gressins au sésame (100g)","value":1},
+{"from":"goûts","to":"Eco-capsules de café bio","value":1},
+{"from":"goûts","to":"Eau Evian - 50 cl","value":3},
+{"from":"goûts","to":"Kombucha 25cl","value":5},
+
+
+{"from":"toucher","to":"chaud","value":7},
+{"from":"toucher","to":"froid","value":2},
+{"from":"toucher","to":"douce","value":1},
+{"from":"toucher","to":"dure","value":11},
+
+
+{"from":"ouïe","to":"rap","value":7},
+{"from":"ouïe","to":"rock","value":2},
+{"from":"ouïe","to":"raï","value":1},
+{"from":"ouïe","to":"salsa","value":11},
+{"from":"ouïe","to":"techno","value":3},
+{"from":"ouïe","to":"jazz","value":1},
+
+{"from":"odorat","to":"parfumé","value":2},
+{"from":"odorat","to":"boisé","value":10},
+{"from":"odorat","to":"résineux","value":8},
+{"from":"odorat","to":"fruité, autre que citron","value":1},
+{"from":"odorat","to":"écœurant","value":3},
+{"from":"odorat","to":"chimique","value":2},
+{"from":"odorat","to":"mentholé","value":6},
+{"from":"odorat","to":"menthe poivrée","value":6},
+{"from":"odorat","to":"sucré","value":2},
+{"from":"odorat","to":"pop-corn","value":1},
+
+{"from":"vue","to":"Drame","value":6},
+{"from":"vue","to":"Comédie","value":1},
+{"from":"vue","to":"Thriller","value":2},
+{"from":"vue","to":"Film d'action","value":2},
+{"from":"vue","to":"Film fantastique","value":2},
+{"from":"vue","to":"Film d'horreur","value":1},
+{"from":"vue","to":"Arts plastiques","value":4},
+{"from":"vue","to":"Livre et lecture","value":2},
+{"from":"vue","to":"Musées","value":1},
+{"from":"vue","to":"Spectacle vivant (musique, danse, théâtre...)","value":2},
+{"from":"vue","to":"Cinéma - audiovisuel","value":4},
+{"from":"vue","to":"Jardins - Paysages","value":2},
+{"from":"vue","to":"Monuments historiques","value":9},
+{"from":"vue","to":"Patrimoine culturel immatériel (PCI)","value":1},
+{"from":"vue","to":"Valorisation du patrimoine","value":3},]
+
+
+
+chart.dataFields.fromName = "from";
+chart.dataFields.toName = "to";
+chart.dataFields.value = "value";
+
+
+chart.nodePadding = 0.5;
+chart.minNodeSize = 0.01;
+chart.startAngle = 100;
+chart.endAngle = chart.startAngle + 360;
+chart.sortBy = "value";
+// la taille de texte ........
+chart.fontSize = 15;
+
+
+var nodeTemplate = chart.nodes.template;
+nodeTemplate.readerTitle = "Click to show/hide or drag to rearrange";
+nodeTemplate.showSystemTooltip = true;
+nodeTemplate.propertyFields.fill = "color";
+nodeTemplate.tooltipText = "{name}'s kisses: {total}";
+
+// when rolled over the node, make all the links rolled-over
+nodeTemplate.events.on("over", function(event) {    
+    var node = event.target;
+    node.outgoingDataItems.each(function(dataItem) {
+        if(dataItem.toNode){
+            dataItem.link.isHover = true;
+            dataItem.toNode.label.isHover = true;
+        }
+    })
+    node.incomingDataItems.each(function(dataItem) {
+        if(dataItem.fromNode){
+            dataItem.link.isHover = true;
+            dataItem.fromNode.label.isHover = true;
+        }
+    }) 
+
+    node.label.isHover = true;   
+})
+
+// when rolled out from the node, make all the links rolled-out
+nodeTemplate.events.on("out", function(event) {
+    var node = event.target;
+    node.outgoingDataItems.each(function(dataItem) {        
+        if(dataItem.toNode){
+            dataItem.link.isHover = false;                
+            dataItem.toNode.label.isHover = false;
+        }
+    })
+    node.incomingDataItems.each(function(dataItem) {
+        if(dataItem.fromNode){
+            dataItem.link.isHover = false;
+           dataItem.fromNode.label.isHover = false;
+        }
+    })
+
+    node.label.isHover = false;
+})
+
+var label = nodeTemplate.label;
+label.relativeRotation = 90;
+
+label.fillOpacity = 0.4;
+let labelHS = label.states.create("hover");
+labelHS.properties.fillOpacity = 1;
+
+nodeTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+// this adapter makes non-main character nodes to be filled with color of the main character which he/she kissed most
+nodeTemplate.adapter.add("fill", function(fill, target) {
+    let node = target;
+    let counters = {};
+    let mainChar = false;
+    node.incomingDataItems.each(function(dataItem) {
+        if(colors[dataItem.toName]){
+            mainChar = true;
+        }
+
+        if(isNaN(counters[dataItem.fromName])){
+            counters[dataItem.fromName] = dataItem.value;
+        }
+        else{
+            counters[dataItem.fromName] += dataItem.value;
+        }
+    })
+    if(mainChar){
+        return fill;
+    }
+
+    let count = 0;
+    let color;
+    let biggest = 0;
+    let biggestName;
+
+    for(var name in counters){
+        if(counters[name] > biggest){
+            biggestName = name;
+            biggest = counters[name]; 
+        }        
+    }
+    if(colors[biggestName]){
+        fill = colors[biggestName];
+    }
+  
+    return fill;
+})
+
+// link template
+var linkTemplate = chart.links.template;
+linkTemplate.strokeOpacity = 0;
+linkTemplate.fillOpacity = 0.15;
+linkTemplate.tooltipText = "{fromName} & {toName}:{value.value}";
+
+var hoverState = linkTemplate.states.create("hover");
+hoverState.properties.fillOpacity = 0.7;
+hoverState.properties.strokeOpacity = 0.7;
+
+// data credit label
+var creditLabel = chart.chartContainer.createChild(am4core.TextLink);
+creditLabel.text = "Data source: navigoûts";
+creditLabel.url = "https://www.reddit.com/user/notrudedude";
+creditLabel.y = am4core.percent(99);
+creditLabel.x = am4core.percent(99);
+creditLabel.horizontalCenter = "right";
+creditLabel.verticalCenter = "bottom";
+
+var titleImage = chart.chartContainer.createChild(am4core.Image);
+titleImage.href = "logo.jpg";
+titleImage.x = 30
+titleImage.y = 0;
+titleImage.width = 300;
+titleImage.height = 300;
+</script>
+
+
+</body>
+</html>
