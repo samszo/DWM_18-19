@@ -49,7 +49,7 @@ gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Créatio
     .attr('stroke', "#00F7A1")
     .attr('stroke-width', "5")
     .attr('stroke-opacity', "0.5")
-    .attr('fill', "none");
+    .attr('fill', "none")
 
 // Fonction pour l'event "drag" d3js
 function dragstarted(d) {
@@ -69,25 +69,33 @@ function dragended(d) {
 // Fonction pour effacer les fichiers audio
 function clear() {
     d3.selectAll('.gFiles').remove();
+    d3.selectAll('.gFrag').remove();
 };
 // Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
-    d3.select('#scatter').selectAll('g').remove();
+    d3.selectAll('#scatter').remove();
 };
 
 // Fonction pour créer les axes pertinence / clartés
 function quatreAxes() {
-    var jsonAxes = "[{'lbl':'clair','posi':0},{'lbl':'obscur','posi':180},{'lbl':'pertinent','posi':90},{'lbl':'inadapté','posi':270}]";
-    var svg = d3.select("#scatter"),
-        margin = {
-            top: 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        width = +svg.attr("width"),
-        height = +svg.attr("height"),
-        domainwidth = width - margin.left - margin.right,
+    var jsonAxes = [{
+        'lbl': 'clair',
+        'posi': 0
+    }, {
+        'lbl': 'obscur',
+        'posi': 180
+    }, {
+        'lbl': 'pertinent',
+        'posi': 90
+    }, {
+        'lbl': 'inadapté',
+        'posi': 270
+    }];
+    var svg = gGlobal.append('g').attr('id', 'scatter')
+        .attr("transform", "translate(" + widthDomain / 3 + "," + heightDomain / 8 + ")")
+        width = 600,
+        height = 600,
+        domainwidth = width - margin.left - margin.right;
         domainheight = height - margin.top - margin.bottom;
 
     var x = d3.scaleLinear()
@@ -98,88 +106,88 @@ function quatreAxes() {
         .range(padExtent([domainheight, 0]));
 
     var g = svg.append("g")
-        .attr("transform", "translate(" + margin.top + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.top + "," + margin.top + ")")
 
     g.append("rect")
-        .attr("width", width - margin.left - margin.right)
-        .attr("height", height - margin.top - margin.bottom)
-        .attr("fill", "black")
+        .attr("width", domainwidth)
+        .attr("height", domainheight)
+        .attr("fill", "none")
         .on('mousemove', function (e) {
             console.log(d3.mouse(this)[0]);
             console.log(x.invert(d3.mouse(this)[0]));
         });
-  /*  d3.json("../data/quatreaxes.json", function (error, data) {
-        if (error) throw error;
-        data.forEach(function (d) {
-            d.consequence = +d.consequence;
-            d.value = +d.value;
+    /*  d3.json("../data/quatreaxes.json", function (error, data) {
+          if (error) throw error;
+          data.forEach(function (d) {
+              d.consequence = +d.consequence;
+              d.value = +d.value;
+          });
+              
+          g.selectAll("circle")
+              .data(data)
+              .enter().append("circle")
+              .attr("class", "dot")
+              .attr("r", 7)
+              .attr("cx", function (d) {
+                  return x(d.consequence);
+              })
+              .attr("cy", function (d) {
+                  return y(d.value);
+              })
+              .style("fill", function (d) {
+                  if (d.value >= 3 && d.consequence <= 3) {
+                      return "#60B19C"
+                  } // Top Left
+                  else if (d.value >= 3 && d.consequence >= 3) {
+                      return "#8EC9DC"
+                  } // Top Right
+                  else if (d.value <= 3 && d.consequence >= 3) {
+                      return "#D06B47"
+                  } // Bottom Left
+                  else {
+                      return "#A72D73"
+                  } //Bottom Right         
+              });
+          */
+    g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
+        .call(d3.axisBottom(x).ticks(10));
+    g.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
+        .call(d3.axisLeft(y).ticks(10));
+    //ajoute les titre d'axes
+    g.selectAll(".txtTitreAxe")
+        .data(jsonAxes)
+        .enter().append("text")
+        .attr("class", '.txtTitreAxe')
+        .attr("transform", function (d) {
+            t = "rotate(0)";
+            //if(d.posi=='0' || d.posi=='180' ) t = "rotate(-90)";        
+            return t;
+        })
+        .attr("y", function (d) {
+            if (d.posi == '0') return 0;
+            if (d.posi == '90' || d.posi == '270') return (height / 2);
+            if (d.posi == '180') return height - margin.top - margin.right;
+        })
+        .attr("x", function (d) {
+            if (d.posi == '0' || d.posi == '180') return (width / 2) - margin.right;
+            if (d.posi == '90') return width - margin.left - margin.right;
+            if (d.posi == '270') return 0;
+        })
+        .attr("text-anchor", function (d) {
+            if (d.posi == '0' || d.posi == '180' || d.posi == '270') return 'start';
+            if (d.posi == '90') return 'end';
+        })
+        .attr("dy", function (d) {
+            if (d.posi == '0' || d.posi == '90' || d.posi == '270') return '1em';
+            if (d.posi == '180') return '-1em';
+        })
+        .text(function (d) {
+            return d.lbl;
         });
-            
-        g.selectAll("circle")
-            .data(data)
-            .enter().append("circle")
-            .attr("class", "dot")
-            .attr("r", 7)
-            .attr("cx", function (d) {
-                return x(d.consequence);
-            })
-            .attr("cy", function (d) {
-                return y(d.value);
-            })
-            .style("fill", function (d) {
-                if (d.value >= 3 && d.consequence <= 3) {
-                    return "#60B19C"
-                } // Top Left
-                else if (d.value >= 3 && d.consequence >= 3) {
-                    return "#8EC9DC"
-                } // Top Right
-                else if (d.value <= 3 && d.consequence >= 3) {
-                    return "#D06B47"
-                } // Bottom Left
-                else {
-                    return "#A72D73"
-                } //Bottom Right         
-            });
-        */
-        g.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
-            .call(d3.axisBottom(x).ticks(10));
-        g.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
-            .call(d3.axisLeft(y).ticks(10));
-        //ajoute les titre d'axes
-        g.selectAll(".txtTitreAxe")
-            .data(jsonAxes)
-            .enter().append("text")
-            .attr("class", '.txtTitreAxe')
-            .attr("transform", function (d) {
-                t = "rotate(0)";
-                //if(d.posi=='0' || d.posi=='180' ) t = "rotate(-90)";        
-                return t;
-            })
-            .attr("y", function (d) {
-                if (d.posi == '0') return 0;
-                if (d.posi == '90' || d.posi == '270') return (height / 2);
-                if (d.posi == '180') return height - margin.top - margin.right;
-            })
-            .attr("x", function (d) {
-                if (d.posi == '0' || d.posi == '180') return (width / 2) - margin.right;
-                if (d.posi == '90') return width - margin.left - margin.right;
-                if (d.posi == '270') return 0;
-            })
-            .attr("text-anchor", function (d) {
-                if (d.posi == '0' || d.posi == '180' || d.posi == '270') return 'start';
-                if (d.posi == '90') return 'end';
-            })
-            .attr("dy", function (d) {
-                if (d.posi == '0' || d.posi == '90' || d.posi == '270') return '1em';
-                if (d.posi == '180') return '-1em';
-            })
-            .text(function (d) {
-                return d.lbl;
-            });
 
 
     function padExtent(e, p) {
@@ -282,8 +290,8 @@ function getSelect() {
                         conteneur: 'audio_conteneur2',
                         couleur_centre: "rgb(0, 0, 0, 0.1)",
                         couleur_progres: "rgb(0, 247, 161, 0.1)",
-                        couleur_fond: "rgb(255, 255, 255, 0.1)",
-                        couleur_ombre: "black",
+                        couleur_fond: false,
+                        couleur_ombre: false,
                         diametre_lecteur: posiOrbit.width,
                         diametre_detect: 105,
                         epaisseur_barre: 0,
@@ -291,9 +299,9 @@ function getSelect() {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                    //  cercleAudio = new cercle_audio(config);
+                   // cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
-                        .style('top', (posiOrbit.y + 160) + "px")
+                        .style('top', (posiOrbit.y + 90) + "px")
                         .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
 
 
