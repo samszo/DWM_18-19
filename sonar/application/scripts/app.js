@@ -12,39 +12,44 @@
 // Création des orbites dans #orbit
 var domOrbit = document.getElementById('orbit'); //Récupération de l'id #orbit avec js
 var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de variables globales
-    margin = {top: 20, right: 20, bottom: 30, left: 50},  //paramètres nbRayons
-    width = domOrbit.clientWidth,                           
-    height = domOrbit.clientHeight,                         
-    widthDomain = domOrbit.clientWidth-margin.right-margin.left,    
-    heightDomain = domOrbit.clientHeight-margin.top-margin.bottom,  
-    gGlobal = d3.select('#orbit').append("svg")                 // Création d'un "G" global (voir svg)
-        .attr('width',width+'px')
-        .attr('height',height+'px')
-        .append("g")
-        .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
-    
-    //création des cercles
-    var arrRayons = d3.range(nbRayons);             // Création d'un tableau pour les rayons des cercles
-    var scCircle = d3.scaleBand()
-        .domain(arrRayons)
-        .range([0, widthDomain<heightDomain ? widthDomain/2 : heightDomain/2])
-        .padding(0.1);
+    margin = {
+        top: 20,
+        right: 20,
+        bottom: 30,
+        left: 50
+    }, //paramètres nbRayons
+    width = domOrbit.clientWidth,
+    height = domOrbit.clientHeight,
+    widthDomain = domOrbit.clientWidth - margin.right - margin.left,
+    heightDomain = domOrbit.clientHeight - margin.top - margin.bottom,
+    gGlobal = d3.select('#orbit').append("svg") // Création d'un "G" global (voir svg)
+    .attr('width', width + 'px')
+    .attr('height', height + 'px')
+    .append("g")
+    .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
 
-    gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Création des cercles + attributs
-        .attr('class','cFond')
-        .attr('id',function(d,i){
-            return 'orbit'+i;
-        })
-        .attr('r',function(d){
-            let r = d==0 ? 0 : scCircle(d);
-            return r;
-        })
-        .attr('cx',widthDomain/2)
-        .attr('cy',heightDomain/2)
-        .attr('stroke',"#00F7A1")
-        .attr('stroke-width',"5")
-        .attr('stroke-opacity',"0.5")
-        .attr('fill',"none");
+//création des cercles
+var arrRayons = d3.range(nbRayons); // Création d'un tableau pour les rayons des cercles
+var scCircle = d3.scaleBand()
+    .domain(arrRayons)
+    .range([0, widthDomain < heightDomain ? widthDomain / 2 : heightDomain / 2])
+    .padding(0.1);
+
+gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Création des cercles + attributs
+    .attr('class', 'cFond')
+    .attr('id', function (d, i) {
+        return 'orbit' + i;
+    })
+    .attr('r', function (d) {
+        let r = d == 0 ? 0 : scCircle(d);
+        return r;
+    })
+    .attr('cx', widthDomain / 2)
+    .attr('cy', heightDomain / 2)
+    .attr('stroke', "#00F7A1")
+    .attr('stroke-width', "5")
+    .attr('stroke-opacity', "0.5")
+    .attr('fill', "none");
 
 // Fonction pour l'event "drag" d3js
 function dragstarted(d) {
@@ -60,7 +65,7 @@ function dragended(d) {
     d3.select(this).classed("active", false);
     clearQuatreAxes();
 }
-    
+
 // Fonction pour effacer les fichiers audio
 function clear() {
     d3.selectAll('.gFiles').remove();
@@ -72,12 +77,18 @@ function clearQuatreAxes() {
 
 // Fonction pour créer les axes pertinence / clartés
 function quatreAxes() {
-
-    var svg = d3.select("#scatter")
-        .attr('width',widthDomain+'px')
-        .attr('height',heightDomain+'px')
-        domainwidth = (widthDomain/2),
-        domainheight = (heightDomain/2);
+    var jsonAxes = "[{'lbl':'clair','posi':0},{'lbl':'obscur','posi':180},{'lbl':'pertinent','posi':90},{'lbl':'inadapté','posi':270}]";
+    var svg = d3.select("#scatter"),
+        margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+        width = +svg.attr("width"),
+        height = +svg.attr("height"),
+        domainwidth = width - margin.left - margin.right,
+        domainheight = height - margin.top - margin.bottom;
 
     var x = d3.scaleLinear()
         .domain(padExtent([-100, 100]))
@@ -87,38 +98,88 @@ function quatreAxes() {
         .range(padExtent([domainheight, 0]));
 
     var g = svg.append("g")
-        .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
+        .attr("transform", "translate(" + margin.top + "," + margin.top + ")");
 
     g.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("fill", "none")
-        .on('mousemove', function () {          // Récupération des coordonnées de la souris
-            console.log(y.invert(d3.mouse(this)[1]));
+        .attr("width", width - margin.left - margin.right)
+        .attr("height", height - margin.top - margin.bottom)
+        .attr("fill", "black")
+        .on('mousemove', function (e) {
+            console.log(d3.mouse(this)[0]);
             console.log(x.invert(d3.mouse(this)[0]));
         });
-
-    g.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
-        .call(d3.axisBottom(x).ticks(10));
-
-    g.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
-        .call(d3.axisLeft(y).ticks(10));
-
-    g.append("text")
-        .attr("x", 450)
-        .attr("y", 240)
-        .style("text-anchor", "middle")
-        .text("Clarté");
-
-    g.append("text")
-        .attr("x", 270)
-        .attr("y", 15)
-        .style("text-anchor", "middle")
-        .text("Pertinence");
+  /*  d3.json("../data/quatreaxes.json", function (error, data) {
+        if (error) throw error;
+        data.forEach(function (d) {
+            d.consequence = +d.consequence;
+            d.value = +d.value;
+        });
+            
+        g.selectAll("circle")
+            .data(data)
+            .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 7)
+            .attr("cx", function (d) {
+                return x(d.consequence);
+            })
+            .attr("cy", function (d) {
+                return y(d.value);
+            })
+            .style("fill", function (d) {
+                if (d.value >= 3 && d.consequence <= 3) {
+                    return "#60B19C"
+                } // Top Left
+                else if (d.value >= 3 && d.consequence >= 3) {
+                    return "#8EC9DC"
+                } // Top Right
+                else if (d.value <= 3 && d.consequence >= 3) {
+                    return "#D06B47"
+                } // Bottom Left
+                else {
+                    return "#A72D73"
+                } //Bottom Right         
+            });
+        */
+        g.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
+            .call(d3.axisBottom(x).ticks(10));
+        g.append("g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
+            .call(d3.axisLeft(y).ticks(10));
+        //ajoute les titre d'axes
+        g.selectAll(".txtTitreAxe")
+            .data(jsonAxes)
+            .enter().append("text")
+            .attr("class", '.txtTitreAxe')
+            .attr("transform", function (d) {
+                t = "rotate(0)";
+                //if(d.posi=='0' || d.posi=='180' ) t = "rotate(-90)";        
+                return t;
+            })
+            .attr("y", function (d) {
+                if (d.posi == '0') return 0;
+                if (d.posi == '90' || d.posi == '270') return (height / 2);
+                if (d.posi == '180') return height - margin.top - margin.right;
+            })
+            .attr("x", function (d) {
+                if (d.posi == '0' || d.posi == '180') return (width / 2) - margin.right;
+                if (d.posi == '90') return width - margin.left - margin.right;
+                if (d.posi == '270') return 0;
+            })
+            .attr("text-anchor", function (d) {
+                if (d.posi == '0' || d.posi == '180' || d.posi == '270') return 'start';
+                if (d.posi == '90') return 'end';
+            })
+            .attr("dy", function (d) {
+                if (d.posi == '0' || d.posi == '90' || d.posi == '270') return '1em';
+                if (d.posi == '180') return '-1em';
+            })
+            .text(function (d) {
+                return d.lbl;
+            });
 
 
     function padExtent(e, p) {
@@ -155,8 +216,8 @@ function getSelect() {
                 }
             })
 
-            var gFiles = gGlobal.append('g').attr('class','gFiles')
-                .attr("transform", "translate(" + widthDomain/2 + "," + heightDomain/2 + ")");
+            var gFiles = gGlobal.append('g').attr('class', 'gFiles')
+                .attr("transform", "translate(" + widthDomain / 2 + "," + heightDomain / 2 + ")");
 
             // Création des nodes (fichiers)
             var node = gFiles
@@ -183,9 +244,9 @@ function getSelect() {
                             e.rg = scCircle(3);
                         }
                     })
-                    
-                    var gFrag = gGlobal.append('g').attr('class','gFrag')
-                    .attr("transform", "translate(" + widthDomain/2 + "," + heightDomain/2 + ")");
+
+                    var gFrag = gGlobal.append('g').attr('class', 'gFrag')
+                        .attr("transform", "translate(" + widthDomain / 2 + "," + heightDomain / 2 + ")");
                     // Création des nodes frag
                     var frag = gFrag
                         .selectAll("circle")
@@ -215,7 +276,7 @@ function getSelect() {
                             });
                     }
                     // Création du player audio
-                    var idLastOrbit = '#orbit'+(nbRayons-1);
+                    var idLastOrbit = '#orbit' + (nbRayons - 1);
                     var posiOrbit = d3.select(idLastOrbit).node().getBBox();
                     var config = {
                         conteneur: 'audio_conteneur2',
@@ -230,10 +291,10 @@ function getSelect() {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                  //  cercleAudio = new cercle_audio(config);
+                    //  cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
-                        .style('top',(posiOrbit.y+160)+"px")
-                        .style('left',(posiOrbit.x-margin.right+margin.left)+"px")
+                        .style('top', (posiOrbit.y + 160) + "px")
+                        .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
 
 
                 });
