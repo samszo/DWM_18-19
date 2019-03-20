@@ -1,143 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="styles/main.css" />
-        <link rel="stylesheet" href="res/cercle_audio.css"/>
-        <script type="text/js" src="scripts/main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="res/cercle_audio.js"></script>
-    </head>
-    <body>
-    <header>
-        <div class="searchBar">
 
-            <form action="/search" id="searchthis" method="get">
-            <input id="search" name="search" type="text" placeholder="Rechercher" />
-            <input id="search-btn" type="submit" value="Rechercher" />
-            </form>
-                                        
+<head>
+    <meta charset="utf8" />
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <link rel="stylesheet" href="scripts/res/cercle_audio.css" />
+    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="scripts/res/cercle_audio.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="w2ui-field w2ui-span3">
+            <label>List:</label>
+            <div>
+                <input type="list">
+                <button id="searchthis" onclick="javascript: getSelect();">Select</button>
+            </div>
+            <div id="titreArchive"></div>
         </div>
     </header>
-
-        <div class="force">
-            
-            <div id="orbit">
-                <div id="audio_conteneur2"></div>
-                    <svg width="960" height="800" viewBox="-480 -250 960 500">
-                        <circle r="100" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-                        <circle r="200" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-                        <circle r="300" stroke="#00F7A1" stroke-opacity="0.5" fill="none"></circle>
-                    </svg>
-            </div>
+    <div class="force">
+        <div id="orbit">
+            <div position="absolute" id="audio_conteneur2"></div>
         </div>
+        <svg position="absolute" id="scatter" width=500 height=500></svg>
+    </div>
+    </div>
 
-        <div id="titreArchive"></div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
 
-    <footer>
-        <div class="navButton">
-            <img src="images/bouton1.png" />
-            <img src="images/bouton2.png" />
-            <img src="images/bouton3.png" />
-        </div>
-    </footer>
-
-<script src="https://d3js.org/d3-array.v1.min.js"></script>
-<script src="https://d3js.org/d3-collection.v1.min.js"></script>
-<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
-<script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
-<script src="https://d3js.org/d3-selection.v1.min.js"></script>
-<script src="https://d3js.org/d3-timer.v1.min.js"></script>
-<script src="https://d3js.org/d3-force.v1.min.js"></script>
-<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
-<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
-
-<script>
-
-/* Merci à Mike Bostock pour son algorithmme Radial Force : 
-    https://bl.ocks.org/mbostock/cd98bf52e9067e26945edd95e8cf6ef9
-
-    Données JSON Deleuze
-    http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=libert%C3%A9";
-*/
-var urlDeleuze = "data/data.json";
-var dataDeleuze;
-
-// Merci à Samszo pour ses corrections !
-d3.json(urlDeleuze)
-  .then(function(data){
-    // Code from your callback goes here...
-    dataDeleuze = data;
-  
-    dataDeleuze.forEach(function(d){
-               if(d.score > 0.3)
-                { 
-                    d.rg= 100;
-                } 
-                else if(d.score > 0.2)
-                {
-                    d.rg= 200;
-                }
-                else
-                {
-                    d.rg=300;
-                    }
-            });
-
-    var node = d3.select("svg")
-    .append("g")
-    .selectAll("circle")
-    .data(dataDeleuze)
-    .enter().append("circle")
-        .attr("r", 10)
-        .attr("fill", "#04f5b5");
-
-    var simulation = d3.forceSimulation(dataDeleuze)
-        .force("charge", d3.forceCollide().radius(5))
-        .force("r", d3.forceRadial(function(d) { 
-                return d.rg;
-        }))
-        .on("tick", ticked);
-
-    function ticked() {
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-    }
-
-    node.on("click", function(dataDeleuze){
-        var url = dataDeleuze.fichier;
-        var titre = dataDeleuze.rubTitre;
-        var code = "<p>" + titre + "</p>";
-        console.log(code);
-        document.getElementById('titreArchive').innerHTML = code;
-    
-    // Merci à @karamel pour son code : https://codes-sources.commentcamarche.net/source/101676-lecteur-audio-circulaire-rond
-        addEventListener('click', crea_audio_cercle, false);
-
-    function crea_audio_cercle(){
-
-        var config={
-		    conteneur:'audio_conteneur2',
-		    couleur_centre:"rgb(0, 0, 0, 0.1)",
-		    couleur_progres:"rgb(0, 247, 161, 0.1)",
-		    couleur_fond:"rgb(255, 255, 255, 0.1)",
-		    couleur_ombre:"black",
-		    diametre_lecteur:350,
-		    diametre_detect:105,
-		    epaisseur_barre:0,
-		    ressources:"res/",
-		    class_suplementaire:"position",
-            ressources:"res/",					
-            class_suplementaire:false,
-            fichier: url,						
-        }
-        new cercle_audio(config);
-    }
-})
-});
-
-</script>
-
-    </body>
 </html>

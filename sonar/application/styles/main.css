@@ -3,10 +3,21 @@ body
     background-color: black;
 }
 
+.axis, .axis path {
+    fill: none;
+    stroke: #00fad9;
+    
+  }
+text {
+    stroke: none;
+    fill: #00fad9;
+}
+
 header
 {
     width: 100%;
-    height: 100px;
+    height: 30px;
+    color: #00F7A1;
 }
 
 footer
@@ -28,7 +39,7 @@ footer
 #titreArchive {
     color: #00F7A1;
     width: 100%;
-    height: 300px;
+    height: 100px;
     text-align: center;
 }
 
@@ -39,6 +50,9 @@ footer
 
 #orbit {
     text-align: center;
+    width: 100%;
+    height: 100%;
+
 }
 
 #searchthis {

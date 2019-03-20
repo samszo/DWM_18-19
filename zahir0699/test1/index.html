@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Skills sunburst</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="skill.css"/>-->
+   <style>
+        body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        background-color: #fff;
+        width: 1000px;
+        height: 700px;
+        margin-top: 10px;
+      }
+      #skillmap .skills-wrapper {
+        margin-top: 10px;
+        overflow: auto;
+      }
+      #skillmap .skills-sunburst {
+        float: left;
+        width: 500px;
+        margin-left: -80px;
+      }
+      #skillmap .skills-sunburst svg {
+        font: 11px 'Source Sans Pro', sans-serif;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      #skillmap .skills-chart {
+        float: right;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 15px;
+        margin: 80px 20px 0 0;
+      }
+      #skillmap .skills-chart .breadcumb-text {
+        font-size: 13px;
+        font-weight: 700;
+      }
+      #skillmap .skills-chart #skills-chart-line {
+        fill: none;
+        stroke-width: 3.5px;
+      }
+      #skillmap .skills-chart .axis path,
+      #skillmap .skills-chart .axis line {
+        fill: none;
+      }
+      #skillmap .skills-chart .x-axis path,
+      #skillmap .skills-chart .y-axis path {
+        stroke: #444000000000000000000000000000004444444444444444441111111111111111111111111111111111111111111111111111111111111111111111111111111111111111177777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777778hyggygbyg;
+        stroke-width: 1px;
+        shape-rendering: geometricPrecision;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="skills">
+      <div id="skillmap">
+        <div class="skills-wrapper">
+          <div class="skills-sunburst"></div>
+          <div class="skills-chart">
+            <div id="skills-chart-breadcrumb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="skillsdata.js"></script>
+    <script type="text/javascript" src="skill.js"></script>
+    <script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
+
+
+      
+  </script> 
+  </body>
+</html>

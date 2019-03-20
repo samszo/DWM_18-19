@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Geolocalisation</title>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>    
+    <script src="js/Leaflet.awesome-markers/leaflet.awesome-markers.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link rel="stylesheet" href="js/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css ">
+    
+
+    
+    
+       
+  </head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Evenement près de moi</h1>
+  
+    <button type="button" class="btn btn-link" id="btnGeo" >ENREGISTRER</button>
+    <button type="button" class="btn btn-danger" id="btnConcert" >Concerts</button>
+    <button type="button" class="btn btn-warning" id="btnTheatre" >Thêatre</button>
+    <button type="button" class="btn btn-dark" id="btnExposition" >Exposition</button>
+    <button type="button" class="btn btn-primary" id="btnCinema" >Cinema</button>
+    <button type="button" class="btn btn-info" id="btnMusique" >Musique</button>
+    <button type="button" class="btn btn-success" id="btnDanse" >Danse</button>
+
+    <div id="txtGeo" ></div>
+    <div id="map_2385853" style="width:100%;height:500px; z-index:1;"></div>
+  </div>
+</div>
+
+<script>
+var map, geoPosi, optionsGeo = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+$('#btnGeo').click(function() {
+  crudGeo({
+    'lat':geoPosi.coords.latitude
+    ,'lng':geoPosi.coords.longitude
+    ,'acc':geoPosi.coords.accuracy
+    ,'alt':0
+    ,'obj':geoPosi
+    });
+});
+
+$('#btnConcert').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'music',
+    markerColor: 'red'
+  });
+  getEvent('concert',m);
+});
+
+$('#btnTheatre').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'chalkboard-teacher',
+    markerColor: 'orange'
+  });
+  getEvent('théâtre',m);
+});
+
+$('#btnExposition').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'university',
+    markerColor: 'gray'
+  });
+  getEvent('exposition',m);
+});
+
+$('#btnCinema').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'film',
+    markerColor: 'darkred'
+  });
+  getEvent('cinéma',m);
+});
+
+$('#btnMusique').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'university',
+    markerColor: 'blue'
+  });
+  getEvent('musique',m);
+});
+
+$('#btnDanse').click(function() {
+  var m = L.AwesomeMarkers.icon({
+    icon: 'drum',
+    markerColor: 'green'
+  });
+  getEvent('Danse',m);
+});
+
+
+
+  function successGeo(pos) {
+    geoPosi = pos;
+    let html = 'Votre position actuelle est :<br/>'
+      +'Latitude : '+geoPosi.coords.latitude+'<br/>'
+      +'Longitude : '+geoPosi.coords.longitude+'<br/>'
+      +'La précision est de '+geoPosi.coords.accuracy+' mètres.';
+
+    document.getElementById('txtGeo').innerHTML=html;
+    geoPosi.latlng = {
+      lat: geoPosi.coords.latitude,
+      lng: geoPosi.coords.longitude      
+    };
+    geoPosi.accuracy = geoPosi.coords.accuracy;
+    onLocationFound(geoPosi);
+    crudGeo({
+      'lat':geoPosi.coords.latitude
+      ,'lng':geoPosi.coords.longitude
+      ,'acc':geoPosi.coords.accuracy
+      ,'alt':0
+      ,'obj':geoPosi
+      });
+
+  }
+  
+  function errorGeo(err) {
+    console.warn(`ERREUR (${err.code}): ${err.message}`);
+    geoPosi=false;
+  }
+  
+function getGeoInfos(){
+    if(geoPosi)
+        return {'lat':geoPosi.coords.latitude,'lng':geoPosi.coords.longitude,'pre':geoPosi.coords.accuracy,'t':geoPosi.timestamp};
+    else
+        return {};
+}
+
+/*
+merci à https://stackoverflow.com/questions/40433317/leaflet-map-update-marker-using-navigator-geolocation-watchposition
+*/
+function initializeMapAndLocator(){
+
+  map = L.map('map_2385853');
+
+  /*fond de carte google
+  var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
+  */
+  // fond de carte OSM
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    osm = L.tileLayer(osmUrl, {minZoom: 1, maxZoom: 16, attribution: osmAttrib})
+      .addTo(map);
+  
+  map.locate({setView: true, 
+        maxZoom: 16, 
+        watch:true, 
+        timeout: 60000
+        });
+    
+  //map.on('locationfound', onLocationFound);
+  
+}
+
+function onLocationFound(e) {
+      var radius = e.accuracy / 2;
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("Vous êtes environ à " + radius + " mètres de ce point").openPopup();
+      L.circle(e.latlng, radius).addTo(map);
+  }
+
+initializeMapAndLocator();
+navigator.geolocation.getCurrentPosition(successGeo, errorGeo, optionsGeo);
+
+function crudGeo(params){
+
+  $.post( "php/crud.php", params)
+    .done(function( data ) {
+      console.log( "Data Loaded: " + data );
+    })
+    .fail(function() {
+      console.log( "error" );
+    })
+    .always(function() {
+      console.log( "finished" );
+    });  
+}
+
+function getEvent(typeEvent, marker){
+  var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&rows=1000&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags='+typeEvent+'&refine.date_start=2019&refine.date_end=2019';
+//var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags='+typeEvent+'&refine.date_start=2018';  
+
+  $.get( url)
+    .done(function( data ) {
+      data.records.forEach(function(d){
+        var html = '<h1>'+d.fields.title+'</h1>';
+        L.marker({lat:d.fields.latlon[0],lng:d.fields.latlon[1]},{icon: marker}).addTo(map)
+          .bindPopup(html).openPopup();        
+      });
+    })
+    .fail(function() {
+      console.log( "error" );
+    })
+    .always(function() {
+      console.log( "finished" );
+    });  
+
+}
+
+</script>
+</body>
+</html>
