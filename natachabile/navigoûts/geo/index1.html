@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>geolocaliser vos gouts</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <script type="text/javascript" src="js/d3.v4.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+        <script src="js/Leaflet.awesome-markers/leaflet.awesome-markers.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+        <link rel="stylesheet" href="js/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css ">
+    </head>
+
+    <body>
+
+
+        <h1 style="text-align: center;">Géolocalisation des goûts</h1>
+        <script type="text/javascript">
+
+            // script SVG pour la roue
+
+            function fermerMenu() {
+                document.getElementById('menu_id').style.display = 'none';
+            }
+
+            function afficheMenu(event) {
+                const menu = document.getElementById('menu_id');
+                menu.style.display = 'block';
+                // positionne le menu où l'user a cliqué
+                menu.style.top = event.pageY + 'px';
+                menu.style.left = event.pageX + 20 + 'px';
+            }
+
+            var donnee_menu = [
+                {
+                    sens: 'vue',
+                    img: 'images/oeil.png',
+                    couleur: '#F20742',
+                    titre: 'La vue',
+                    value: 10,
+                    menu: [
+                        { libelle: 'Les concerts', icon: 'music', markerColor: 'red', typeEvent: 'concert' },
+                        { libelle: 'Les pièces de thêatre', icon: 'university', markerColor: 'green', typeEvent: 'théâtre' },
+                        { libelle: 'La danse', icon: 'danse', markerColor: 'red', typeEvent: 'danse' },
+                        { libelle: 'La peinture', icon: 'pint', markerColor: 'red', typeEvent: 'peinture' }
+
+                    ]
+                },
+                {
+                    sens: 'ouie',
+                    img: 'images/oreille.png',
+                    couleur: '#5A0334',
+                    titre: 'L\'ouie',
+                    value: 10,
+                    menu: [
+                        { libelle: 'Les concerts', icon: 'pint', markerColor: 'red', typeEvent: 'peinture' },
+                        { libelle: 'Les pièces de thêatre', icon: 'pint', markerColor: 'red', typeEvent: 'peinture' },
+                        { libelle: 'La danse', icon: 'pint', markerColor: 'red', typeEvent: 'peinture' },
+                        { libelle: 'La musique', icon: 'music', markerColor: 'red', typeEvent: 'musique' }
+                    ]
+                },
+                {
+                    sens: 'gout',
+                    img: 'images/langue.png',
+                    couleur: '#F3907F',
+                    titre: 'Le gouter',
+                    value: 10,
+                    menu: [
+                        { libelle: 'Les chants', icon: 'music', markerColor: 'red', typeEvent: 'musique' },
+                        { libelle: 'La gastronomie', icon: 'music', markerColor: 'red', typeEvent: 'musique' },
+                        { libelle: 'La cuisine', icon: 'music', markerColor: 'red', typeEvent: 'musique' }
+                    ]
+                },
+                {
+                    sens: 'toucher',
+                    img: 'images/toucher.png',
+                    couleur: '#05F3CA',
+                    titre: 'Le toucher',
+                    value: 10,
+                    menu: [
+                        { libelle: 'La cuisine', icon: 'music', markerColor: 'red', typeEvent: 'musique' },
+                        { libelle: 'Les jeux', icon: 'music', markerColor: 'red', typeEvent: 'musique' }
+
+                    ]
+                },
+                {
+                    sens: 'odorat',
+                    img: 'images/nez.png',
+                    couleur: '#D2295D',
+                    titre: 'L\'odorat',
+                    value: 10,
+                    menu: [
+                        { libelle: 'La gastronomie', icon: 'music', markerColor: 'red', typeEvent: 'musique' },
+                        { libelle: 'La cuisine', icon: 'music', markerColor: 'red', typeEvent: 'musique' }
+                    ]
+                }
+            ];
+
+            var data = [10, 20, 100];
+
+            var width = 500,
+                height = 500,
+                tailleImg = 80,
+                radius = Math.min(width, height) / 2;
+
+            var color = d3.scaleOrdinal()
+                .range(["#98abc5", "#8a89a6", "#7b6888"]);
+
+            var arc = d3.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(20);
+
+            var labelArc = d3.arc()
+                .outerRadius(radius - 100)
+                .innerRadius(radius - 100);
+
+            var imgArc = d3.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(20);
+
+            var pie = d3.pie()
+                .sort(null)
+                .value(function (d) {
+                    return d.value;
+                });
+
+            var svg = d3.select("body").append("div")
+                .attr("class", "gridRoue")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "roueSvg")
+                .append("g")
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+            var g = svg.selectAll(".arc")
+                .data(pie(donnee_menu))
+                .enter().append("g")
+                .attr("class", "arc")
+                .on('click', function (d) { // quand on clique sur un gout
+                    var mouse = d3.mouse(this);
+                    afficheMenu(d3.event); // affiche le menu
+                    d3.select('#mnuSens').remove();
+                    var mnu = d3.select('#menu_id')
+                        .append('div')
+                        .attr('id', 'mnuSens')
+                        .html('<a class="mheader" href="#" style="background-color:' + d.data.couleur + ';">' + d.data.titre
+                            + '<span onclick="fermerMenu();" title="Fermer le menu" class="btnFermer">&times;</i></span></a>');
+                    mnu.selectAll('a').data(d.data.menu).enter()
+                        .append('a')
+                        .attr("class", "lien_menu")
+                        .html(function (m) {
+                            return m.libelle;
+                        })
+                        .on('click', function (m) { // si on clique sur un menu
+                            fermerMenu();
+                            getEvent(m.typeEvent, m.icon, m.markerColor);
+                        });
+                    //grise les autre path
+                    d3.selectAll('.pathGout').style("fill", 'grey');
+                    d3.select(this).selectAll('.pathGout').style("fill", d.data.couleur);
+
+                });
+
+            g.append("path")
+                .attr("d", arc)
+                .attr("class", 'pathGout')
+                .style("stroke", 'white')
+                .style("stroke-width", 10)
+                .style("fill", function (d) {
+                    return d.data.couleur;
+                });
+
+
+            /*
+            Le texte dans la roue
+            g.append("text")
+                .attr("transform", function (d) { return "translate(" + labelArc.centroid(d) + ")"; })
+                .attr("dy", ".35em")
+                .attr('text-anchor', 'middle')
+                .text(function (d) {
+                    return d.data.titre;
+                }); */
+
+            g.append("image")
+                .attr("transform", function (d) {
+                    let c = imgArc.centroid(d);
+                    let x = c[0] - tailleImg / 2;
+                    let y = c[1] - tailleImg / 2;
+                    return "translate(" + x + "," + y + ")";
+                })
+                .attr("xlink:href", function (d) { return d.data.img; })
+                .attr('height', tailleImg + 'px')
+                .attr('width', tailleImg + 'px');
+
+        </script>
+
+
+        <div id="map_2385853" class="gridCarte">
+        </div>
+
+        <div id="txtGeo" style="text-align: center;"></div>
+
+        <div class="vertical-menu" id="menu_id"></div>
+
+        <script>
+            // script pour la carte
+
+            var map, markerPosition, markersGout, geoPosi, optionsGeo = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+
+            function successGeo(pos) {
+                geoPosi = pos;
+                let html = 'Votre position actuelle est :<br/>'
+                    + 'Latitude : ' + geoPosi.coords.latitude + '<br/>'
+                    + 'Longitude : ' + geoPosi.coords.longitude + '<br/>'
+                    + 'La précision est de ' + geoPosi.coords.accuracy + ' mètres.';
+
+                document.getElementById('txtGeo').innerHTML = html;
+
+                geoPosi.latlng = {
+                    lat: geoPosi.coords.latitude,
+                    lng: geoPosi.coords.longitude
+                };
+                geoPosi.accuracy = geoPosi.coords.accuracy;
+                onLocationFound(geoPosi);
+
+            }
+
+            function errorGeo(err) {
+                console.warn(`ERREUR (${err.code}): ${err.message}`);
+                geoPosi = false;
+            }
+
+            function getGeoInfos() {
+                if (geoPosi)
+                    return { 'lat': geoPosi.coords.latitude, 'lng': geoPosi.coords.longitude, 'pre': geoPosi.coords.accuracy, 't': geoPosi.timestamp };
+                else
+                    return {};
+            }
+
+            /*
+            merci à https://stackoverflow.com/questions/40433317/leaflet-map-update-marker-using-navigator-geolocation-watchposition
+            */
+            function initializeMapAndLocator() {
+
+                map = L.map('map_2385853').setView([48.852969, 2.349903], 13); // positionne sur Paris
+                // fond de carte OSM
+                var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+                    osm = L.tileLayer(osmUrl, { minZoom: 1, maxZoom: 16, attribution: osmAttrib })
+                        .addTo(map);
+
+                /*
+                // ça rinitialise la carte donc commentaire
+                map.locate({
+                     setView: true,
+                     maxZoom: 16,
+                     watch: true,
+                     timeout: 60000
+                 }); */
+
+            }
+
+            function onLocationFound(e) {
+                var radius = e.accuracy / 2;
+
+                // on supprime l'ancien marker de position
+                if (markerPosition) {
+                    map.remove(markerPosition);
+                }
+
+                // on ajoute le marker à la nouvelle position
+                markerPosition = L.marker(e.latlng).addTo(map)
+                    .bindPopup("Vous êtes environ à " + radius + " mètres de ce point").openPopup();
+                L.circle(e.latlng, radius).addTo(map);
+
+                // centrer sur la position
+                map.flyTo(e.latlng);
+            }
+
+            function getEvent(typeEvent, icone, markerColor) {
+
+                var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags=' + typeEvent + '&refine.date_start=2018';
+
+                var marker = L.AwesomeMarkers.icon({
+                    icon: icone,
+                    markerColor: markerColor
+                });
+
+                $.ajax({
+                    url: url,
+                    data: {},
+                    success: function (data) {
+
+
+                        // on supprime les anciens markers du gout sélectionné précédemment
+                        /*if (markersGout && markersGout.length > 0) {
+                            for (var i = 0; i < markersGout.length; i++) {
+                                map.remove(markersGout[i]);
+                            }
+                        }
+    */
+                        // on vide la liste des markers
+                        markersGout = [];
+                        var latLngs = [];
+                        data.records.forEach(function (d) {
+                            latLngs.push(d.fields.latlon);
+                            var html = '<h3>' + d.fields.title + '</h3>';
+                            var m = L.marker({ lat: d.fields.latlon[0], lng: d.fields.latlon[1] }, { icon: marker }).addTo(map)
+                                .bindPopup(html).openPopup();
+                            markersGout.push(m);
+                        });
+
+                        // zoom sur les gouts affichés
+                        map.flyToBounds(L.latLngBounds(latLngs));
+                    },
+                    dataType: 'json'
+                });
+            }
+
+
+            initializeMapAndLocator();
+            navigator.geolocation.getCurrentPosition(successGeo, errorGeo, optionsGeo);
+        </script>
+    </body>
+
+</html>
