@@ -1,0 +1,21 @@
+{
+    "short_name": "Sonar",
+    "name": "Sonar, explore the sound archives",
+    "icons": [
+      {
+        "src": "/images/icons-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icons-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/sonar/?source=pwa",
+    "background_color": "#black",
+    "display": "standalone",
+    "scope": "/sonar/",
+    "theme_color": "black"
+  }

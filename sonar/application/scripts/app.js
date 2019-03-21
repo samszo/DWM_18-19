@@ -7,7 +7,7 @@
     Données JSON Deleuze
     http://www.http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?";
 
-    // Merci à Samszo et Amri et pour leurs conseils !
+    // Merci à Samszo, Amri et Luis et pour leurs conseils !
 */
 // Création des orbites dans #orbit
 var domOrbit = document.getElementById('orbit'); //Récupération de l'id #orbit avec js
@@ -93,10 +93,10 @@ function quatreAxes() {
     }];
     var svg = gGlobal.append('g').attr('id', 'scatter')
         .attr("transform", "translate(" + widthDomain / 3 + "," + heightDomain / 8 + ")")
-        width = 600,
+    width = 600,
         height = 600,
         domainwidth = width - margin.left - margin.right;
-        domainheight = height - margin.top - margin.bottom;
+    domainheight = height - margin.top - margin.bottom;
 
     var x = d3.scaleLinear()
         .domain(padExtent([-100, 100]))
@@ -148,7 +148,7 @@ function quatreAxes() {
                       return "#A72D73"
                   } //Bottom Right         
               });
-          */
+    */
     g.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
@@ -290,8 +290,8 @@ function getSelect() {
                         conteneur: 'audio_conteneur2',
                         couleur_centre: "rgb(0, 0, 0, 0.1)",
                         couleur_progres: "rgb(0, 247, 161, 0.1)",
-                        couleur_fond: false,
-                        couleur_ombre: false,
+                        couleur_fond: "none",
+                        couleur_ombre: "none",
                         diametre_lecteur: posiOrbit.width,
                         diametre_detect: 105,
                         epaisseur_barre: 0,
@@ -299,11 +299,10 @@ function getSelect() {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                   // cercleAudio = new cercle_audio(config);
+                    cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
                         .style('top', (posiOrbit.y + 90) + "px")
                         .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
-
 
                 });
             // Force radial appliqué aux fichiers audio
