@@ -70,6 +70,7 @@ function dragended(d) {
 function clear() {
     d3.selectAll('.gFiles').remove();
     d3.selectAll('.gFrag').remove();
+    d3.select('#titreArchive').selectAll('p').remove();
 };
 // Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
@@ -299,7 +300,7 @@ function getSelect() {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                    cercleAudio = new cercle_audio(config);
+                   // cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
                         .style('top', (posiOrbit.y + 90) + "px")
                         .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
