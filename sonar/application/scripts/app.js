@@ -10,6 +10,7 @@
     // Merci à Samszo, Amri et Luis et pour leurs conseils !
 */
 // Création des orbites dans #orbit
+
 var domOrbit = document.getElementById('orbit'); //Récupération de l'id #orbit avec js
 var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de variables globales
     margin = {
@@ -22,11 +23,12 @@ var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de varia
     height = domOrbit.clientHeight,
     widthDomain = domOrbit.clientWidth - margin.right - margin.left,
     heightDomain = domOrbit.clientHeight - margin.top - margin.bottom,
-    gGlobal = d3.select('#orbit').append("svg") // Création d'un "G" global (voir svg)
+    svgGlobal = d3.select('#orbit').append("svg") // Création d'un "G" global (voir svg)
     .attr('width', width + 'px')
-    .attr('height', height + 'px')
-    .append("g")
+    .attr('height', height + 'px');
+    gGlobal = svgGlobal.append("g")
     .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
+    setDegrad(svgGlobal);
 
 //création des cercles
 var arrRayons = d3.range(nbRayons); // Création d'un tableau pour les rayons des cercles
@@ -74,7 +76,7 @@ function clear() {
 };
 // Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
-    d3.selectAll('#scatter').remove();
+    //d3.selectAll('#scatter').remove();
 };
 
 // Fonction pour créer les axes pertinence / clartés
@@ -92,26 +94,24 @@ function quatreAxes() {
         'lbl': 'inadapté',
         'posi': 270
     }];
-    var svg = gGlobal.append('g').attr('id', 'scatter')
-        .attr("transform", "translate(" + widthDomain / 3 + "," + heightDomain / 8 + ")")
-    width = 600,
-        height = 600,
-        domainwidth = width - margin.left - margin.right;
-    domainheight = height - margin.top - margin.bottom;
-
+    var wAxes = hAxes = scCircle(nbRayons-1)*2,
+        xAxe = (widthDomain/2)-(wAxes/2),
+        yAxe = (heightDomain/2)-(hAxes/2),
+        gAxes = gGlobal.append('g').attr('id', 'scatter')
+            .attr("transform", "translate(" + xAxe + "," + yAxe + ")");
+//            xAxe = (widthDomain/2)-margin.left-(wAxes/2),
+//            yAxe = (heightDomain/2)-margin.top-(hAxes/2),
+    
     var x = d3.scaleLinear()
         .domain(padExtent([-100, 100]))
-        .range(padExtent([0, domainwidth]));
+        .range(padExtent([0, wAxes]));
     var y = d3.scaleLinear()
         .domain(padExtent([-100, 100]))
-        .range(padExtent([domainheight, 0]));
+        .range(padExtent([hAxes, 0]));
 
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.top + "," + margin.top + ")")
-
-    g.append("rect")
-        .attr("width", domainwidth)
-        .attr("height", domainheight)
+    gAxes.append("rect")
+        .attr("width", wAxes)
+        .attr("height", hAxes)
         .attr("fill", "none")
         .on('mousemove', function (e) {
             console.log(d3.mouse(this)[0]);
@@ -150,16 +150,18 @@ function quatreAxes() {
                   } //Bottom Right         
               });
     */
-    g.append("g")
+   gAxes.append("g")
         .attr("class", "x axis")
+        .style('stroke-width','8px')
         .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
-        .call(d3.axisBottom(x).ticks(10));
-    g.append("g")
+        .call(d3.axisBottom(x).ticks(0));
+    gAxes.append("g")
         .attr("class", "y axis")
+        .style('stroke-width','8px')
         .attr("transform", "translate(" + x.range()[1] / 2 + ", 0)")
-        .call(d3.axisLeft(y).ticks(10));
+        .call(d3.axisLeft(y).ticks(0));
     //ajoute les titre d'axes
-    g.selectAll(".txtTitreAxe")
+    gAxes.selectAll(".txtTitreAxe")
         .data(jsonAxes)
         .enter().append("text")
         .attr("class", '.txtTitreAxe')
@@ -170,17 +172,20 @@ function quatreAxes() {
         })
         .attr("y", function (d) {
             if (d.posi == '0') return 0;
-            if (d.posi == '90' || d.posi == '270') return (height / 2);
-            if (d.posi == '180') return height - margin.top - margin.right;
+            if (d.posi == '90') return (hAxes / 2)+10;
+            if(d.posi == '270') return (hAxes / 2)-30;
+            if (d.posi == '180') return hAxes;
         })
         .attr("x", function (d) {
-            if (d.posi == '0' || d.posi == '180') return (width / 2) - margin.right;
-            if (d.posi == '90') return width - margin.left - margin.right;
+            if (d.posi == '0') return (wAxes / 2)+10;
+            if (d.posi == '180') return (wAxes / 2)-10;
+            if (d.posi == '90') return wAxes;
             if (d.posi == '270') return 0;
         })
         .attr("text-anchor", function (d) {
-            if (d.posi == '0' || d.posi == '180' || d.posi == '270') return 'start';
+            if (d.posi == '0' || d.posi == '270') return 'start';
             if (d.posi == '90') return 'end';
+            if (d.posi == '180') return 'end';
         })
         .attr("dy", function (d) {
             if (d.posi == '0' || d.posi == '90' || d.posi == '270') return '1em';
@@ -200,17 +205,51 @@ function quatreAxes() {
 // Récupération des données de la base de données depuis le script tag.php (liste)
 $.get('scripts/tag.php', function (data) {
     tag = JSON.parse(data);
-    $('input[type=list]').w2field('list', {
-        items: tag
+    $('input[type=list]').w2field('enum', {
+        items: tag,
+        max: 1,
+        onAdd: function (event) {
+            getSelect(event.item);
+        }
     })
 });
 
-// Récupération de l'item selectionné dans la liste pour push dans l'url
-function getSelect() {
-    clear();
-    var select = $('input[type=list]').w2field().get().text;
+function setDegrad(svg){
+    arrColor = [{'name':'degraxeH', 'x1':"0%", 'y1':"0%", 'x2':"100%", 'y2':"0%",'colors':[{'c': 'rgb(173,158,253)','o':"0%"},{'c':'rgb(252,161,205)','o':"100%"}]}
+    ,{'name':'degraxeV', 'x1':"0%", 'y1':"0%", 'x2':"0%", 'y2':"100%",'colors':[{'c': 'rgb(3,246,162)','o':"0%"},{'c': 'rgb(84,214,255)','o':"100%"}]}
+    ]
+    // Create the svg:defs element and the main gradient definition.
+    var svgDefs = svg.append('defs');
 
-    var urlDeleuze = 'http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=' + select;
+    var linearG = svgDefs.selectAll('linearGradient').data(arrColor).enter().append('linearGradient')
+        .attr('id', function(d){
+            return d.name;})
+        .attr('x1', function(d){
+        return d.x1;})
+        .attr('y1', function(d){
+            return d.y1;})
+        .attr('x2', function(d){
+            return d.x2;})
+        .attr('y2', function(d){
+            return d.y2;});
+                                        
+    // Create the stops of the main gradient. Each stop will be assigned
+    // a class to style the stop using CSS.
+    linearG.selectAll('stop').data(function(d){return d.colors;}).enter().append('stop')
+        .attr('stop-color', function(d){
+            return d3.color(d.c);
+        })
+        .attr('offset', function(d){
+            return d.o;
+        });
+}
+
+// Récupération de l'item selectionné dans la liste pour push dans l'url
+function getSelect(select) {
+    clear();
+    //var select = $('input[type=list]').w2field().get().text;
+
+    var urlDeleuze = 'http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=' + select.text;
     d3.json(urlDeleuze)
         .then(function (data) {
             dataDeleuze = data;

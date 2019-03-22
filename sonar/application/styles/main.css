@@ -3,10 +3,14 @@ body
     background-color: black;
 }
 
-.axis, .axis path {
+.x.axis path {
     fill: none;
-    stroke: #00fad9;
-    
+    stroke : url(#degraxeH);
+  }
+
+  .y.axis path {
+    fill: none;
+    stroke : url(#degraxeV);
   }
 text {
     stroke: none;
