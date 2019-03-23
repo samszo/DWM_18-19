@@ -9,8 +9,8 @@
 
     // Merci à Samszo, Amri et Luis et pour leurs conseils !
 */
-// Création des orbites dans #orbit
 
+// Création des orbites dans #orbit
 var domOrbit = document.getElementById('orbit'); //Récupération de l'id #orbit avec js
 var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de variables globales
     margin = {
@@ -28,7 +28,7 @@ var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de varia
     .attr('height', height + 'px');
     gGlobal = svgGlobal.append("g")
     .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
-    setDegrad(svgGlobal);
+    setDegrad(svgGlobal); // Declare le dégradé et permet de le récupérer plus tard pour les axes
 
 //création des cercles
 var arrRayons = d3.range(nbRayons); // Création d'un tableau pour les rayons des cercles
@@ -213,7 +213,7 @@ $.get('scripts/tag.php', function (data) {
         }
     })
 });
-
+// Créer le dégradé de couleurs sur les axes x et y 
 function setDegrad(svg){
     arrColor = [{'name':'degraxeH', 'x1':"0%", 'y1':"0%", 'x2':"100%", 'y2':"0%",'colors':[{'c': 'rgb(173,158,253)','o':"0%"},{'c':'rgb(252,161,205)','o':"100%"}]}
     ,{'name':'degraxeV', 'x1':"0%", 'y1':"0%", 'x2':"0%", 'y2':"100%",'colors':[{'c': 'rgb(3,246,162)','o':"0%"},{'c': 'rgb(84,214,255)','o':"100%"}]}

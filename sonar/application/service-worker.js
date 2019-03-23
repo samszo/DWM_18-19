@@ -15,7 +15,6 @@
 var dataCacheName = 'sonarData-v1';
 var cacheName = 'sonarPWA-final-1';
 var filesToCache = [
-  '/',
   '/index.html',
   '/scripts/app.js',
   '/scripts/tag.php',
@@ -28,7 +27,6 @@ var filesToCache = [
   '/scripts/res/ccr.png',
   '/scripts/res/pause.png',
   '/scripts/res/play.png',
-  '/images/clear.png',
 
 ];
 

@@ -1,10 +1,10 @@
 <?php
 
 // Données de connexion serveur MySQL
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sonar";
+$servername = "http://gapai.univ-paris8.fr/phpmyadmin";
+$username = "etuDWM18-19";
+$password = "Hyper2018";
+$dbname = "spip_dwm_sonar";
 
 // Connexion au serveur MySQL
 $conn = mysqli_connect($servername, $username, $password, $dbname);
