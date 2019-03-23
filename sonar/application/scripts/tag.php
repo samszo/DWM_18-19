@@ -1,7 +1,7 @@
 <?php
 
 // Données de connexion serveur MySQL
-$servername = "http://gapai.univ-paris8.fr/phpmyadmin";
+$servername = "http://gapai.univ-paris8.fr";
 $username = "etuDWM18-19";
 $password = "Hyper2018";
 $dbname = "spip_dwm_sonar";

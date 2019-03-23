@@ -73,6 +73,7 @@ function clear() {
     d3.selectAll('.gFiles').remove();
     d3.selectAll('.gFrag').remove();
     d3.select('#titreArchive').selectAll('p').remove();
+    d3.selectAll('#scatter').remove();
 };
 // Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
