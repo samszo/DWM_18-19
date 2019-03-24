@@ -28,7 +28,7 @@ var tag, dataDeleuze, cercleAudio, dataFrag, nbRayons = 4, // création de varia
     .attr('height', height + 'px');
     gGlobal = svgGlobal.append("g")
     .attr("transform", "translate(" + margin.top + "," + margin.left + ")");
-    setDegrad(svgGlobal); // Declare le dégradé et permet de le récupérer plus tard pour les axes
+    setDegrad(svgGlobal); // Déclare le dégradé et permet de le récupérer plus tard pour les axes
 
 //création des cercles
 var arrRayons = d3.range(nbRayons); // Création d'un tableau pour les rayons des cercles
@@ -75,12 +75,12 @@ function clear() {
     d3.select('#titreArchive').selectAll('p').remove();
     d3.selectAll('#scatter').remove();
 };
-// Fonction pour effacer les fragments de fichier
+/* Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
     //d3.selectAll('#scatter').remove();
 };
-
-// Fonction pour créer les axes pertinence / clartés
+*/
+// Fonction pour créer les axes pertinence / clarté
 function quatreAxes() {
     var jsonAxes = [{
         'lbl': 'clair',
@@ -118,7 +118,8 @@ function quatreAxes() {
             console.log(d3.mouse(this)[0]);
             console.log(x.invert(d3.mouse(this)[0]));
         });
-    /*  d3.json("../data/quatreaxes.json", function (error, data) {
+    /*  
+    d3.json("../data/quatreaxes.json", function (error, data) {
           if (error) throw error;
           data.forEach(function (d) {
               d.consequence = +d.consequence;
@@ -171,6 +172,7 @@ function quatreAxes() {
             //if(d.posi=='0' || d.posi=='180' ) t = "rotate(-90)";        
             return t;
         })
+        //Positionne les titre sur les axes
         .attr("y", function (d) {
             if (d.posi == '0') return 0;
             if (d.posi == '90') return (hAxes / 2)+10;
@@ -245,7 +247,7 @@ function setDegrad(svg){
         });
 }
 
-// Récupération de l'item selectionné dans la liste pour push dans l'url
+// Récupération de l'item selectionné dans la liste pour push dans l'url (bdd deleuze)
 function getSelect(select) {
     clear();
     //var select = $('input[type=list]').w2field().get().text;
