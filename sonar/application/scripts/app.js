@@ -65,7 +65,7 @@ function dragged(d) {
 
 function dragended(d) {
     d3.select(this).classed("active", false);
-    clearQuatreAxes();
+    //clearQuatreAxes();
 }
 
 // Fonction pour effacer les fichiers audio
@@ -340,7 +340,7 @@ function getSelect(select) {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                   // cercleAudio = new cercle_audio(config);
+                    cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
                         .style('top', (posiOrbit.y + 90) + "px")
                         .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
