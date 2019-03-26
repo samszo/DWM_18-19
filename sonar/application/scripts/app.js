@@ -51,7 +51,8 @@ gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Créatio
     .attr('stroke', "#00F7A1")
     .attr('stroke-width', "5")
     .attr('stroke-opacity', "0.5")
-    .attr('fill', "none")
+    .attr('fill', "none");
+    
 
 // Fonction pour l'event "drag" d3js
 function dragstarted(d) {
@@ -118,6 +119,7 @@ function quatreAxes() {
             console.log(d3.mouse(this)[0]);
             console.log(x.invert(d3.mouse(this)[0]));
         });
+        
     /*  
     d3.json("../data/quatreaxes.json", function (error, data) {
           if (error) throw error;
