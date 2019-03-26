@@ -21,15 +21,6 @@ svg.append('circle').classed('background', true)
     .attr('r', r)
 
 // Add axis
-svg.append('g').classed('axis', true)
-    .call(d3.axisRadialInner(
-            hourScale.copy().range([0, 2 * Math.PI]),
-            r - 1
-        )
-        .ticks(12)
-        .tickSize(12)
-    )
-
 svg.append('g').classed('minor-ticks', true)
     .call(d3.axisRadialInner(
             secMinScale.copy().range([0, 2 * Math.PI]),
