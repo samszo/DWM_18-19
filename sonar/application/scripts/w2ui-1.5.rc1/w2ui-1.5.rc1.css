@@ -1078,7 +1078,8 @@ button.w2ui-btn-small:focus:before {
 }
 .w2ui-field-helper {
   position: absolute;
-  display: block;
+  display: inline-block;
+  text-align: center;
   margin : auto;
   line-height: 100%;
   /* pointer-events: none; - do not use as IE does not support it */
@@ -1437,16 +1438,15 @@ button.w2ui-btn-small:focus:before {
 .w2ui-list {
   color: rgb(0, 0, 0);
   position: absolute;
-  display: block;
+  display: inline-block;
+  text-align: center;
   padding: 0px;
-  margin-left: auto;
-  margin-right: auto;
   min-height: 50px;
   min-width: 300px;
   overflow: auto;
   border: 1px solid #c0c0c0;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
