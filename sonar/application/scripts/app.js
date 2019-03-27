@@ -54,16 +54,17 @@ gGlobal.selectAll('.cFond').data(arrRayons).enter().append('circle') // Créatio
     .attr('fill', "none");
     
 
-// Fonction pour l'event "drag" d3js
+// Fonction pour l'event start : "drag" d3js
 function dragstarted(d) {
-    d3.select(this).raise().classed("active", true);
-    quatreAxes();
+    d3.select(this).raise().classed("active", true);  
 }
 
+// Fonction pour l'event "drag" d3js
 function dragged(d) {
     d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
 }
 
+// Fonction pour l'event end : "drag" d3js
 function dragended(d) {
     d3.select(this).classed("active", false);
     //clearQuatreAxes();
@@ -76,11 +77,13 @@ function clear() {
     d3.select('#titreArchive').selectAll('p').remove();
     d3.selectAll('#scatter').remove();
 };
+
 /* Fonction pour effacer les fragments de fichier
 function clearQuatreAxes() {
-    //d3.selectAll('#scatter').remove();
+    d3.selectAll('#scatter').remove();
 };
 */
+
 // Fonction pour créer les axes pertinence / clarté
 function quatreAxes() {
     var jsonAxes = [{
@@ -114,10 +117,10 @@ function quatreAxes() {
     gAxes.append("rect")
         .attr("width", wAxes)
         .attr("height", hAxes)
-        .attr("fill", "none")
+        .attr("fill", "#a52a2a00")
         .on('mousemove', function (e) {
-            console.log(d3.mouse(this)[0]);
-            console.log(x.invert(d3.mouse(this)[0]));
+          //  console.log(d3.mouse(this)[0]);
+        // console.log(x.invert(d3.mouse(this)[0]));
         });
         
     /*  
@@ -154,7 +157,8 @@ function quatreAxes() {
                   } //Bottom Right         
               });
     */
-   gAxes.append("g")
+
+    gAxes.append("g")
         .attr("class", "x axis")
         .style('stroke-width','8px')
         .attr("transform", "translate(0," + y.range()[0] / 2 + ")")
@@ -174,7 +178,7 @@ function quatreAxes() {
             //if(d.posi=='0' || d.posi=='180' ) t = "rotate(-90)";        
             return t;
         })
-        //Positionne les titre sur les axes
+        //Positionne les titres sur les axes
         .attr("y", function (d) {
             if (d.posi == '0') return 0;
             if (d.posi == '90') return (hAxes / 2)+10;
@@ -254,11 +258,11 @@ function getSelect(select) {
     clear();
     //var select = $('input[type=list]').w2field().get().text;
 
-    var urlDeleuze = 'http://jardindesconnaissances.univ-paris8.fr/public/deleuze/cherche?term=' + select.text;
+    var urlDeleuze = 'https://jardindesconnaissances.univ-paris8.fr/jdc/public/deleuze/cherche?term=' + select.text;
     d3.json(urlDeleuze)
         .then(function (data) {
             dataDeleuze = data;
-            // Boucle forEach qui permet de boucler sur une propriété du tableau
+            // Boucle forEach qui permet de boucler sur une propriété du tableau (score)
             dataDeleuze.forEach(function (d) {
                 if (d.score > 0.3) {
                     d.rg = scCircle(1);
@@ -285,6 +289,8 @@ function getSelect(select) {
                     d3.select('#titreArchive').html(code);
                     d3.select('#audio_conteneur2').html("");
 
+                    quatreAxes();
+
                     // Récupération des fragments dans le tableau [phrases]
                     dataFrag = d.phrases.slice();
                     //console.log(dataFrag);
@@ -298,6 +304,7 @@ function getSelect(select) {
                         }
                     })
 
+                    // Ajout d'une couche "g" au "Gglobal" pour les fragments
                     var gFrag = gGlobal.append('g').attr('class', 'gFrag')
                         .attr("transform", "translate(" + widthDomain / 2 + "," + heightDomain / 2 + ")");
                     // Création des nodes frag
@@ -312,6 +319,7 @@ function getSelect(select) {
                             .on("drag", dragged)
                             .on("end", dragended));
 
+                    // On applique force radial aux fragments
                     var simulationFrag = d3.forceSimulation(dataFrag)
                         .force("charge", d3.forceCollide().radius(5))
                         .force("r", d3.forceRadial(function (e) {
@@ -321,10 +329,10 @@ function getSelect(select) {
 
                     function ticked() {
                         frag
-                            .attr("cx", function (d) {
+                            .attr("cx", function (d) { //cx = center x
                                 return d.x;
                             })
-                            .attr("cy", function (d) {
+                            .attr("cy", function (d) { // cy = center y 
                                 return d.y;
                             });
                     }
@@ -344,7 +352,10 @@ function getSelect(select) {
                         class_suplementaire: false,
                         fichier: d.fichier,
                     }
-                    cercleAudio = new cercle_audio(config);
+
+                    /* Enlever // pour faire apparaitre le player audio */
+                    
+                    //cercleAudio = new cercle_audio(config);
                     d3.select('#audio_conteneur2')
                         .style('top', (posiOrbit.y + 90) + "px")
                         .style('left', (posiOrbit.x - margin.right + margin.left) + "px")
