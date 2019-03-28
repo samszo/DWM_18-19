@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<script type="text/javascript" src="js/d3.v4.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+		<script src="js/Leaflet.awesome-markers/leaflet.awesome-markers.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="js/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css ">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>E3</title>
+		<style id="applicationStylesheet" type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			:root {
+				--web-view-ids: E3;
+			}
+
+			#E3 * {
+				margin: 0;
+				padding: 0;
+			}
+
+			#E3 {
+				position: absolute;
+				box-sizing: border-box;
+				transform: translateX(-50%) translateY(-50%);
+				left: 50%;
+				top: 50%;
+				background: #E5E5E5;
+				width: 375px;
+				height: 667px;
+				background-color: rgba(255, 255, 255, 1);
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				opacity: 1;
+				--web-view-name: E3;
+				--web-view-id: E3;
+				--web-enable-deep-linking: true;
+			}
+
+			#Rectangle_1546 {
+				opacity: 1;
+				fill: url(#LinearGradientFill1);
+			}
+
+			.Rectangle_1546 {
+				position: absolute;
+				overflow: visible;
+				width: 375px;
+				height: 667px;
+				left: -1px;
+				top: 0px;
+			}
+
+			#MENU {
+				opacity: 1;
+				position: absolute;
+				left: 48px;
+				top: 33px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 75px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Helvetica;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 25px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#Image_2 {
+				opacity: 1;
+				fill: url(#Image_2_A1_Rectangle_3_pattern);
+			}
+
+			.Image_2 {
+				position: absolute;
+				overflow: visible;
+				width: 8px;
+				height: 16px;
+				left: 24px;
+				top: 39px;
+			}
+
+			#Rectangle_2 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 3px rgba(172, 172, 172, 0.161)) blur(30px);
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(242, 242, 242);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_2 {
+				position: absolute;
+				overflow: visible;
+				width: 314.387px;
+				height: 137.128px;
+				left: 35px;
+				top: 117.181px;
+			}
+
+			#Rectangle_16 {
+				opacity: 1;
+				fill: rgba(129, 7, 7, 0.878);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_16 {
+				position: absolute;
+				overflow: visible;
+				width: 274.904px;
+				height: 96.646px;
+				left: 51.108px;
+				top: 132.555px;
+			}
+
+			#Group_95 {
+				opacity: 1;
+				position: absolute;
+				width: 305.387px;
+				height: 134.23px;
+				left: 35px;
+				top: 245.309px;
+				overflow: visible;
+			}
+
+			#Rectangle_2_A1_Rectangle_6 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 3px rgba(172, 172, 172, 0.161)) blur(30px);
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(242, 242, 242);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_2_A1_Rectangle_6 {
+				position: absolute;
+				overflow: visible;
+				width: 314.387px;
+				height: 137.128px;
+				left: 0px;
+				top: 6.103px;
+			}
+
+			#Rectangle_16_A1_Rectangle_7 {
+				opacity: 1;
+				fill: rgba(129, 7, 7, 0.878);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_16_A1_Rectangle_7 {
+				position: absolute;
+				overflow: visible;
+				width: 274.904px;
+				height: 96.646px;
+				left: 16.108px;
+				top: 21.477px;
+			}
+
+			#l {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 6px rgba(252, 0, 0, 0.161));
+				fill: url(#l_A1_Rectangle_9_pattern);
+			}
+
+			.l {
+				position: absolute;
+				overflow: visible;
+				width: 58.14px;
+				height: 58.14px;
+				left: 226.643px;
+				top: 0px;
+			}
+
+			#Group_97 {
+				opacity: 1;
+				position: absolute;
+				width: 305.387px;
+				height: 134.23px;
+				left: 35px;
+				top: 513.77px;
+				overflow: visible;
+			}
+
+			#Rectangle_2_A1_Rectangle_10 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 3px rgba(172, 172, 172, 0.161)) blur(30px);
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(242, 242, 242);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_2_A1_Rectangle_10 {
+				position: absolute;
+				overflow: visible;
+				width: 314.387px;
+				height: 137.128px;
+				left: 0px;
+				top: 6.103px;
+			}
+
+			#Rectangle_16_A1_Rectangle_11 {
+				opacity: 1;
+				fill: rgba(129, 7, 7, 0.878);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_16_A1_Rectangle_11 {
+				position: absolute;
+				overflow: visible;
+				width: 274.904px;
+				height: 96.646px;
+				left: 16.108px;
+				top: 20.477px;
+			}
+
+			#l_A1_Rectangle_12 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 6px rgba(252, 0, 0, 0.161));
+				fill: url(#l_A1_Rectangle_13_pattern);
+			}
+
+			.l_A1_Rectangle_12 {
+				position: absolute;
+				overflow: visible;
+				width: 58.14px;
+				height: 58.14px;
+				left: 226.643px;
+				top: 0px;
+			}
+
+			#l_A1_Rectangle_14 {
+				opacity: 1;
+				fill: url(#l_A1_Rectangle_15_pattern);
+			}
+
+			.l_A1_Rectangle_14 {
+				position: absolute;
+				overflow: visible;
+				width: 61.334px;
+				height: 61.334px;
+				left: 257.566px;
+				top: 150.032px;
+			}
+
+			#Group_100 {
+				opacity: 1;
+				position: absolute;
+				width: 305.387px;
+				height: 134.23px;
+				left: 35px;
+				top: 379.309px;
+				overflow: visible;
+			}
+
+			#Rectangle_2_A1_Rectangle_16 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 3px rgba(172, 172, 172, 0.161)) blur(30px);
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(242, 242, 242);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_2_A1_Rectangle_16 {
+				position: absolute;
+				overflow: visible;
+				width: 314.387px;
+				height: 137.128px;
+				left: 0px;
+				top: 6.103px;
+			}
+
+			#Rectangle_16_A1_Rectangle_17 {
+				opacity: 1;
+				fill: rgba(129, 7, 7, 0.878);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_16_A1_Rectangle_17 {
+				position: absolute;
+				overflow: visible;
+				width: 274.904px;
+				height: 96.646px;
+				left: 16.108px;
+				top: 21.477px;
+			}
+
+			#l_A1_Rectangle_18 {
+				opacity: 1;
+				filter: drop-shadow(0px 3px 6px rgba(252, 0, 0, 0.161));
+				fill: url(#l_A1_Rectangle_19_pattern);
+			}
+
+			.l_A1_Rectangle_18 {
+				position: absolute;
+				overflow: visible;
+				width: 58.14px;
+				height: 58.14px;
+				left: 226.643px;
+				top: 0px;
+			}
+
+			#v {
+				opacity: 1;
+				fill: url(#v_A1_Rectangle_21_pattern);
+			}
+
+			.v {
+				position: absolute;
+				overflow: visible;
+				width: 47px;
+				height: 47px;
+				left: 258.565px;
+				top: 289px;
+			}
+
+			#bg {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 0);
+			}
+
+			.bg {
+				position: absolute;
+				overflow: visible;
+				width: 45.095px;
+				height: 45.095px;
+				left: 264.565px;
+				top: 556.905px;
+			}
+
+			#path {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 1);
+			}
+
+			.path {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 559.005px;
+				left: 266.752px;
+				width: 44.308px;
+				height: 42.958px;
+			}
+
+			#llll {
+				opacity: 1;
+				fill: url(#llll_A1_Rectangle_24_pattern);
+			}
+
+			.llll {
+				position: absolute;
+				overflow: visible;
+				width: 46.5px;
+				height: 47.5px;
+				left: 261.046px;
+				top: 426.221px;
+			}
+
+			#D_couvrir {
+				opacity: 1;
+				position: absolute;
+				left: 74.649px;
+				top: 172.548px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 89px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Gibson;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 22px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#Teaser {
+				opacity: 1;
+				position: absolute;
+				left: 71.62px;
+				top: 307.173px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 60px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Gibson;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 22px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#Devenir_membre {
+				opacity: 1;
+				position: absolute;
+				left: 72.62px;
+				top: 571.173px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 149px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Gibson;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 22px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#icon {
+				opacity: 1;
+				position: absolute;
+				width: 35.773px;
+				height: 35.773px;
+				left: 322.565px;
+				top: 28.905px;
+				overflow: visible;
+			}
+
+			#bg_A1_Rectangle_25 {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 0);
+			}
+
+			.bg_A1_Rectangle_25 {
+				position: absolute;
+				overflow: visible;
+				width: 35.773px;
+				height: 35.773px;
+				left: 0px;
+				top: 0px;
+			}
+
+			#path_A1_Path_2 {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 1);
+			}
+
+			.path_A1_Path_2 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 2.1px;
+				left: 2.188px;
+				width: 33.081px;
+				height: 33.636px;
+			}
+
+			#a {
+				opacity: 1;
+				fill: url(#a_A1_Rectangle_27_pattern);
+			}
+
+			.a {
+				position: absolute;
+				overflow: visible;
+				width: 37px;
+				height: 37px;
+				left: 269.338px;
+				top: 28.254px;
+			}
+
+			#Carte_des_go_ts {
+				opacity: 1;
+				position: absolute;
+				left: 72.358px;
+				top: 436.526px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 137px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Gibson;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 22px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#Rectangle_1540 {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 0);
+			}
+
+			.Rectangle_1540 {
+				position: absolute;
+				overflow: visible;
+				width: 53px;
+				height: 55px;
+				left: -5px;
+				top: 12px;
+			}
+
+			#Rectangle_1541 {
+				opacity: 0;
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_1541 {
+				position: absolute;
+				overflow: visible;
+				width: 74px;
+				height: 75px;
+				left: 301px;
+				top: 0px;
+			}
+
+			#Rectangle_1545 {
+				opacity: 0;
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_1545 {
+				position: absolute;
+				overflow: visible;
+				width: 71px;
+				height: 63px;
+				left: 236px;
+				top: 12px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="E3">
+			<svg class="Rectangle_1546">
+				<linearGradient spreadMethod="pad" id="LinearGradientFill1" x1="0.5" x2="0.5" y1="1.0588552951812744"
+					y2="1.1002061367034912">
+					<stop offset="0" stop-color="#f00" stop-opacity="0.3607843137254902"></stop>
+					<stop offset="1" stop-color="#d414db" stop-opacity="1"></stop>
+				</linearGradient>
+				<rect id="Rectangle_1546" rx="0" ry="0" x="0" y="0" width="375" height="667">
+				</rect>
+			</svg>
+			<div id="MENU">
+				<span>MENU</span>
+			</div>
+			<svg class="Image_2">
+				<pattern elementId="Image_2_A1_Rectangle_3" id="Image_2_A1_Rectangle_3_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="Image_2_A1_Rectangle_3_pattern.png"
+						xlink:href="Image_2_A1_Rectangle_3_pattern.png"></image>
+				</pattern>
+				<rect id="Image_2" rx="0" ry="0" x="0" y="0" width="8" height="16">
+				</rect>
+			</svg>
+			<svg class="Rectangle_2">
+				<rect id="Rectangle_2" rx="0" ry="0" x="0" y="0" width="305.387" height="128.128">
+				</rect>
+			</svg>
+			<a href="E7.html">
+				<svg class="Rectangle_16">
+					<rect id="Rectangle_16" rx="0" ry="0" x="0" y="0" width="274.904" height="96.646">
+					</rect>
+				</svg>
+			</a>
+			<div id="Group_95">
+				<svg class="Rectangle_2_A1_Rectangle_6">
+					<rect id="Rectangle_2_A1_Rectangle_6" rx="0" ry="0" x="0" y="0" width="305.387" height="128.128">
+					</rect>
+				</svg>
+				<svg class="Rectangle_16_A1_Rectangle_7">
+					<rect id="Rectangle_16_A1_Rectangle_7" rx="0" ry="0" x="0" y="0" width="274.904" height="96.646">
+					</rect>
+				</svg>
+				<svg class="l">
+					<pattern elementId="l_A1_Rectangle_9" id="l_A1_Rectangle_9_pattern" x="0" y="0" width="100%"
+						height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="l_A1_Rectangle_9_pattern.png"
+							xlink:href="l_A1_Rectangle_9_pattern.png"></image>
+					</pattern>
+					<rect id="l" rx="0" ry="0" x="0" y="0" width="40.14" height="40.14">
+					</rect>
+				</svg>
+			</div>
+			<div id="Group_97">
+				<svg class="Rectangle_2_A1_Rectangle_10">
+					<rect id="Rectangle_2_A1_Rectangle_10" rx="0" ry="0" x="0" y="0" width="305.387" height="128.128">
+					</rect>
+				</svg>
+				<svg class="Rectangle_16_A1_Rectangle_11">
+					<rect id="Rectangle_16_A1_Rectangle_11" rx="0" ry="0" x="0" y="0" width="274.904" height="96.646">
+					</rect>
+				</svg>
+				<svg class="l_A1_Rectangle_12">
+					<pattern elementId="l_A1_Rectangle_13" id="l_A1_Rectangle_13_pattern" x="0" y="0" width="100%"
+						height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="l_A1_Rectangle_13_pattern.png"
+							xlink:href="l_A1_Rectangle_13_pattern.png"></image>
+					</pattern>
+					<rect id="l_A1_Rectangle_12" rx="0" ry="0" x="0" y="0" width="40.14" height="40.14">
+					</rect>
+				</svg>
+			</div>
+			<svg class="l_A1_Rectangle_14">
+				<pattern elementId="l_A1_Rectangle_15" id="l_A1_Rectangle_15_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="l_A1_Rectangle_15_pattern.png"
+						xlink:href="l_A1_Rectangle_15_pattern.png"></image>
+				</pattern>
+				<rect id="l_A1_Rectangle_14" rx="0" ry="0" x="0" y="0" width="61.334" height="61.334">
+				</rect>
+			</svg>
+			<div id="Group_100">
+				<svg class="Rectangle_2_A1_Rectangle_16">
+					<rect id="Rectangle_2_A1_Rectangle_16" rx="0" ry="0" x="0" y="0" width="305.387" height="128.128">
+					</rect>
+				</svg>
+				<svg class="Rectangle_16_A1_Rectangle_17">
+					<rect id="Rectangle_16_A1_Rectangle_17" rx="0" ry="0" x="0" y="0" width="274.904" height="96.646">
+					</rect>
+				</svg>
+				<svg class="l_A1_Rectangle_18">
+					<pattern elementId="l_A1_Rectangle_19" id="l_A1_Rectangle_19_pattern" x="0" y="0" width="100%"
+						height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="l_A1_Rectangle_19_pattern.png"
+							xlink:href="l_A1_Rectangle_19_pattern.png"></image>
+					</pattern>
+					<rect id="l_A1_Rectangle_18" rx="0" ry="0" x="0" y="0" width="40.14" height="40.14">
+					</rect>
+				</svg>
+			</div>
+			<svg class="v">
+				<pattern elementId="v_A1_Rectangle_21" id="v_A1_Rectangle_21_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="v_A1_Rectangle_21_pattern.png"
+						xlink:href="v_A1_Rectangle_21_pattern.png"></image>
+				</pattern>
+				<rect id="v" rx="0" ry="0" x="0" y="0" width="47" height="47">
+				</rect>
+			</svg>
+			<svg class="bg">
+				<rect id="bg" rx="0" ry="0" x="0" y="0" width="45.095" height="45.095">
+				</rect>
+			</svg>
+			<svg viewBox="2 2 44.308 42.957" class="path">
+				<path id="path"
+					d="M 24.15384674072266 23.47874450683594 C 18.03636169433594 23.47874450683594 13.07692241668701 18.67043495178223 13.07692241668701 12.73937225341797 C 13.07692241668701 6.808309555053711 18.03636169433594 1.99999988079071 24.15384674072266 1.99999988079071 C 30.27132034301758 1.99999988079071 35.23076248168945 6.808309555053711 35.23076248168945 12.73937225341797 C 35.23076248168945 18.67043495178223 30.27132034301758 23.47874450683594 24.15384674072266 23.47874450683594 Z M 24.15384674072266 19.57351303100586 C 28.04687118530273 19.57351303100586 31.20279312133789 16.51376724243164 31.20279312133789 12.73937225341797 C 31.20279312133789 8.964982986450195 28.04687118530273 5.905225276947021 24.15384674072266 5.905225276947021 C 20.26081466674805 5.905225276947021 17.10489654541016 8.964982986450195 17.10489654541016 12.73937225341797 C 17.10489654541016 16.51376724243164 20.26081466674805 19.57351303100586 24.15384674072266 19.57351303100586 Z M 45.11642074584961 33.40193557739258 C 45.46886444091797 34.14588165283203 45.71657180786133 35.21786117553711 45.93207168579102 36.64131546020508 C 46.08142471313477 37.63876724243164 46.19726181030273 38.64067077636719 46.27949142456055 39.64542007446289 L 46.30266189575195 39.93733215332031 L 46.30768966674805 40.07596588134766 C 46.30768585205078 42.76967620849609 44.05713272094727 44.95426177978516 41.27877044677734 44.95749664306641 L 7.028921604156494 44.95749664306641 C 4.25054931640625 44.95426177978516 1.999997138977051 42.76967620849609 2.000000476837158 40.07596588134766 L 2.005031824111938 39.93733215332031 L 2.028197288513184 39.64542007446289 C 2.114234209060669 38.64101791381836 2.230092525482178 37.63922500610352 2.37561821937561 36.64131546020508 C 2.59110689163208 35.21786117553711 2.838825464248657 34.14588165283203 3.191272258758545 33.40193557739258 C 4.739017486572266 30.14399909973145 16.13314437866211 25.43135452270508 24.15384674072266 25.43135452270508 C 32.1745491027832 25.43135452270508 43.56866455078125 30.14399909973145 45.11642074584961 33.40193557739258 Z M 41.25259399414063 34.88982772827148 C 40.97062683105469 34.65062713623047 40.56783676147461 34.36358642578125 40.06938171386719 34.05313110351563 C 38.95362091064453 33.35701370239258 37.47939300537109 32.61307525634766 35.85107803344727 31.93942070007324 C 31.94797134399414 30.32460594177246 27.76190567016602 29.33658981323242 24.15384674072266 29.33658981323242 C 20.5457878112793 29.33658981323242 16.36072540283203 30.32460594177246 12.45661640167236 31.93942070007324 C 10.82830429077148 32.61307525634766 9.354066848754883 33.35701370239258 8.238323211669922 34.05313110351563 C 7.740863800048828 34.36359024047852 7.337062835693359 34.65062713623047 7.055105686187744 34.88982772827148 C 6.95037841796875 34.97963714599609 6.86981725692749 35.05579376220703 6.816448211669922 35.1133918762207 C 6.680503368377686 35.45900726318359 6.509311199188232 36.22736358642578 6.361287593841553 37.20854949951172 C 6.261592388153076 37.8626823425293 6.177002906799316 38.56952285766602 6.106514453887939 39.27831649780273 C 6.07026481628418 39.64345932006836 6.044082164764404 39.93830871582031 6.02897834777832 40.12868881225586 C 6.057747840881348 40.64455795288086 6.496058940887451 41.04941177368164 7.028921604156494 41.05226898193359 L 41.27877044677734 41.05226898193359 C 41.81163024902344 41.04941177368164 42.24994659423828 40.64455795288086 42.27872085571289 40.12868881225586 C 42.26361465454102 39.93830871582031 42.23843383789063 39.64345932006836 42.20118713378906 39.279296875 C 42.13362884521484 38.58714294433594 42.0486946105957 37.89668273925781 41.9463996887207 37.20854949951172 C 41.79838180541992 36.22736358642578 41.62718963623047 35.45900726318359 41.49124908447266 35.1133918762207 C 41.41621780395508 35.03446960449219 41.33654403686523 34.95980453491211 41.25259399414063 34.88982772827148 Z">
+				</path>
+			</svg>
+			<svg class="llll">
+				<pattern elementId="llll_A1_Rectangle_24" id="llll_A1_Rectangle_24_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="llll_A1_Rectangle_24_pattern.png"
+						xlink:href="llll_A1_Rectangle_24_pattern.png"></image>
+				</pattern>
+				<rect id="llll" rx="0" ry="0" x="0" y="0" width="46.5" height="47.5">
+				</rect>
+			</svg>
+			<div id="D_couvrir">
+				<span>Découvrir</span>
+			</div>
+			<div id="Teaser">
+				<span>Teaser</span>
+			</div>
+			<div id="Devenir_membre">
+				<span>Devenir membre</span>
+			</div>
+			<div id="icon">
+				<svg class="bg_A1_Rectangle_25">
+					<rect id="bg_A1_Rectangle_25" rx="0" ry="0" x="0" y="0" width="35.773" height="35.773">
+					</rect>
+				</svg>
+				<svg viewBox="2 2 33.081 33.636" class="path_A1_Path_2">
+					<path id="path_A1_Path_2"
+						d="M 18.54026031494141 18.81791687011719 C 13.97289276123047 18.81791687011719 10.2701301574707 15.05299758911133 10.2701301574707 10.40895843505859 C 10.2701301574707 5.764919757843018 13.97289276123047 1.999999761581421 18.54026031494141 1.999999761581421 C 23.10762023925781 1.999999761581421 26.81038665771484 5.764919757843018 26.81038665771484 10.40895843505859 C 26.81038665771484 15.05299758911133 23.10762023925781 18.81791687011719 18.54026031494141 18.81791687011719 Z M 18.54026031494141 15.76011085510254 C 21.44682884216309 15.76011085510254 23.80306816101074 13.36432075500488 23.80306816101074 10.40895843505859 C 23.80306816101074 7.453600883483887 21.44682884216309 5.057802200317383 18.54026031494141 5.057802200317383 C 15.63368892669678 5.057802200317383 13.27745151519775 7.453600883483887 13.27745151519775 10.40895843505859 C 13.27745151519775 13.36432075500488 15.63368892669678 15.76011085510254 18.54026031494141 15.76011085510254 Z M 34.19110870361328 26.58780097961426 C 34.45424652099609 27.17031478881836 34.63918685913086 28.00967597961426 34.80007934570313 29.12424468994141 C 34.91158676147461 29.90525436401367 34.99807357788086 30.68974685668945 35.05946731567383 31.47646713256836 L 35.07676696777344 31.70503616333008 L 35.08052062988281 31.8135871887207 C 35.08051681518555 33.92276763916016 33.40023422241211 35.63330459594727 31.32588386535645 35.63583755493164 L 5.754638195037842 35.63583755493164 C 3.680280447006226 35.63330459594727 1.999998092651367 33.92276763916016 2.000000476837158 31.8135871887207 L 2.003756999969482 31.70503616333008 L 2.021052598953247 31.47646713256836 C 2.085288524627686 30.69001770019531 2.171789407730103 29.90561294555664 2.280440092086792 29.12424468994141 C 2.441325902938843 28.00967597961426 2.626274824142456 27.17031478881836 2.88941478729248 26.58780097961426 C 4.044975280761719 24.03683090209961 12.55193328857422 20.34681701660156 18.54026031494141 20.34681701660156 C 24.52859115600586 20.34681701660156 33.03553771972656 24.03683090209961 34.19110870361328 26.58780097961426 Z M 31.30633926391602 27.7528247833252 C 31.09582138061523 27.56553077697754 30.79509353637695 27.34077835083008 30.42294311523438 27.09769058227539 C 29.58990669250488 26.55262756347656 28.48923301696777 25.97012138366699 27.27351951599121 25.44264984130859 C 24.35942459106445 24.17824554443359 21.23406982421875 23.40462684631348 18.54026031494141 23.40462684631348 C 15.84645080566406 23.40462684631348 12.72184658050537 24.17824554443359 9.807003974914551 25.44264984130859 C 8.591291427612305 25.97012138366699 7.490612506866455 26.55262756347656 6.657588005065918 27.09769058227539 C 6.28618049621582 27.34078025817871 5.984699249267578 27.56553077697754 5.774187564849854 27.7528247833252 C 5.69599723815918 27.82314682006836 5.635849475860596 27.88277626037598 5.596003532409668 27.92787742614746 C 5.494505882263184 28.19849586486816 5.366692543029785 28.80011940002441 5.256176471710205 29.56838989257813 C 5.181743144989014 30.08057975769043 5.118587970733643 30.63403701782227 5.065960884094238 31.18902587890625 C 5.038896560668945 31.47493362426758 5.01934814453125 31.7057991027832 5.008071422576904 31.8548698425293 C 5.029551029205322 32.25879669189453 5.35679817199707 32.57579803466797 5.754638195037842 32.57803344726563 L 31.32588386535645 32.57803344726563 C 31.72372245788574 32.57579803466797 32.05097198486328 32.25879669189453 32.07245635986328 31.8548698425293 C 32.06117630004883 31.7057991027832 32.04237747192383 31.47493362426758 32.01456832885742 31.18979263305664 C 31.9641284942627 30.64783477783203 31.90071678161621 30.10720252990723 31.82434272766113 29.56838989257813 C 31.71382904052734 28.80011940002441 31.58601570129395 28.19849586486816 31.48452186584473 27.92787742614746 C 31.42850303649902 27.86607933044434 31.36901664733887 27.80761909484863 31.30633926391602 27.7528247833252 Z">
+					</path>
+				</svg>
+			</div>
+			<svg class="a">
+				<pattern elementId="a_A1_Rectangle_27" id="a_A1_Rectangle_27_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="a_A1_Rectangle_27_pattern.png"
+						xlink:href="a_A1_Rectangle_27_pattern.png"></image>
+				</pattern>
+				<rect id="a" rx="0" ry="0" x="0" y="0" width="37" height="37">
+				</rect>
+			</svg>
+			<div id="Carte_des_go_ts">
+				<span>Carte des goûts</span>
+			</div>
+			<svg class="Rectangle_1540">
+				<rect id="Rectangle_1540" rx="0" ry="0" x="0" y="0" width="53" height="55">
+				</rect>
+			</svg>
+			<svg class="Rectangle_1541">
+				<rect id="Rectangle_1541" rx="0" ry="0" x="0" y="0" width="74" height="75">
+				</rect>
+			</svg>
+			<svg class="Rectangle_1545">
+				<rect id="Rectangle_1545" rx="0" ry="0" x="0" y="0" width="71" height="63">
+				</rect>
+			</svg>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,60 @@
+.gridRoue{
+   width: 550px;
+   display: flex;
+   position: relative;
+   float: left;
+}
+
+.gridCarte{
+    display: flex;
+position: relative;
+width: 330px;
+height: 270px;
+border: 1px solid gray;
+bottom: -155px;
+margin-left: -90px;
+}
+
+.arc {
+    cursor: pointer;
+}
+
+.vertical-menu {
+    width: 200px;
+    position: absolute;
+    border: 2px solid silver;
+    display: none;
+    z-index: 1000;
+}
+  
+.vertical-menu #mnuSens a {
+    background-color: silver;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.slice text {
+    font-size: 16pt;
+    font-family: Arial;
+}
+
+  
+  .mheader{
+      font-weight: bold;
+      color: white!important;
+  }
+
+  .vertical-menu #mnuSens a{
+    cursor: pointer;
+}
+
+  .vertical-menu #mnuSens .lien_menu:hover{
+      background-color: white;
+  }
+
+  .btnFermer{
+      float: right!important;
+      cursor: pointer;
+  }

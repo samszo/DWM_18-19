@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<script type="text/javascript" src="js/d3.v4.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+		<script src="js/Leaflet.awesome-markers/leaflet.awesome-markers.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="js/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css ">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>E7</title>
+		<style id="applicationStylesheet" type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			:root {
+				--web-view-ids: E7;
+			}
+
+
+			#E7 {
+				position: absolute;
+				box-sizing: border-box;
+				transform: translateX(-50%) translateY(-50%);
+				left: 50%;
+				top: 50%;
+				background: #E5E5E5;
+				width: 375px;
+				height: 667px;
+				background-color: rgba(255, 255, 255, 1);
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				opacity: 1;
+				--web-view-name: E7;
+				--web-view-id: E7;
+				--web-enable-deep-linking: true;
+			}
+
+			#Rectangle_1547 {
+				opacity: 1;
+				fill: url(#LinearGradientFill1);
+			}
+
+			.Rectangle_1547 {
+				position: absolute;
+				overflow: visible;
+				width: 375px;
+				height: 667px;
+				left: 0px;
+				top: 0px;
+			}
+
+			#Image_2 {
+				opacity: 1;
+				fill: url(#Image_2_A2_Rectangle_3_pattern);
+			}
+
+			.Image_2 {
+				position: absolute;
+				overflow: visible;
+				width: 8px;
+				height: 16px;
+				left: 24px;
+				top: 39px;
+			}
+
+			#_GEOLOCALISATION {
+				opacity: 1;
+				position: absolute;
+				left: 32px;
+				top: 35px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				overflow: visible;
+				width: 249px;
+				white-space: nowrap;
+				text-align: left;
+				font-family: Arial;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 25px;
+				color: rgba(255, 255, 255, 1);
+			}
+
+			#icon {
+				opacity: 1;
+				position: absolute;
+				width: 35.773px;
+				height: 35.773px;
+				left: 315.565px;
+				top: 26.905px;
+				overflow: visible;
+			}
+
+			#bg {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 0);
+			}
+
+			.bg {
+				position: absolute;
+				overflow: visible;
+				width: 35.773px;
+				height: 35.773px;
+				left: 0px;
+				top: 0px;
+			}
+
+			#path {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 1);
+			}
+
+			.path {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 2.1px;
+				left: 2.188px;
+				width: 33.081px;
+				height: 33.636px;
+			}
+
+			#Rectangle_1540 {
+				opacity: 1;
+				fill: rgba(255, 255, 255, 0);
+			}
+
+			.Rectangle_1540 {
+				position: absolute;
+				overflow: visible;
+				width: 53px;
+				height: 55px;
+				left: -5px;
+				top: 12px;
+			}
+
+			#Rectangle_1541 {
+				opacity: 0;
+				fill: rgba(255, 255, 255, 1);
+				stroke: rgb(112, 112, 112);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Rectangle_1541 {
+				position: absolute;
+				overflow: visible;
+				width: 62px;
+				height: 63px;
+				left: 301px;
+				top: 12px;
+			}
+
+			#Group_933 {
+				opacity: 1;
+				position: absolute;
+				width: 148.669px;
+				height: 148.583px;
+				left: 113px;
+				top: 84.25px;
+				overflow: visible;
+			}
+
+			#Group_931 {
+				opacity: 1;
+				position: absolute;
+				width: 148.669px;
+				height: 148.583px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_2 {
+				opacity: 1;
+				position: absolute;
+				width: 70.544px;
+				height: 74.174px;
+				left: 3.791px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_1 {
+				opacity: 1;
+				position: absolute;
+				width: 70.544px;
+				height: 74.174px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_1 {
+				opacity: 1;
+				fill: rgba(243, 144, 127, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_1 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 71.109px;
+				height: 74.768px;
+			}
+
+			#Group_4 {
+				opacity: 1;
+				position: absolute;
+				width: 74.334px;
+				height: 82.929px;
+				left: 0px;
+				top: 51.253px;
+				overflow: visible;
+			}
+
+			#Group_3 {
+				opacity: 1;
+				position: absolute;
+				width: 74.334px;
+				height: 82.929px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_2 {
+				opacity: 1;
+				fill: rgba(139, 2, 21, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_2 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 75.064px;
+				height: 83.593px;
+			}
+
+			#Group_6 {
+				opacity: 1;
+				position: absolute;
+				width: 87.197px;
+				height: 74.455px;
+				left: 30.736px;
+				top: 74.128px;
+				overflow: visible;
+			}
+
+			#Group_5 {
+				opacity: 1;
+				position: absolute;
+				width: 87.197px;
+				height: 74.455px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_3 {
+				opacity: 1;
+				fill: rgba(5, 243, 202, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_3 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 87.895px;
+				height: 75.131px;
+			}
+
+			#Group_8 {
+				opacity: 1;
+				position: absolute;
+				width: 74.335px;
+				height: 82.929px;
+				left: 74.334px;
+				top: 51.253px;
+				overflow: visible;
+			}
+
+			#Group_7 {
+				opacity: 1;
+				position: absolute;
+				width: 74.335px;
+				height: 82.929px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_4 {
+				opacity: 1;
+				fill: rgba(90, 3, 52, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_4 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 75.062px;
+				height: 83.593px;
+			}
+
+			#Group_10 {
+				opacity: 1;
+				position: absolute;
+				width: 70.544px;
+				height: 74.174px;
+				left: 74.334px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_9 {
+				opacity: 1;
+				position: absolute;
+				width: 70.544px;
+				height: 74.174px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_5 {
+				opacity: 1;
+				fill: rgba(242, 7, 66, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_5 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 71.109px;
+				height: 74.768px;
+			}
+
+			#Path_8 {
+				opacity: 0.85;
+				fill: rgba(165, 159, 222, 0.749);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Path_8 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 36.432px;
+				left: 36.602px;
+				width: 75.464px;
+				height: 75.464px;
+			}
+
+			#nez {
+				opacity: 1;
+				fill: url(#nez_A2_Rectangle_8_pattern);
+			}
+
+			.nez {
+				position: absolute;
+				overflow: visible;
+				width: 16.268px;
+				height: 28.781px;
+				left: 14.46px;
+				top: 75.746px;
+			}
+
+			#or {
+				opacity: 1;
+				fill: url(#or_A2_Rectangle_10_pattern);
+			}
+
+			.or {
+				position: absolute;
+				overflow: visible;
+				width: 31.632px;
+				height: 30.653px;
+				left: 111.615px;
+				top: 75.294px;
+			}
+
+			#TOUCHER {
+				opacity: 1;
+				fill: url(#TOUCHER_A2_Rectangle_12_pattern);
+			}
+
+			.TOUCHER {
+				position: absolute;
+				overflow: visible;
+				width: 28.469px;
+				height: 27.588px;
+				left: 60.1px;
+				top: 114.155px;
+			}
+
+			#lang {
+				opacity: 1;
+				fill: url(#lang_A2_Rectangle_14_pattern);
+			}
+
+			.lang {
+				position: absolute;
+				overflow: visible;
+				width: 25.757px;
+				height: 24.961px;
+				left: 26.209px;
+				top: 24.231px;
+			}
+
+			#path_1 {
+				opacity: 1;
+				fill: transparent;
+				stroke: rgb(255, 255, 255);
+				stroke-width: 3px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.path_1 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 63.749px;
+				left: 67.121px;
+				width: 19.219px;
+				height: 27.188px;
+			}
+
+			#yy {
+				opacity: 1;
+				fill: url(#yy_A2_Rectangle_16_pattern);
+			}
+
+			.yy {
+				position: absolute;
+				overflow: visible;
+				width: 64.167px;
+				height: 35.376px;
+				left: 79.983px;
+				top: 10.223px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="E7">
+			<svg class="Rectangle_1547">
+				<linearGradient spreadMethod="pad" id="LinearGradientFill1" x1="0.5" x2="0.5" y1="1.0588552951812744"
+					y2="1.1002061367034912">
+					<stop offset="0" stop-color="#f00" stop-opacity="0.3607843137254902"></stop>
+					<stop offset="1" stop-color="#d414db" stop-opacity="1"></stop>
+				</linearGradient>
+				<rect id="Rectangle_1547" rx="0" ry="0" x="0" y="0" width="375" height="667">
+				</rect>
+			</svg>
+			<svg class="Image_2">
+				<pattern elementId="Image_2_A2_Rectangle_3" id="Image_2_A2_Rectangle_3_pattern" x="0" y="0" width="100%"
+					height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="Image_2_A2_Rectangle_3_pattern.png"
+						xlink:href="Image_2_A2_Rectangle_3_pattern.png"></image>
+				</pattern>
+				<rect id="Image_2" rx="0" ry="0" x="0" y="0" width="8" height="16">
+				</rect>
+			</svg>
+			<div id="_GEOLOCALISATION">
+				<span> GEOLOCALISATION</span>
+			</div>
+			<div id="icon">
+				<svg class="bg">
+					<rect id="bg" rx="0" ry="0" x="0" y="0" width="35.773" height="35.773">
+					</rect>
+				</svg>
+				<svg viewBox="2 2 33.081 33.636" class="path">
+					<path id="path"
+						d="M 18.54026031494141 18.81791687011719 C 13.97289276123047 18.81791687011719 10.2701301574707 15.05299758911133 10.2701301574707 10.40895843505859 C 10.2701301574707 5.764919757843018 13.97289276123047 1.999999761581421 18.54026031494141 1.999999761581421 C 23.10762023925781 1.999999761581421 26.81038665771484 5.764919757843018 26.81038665771484 10.40895843505859 C 26.81038665771484 15.05299758911133 23.10762023925781 18.81791687011719 18.54026031494141 18.81791687011719 Z M 18.54026031494141 15.76011085510254 C 21.44682884216309 15.76011085510254 23.80306816101074 13.36432075500488 23.80306816101074 10.40895843505859 C 23.80306816101074 7.453600883483887 21.44682884216309 5.057802200317383 18.54026031494141 5.057802200317383 C 15.63368892669678 5.057802200317383 13.27745151519775 7.453600883483887 13.27745151519775 10.40895843505859 C 13.27745151519775 13.36432075500488 15.63368892669678 15.76011085510254 18.54026031494141 15.76011085510254 Z M 34.19110870361328 26.58780097961426 C 34.45424652099609 27.17031478881836 34.63918685913086 28.00967597961426 34.80007934570313 29.12424468994141 C 34.91158676147461 29.90525436401367 34.99807357788086 30.68974685668945 35.05946731567383 31.47646713256836 L 35.07676696777344 31.70503616333008 L 35.08052062988281 31.8135871887207 C 35.08051681518555 33.92276763916016 33.40023422241211 35.63330459594727 31.32588386535645 35.63583755493164 L 5.754638195037842 35.63583755493164 C 3.680280447006226 35.63330459594727 1.999998092651367 33.92276763916016 2.000000476837158 31.8135871887207 L 2.003756999969482 31.70503616333008 L 2.021052598953247 31.47646713256836 C 2.085288524627686 30.69001770019531 2.171789407730103 29.90561294555664 2.280440092086792 29.12424468994141 C 2.441325902938843 28.00967597961426 2.626274824142456 27.17031478881836 2.88941478729248 26.58780097961426 C 4.044975280761719 24.03683090209961 12.55193328857422 20.34681701660156 18.54026031494141 20.34681701660156 C 24.52859115600586 20.34681701660156 33.03553771972656 24.03683090209961 34.19110870361328 26.58780097961426 Z M 31.30633926391602 27.7528247833252 C 31.09582138061523 27.56553077697754 30.79509353637695 27.34077835083008 30.42294311523438 27.09769058227539 C 29.58990669250488 26.55262756347656 28.48923301696777 25.97012138366699 27.27351951599121 25.44264984130859 C 24.35942459106445 24.17824554443359 21.23406982421875 23.40462684631348 18.54026031494141 23.40462684631348 C 15.84645080566406 23.40462684631348 12.72184658050537 24.17824554443359 9.807003974914551 25.44264984130859 C 8.591291427612305 25.97012138366699 7.490612506866455 26.55262756347656 6.657588005065918 27.09769058227539 C 6.28618049621582 27.34078025817871 5.984699249267578 27.56553077697754 5.774187564849854 27.7528247833252 C 5.69599723815918 27.82314682006836 5.635849475860596 27.88277626037598 5.596003532409668 27.92787742614746 C 5.494505882263184 28.19849586486816 5.366692543029785 28.80011940002441 5.256176471710205 29.56838989257813 C 5.181743144989014 30.08057975769043 5.118587970733643 30.63403701782227 5.065960884094238 31.18902587890625 C 5.038896560668945 31.47493362426758 5.01934814453125 31.7057991027832 5.008071422576904 31.8548698425293 C 5.029551029205322 32.25879669189453 5.35679817199707 32.57579803466797 5.754638195037842 32.57803344726563 L 31.32588386535645 32.57803344726563 C 31.72372245788574 32.57579803466797 32.05097198486328 32.25879669189453 32.07245635986328 31.8548698425293 C 32.06117630004883 31.7057991027832 32.04237747192383 31.47493362426758 32.01456832885742 31.18979263305664 C 31.9641284942627 30.64783477783203 31.90071678161621 30.10720252990723 31.82434272766113 29.56838989257813 C 31.71382904052734 28.80011940002441 31.58601570129395 28.19849586486816 31.48452186584473 27.92787742614746 C 31.42850303649902 27.86607933044434 31.36901664733887 27.80761909484863 31.30633926391602 27.7528247833252 Z">
+					</path>
+				</svg>
+			</div>
+			<svg class="Rectangle_1540">
+				<rect id="Rectangle_1540" rx="0" ry="0" x="0" y="0" width="53" height="55">
+				</rect>
+			</svg>
+			<svg class="Rectangle_1541">
+				<rect id="Rectangle_1541" rx="0" ry="0" x="0" y="0" width="62" height="63">
+				</rect>
+			</svg>
+			<div id="Group_933">
+				<div id="Group_931">
+					<div id="Group_2">
+						<div id="Group_1">
+							<svg viewBox="162.351 405.746 70.544 74.174" class="Path_1">
+								<path id="Path_1"
+									d="M 232.8945159912109 479.9196166992188 L 162.3510131835938 456.9985656738281 C 172.4779968261719 425.8308410644531 200.1225128173828 405.7460021972656 232.8945159912109 405.7460021972656 L 232.8945159912109 479.9196166992188 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_4">
+						<div id="Group_3">
+							<svg viewBox="154.44 512.71 74.334 82.929" class="Path_2">
+								<path id="Path_2"
+									d="M 228.7738952636719 535.6310424804688 L 185.1758880615234 595.6392211914063 C 158.6626586914063 576.3761596679688 148.1034851074219 543.8782958984375 158.2304534912109 512.7100830078125 L 228.7738952636719 535.6310424804688 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_6">
+						<div id="Group_5">
+							<svg viewBox="218.586 560.546 87.197 74.455" class="Path_3">
+								<path id="Path_3"
+									d="M 262.18408203125 560.5460205078125 L 305.7825927734375 620.5543823242188 C 279.2693481445313 639.81689453125 245.0992279052734 639.81689453125 218.5859832763672 620.5543823242188 L 262.18408203125 560.5460205078125 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_8">
+						<div id="Group_7">
+							<svg viewBox="309.575 512.71 74.335 82.929" class="Path_4">
+								<path id="Path_4"
+									d="M 309.5750122070313 535.6310424804688 L 380.1189270019531 512.7100830078125 C 390.2459716796875 543.8782958984375 379.6867370605469 576.3761596679688 353.1735534667969 595.6392211914063 L 309.5750122070313 535.6310424804688 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_10">
+						<div id="Group_9">
+							<svg viewBox="309.575 405.746 70.544 74.174" class="Path_5">
+								<path id="Path_5"
+									d="M 309.5750122070313 479.9196166992188 L 309.5750122070313 405.7460021972656 C 342.3474426269531 405.7460021972656 369.9914855957031 425.8308410644531 380.1189270019531 456.9985656738281 L 309.5750122070313 479.9196166992188 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<svg viewBox="0 0 75.464 75.464" class="Path_8">
+						<path id="Path_8"
+							d="M 37.73208999633789 0 C 58.57094955444336 0 75.46417999267578 16.89323425292969 75.46417999267578 37.73208999633789 C 75.46417999267578 58.57094955444336 58.57094955444336 75.46417999267578 37.73208999633789 75.46417999267578 C 16.89323425292969 75.46417999267578 0 58.57094955444336 0 37.73208999633789 C 0 16.89323425292969 16.89323425292969 0 37.73208999633789 0 Z">
+						</path>
+					</svg>
+					<svg class="nez">
+						<pattern elementId="nez_A2_Rectangle_8" id="nez_A2_Rectangle_8_pattern" x="0" y="0" width="100%"
+							height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="nez_A2_Rectangle_8_pattern.png"
+								xlink:href="nez_A2_Rectangle_8_pattern.png"></image>
+						</pattern>
+						<rect id="nez" rx="0" ry="0" x="0" y="0" width="16.268" height="28.781">
+						</rect>
+					</svg>
+					<svg class="or">
+						<pattern elementId="or_A2_Rectangle_10" id="or_A2_Rectangle_10_pattern" x="0" y="0" width="100%"
+							height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="or_A2_Rectangle_10_pattern.png"
+								xlink:href="or_A2_Rectangle_10_pattern.png"></image>
+						</pattern>
+						<rect id="or" rx="0" ry="0" x="0" y="0" width="31.632" height="30.653">
+						</rect>
+					</svg>
+					<svg class="TOUCHER">
+						<pattern elementId="TOUCHER_A2_Rectangle_12" id="TOUCHER_A2_Rectangle_12_pattern" x="0" y="0"
+							width="100%" height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="TOUCHER_A2_Rectangle_12_pattern.png"
+								xlink:href="TOUCHER_A2_Rectangle_12_pattern.png"></image>
+						</pattern>
+						<rect id="TOUCHER" rx="0" ry="0" x="0" y="0" width="28.469" height="27.588">
+						</rect>
+					</svg>
+					<svg class="lang">
+						<pattern elementId="lang_A2_Rectangle_14" id="lang_A2_Rectangle_14_pattern" x="0" y="0"
+							width="100%" height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="lang_A2_Rectangle_14_pattern.png"
+								xlink:href="lang_A2_Rectangle_14_pattern.png"></image>
+						</pattern>
+						<rect id="lang" rx="12.480310440063477" ry="12.480310440063477" x="0" y="0" width="25.757"
+							height="24.961">
+						</rect>
+					</svg>
+					<svg viewBox="0 0 16.219 23.197" class="path_1">
+						<undefined id="path_1"
+							d="M 8.109461784362793 23.19697189331055 L 8.109106063842773 23.19649887084961 C 8.028011322021484 23.09030532836914 -1.76041266177805e-16 12.52606105804443 -1.76041266177805e-16 8.109463691711426 C -1.76041266177805e-16 3.63788914680481 3.63788890838623 0 8.109461784362793 0 C 12.58125877380371 0 16.21933364868164 3.63788914680481 16.21933364868164 8.109463691711426 C 16.21933364868164 12.5260066986084 8.190918922424316 23.09030532836914 8.109819412231445 23.19649887084961 L 8.109461784362793 23.19697189331055 Z M 8.109461784362793 3.579306840896606 C 5.91987133026123 3.579306840896606 4.138510704040527 5.360668182373047 4.138510704040527 7.550259113311768 C 4.138510704040527 9.739850044250488 5.91987133026123 11.52121448516846 8.109461784362793 11.52121448516846 C 10.29905414581299 11.52121448516846 12.08041477203369 9.739850044250488 12.08041477203369 7.550259113311768 C 12.08041477203369 5.360668182373047 10.29905414581299 3.579306840896606 8.109461784362793 3.579306840896606 Z">
+						</undefined>
+					</svg>
+				</div>
+				<svg class="yy">
+					<pattern elementId="yy_A2_Rectangle_16" id="yy_A2_Rectangle_16_pattern" x="0" y="0" width="100%"
+						height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="yy_A2_Rectangle_16_pattern.png"
+							xlink:href="yy_A2_Rectangle_16_pattern.png"></image>
+					</pattern>
+					<rect id="yy" rx="0" ry="0" x="0" y="0" width="64.167" height="35.376">
+					</rect>
+
+				</svg>
+
+				<div id="map_2385853" class="gridCarte">
+				</div>
+
+				<div id="txtGeo" style="text-align: center;color: white;margin-top: 155px;"></div>
+
+				<div class="vertical-menu" id="menu_id"></div>
+
+				<script>
+					// script pour la carte
+
+					var map, markerPosition, markersGout, geoPosi, optionsGeo = {
+						enableHighAccuracy: true,
+						timeout: 5000,
+						maximumAge: 0
+					};
+
+
+					function successGeo(pos) {
+						geoPosi = pos;
+						let html = 'Votre position actuelle est :<br/>'
+							+ 'Latitude : ' + geoPosi.coords.latitude + '<br/>'
+							+ 'Longitude : ' + geoPosi.coords.longitude + '<br/>'
+							+ 'La précision est de ' + geoPosi.coords.accuracy + ' mètres.';
+
+						document.getElementById('txtGeo').innerHTML = html;
+
+						geoPosi.latlng = {
+							lat: geoPosi.coords.latitude,
+							lng: geoPosi.coords.longitude
+						};
+						geoPosi.accuracy = geoPosi.coords.accuracy;
+						onLocationFound(geoPosi);
+
+					}
+
+					function errorGeo(err) {
+						console.warn(`ERREUR (${err.code}): ${err.message}`);
+						geoPosi = false;
+					}
+
+					function getGeoInfos() {
+						if (geoPosi)
+							return { 'lat': geoPosi.coords.latitude, 'lng': geoPosi.coords.longitude, 'pre': geoPosi.coords.accuracy, 't': geoPosi.timestamp };
+						else
+							return {};
+					}
+
+					/*
+					merci à https://stackoverflow.com/questions/40433317/leaflet-map-update-marker-using-navigator-geolocation-watchposition
+					*/
+					function initializeMapAndLocator() {
+
+						map = L.map('map_2385853').setView([48.852969, 2.349903], 13); // positionne sur Paris
+						// fond de carte OSM
+						var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+							osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+							osm = L.tileLayer(osmUrl, { minZoom: 1, maxZoom: 16, attribution: osmAttrib })
+								.addTo(map);
+
+						/*
+						// ça rinitialise la carte donc commentaire
+						map.locate({
+							 setView: true,
+							 maxZoom: 16,
+							 watch: true,
+							 timeout: 60000
+						 }); */
+
+					}
+
+					function onLocationFound(e) {
+						var radius = e.accuracy / 2;
+
+						// on supprime l'ancien marker de position
+						if (markerPosition) {
+							map.remove(markerPosition);
+						}
+
+						// on ajoute le marker à la nouvelle position
+						markerPosition = L.marker(e.latlng).addTo(map)
+							.bindPopup("Vous êtes environ à " + radius + " mètres de ce point").openPopup();
+						L.circle(e.latlng, radius).addTo(map);
+
+						// centrer sur la position
+						map.flyTo(e.latlng);
+					}
+
+					function getEvent(typeEvent, icone, markerColor) {
+
+						var url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&facet=city_district&refine.department=Seine-Saint-Denis&refine.tags=' + typeEvent + '&refine.date_start=2018';
+
+						var marker = L.AwesomeMarkers.icon({
+							icon: icone,
+							markerColor: markerColor
+						});
+
+						$.ajax({
+							url: url,
+							data: {},
+							success: function (data) {
+
+
+								// on supprime les anciens markers du gout sélectionné précédemment
+								/*if (markersGout && markersGout.length > 0) {
+									for (var i = 0; i < markersGout.length; i++) {
+										map.remove(markersGout[i]);
+									}
+								}
+			*/
+								// on vide la liste des markers
+								markersGout = [];
+								var latLngs = [];
+								data.records.forEach(function (d) {
+									latLngs.push(d.fields.latlon);
+									var html = '<h3>' + d.fields.title + '</h3>';
+									var m = L.marker({ lat: d.fields.latlon[0], lng: d.fields.latlon[1] }, { icon: marker }).addTo(map)
+										.bindPopup(html).openPopup();
+									markersGout.push(m);
+								});
+
+								// zoom sur les gouts affichés
+								map.flyToBounds(L.latLngBounds(latLngs));
+							},
+							dataType: 'json'
+						});
+					}
+
+
+					initializeMapAndLocator();
+					navigator.geolocation.getCurrentPosition(successGeo, errorGeo, optionsGeo);
+				</script>
+
+			</div>
+		</div>
+	</body>
+
+</html>

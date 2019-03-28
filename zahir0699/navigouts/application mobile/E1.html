@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<script type="text/javascript" src="js/d3.v4.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+		<script src="js/Leaflet.awesome-markers/leaflet.awesome-markers.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="js/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css ">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>E1</title>
+		<style id="applicationStylesheet" type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			:root {
+				--web-view-ids: E1;
+			}
+
+			#E1 * {
+				margin: 0;
+				padding: 0;
+			}
+
+			#E1 {
+				position: absolute;
+				box-sizing: border-box;
+				transform: translateX(-50%) translateY(-50%);
+				left: 50%;
+				top: 50%;
+				background: #E5E5E5;
+				width: 375px;
+				height: 667px;
+				background-color: rgba(255, 255, 255, 1);
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				opacity: 1;
+				--web-view-name: E1;
+				--web-view-id: E1;
+				--web-enable-deep-linking: true;
+			}
+
+			#Rectangle_1 {
+				opacity: 1;
+				fill: url(#LinearGradientFill1);
+			}
+
+			.Rectangle_1 {
+				position: absolute;
+				overflow: visible;
+				width: 375px;
+				height: 667px;
+				left: 0px;
+				top: 0px;
+			}
+
+			#Group_932 {
+				opacity: 1;
+				position: absolute;
+				width: 329px;
+				height: 328.811px;
+				left: 23px;
+				top: 261.377px;
+				overflow: visible;
+			}
+
+			#Group_931 {
+				opacity: 1;
+				position: absolute;
+				width: 329px;
+				height: 328.811px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_2 {
+				opacity: 1;
+				position: absolute;
+				width: 156.111px;
+				height: 164.144px;
+				left: 8.389px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_1 {
+				opacity: 1;
+				position: absolute;
+				width: 156.111px;
+				height: 164.144px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_1 {
+				opacity: 1;
+				fill: rgba(243, 144, 127, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_1 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 156.676px;
+				height: 164.738px;
+			}
+
+			#Group_4 {
+				opacity: 1;
+				position: absolute;
+				width: 164.499px;
+				height: 183.52px;
+				left: 0px;
+				top: 113.421px;
+				overflow: visible;
+			}
+
+			#Group_3 {
+				opacity: 1;
+				position: absolute;
+				width: 164.499px;
+				height: 183.52px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_2 {
+				opacity: 1;
+				fill: rgba(139, 2, 21, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_2 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 165.32px;
+				height: 184.184px;
+			}
+
+			#Group_6 {
+				opacity: 1;
+				position: absolute;
+				width: 192.963px;
+				height: 164.767px;
+				left: 68.018px;
+				top: 164.043px;
+				overflow: visible;
+			}
+
+			#Group_5 {
+				opacity: 1;
+				position: absolute;
+				width: 192.963px;
+				height: 164.767px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_3 {
+				opacity: 1;
+				fill: rgba(5, 243, 202, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_3 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 193.662px;
+				height: 165.443px;
+			}
+
+			#Group_8 {
+				opacity: 1;
+				position: absolute;
+				width: 164.501px;
+				height: 183.52px;
+				left: 164.5px;
+				top: 113.421px;
+				overflow: visible;
+			}
+
+			#Group_7 {
+				opacity: 1;
+				position: absolute;
+				width: 164.501px;
+				height: 183.52px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_4 {
+				opacity: 1;
+				fill: rgba(90, 3, 52, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_4 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 165.317px;
+				height: 184.184px;
+			}
+
+			#Group_10 {
+				opacity: 1;
+				position: absolute;
+				width: 156.112px;
+				height: 164.144px;
+				left: 164.5px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Group_9 {
+				opacity: 1;
+				position: absolute;
+				width: 156.112px;
+				height: 164.144px;
+				left: 0px;
+				top: 0px;
+				overflow: visible;
+			}
+
+			#Path_5 {
+				opacity: 1;
+				fill: rgba(242, 7, 66, 1);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 0.5px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 10;
+				shape-rendering: auto;
+			}
+
+			.Path_5 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 156.677px;
+				height: 164.738px;
+			}
+
+			#Path_8 {
+				opacity: 0.85;
+				fill: rgba(165, 159, 222, 0.749);
+				stroke: rgb(241, 241, 241);
+				stroke-width: 1px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.Path_8 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 80.623px;
+				left: 81px;
+				width: 167px;
+				height: 167px;
+			}
+
+			#nez {
+				opacity: 1;
+				fill: url(#nez_A0_Rectangle_3_pattern);
+			}
+
+			.nez {
+				position: absolute;
+				overflow: visible;
+				width: 36px;
+				height: 64px;
+				left: 32px;
+				top: 167.623px;
+			}
+
+			#or {
+				opacity: 1;
+				fill: url(#or_A0_Rectangle_5_pattern);
+			}
+
+			.or {
+				position: absolute;
+				overflow: visible;
+				width: 70px;
+				height: 68px;
+				left: 247px;
+				top: 166.623px;
+			}
+
+			#TOUCHER {
+				opacity: 1;
+				fill: url(#TOUCHER_A0_Rectangle_7_pattern);
+			}
+
+			.TOUCHER {
+				position: absolute;
+				overflow: visible;
+				width: 63px;
+				height: 61px;
+				left: 133px;
+				top: 252.623px;
+			}
+
+			#lang {
+				opacity: 1;
+				fill: url(#lang_A0_Rectangle_9_pattern);
+			}
+
+			.lang {
+				position: absolute;
+				overflow: visible;
+				width: 57px;
+				height: 55px;
+				left: 58px;
+				top: 53.623px;
+			}
+
+			#path_1 {
+				opacity: 1;
+				fill: transparent;
+				stroke: rgb(255, 255, 255);
+				stroke-width: 3px;
+				stroke-linejoin: miter;
+				stroke-linecap: butt;
+				stroke-miterlimit: 4;
+				shape-rendering: auto;
+			}
+
+			.path_1 {
+				transform: matrix(1, 0, 0, 1, 0, 0);
+				overflow: visible;
+				position: absolute;
+				top: 141.076px;
+				left: 148.536px;
+				width: 38.893px;
+				height: 55.317px;
+			}
+
+			#yy {
+				opacity: 1;
+				fill: url(#yy_A0_Rectangle_11_pattern);
+			}
+
+			.yy {
+				position: absolute;
+				overflow: visible;
+				width: 142px;
+				height: 78px;
+				left: 177px;
+				top: 22.623px;
+			}
+
+			#lllll {
+				opacity: 1;
+				fill: url(#lllll_A0_Rectangle_13_pattern);
+			}
+
+			.lllll {
+				position: absolute;
+				overflow: visible;
+				width: 48px;
+				height: 48px;
+				left: 310px;
+				top: 27px;
+			}
+
+			#logo_def {
+				opacity: 1;
+				fill: url(#logo_def_A0_Rectangle_15_pattern);
+			}
+
+			.logo_def {
+				position: absolute;
+				overflow: visible;
+				width: 244.813px;
+				height: 60.554px;
+				left: 65.093px;
+				top: 117.232px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<h1 style="text-align: center;">Bienvenue</h1>
+
+		<div id="E1">
+			<svg class="Rectangle_1">
+				<linearGradient spreadMethod="pad" id="LinearGradientFill1" x1="0.8324893116950989" x2="0.5"
+					y1="0.9042319655418396" y2="1.1002061367034912">
+					<stop offset="0" stop-color="#f00" stop-opacity="0.3607843137254902"></stop>
+					<stop offset="1" stop-color="#d414db" stop-opacity="1"></stop>
+				</linearGradient>
+				<rect id="Rectangle_1" rx="0" ry="0" x="0" y="0" width="375" height="667">
+				</rect>
+			</svg>
+			<div id="Group_932">
+				<div id="Group_931">
+					<div id="Group_2">
+						<div id="Group_1">
+							<svg viewBox="162.351 405.746 156.111 164.144" class="Path_1">
+								<path id="Path_1"
+									d="M 318.461669921875 569.8899536132813 L 162.3510131835938 519.1664428710938 C 184.7617492675781 450.1931762695313 245.938232421875 405.7460021972656 318.461669921875 405.7460021972656 L 318.461669921875 569.8899536132813 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_4">
+						<div id="Group_3">
+							<svg viewBox="154.44 512.71 164.499 183.52" class="Path_2">
+								<path id="Path_2"
+									d="M 318.9391479492188 563.4335327148438 L 222.4579620361328 696.22998046875 C 163.7850036621094 653.6013793945313 140.4178314208984 581.6844482421875 162.8285522460938 512.7100830078125 L 318.9391479492188 563.4335327148438 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_6">
+						<div id="Group_5">
+							<svg viewBox="218.586 560.546 192.963 164.767" class="Path_3">
+								<path id="Path_3"
+									d="M 315.0672302246094 560.5460205078125 L 411.5494995117188 693.342529296875 C 352.8764953613281 735.9700927734375 277.2590026855469 735.9700927734375 218.5860137939453 693.342529296875 L 315.0672302246094 560.5460205078125 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_8">
+						<div id="Group_7">
+							<svg viewBox="309.575 512.71 164.501 183.52" class="Path_4">
+								<path id="Path_4"
+									d="M 309.5750122070313 563.4335327148438 L 465.6866760253906 512.7100830078125 C 488.0974426269531 581.6844482421875 464.7302551269531 653.6013793945313 406.0573120117188 696.22998046875 L 309.5750122070313 563.4335327148438 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<div id="Group_10">
+						<div id="Group_9">
+							<svg viewBox="309.575 405.746 156.112 164.144" class="Path_5">
+								<path id="Path_5"
+									d="M 309.5750122070313 569.8899536132813 L 309.5750122070313 405.7460021972656 C 382.0995178222656 405.7460021972656 443.2749633789063 450.1931762695313 465.6866760253906 519.1664428710938 L 309.5750122070313 569.8899536132813 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+					<svg viewBox="0 0 167 167" class="Path_8">
+						<path id="Path_8"
+							d="M 83.5 0 C 129.6157684326172 0 167 37.38422775268555 167 83.5 C 167 129.6157684326172 129.6157684326172 167 83.5 167 C 37.38422775268555 167 0 129.6157684326172 0 83.5 C 0 37.38422775268555 37.38422775268555 0 83.5 0 Z">
+						</path>
+					</svg>
+					<svg class="nez">
+						<pattern elementId="nez_A0_Rectangle_3" id="nez_A0_Rectangle_3_pattern" x="0" y="0" width="100%"
+							height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="nez_A0_Rectangle_3_pattern.png"
+								xlink:href="nez_A0_Rectangle_3_pattern.png"></image>
+						</pattern>
+						<rect id="nez" rx="0" ry="0" x="0" y="0" width="36" height="64">
+						</rect>
+					</svg>
+					<svg class="or">
+						<pattern elementId="or_A0_Rectangle_5" id="or_A0_Rectangle_5_pattern" x="0" y="0" width="100%"
+							height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="or_A0_Rectangle_5_pattern.png"
+								xlink:href="or_A0_Rectangle_5_pattern.png"></image>
+						</pattern>
+						<rect id="or" rx="0" ry="0" x="0" y="0" width="70" height="68">
+						</rect>
+					</svg>
+					<svg class="TOUCHER">
+						<pattern elementId="TOUCHER_A0_Rectangle_7" id="TOUCHER_A0_Rectangle_7_pattern" x="0" y="0"
+							width="100%" height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="TOUCHER_A0_Rectangle_7_pattern.png"
+								xlink:href="TOUCHER_A0_Rectangle_7_pattern.png"></image>
+						</pattern>
+						<rect id="TOUCHER" rx="0" ry="0" x="0" y="0" width="63" height="61">
+						</rect>
+					</svg>
+					<svg class="lang">
+						<pattern elementId="lang_A0_Rectangle_9" id="lang_A0_Rectangle_9_pattern" x="0" y="0"
+							width="100%" height="100%">
+							<image x="0" y="0" width="100%" height="100%" href="lang_A0_Rectangle_9_pattern.png"
+								xlink:href="lang_A0_Rectangle_9_pattern.png"></image>
+						</pattern>
+						<rect id="lang" rx="27.5" ry="27.5" x="0" y="0" width="57" height="55">
+						</rect>
+					</svg>
+					<svg viewBox="0 0 35.893 51.334" class="path_1">
+						<undefined id="path_1"
+							d="M 17.94600105285645 51.33420944213867 L 17.94521141052246 51.33316802978516 C 17.76575088500977 51.09815979003906 1.187133761959558e-06 27.71979904174805 1.187133761959558e-06 17.94599914550781 C 1.187133761959558e-06 8.050539016723633 8.050540924072266 -1.435546892025741e-06 17.94600105285645 -1.435546892025741e-06 C 27.84195137023926 -1.435546892025741e-06 35.89290237426758 8.050539016723633 35.89290237426758 17.94599914550781 C 35.89290237426758 27.71967887878418 18.12626075744629 51.09815979003906 17.94679069519043 51.33316802978516 L 17.94600105285645 51.33420944213867 Z M 17.94600105285645 7.9208984375 C 13.10050106048584 7.9208984375 9.158401489257813 11.86299896240234 9.158401489257813 16.70849800109863 C 9.158401489257813 21.55399894714355 13.10050106048584 25.4960994720459 17.94600105285645 25.4960994720459 C 22.79150199890137 25.4960994720459 26.73360061645508 21.55399894714355 26.73360061645508 16.70849800109863 C 26.73360061645508 11.86299896240234 22.79150199890137 7.9208984375 17.94600105285645 7.9208984375 Z">
+						</undefined>
+					</svg>
+				</div>
+				<svg class="yy">
+					<pattern elementId="yy_A0_Rectangle_11" id="yy_A0_Rectangle_11_pattern" x="0" y="0" width="100%"
+						height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="yy_A0_Rectangle_11_pattern.png"
+							xlink:href="yy_A0_Rectangle_11_pattern.png"></image>
+					</pattern>
+					<rect id="yy" rx="0" ry="0" x="0" y="0" width="142" height="78">
+					</rect>
+				</svg>
+			</div>
+			<a href="E3.html">
+				<svg class="lllll">
+					<pattern elementId="lllll_A0_Rectangle_13" id="lllll_A0_Rectangle_13_pattern" x="0" y="0"
+						width="100%" height="100%">
+						<image x="0" y="0" width="100%" height="100%" href="lllll_A0_Rectangle_13_pattern.png"
+							xlink:href="lllll_A0_Rectangle_13_pattern.png"></image>
+					</pattern>
+					<rect id="lllll" rx="0" ry="0" x="0" y="0" width="48" height="48">
+					</rect>
+
+				</svg>
+			</a>
+			<svg class="logo_def">
+				<pattern elementId="logo_def_A0_Rectangle_15" id="logo_def_A0_Rectangle_15_pattern" x="0" y="0"
+					width="100%" height="100%">
+					<image x="0" y="0" width="100%" height="100%" href="logo_def_A0_Rectangle_15_pattern.png"
+						xlink:href="logo_def_A0_Rectangle_15_pattern.png"></image>
+				</pattern>
+				<rect id="logo_def" rx="0" ry="0" x="0" y="0" width="244.813" height="60.554">
+				</rect>
+			</svg>
+		</div>
+	</body>
+
+</html>
