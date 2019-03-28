@@ -5,33 +5,28 @@
     <meta charset="utf8" />
     <link rel="stylesheet" type="text/css" href="styles/main.css" />
     <link rel="stylesheet" href="scripts/res/cercle_audio.css" />
-    <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="scripts/w2ui-1.5.rc1/w2ui-1.5.rc1.css" />
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/res/cercle_audio.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+    <script type="text/javascript" src="scripts/w2ui-1.5.rc1/w2ui-1.5.rc1.js"></script>
 
 </head>
 
 <body>
     <header>
-        <div class="w2ui-field w2ui-span3">
-            <label>List:</label>
             <div>
                 <input type="list">
-                <button id="searchthis" onclick="javascript: getSelect();">Select</button>
             </div>
+            <br />
             <div id="titreArchive"></div>
-        </div>
     </header>
     <div class="force">
-        <div id="orbit">
-            <div position="absolute" id="audio_conteneur2"></div>
-        </div>
-        <svg position="absolute" id="scatter" width=500 height=500></svg>
+        <div position="absolute" id="audio_conteneur2"></div>
+        <div id="orbit"></div>
+        
     </div>
     </div>
 

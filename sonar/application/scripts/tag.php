@@ -2,8 +2,8 @@
 
 // Données de connexion serveur MySQL
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "*";
+$password = "*";
 $dbname = "sonar";
 
 // Connexion au serveur MySQL
